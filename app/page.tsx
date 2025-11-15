@@ -1,9 +1,10 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, MapPin, Phone, Code, Briefcase, GraduationCap, Award } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Phone, Code, Briefcase, GraduationCap, Award, User, ExternalLink } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import ThemeToggle from '@/components/ThemeToggle'
 import profileData from '@/data/profile.json'
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
+      <ThemeToggle />
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <motion.div
@@ -72,10 +74,10 @@ export default function Home() {
             transition={{ delay: 1 }}
             className="flex justify-center gap-6 mb-12"
           >
-            <a href={`https://github.com/${personal.github}`} className="text-muted-foreground hover:text-blue-400 transition-colors">
+            <a href={`https://github.com/${personal.github}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors">
               <Github className="w-6 h-6" />
             </a>
-            <a href={`https://linkedin.com/in/${personal.linkedin}`} className="text-muted-foreground hover:text-blue-400 transition-colors">
+            <a href={`https://linkedin.com/in/${personal.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors">
               <Linkedin className="w-6 h-6" />
             </a>
           </motion.div>
@@ -87,29 +89,53 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <Tabs defaultValue="skills" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-8">
-              <TabsTrigger value="skills" className="flex items-center gap-2">
-                <Code className="w-4 h-4" />
-                Skills
-              </TabsTrigger>
-              <TabsTrigger value="experience" className="flex items-center gap-2">
-                <Briefcase className="w-4 h-4" />
-                Experience
-              </TabsTrigger>
-              <TabsTrigger value="projects" className="flex items-center gap-2">
-                <Code className="w-4 h-4" />
-                Projects
-              </TabsTrigger>
-              <TabsTrigger value="education" className="flex items-center gap-2">
-                <GraduationCap className="w-4 h-4" />
-                Education
-              </TabsTrigger>
-              <TabsTrigger value="certifications" className="flex items-center gap-2">
-                <Award className="w-4 h-4" />
-                Certifications
-              </TabsTrigger>
-            </TabsList>
+          <Tabs defaultValue="about" className="w-full">
+            <div className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b mb-8">
+              <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 p-1">
+                <TabsTrigger value="about" className="flex items-center gap-2">
+                  <User className="w-4 h-4" />
+                  About
+                </TabsTrigger>
+                <TabsTrigger value="skills" className="flex items-center gap-2">
+                  <Code className="w-4 h-4" />
+                  Skills
+                </TabsTrigger>
+                <TabsTrigger value="experience" className="flex items-center gap-2">
+                  <Briefcase className="w-4 h-4" />
+                  Experience
+                </TabsTrigger>
+                <TabsTrigger value="projects" className="flex items-center gap-2">
+                  <Code className="w-4 h-4" />
+                  Projects
+                </TabsTrigger>
+                <TabsTrigger value="education" className="flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4" />
+                  Education
+                </TabsTrigger>
+                <TabsTrigger value="certifications" className="flex items-center gap-2">
+                  <Award className="w-4 h-4" />
+                  Certifications
+                </TabsTrigger>
+              </TabsList>
+            </div>
+
+            {/* About Tab */}
+            <TabsContent value="about">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Card>
+                  <CardHeader>
+                    <CardTitle>About Me</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">{personal.about}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </TabsContent>
 
             {/* Skills Tab */}
             <TabsContent value="skills">
@@ -189,9 +215,12 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.2 }}
                   >
-                    <Card>
+                    <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(exp.link, '_blank')}>
                       <CardHeader>
-                        <CardTitle>{exp.title}</CardTitle>
+                        <CardTitle className="flex items-center justify-between">
+                          {exp.title}
+                          <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </CardTitle>
                         <CardDescription>
                           {exp.company} • {exp.duration} • {exp.location}
                         </CardDescription>
@@ -218,9 +247,12 @@ export default function Home() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="h-full">
+                    <Card className="h-full cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(project.link, '_blank')}>
                       <CardHeader>
-                        <CardTitle>{project.name}</CardTitle>
+                        <CardTitle className="flex items-center justify-between">
+                          {project.name}
+                          <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </CardTitle>
                       </CardHeader>
                       <CardContent>
                         <p className="text-muted-foreground">{project.description}</p>
@@ -241,9 +273,12 @@ export default function Home() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.2 }}
                   >
-                    <Card>
+                    <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(edu.link, '_blank')}>
                       <CardHeader>
-                        <CardTitle>{edu.degree}</CardTitle>
+                        <CardTitle className="flex items-center justify-between">
+                          {edu.degree}
+                          <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </CardTitle>
                         <CardDescription>
                           {edu.institution} • {edu.duration}
                         </CardDescription>
@@ -268,9 +303,10 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card>
-                      <CardContent className="p-4">
-                        <p className="text-sm">{cert}</p>
+                    <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(cert.link, '_blank')}>
+                      <CardContent className="p-4 flex items-center justify-between">
+                        <p className="text-sm">{cert.name}</p>
+                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-2" />
                       </CardContent>
                     </Card>
                   </motion.div>

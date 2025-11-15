@@ -8,7 +8,8 @@
     "email": "vinay.valson@gmail.com",
     "github": "Vin-dictive",
     "linkedin": "Vinay Valson",
-    "website": "Profile Page"
+    "website": "Profile Page",
+    "about": "Passionate Software Engineer and Data Scientist with expertise in machine learning, web development, and cloud technologies. Currently pursuing Masters in Data Science at UBC while working as a Senior Software Engineer at Blue Rabbit Group. I specialize in building AI-driven solutions, portfolio management systems, and scalable web applications. With experience across multiple programming languages and frameworks, I enjoy solving complex problems and creating innovative solutions that bridge the gap between data science and software engineering."
   },
   "skills": {
     "programmingLanguages": [
@@ -47,7 +48,8 @@
       "duration": "April 2024 - Present",
       "location": "Hong Kong, EU, India",
       "description": "Spearheading the design and integration of machine learning models into web platforms to develop systems for AI-driven portfolio management, web analytics, automated trading, asset-risk score framework, data ingestion pipeline and AI for crypto market analysis.",
-      "techStack": "Python, Django Restful Framework, ReactJS, Docker containers, Timescale - PostgreSQL, NextJS, MongoDB, Inngest - queue, Posthog - Web Analytics, Strapi, Slack bots, Github actions, GCP, Railway App, Clerk Authentication, PGP Keys, Postmark, AI Agent Framework Mastra, Reports generation using puppeteer"
+      "techStack": "Python, Django Restful Framework, ReactJS, Docker containers, Timescale - PostgreSQL, NextJS, MongoDB, Inngest - queue, Posthog - Web Analytics, Strapi, Slack bots, Github actions, GCP, Railway App, Clerk Authentication, PGP Keys, Postmark, AI Agent Framework Mastra, Reports generation using puppeteer",
+      "link": "https://bluerabbitgroup.com"
     },
     {
       "title": "Staff Consultant - Oracle Financial Services",
@@ -55,7 +57,8 @@
       "duration": "Aug 2021 - April 2024",
       "location": "Bangalore, India / Hong Kong",
       "description": "Collaborated with clients in Hong Kong, addressed issues, gathered requirements, and oversaw design and implementation of components like Fraud Detection, Foreign Exchange, Open API, roles and access management in Oracle Banking Digital Experience (OBDX) project.",
-      "techStack": "Java, UNIX, SQL, Web Services (SOAP and REST), OJET, Docker"
+      "techStack": "Java, UNIX, SQL, Web Services (SOAP and REST), OJET, Docker",
+      "link": "https://oracle.com/financial-services"
     },
     {
       "title": "Software Developer Intern",
@@ -63,29 +66,35 @@
       "duration": "Jan 2020 - Jul 2020",
       "location": "Pune, India",
       "description": "Developed a Bookmark widget for Ubuntu systems using Gnome toolkit, implemented as Chrome extension and Electron app. Tested and corrected Deal Management web application using MEAN stack.",
-      "techStack": "MEAN Stack, Gnome Toolkit, Chrome Extensions, Electron"
+      "techStack": "MEAN Stack, Gnome Toolkit, Chrome Extensions, Electron",
+      "link": "https://accops.com"
     }
   ],
   "projects": [
     {
       "name": "ARgorithm",
-      "description": "An open-source technology for visualizing data structures and algorithms in augmented reality created with Python-Flask, C#, Unity Game Engine, Google ARcore libraries, and GitHub for collaboration."
+      "description": "An open-source technology for visualizing data structures and algorithms in augmented reality created with Python-Flask, C#, Unity Game Engine, Google ARcore libraries, and GitHub for collaboration.",
+      "link": "https://github.com/Vin-dictive/ARgorithm"
     },
     {
       "name": "Profile Page",
-      "description": "Developed and deployed a personal profile page utilizing ReactJS for dynamic user interface and THREE.js for 3D graphics. Successfully hosted the project on GitHub Pages."
+      "description": "Developed and deployed a personal profile page utilizing ReactJS for dynamic user interface and THREE.js for 3D graphics. Successfully hosted the project on GitHub Pages.",
+      "link": "https://vin-dictive.github.io"
     },
     {
       "name": "Portfolio Optimization using Python",
-      "description": "Optimizing portfolios for optimal asset allocation using Genetic Algorithm and Efficiency frontier graph on Jupyter Notebook."
+      "description": "Optimizing portfolios for optimal asset allocation using Genetic Algorithm and Efficiency frontier graph on Jupyter Notebook.",
+      "link": "https://github.com/Vin-dictive/portfolio-optimization"
     },
     {
       "name": "RGB TO YUV conversion in High Performance Computing",
-      "description": "Made an RGB to YUV converter for videos using CUDA toolkit and python."
+      "description": "Made an RGB to YUV converter for videos using CUDA toolkit and python.",
+      "link": "https://github.com/Vin-dictive/rgb-yuv-converter"
     },
     {
       "name": "Hand Signs to Text Conversion App",
-      "description": "Implemented a Hand Signs to Text Conversion Android and Web App using Python-flask and Tensorflow.js."
+      "description": "Implemented a Hand Signs to Text Conversion Android and Web App using Python-flask and Tensorflow.js.",
+      "link": "https://github.com/Vin-dictive/hand-signs-converter"
     }
   ],
   "education": [
@@ -93,29 +102,50 @@
       "degree": "Masters - Data Science",
       "institution": "University of British Columbia, Vancouver, Canada",
       "duration": "Sep 2025 - present",
-      "details": "ML, AI, Python - Pandas, Numpy, R, Github, Academic Representative"
+      "details": "ML, AI, Python - Pandas, Numpy, R, Github, Academic Representative",
+      "link": "https://ubc.ca"
     },
     {
       "degree": "Bachelor of Engineering - Computer Engineering",
       "institution": "Army Institute of Technology, Savitribai Phule Pune University, India",
       "duration": "Jun 2017 - Jun 2021",
       "details": "DSA, OOP, OS, Web technologies, Computer architecture, ML, VR/AR",
-      "grade": "CGPA: 8.91 - First Class with Distinction"
+      "grade": "CGPA: 8.91 - First Class with Distinction",
+      "link": "https://aitpune.edu.in"
     },
     {
       "degree": "Higher Secondary School - CBSE",
       "institution": "The Greenhills Public School, Sultan Bathery, Kerala, India",
       "duration": "Jun 2015 - Jul 2017",
       "details": "Physics, Chemistry, Maths, Computer Science",
-      "grade": "Percentage: 91%"
+      "grade": "Percentage: 91%",
+      "link": "https://thegreenhillsschool.com"
     }
   ],
   "certifications": [
-    "IELTS - Academic English Proficiency Test - Overall Band Score 8 - CEFR - C1 (2024)",
-    "Python and Django Full Stack Web Developer Bootcamp (UDEMY) (2023)",
-    "Continuous Delivery & DevOps (Coursera) (2022)",
-    "Building Cloud Services with the Java Spring Framework (Coursera) (2021)",
-    "Java SE 8 Programming, Oracle WebLogic Server 12c (Oracle Certification) (2021)",
-    "Machine Learning A-Z™: Hands-On Python & R In Data Science (UDEMY) (2019)"
+    {
+      "name": "IELTS - Academic English Proficiency Test - Overall Band Score 8 - CEFR - C1 (2024)",
+      "link": "https://ielts.org"
+    },
+    {
+      "name": "Python and Django Full Stack Web Developer Bootcamp (UDEMY) (2023)",
+      "link": "https://udemy.com/course/python-and-django-full-stack-web-developer-bootcamp"
+    },
+    {
+      "name": "Continuous Delivery & DevOps (Coursera) (2022)",
+      "link": "https://coursera.org/learn/continuous-delivery-devops"
+    },
+    {
+      "name": "Building Cloud Services with the Java Spring Framework (Coursera) (2021)",
+      "link": "https://coursera.org/learn/cloud-services-java-spring-framework"
+    },
+    {
+      "name": "Java SE 8 Programming, Oracle WebLogic Server 12c (Oracle Certification) (2021)",
+      "link": "https://oracle.com/certification"
+    },
+    {
+      "name": "Machine Learning A-Z™: Hands-On Python & R In Data Science (UDEMY) (2019)",
+      "link": "https://udemy.com/course/machinelearning"
+    }
   ]
 }
