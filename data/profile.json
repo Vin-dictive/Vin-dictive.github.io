@@ -49,7 +49,7 @@
       "location": "Hong Kong, EU, India",
       "description": "Spearheading the design and integration of machine learning models into web platforms to develop systems for AI-driven portfolio management, web analytics, automated trading, asset-risk score framework, data ingestion pipeline and AI for crypto market analysis.",
       "techStack": "Python, Django Restful Framework, ReactJS, Docker containers, Timescale - PostgreSQL, NextJS, MongoDB, Inngest - queue, Posthog - Web Analytics, Strapi, Slack bots, Github actions, GCP, Railway App, Clerk Authentication, PGP Keys, Postmark, AI Agent Framework Mastra, Reports generation using puppeteer",
-      "link": "https://bluerabbitgroup.com"
+      "link": "https://www.bluerabbit.ai/#hero"
     },
     {
       "title": "Staff Consultant - Oracle Financial Services",
@@ -58,7 +58,7 @@
       "location": "Bangalore, India / Hong Kong",
       "description": "Collaborated with clients in Hong Kong, addressed issues, gathered requirements, and oversaw design and implementation of components like Fraud Detection, Foreign Exchange, Open API, roles and access management in Oracle Banking Digital Experience (OBDX) project.",
       "techStack": "Java, UNIX, SQL, Web Services (SOAP and REST), OJET, Docker",
-      "link": "https://oracle.com/financial-services"
+      "link": "https://drive.google.com/file/d/128DK-Z2C_LcB_KPVti4fQdGSp2fOnXK0/view"
     },
     {
       "title": "Software Developer Intern",
@@ -67,14 +67,14 @@
       "location": "Pune, India",
       "description": "Developed a Bookmark widget for Ubuntu systems using Gnome toolkit, implemented as Chrome extension and Electron app. Tested and corrected Deal Management web application using MEAN stack.",
       "techStack": "MEAN Stack, Gnome Toolkit, Chrome Extensions, Electron",
-      "link": "https://accops.com"
+      "link": "https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view?usp=drive_link"
     }
   ],
   "projects": [
     {
       "name": "ARgorithm",
       "description": "An open-source technology for visualizing data structures and algorithms in augmented reality created with Python-Flask, C#, Unity Game Engine, Google ARcore libraries, and GitHub for collaboration.",
-      "link": "https://github.com/Vin-dictive/ARgorithm"
+      "link": "https://github.com/ARgorithm"
     },
     {
       "name": "Profile Page",
@@ -84,17 +84,17 @@
     {
       "name": "Portfolio Optimization using Python",
       "description": "Optimizing portfolios for optimal asset allocation using Genetic Algorithm and Efficiency frontier graph on Jupyter Notebook.",
-      "link": "https://github.com/Vin-dictive/portfolio-optimization"
+      "link": "https://vin-dictive.github.io"
     },
     {
       "name": "RGB TO YUV conversion in High Performance Computing",
       "description": "Made an RGB to YUV converter for videos using CUDA toolkit and python.",
-      "link": "https://github.com/Vin-dictive/rgb-yuv-converter"
+      "link": "https://github.com/Vin-dictive/RGB2YUV_conversion_on_CUDA"
     },
     {
       "name": "Hand Signs to Text Conversion App",
       "description": "Implemented a Hand Signs to Text Conversion Android and Web App using Python-flask and Tensorflow.js.",
-      "link": "https://github.com/Vin-dictive/hand-signs-converter"
+      "link": "https://github.com/Vin-dictive"
     }
   ],
   "education": [
@@ -111,7 +111,7 @@
       "duration": "Jun 2017 - Jun 2021",
       "details": "DSA, OOP, OS, Web technologies, Computer architecture, ML, VR/AR",
       "grade": "CGPA: 8.91 - First Class with Distinction",
-      "link": "https://aitpune.edu.in"
+      "link": "https://drive.google.com/drive/folders/1_kYyl5WIPU3xeUSrKNRUu6LJtFVVvgdc"
     },
     {
       "degree": "Higher Secondary School - CBSE",
@@ -119,33 +119,61 @@
       "duration": "Jun 2015 - Jul 2017",
       "details": "Physics, Chemistry, Maths, Computer Science",
       "grade": "Percentage: 91%",
-      "link": "https://thegreenhillsschool.com"
+      "link": "https://drive.google.com/file/d/1VARFBUx4rC9j-e-Ytx9APBkTcmJlHvkE/view?usp=drive_link"
     }
   ],
   "certifications": [
     {
       "name": "IELTS - Academic English Proficiency Test - Overall Band Score 8 - CEFR - C1 (2024)",
-      "link": "https://ielts.org"
+      "link": "https://drive.google.com/file/d/1-XeJSohhjVDwCHUq0cFDXV3cGf0BEN0o/view?usp=sharing"
     },
     {
       "name": "Python and Django Full Stack Web Developer Bootcamp (UDEMY) (2023)",
-      "link": "https://udemy.com/course/python-and-django-full-stack-web-developer-bootcamp"
+      "link": "https://drive.google.com/file/d/1-ORKVAx0udZ0dV8Vc_lQebV5gjcrCkPH/view?usp=drive_link"
     },
     {
       "name": "Continuous Delivery & DevOps (Coursera) (2022)",
-      "link": "https://coursera.org/learn/continuous-delivery-devops"
+      "link": "https://drive.google.com/file/d/1Iny_yK69sipAXIlXUl-OZhhfCKdR1l_e/view?usp=drive_link"
     },
     {
       "name": "Building Cloud Services with the Java Spring Framework (Coursera) (2021)",
-      "link": "https://coursera.org/learn/cloud-services-java-spring-framework"
+      "link": "https://drive.google.com/file/d/1p6AXXfRJtpG_pde_bYuxBSDmI6WgW8JJ/view?usp=drive_link"
     },
     {
-      "name": "Java SE 8 Programming, Oracle WebLogic Server 12c (Oracle Certification) (2021)",
-      "link": "https://oracle.com/certification"
+      "name": "Java SE 8 Programming, Oracle WebLogic Server 12c: Administration Essentials (Oracle Certification) (2021)",
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
+    },
+    {
+      "name": "API Testing using Postman (Oracle Certification) (2021)",
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
+    },
+    {
+      "name": "JPA with EclipseLink (Oracle Certification) (2021)",
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
+    },
+    {
+      "name": "Oracle JS Extension Toolkit (OJET) (Oracle Certification) (2021)",
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
+    },
+    {
+      "name": "Apache CORDOVA (Oracle Certification) (2021)",
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
+    },
+    {
+      "name": "IoT Foundation Workshop (3-day) - Copper Cloud IOTech (2020)",
+      "link": "https://drive.google.com/file/d/1m9VfEwCVfVPLW1fl06AJ8X2vvlnbDLaG/view?usp=sharing"
     },
     {
       "name": "Machine Learning A-Z™: Hands-On Python & R In Data Science (UDEMY) (2019)",
-      "link": "https://udemy.com/course/machinelearning"
+      "link": "https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view?usp=drive_link"
+    },
+    {
+      "name": "The Web Developer Bootcamp (UDEMY) (2018)",
+      "link": "https://drive.google.com/file/d/1-t2aF_r2FAPTK-_279hwxgoxBMVLFqKR/view?usp=drive_link"
+    },
+    {
+      "name": "Blockchain and Bitcoin Fundamentals (UDEMY) (2017)",
+      "link": "https://drive.google.com/file/d/1-tqhKO-byth2VlJZ8wMstEOSxlvz9AOh/view?usp=drive_link"
     }
   ]
 }
