@@ -1,121 +1,180 @@
-# VINAY VALSON  
+# Developer Profile - Vinay Valson
 
-**Software Engineer**  
+A modern, animated developer portfolio built with Next.js, featuring fluid dynamics background that follows mouse movement, smooth animations, and a clean design using Tailwind CSS and shadcn UI components.
 
-📍 Palakkad, Kerala, India  
-📞 +91 9656197498  
-✉️ [vinay.valson@gmail.com](mailto:vinay.valson@gmail.com)  
-🌐 [Profile Page](#) | [GitHub: Vin-dictive](https://github.com/Vin-dictive) | [LinkedIn: Vinay Valson](#)  
+## Features
+
+- 🎨 **Fluid Dynamics Background** - Interactive background that follows mouse movement
+- ⚡ **Smooth Animations** - Framer Motion powered animations
+- 📱 **Responsive Design** - Works perfectly on all devices
+- 🎯 **Tab-based Navigation** - Clean organization of content sections
+- 📊 **JSON-driven Content** - Easy to update profile information
+- 🚀 **Static Export** - Optimized for GitHub Pages deployment
+- 🎭 **Dark Theme** - Modern dark UI with gradient accents
+
+## Tech Stack
+
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: GitHub Pages
+- **Language**: TypeScript
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Vin-dictive/Vin-dictive.github.io.git
+cd Vin-dictive.github.io
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run the development server:
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Updating Profile Information
+
+Edit the `data/profile.json` file to update your personal information, skills, experience, projects, education, and certifications. The website will automatically reflect these changes.
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+This creates an optimized static export in the `out` directory.
+
+## Deployment to GitHub Pages
+
+### Automatic Deployment
+
+The repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to the main branch.
+
+### Manual Setup
+
+1. **Enable GitHub Pages**:
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Set source to "GitHub Actions"
+
+2. **Update Repository Settings**:
+   - Ensure the repository name matches your GitHub username: `username.github.io`
+   - Or update the `basePath` in `next.config.js` to match your repository name
+
+3. **Push to Main Branch**:
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+4. **Access Your Site**:
+   - Your site will be available at: `https://username.github.io`
+   - Or `https://username.github.io/repository-name` if using a project repository
+
+### Custom Domain (Optional)
+
+To use a custom domain:
+
+1. Add a `CNAME` file to the `public` directory with your domain name
+2. Configure your domain's DNS settings to point to GitHub Pages
+3. Enable "Enforce HTTPS" in repository settings
+
+## Project Structure
+
+```
+├── app/
+│   ├── globals.css          # Global styles and theme variables
+│   ├── layout.tsx           # Root layout with fluid background
+│   └── page.tsx             # Main page component
+├── components/
+│   ├── ui/                  # shadcn UI components
+│   │   ├── tabs.tsx
+│   │   └── card.tsx
+│   └── FluidBackground.tsx  # Mouse-following background
+├── data/
+│   └── profile.json         # Profile data (edit this!)
+├── lib/
+│   └── utils.ts             # Utility functions
+├── .github/workflows/
+│   └── deploy.yml           # GitHub Actions deployment
+└── next.config.js           # Next.js configuration
+```
+
+## Customization
+
+### Colors and Theme
+
+Edit the CSS variables in `app/globals.css` to customize the color scheme:
+
+```css
+:root {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  /* ... more variables */
+}
+```
+
+### Animations
+
+Modify animation settings in the page components using Framer Motion props:
+
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
+```
+
+### Fluid Background
+
+Customize the fluid background gradient in `app/globals.css`:
+
+```css
+.fluid-bg {
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(59, 130, 246, 0.15) 0%, 
+    rgba(147, 51, 234, 0.1) 25%, 
+    rgba(236, 72, 153, 0.05) 50%, 
+    transparent 70%);
+}
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a pull request
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on GitHub.
 
 ---
 
-## 💡 Skills  
-
-**Programming Languages:** JavaScript, TypeScript, Python, SQL, Java, C++, XSLT, C# (Unity)  
-**Frameworks & Databases:** NextJS, ReactJS, PostgreSQL, MongoDB, Django, Flask  
-**Cloud Native & DevOps:** Docker, Railway App, GCP, Jenkins, GitHub Actions, Inngest  
-
----
-
-## 💼 Work Experience  
-
-### Senior Software Engineer — *Blue Rabbit Group Ltd.*  
-
-📍 Hong Kong, EU, India | *Apr 2024 – Present*  
-
-- Spearheading AI-driven systems for portfolio management, analytics, automated trading, and data pipelines.  
-- Designed asset-risk frameworks, crypto market AI tools, and Slack automation bots.  
-- **Tech Stack:** Python, Django REST, ReactJS, NextJS, Docker, PostgreSQL (Timescale), MongoDB, Inngest, Posthog, Strapi, GCP, Railway App, Clerk Auth, GitHub Actions.  
-
----
-
-### Staff Consultant — *Oracle Financial Services Software Limited*  
-
-📍 Bangalore, India | *Aug 2021 – Apr 2024*  
-
-- **Onsite Consultant, Hong Kong:** Client-facing role — handled requirements, solutions, and implementation in OBDX (Oracle Banking Digital Experience).  
-- Built **Fraud Detection**, **Foreign Exchange**, **Open API**, and access management modules.  
-- Engineered J2EE applications (Java, UNIX, SQL, Web Services), frontend apps with OJET, dockerized solutions.  
-- **Awards:** Rising Star Award, Ever Ready Award.  
-- Mentored new team members and fixed critical production defects.  
-
----
-
-### Software Developer Intern — *Accops Systems Pvt. Ltd.*  
-
-📍 Pune, India | *Jan 2020 – Jul 2020*  
-
-- Developed a **Bookmark widget for Ubuntu (GTK)**, also implemented as Chrome Extension and Electron App.  
-- Tested and corrected MEAN stack Deal Management app.  
-
----
-
-### Tech Developer / R&D Intern — *CREBACO Global Inc*  
-
-📍 Pune, India | *Jul 2019 – Oct 2019*  
-
-- Built Android app to track ERC-20 contracts, alerting users about Bitcoin whale transactions.  
-- Integrated APIs (etherscan.io) using JSON parsing with Java.  
-
----
-
-### Internship — *Sastha Scientific Agencies*  
-
-📍 Bangalore, India | *Jun 2019 – Jul 2019*  
-
-- Designed and developed the official company webpage.  
-
----
-
-## 🚀 Projects  
-
-- **ARgorithm** – Open-source AR tool to visualize data structures & algorithms. *(Python-Flask, C#, Unity, ARCore)*  
-- **Profile Page** – Portfolio site with ReactJS & THREE.js, hosted on GitHub Pages.  
-- **Portfolio Optimization (Python)** – Asset allocation using Genetic Algorithm & Efficiency Frontier.  
-- **RGB to YUV Converter (CUDA + Python)** – Video color space conversion.  
-- **Hand Signs to Text App** – Android & Web App with TensorFlow.js + Python-Flask.  
-
-👉 *Check other projects on [GitHub](https://github.com/Vin-dictive)*  
-
----
-
-## 🎓 Education  
-
-**Masters in Data Science** — *University of British Columbia, Canada*  
-📅 Sep 2025 – Present | *ML, AI, Python*  
-
-**Bachelor of Engineering in Computer Engineering** — *Army Institute of Technology, Pune University*  
-📅 Jun 2017 – Jun 2021 | *CGPA: 8.91 – First Class with Distinction*  
-
-**Higher Secondary (CBSE)** — *The Greenhills Public School, Kerala*  
-📅 Jun 2015 – Jul 2017 | *Percentage: 91%*  
-
-**Class 10 (CBSE)** — *Chinmaya International Residential School, Tamil Nadu*  
-📅 Jun 2013 – Jul 2015 | *CGPA: 10*  
-
----
-
-## 📜 Certifications & Workshops  
-
-- **IELTS Academic** (Band 8, CEFR C1) — 2024  
-- Python & Django Full Stack Bootcamp (Udemy) — 2023  
-- Continuous Delivery & DevOps (Coursera) — 2022  
-- Java Spring Cloud Services (Coursera) — 2021  
-- Oracle Certifications: Java SE 8, WebLogic 12c, API Testing, OJET, Cordova — 2021  
-- Machine Learning A-Z (Udemy) — 2019  
-- Web Developer Bootcamp (Udemy) — 2018  
-- Blockchain & Bitcoin Fundamentals (Udemy) — 2017  
-- IoT Foundation Workshop — 2020  
-
----
-
-## 🏆 Co-Curricular & Competitions  
-
-- *Game of Codes* — 2017  
-- *InNerve 2K17 Hackathon Finalist* — 2017  
-- *SYND iNNOVATE Hackathon Finalist* — 2019  
-- *Tech4Bharat Hackathon Finalist* — 2020  
-
-👉 *Check other certificates on [LinkedIn](#)*  
-
----
+Built with ❤️ using Next.js and deployed on GitHub Pages

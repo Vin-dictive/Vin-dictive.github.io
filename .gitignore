@@ -1,32 +1,33 @@
-# Quarto generated files and directories
-.quarto/
-_freeze/
-_site/
-docs/ # If using GitHub Pages with a 'docs' directory
-output/ # Common output directory name
-*.html
-*.pdf
-*.docx
-*.epub
-*.ipynb # If rendering .qmd to .ipynb and not tracking the output
-*.md # If rendering .qmd to .md and not tracking the output
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# R-specific files (if using R with Quarto)
-.Rproj.user/
-.Rhistory
-.Rdata
-.Rprofile
-.env
-renv/
-renv.lock
+# Testing
+/coverage
 
-# Python-specific files (if using Python with Quarto)
-__pycache__/
-.venv/
-venv/
-*.pyc
+# Next.js
+/.next/
+/out/
 
-# Editor/OS specific files
+# Production
+/build
+
+# Misc
 .DS_Store
-Thumbs.db
-/.quarto/
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

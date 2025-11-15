@@ -1,0 +1,121 @@
+{
+  "personal": {
+    "name": "VINAY VALSON",
+    "title": "Software Engineer/Data Scientist",
+    "slogan": "Transforming Ideas into Intelligent Solutions",
+    "location": "Vancouver BC V6R2Y2",
+    "phone": "+1 (263) 999-9870",
+    "email": "vinay.valson@gmail.com",
+    "github": "Vin-dictive",
+    "linkedin": "Vinay Valson",
+    "website": "Profile Page"
+  },
+  "skills": {
+    "programmingLanguages": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "SQL",
+      "Java",
+      "C++",
+      "XSLT",
+      "C# (Unity)",
+      "R"
+    ],
+    "frameworks": [
+      "NextJS",
+      "ReactJS",
+      "PostgreSQL",
+      "MongoDB",
+      "Django",
+      "Flask"
+    ],
+    "cloudDevOps": [
+      "Docker",
+      "Railway App",
+      "GCP",
+      "Jenkins",
+      "Github Actions",
+      "Inngest",
+      "Posthog Analytics"
+    ]
+  },
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "Blue Rabbit Group Ltd.",
+      "duration": "April 2024 - Present",
+      "location": "Hong Kong, EU, India",
+      "description": "Spearheading the design and integration of machine learning models into web platforms to develop systems for AI-driven portfolio management, web analytics, automated trading, asset-risk score framework, data ingestion pipeline and AI for crypto market analysis.",
+      "techStack": "Python, Django Restful Framework, ReactJS, Docker containers, Timescale - PostgreSQL, NextJS, MongoDB, Inngest - queue, Posthog - Web Analytics, Strapi, Slack bots, Github actions, GCP, Railway App, Clerk Authentication, PGP Keys, Postmark, AI Agent Framework Mastra, Reports generation using puppeteer"
+    },
+    {
+      "title": "Staff Consultant - Oracle Financial Services",
+      "company": "Oracle Financial Services Software Limited",
+      "duration": "Aug 2021 - April 2024",
+      "location": "Bangalore, India / Hong Kong",
+      "description": "Collaborated with clients in Hong Kong, addressed issues, gathered requirements, and oversaw design and implementation of components like Fraud Detection, Foreign Exchange, Open API, roles and access management in Oracle Banking Digital Experience (OBDX) project.",
+      "techStack": "Java, UNIX, SQL, Web Services (SOAP and REST), OJET, Docker"
+    },
+    {
+      "title": "Software Developer Intern",
+      "company": "Accops Systems Pvt. Ltd",
+      "duration": "Jan 2020 - Jul 2020",
+      "location": "Pune, India",
+      "description": "Developed a Bookmark widget for Ubuntu systems using Gnome toolkit, implemented as Chrome extension and Electron app. Tested and corrected Deal Management web application using MEAN stack.",
+      "techStack": "MEAN Stack, Gnome Toolkit, Chrome Extensions, Electron"
+    }
+  ],
+  "projects": [
+    {
+      "name": "ARgorithm",
+      "description": "An open-source technology for visualizing data structures and algorithms in augmented reality created with Python-Flask, C#, Unity Game Engine, Google ARcore libraries, and GitHub for collaboration."
+    },
+    {
+      "name": "Profile Page",
+      "description": "Developed and deployed a personal profile page utilizing ReactJS for dynamic user interface and THREE.js for 3D graphics. Successfully hosted the project on GitHub Pages."
+    },
+    {
+      "name": "Portfolio Optimization using Python",
+      "description": "Optimizing portfolios for optimal asset allocation using Genetic Algorithm and Efficiency frontier graph on Jupyter Notebook."
+    },
+    {
+      "name": "RGB TO YUV conversion in High Performance Computing",
+      "description": "Made an RGB to YUV converter for videos using CUDA toolkit and python."
+    },
+    {
+      "name": "Hand Signs to Text Conversion App",
+      "description": "Implemented a Hand Signs to Text Conversion Android and Web App using Python-flask and Tensorflow.js."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Masters - Data Science",
+      "institution": "University of British Columbia, Vancouver, Canada",
+      "duration": "Sep 2025 - present",
+      "details": "ML, AI, Python - Pandas, Numpy, R, Github, Academic Representative"
+    },
+    {
+      "degree": "Bachelor of Engineering - Computer Engineering",
+      "institution": "Army Institute of Technology, Savitribai Phule Pune University, India",
+      "duration": "Jun 2017 - Jun 2021",
+      "details": "DSA, OOP, OS, Web technologies, Computer architecture, ML, VR/AR",
+      "grade": "CGPA: 8.91 - First Class with Distinction"
+    },
+    {
+      "degree": "Higher Secondary School - CBSE",
+      "institution": "The Greenhills Public School, Sultan Bathery, Kerala, India",
+      "duration": "Jun 2015 - Jul 2017",
+      "details": "Physics, Chemistry, Maths, Computer Science",
+      "grade": "Percentage: 91%"
+    }
+  ],
+  "certifications": [
+    "IELTS - Academic English Proficiency Test - Overall Band Score 8 - CEFR - C1 (2024)",
+    "Python and Django Full Stack Web Developer Bootcamp (UDEMY) (2023)",
+    "Continuous Delivery & DevOps (Coursera) (2022)",
+    "Building Cloud Services with the Java Spring Framework (Coursera) (2021)",
+    "Java SE 8 Programming, Oracle WebLogic Server 12c (Oracle Certification) (2021)",
+    "Machine Learning A-Z™: Hands-On Python & R In Data Science (UDEMY) (2019)"
+  ]
+}
