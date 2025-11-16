@@ -86,43 +86,7 @@
   }
 }
 
-.fluid-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: 
-    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-      rgba(59, 130, 246, 0.4) 0%, 
-      rgba(147, 51, 234, 0.25) 20%, 
-      rgba(236, 72, 153, 0.15) 40%, 
-      transparent 60%),
-    repeating-conic-gradient(from 0deg at 50% 50%, 
-      transparent 0deg, 
-      rgba(59, 130, 246, 0.03) 60deg, 
-      transparent 120deg),
-    repeating-linear-gradient(0deg, 
-      transparent, 
-      transparent 50px, 
-      rgba(147, 51, 234, 0.02) 52px, 
-      rgba(147, 51, 234, 0.02) 54px, 
-      transparent 56px),
-    repeating-linear-gradient(60deg, 
-      transparent, 
-      transparent 50px, 
-      rgba(236, 72, 153, 0.02) 52px, 
-      rgba(236, 72, 153, 0.02) 54px, 
-      transparent 56px),
-    repeating-linear-gradient(120deg, 
-      transparent, 
-      transparent 50px, 
-      rgba(59, 130, 246, 0.02) 52px, 
-      rgba(59, 130, 246, 0.02) 54px, 
-      transparent 56px);
-  transition: background 0.2s ease;
-}
+
 
 /* Theme-responsive icons */
 .logo-icon {
@@ -131,4 +95,9 @@
 
 .dark .logo-icon {
   filter: brightness(0) invert(1);
+}
+
+/* Social icon button effect */
+a[href*="github.com"], a[href*="linkedin.com"] {
+  @apply transition-all duration-200 hover:scale-110 hover:bg-blue-500/10 hover:rounded-lg p-2 -m-2;
 }
