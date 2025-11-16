@@ -6,7 +6,7 @@
     "location": "Vancouver BC",
     "email": "vinay.valson@gmail.com",
     "github": "Vin-dictive",
-    "linkedin": "Vinay Valson",
+    "linkedin": "vinay-valson",
     "website": "Profile Page",
     "about": "Passionate Software Engineer and Data Scientist with expertise in machine learning, web development, and cloud technologies. Currently pursuing Masters in Data Science at UBC while working as a Senior Software Engineer at Blue Rabbit Group. I specialize in building AI-driven solutions, portfolio management systems, and scalable web applications. With experience across multiple programming languages and frameworks, I enjoy solving complex problems and creating innovative solutions that bridge the gap between data science and software engineering."
   },
@@ -71,29 +71,29 @@
   ],
   "projects": [
     {
+      "name": "Customer Reviews Polarity Analysis",
+      "description": "Machine learning project for sentiment analysis of customer reviews using natural language processing techniques to determine positive/negative polarity.",
+      "link": "https://github.com/Vin-dictive/customer-reviews-polarity"
+    },
+    {
+      "name": "UBC Reddit Reporter",
+      "description": "Automated reporting system for UBC-related Reddit content with data analysis and visualization capabilities.",
+      "link": "https://github.com/Vin-dictive/ubc-reddit-reporter"
+    },
+    {
       "name": "ARgorithm",
       "description": "An open-source technology for visualizing data structures and algorithms in augmented reality created with Python-Flask, C#, Unity Game Engine, Google ARcore libraries, and GitHub for collaboration.",
       "link": "https://github.com/ARgorithm"
     },
     {
-      "name": "Profile Page",
+      "name": "Developer portfolio v2",
+      "description": "A modern, animated developer portfolio built with Next.js, featuring fluid dynamics background that follows mouse movement, smooth animations, and a clean design using Tailwind CSS and shadcn UI components.",
+      "link": "https://github.com/Vin-dictive/Vin-dictive.github.io"
+    },
+    {
+      "name": "Developer portfolio v1",
       "description": "Developed and deployed a personal profile page utilizing ReactJS for dynamic user interface and THREE.js for 3D graphics. Successfully hosted the project on GitHub Pages.",
-      "link": "https://vin-dictive.github.io"
-    },
-    {
-      "name": "Portfolio Optimization using Python",
-      "description": "Optimizing portfolios for optimal asset allocation using Genetic Algorithm and Efficiency frontier graph on Jupyter Notebook.",
-      "link": "https://vin-dictive.github.io"
-    },
-    {
-      "name": "RGB TO YUV conversion in High Performance Computing",
-      "description": "Made an RGB to YUV converter for videos using CUDA toolkit and python.",
-      "link": "https://github.com/Vin-dictive/RGB2YUV_conversion_on_CUDA"
-    },
-    {
-      "name": "Hand Signs to Text Conversion App",
-      "description": "Implemented a Hand Signs to Text Conversion Android and Web App using Python-flask and Tensorflow.js.",
-      "link": "https://github.com/Vin-dictive"
+      "link": "https://github.com/Vin-dictive/myProfile"
     }
   ],
   "education": [

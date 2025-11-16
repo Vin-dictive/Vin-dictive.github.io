@@ -1,4 +1,4 @@
-# Developer Profile - Vinay Valson
+# Developer Profile
 
 A modern, animated developer portfolio built with Next.js, featuring fluid dynamics background that follows mouse movement, smooth animations, and a clean design using Tailwind CSS and shadcn UI components.
 
@@ -33,7 +33,7 @@ A modern, animated developer portfolio built with Next.js, featuring fluid dynam
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Vin-dictive/Vin-dictive.github.io.git
+git clone https://github.com/Vin-dictive/Vin-dictive.github.io
 cd Vin-dictive.github.io
 ```
 

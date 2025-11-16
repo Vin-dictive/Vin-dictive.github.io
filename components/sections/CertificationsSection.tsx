@@ -27,9 +27,18 @@ export default function CertificationsSection({ certifications }: Certifications
             transition={{ delay: index * 0.1 }}
           >
             <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(cert.link, '_blank')}>
-              <CardContent className="p-4 flex items-center justify-between">
-                <p className="text-sm">{cert.name}</p>
-                <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-2" />
+              <CardContent className="p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium leading-relaxed">
+                      {cert.name.replace(/\s*\(\d{4}\)\s*$/, '')}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {cert.name.match(/\((\d{4})\)/)?.[1] || 'N/A'}
+                    </p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                </div>
               </CardContent>
             </Card>
           </motion.div>

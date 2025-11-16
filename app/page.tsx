@@ -2,6 +2,7 @@
 
 import ThemeToggle from '@/components/ThemeToggle'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 import AboutSection from '@/components/sections/AboutSection'
 import ExperienceSection from '@/components/sections/ExperienceSection'
 import ProjectsSection from '@/components/sections/ProjectsSection'
@@ -23,6 +24,7 @@ export default function Home() {
         <EducationSection education={education} />
         <CertificationsSection certifications={certifications} />
       </div>
+      <Footer />
     </div>
   )
 }
