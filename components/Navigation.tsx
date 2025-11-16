@@ -24,9 +24,9 @@ export default function Navigation() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
+      className="fixed top-4 left-4 right-4 z-50"
     >
-      <div className="flex items-center justify-center gap-2 p-2 bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl shadow-lg">
+      <div className="flex items-center justify-center gap-2 p-2 bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl shadow-lg max-w-4xl mx-auto">
         {navItems.map((item) => {
           const Icon = item.icon
           return (

@@ -32,7 +32,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 p-2 rounded-full bg-card border hover:bg-accent transition-colors"
+      className="fixed bottom-4 right-4 z-50 p-2 rounded-full bg-card border hover:bg-accent transition-colors"
     >
       {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </button>
