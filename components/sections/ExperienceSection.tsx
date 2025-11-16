@@ -1,0 +1,51 @@
+"use client"
+
+import { motion } from 'framer-motion'
+import { ExternalLink } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+
+interface ExperienceSectionProps {
+  experience: any[]
+}
+
+export default function ExperienceSection({ experience }: ExperienceSectionProps) {
+  return (
+    <section id="experience" className="min-h-screen py-20">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+      >
+        Experience
+      </motion.h2>
+      <div className="space-y-6">
+        {experience.map((exp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+          >
+            <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(exp.link, '_blank')}>
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between">
+                  {exp.title}
+                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </CardTitle>
+                <CardDescription>
+                  {exp.company} • {exp.duration} • {exp.location}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">{exp.description}</p>
+                <div className="text-sm">
+                  <strong>Tech Stack:</strong> {exp.techStack}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  )
+}
