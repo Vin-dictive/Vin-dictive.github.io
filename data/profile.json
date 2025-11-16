@@ -48,6 +48,7 @@
       "location": "Hong Kong, EU, India",
       "description": "Spearheading the design and integration of machine learning models into web platforms to develop systems for AI-driven portfolio management, web analytics, automated trading, asset-risk score framework, data ingestion pipeline and AI for crypto market analysis.",
       "techStack": "Python, Django Restful Framework, ReactJS, Docker containers, Timescale - PostgreSQL, NextJS, MongoDB, Inngest - queue, Posthog - Web Analytics, Strapi, Slack bots, Github actions, GCP, Railway App, Clerk Authentication, PGP Keys, Postmark, AI Agent Framework Mastra, Reports generation using puppeteer",
+      "logo": "/bluerabbit-logo-white.svg",
       "link": "https://www.bluerabbit.ai/#hero"
     },
     {
@@ -57,6 +58,7 @@
       "location": "Bangalore, India / Hong Kong",
       "description": "Collaborated with clients in Hong Kong, addressed issues, gathered requirements, and oversaw design and implementation of components like Fraud Detection, Foreign Exchange, Open API, roles and access management in Oracle Banking Digital Experience (OBDX) project.",
       "techStack": "Java, UNIX, SQL, Web Services (SOAP and REST), OJET, Docker",
+      "logo": "/oracle.svg",
       "link": "https://drive.google.com/file/d/128DK-Z2C_LcB_KPVti4fQdGSp2fOnXK0/view"
     },
     {
@@ -66,6 +68,7 @@
       "location": "Pune, India",
       "description": "Developed a Bookmark widget for Ubuntu systems using Gnome toolkit, implemented as Chrome extension and Electron app. Tested and corrected Deal Management web application using MEAN stack.",
       "techStack": "MEAN Stack, Gnome Toolkit, Chrome Extensions, Electron",
+      "logo": "/accops.svg",
       "link": "https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view?usp=drive_link"
     }
   ],
@@ -102,6 +105,7 @@
       "institution": "University of British Columbia, Vancouver, Canada",
       "duration": "Sep 2025 - present",
       "details": "ML, AI, Python - Pandas, Numpy, R, Github, Academic Representative",
+      "logo": "/ubc.svg",
       "link": "https://ubc.ca"
     },
     {
@@ -110,6 +114,7 @@
       "duration": "Jun 2017 - Jun 2021",
       "details": "DSA, OOP, OS, Web technologies, Computer architecture, ML, VR/AR",
       "grade": "CGPA: 8.91 - First Class with Distinction",
+      "logo": "/ait.svg",
       "link": "https://drive.google.com/drive/folders/1_kYyl5WIPU3xeUSrKNRUu6LJtFVVvgdc"
     },
     {
@@ -118,60 +123,100 @@
       "duration": "Jun 2015 - Jul 2017",
       "details": "Physics, Chemistry, Maths, Computer Science",
       "grade": "Percentage: 91%",
+      "logo": "/school.svg",
       "link": "https://drive.google.com/file/d/1VARFBUx4rC9j-e-Ytx9APBkTcmJlHvkE/view?usp=drive_link"
     }
   ],
   "certifications": [
     {
-      "name": "IELTS - Academic English Proficiency Test - Overall Band Score 8 - CEFR - C1 (2024)",
+      "name": "IELTS - Academic English Proficiency Test - Overall Band Score 8 - CEFR - C1",
+      "organization": "IELTS",
+      "year": "2024",
+      "logo": "/IELTS_logo.svg",
       "link": "https://drive.google.com/file/d/1-XeJSohhjVDwCHUq0cFDXV3cGf0BEN0o/view?usp=sharing"
     },
     {
-      "name": "Python and Django Full Stack Web Developer Bootcamp (UDEMY) (2023)",
+      "name": "Python and Django Full Stack Web Developer Bootcamp",
+      "organization": "Udemy",
+      "year": "2023",
+      "logo": "/udemy.svg",
       "link": "https://drive.google.com/file/d/1-ORKVAx0udZ0dV8Vc_lQebV5gjcrCkPH/view?usp=drive_link"
     },
     {
-      "name": "Continuous Delivery & DevOps (Coursera) (2022)",
+      "name": "Continuous Delivery & DevOps",
+      "organization": "Coursera",
+      "year": "2022",
+      "logo": "/coursera.svg",
       "link": "https://drive.google.com/file/d/1Iny_yK69sipAXIlXUl-OZhhfCKdR1l_e/view?usp=drive_link"
     },
     {
-      "name": "Building Cloud Services with the Java Spring Framework (Coursera) (2021)",
+      "name": "Building Cloud Services with the Java Spring Framework",
+      "organization": "Coursera",
+      "year": "2021",
+      "logo": "/coursera.svg",
       "link": "https://drive.google.com/file/d/1p6AXXfRJtpG_pde_bYuxBSDmI6WgW8JJ/view?usp=drive_link"
     },
     {
-      "name": "Java SE 8 Programming, Oracle WebLogic Server 12c: Administration Essentials (Oracle Certification) (2021)",
+      "name": "Java SE 8 Programming, Oracle WebLogic Server 12c: Administration Essentials",
+      "organization": "Oracle",
+      "year": "2021",
+      "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
     },
     {
-      "name": "API Testing using Postman (Oracle Certification) (2021)",
+      "name": "API Testing using Postman",
+      "organization": "Oracle",
+      "year": "2021",
+      "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
     },
     {
-      "name": "JPA with EclipseLink (Oracle Certification) (2021)",
+      "name": "JPA with EclipseLink",
+      "organization": "Oracle",
+      "year": "2021",
+      "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
     },
     {
-      "name": "Oracle JS Extension Toolkit (OJET) (Oracle Certification) (2021)",
+      "name": "Oracle JS Extension Toolkit (OJET)",
+      "organization": "Oracle",
+      "year": "2021",
+      "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
     },
     {
-      "name": "Apache CORDOVA (Oracle Certification) (2021)",
+      "name": "Apache CORDOVA",
+      "organization": "Oracle",
+      "year": "2021",
+      "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
     },
     {
-      "name": "IoT Foundation Workshop (3-day) - Copper Cloud IOTech (2020)",
+      "name": "IoT Foundation Workshop (3-day)",
+      "organization": "Copper Cloud IOTech",
+      "year": "2020",
+      "logo": "/copperCloud.png",
       "link": "https://drive.google.com/file/d/1m9VfEwCVfVPLW1fl06AJ8X2vvlnbDLaG/view?usp=sharing"
     },
     {
-      "name": "Machine Learning A-Z™: Hands-On Python & R In Data Science (UDEMY) (2019)",
+      "name": "Machine Learning A-Z™: Hands-On Python & R In Data Science",
+      "organization": "Udemy",
+      "year": "2019",
+      "logo": "/udemy.svg",
       "link": "https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view?usp=drive_link"
     },
     {
-      "name": "The Web Developer Bootcamp (UDEMY) (2018)",
+      "name": "The Web Developer Bootcamp",
+      "organization": "Udemy",
+      "year": "2018",
+      "logo": "/udemy.svg",
       "link": "https://drive.google.com/file/d/1-t2aF_r2FAPTK-_279hwxgoxBMVLFqKR/view?usp=drive_link"
     },
     {
-      "name": "Blockchain and Bitcoin Fundamentals (UDEMY) (2017)",
+      "name": "Blockchain and Bitcoin Fundamentals",
+      "organization": "Udemy",
+      "year": "2017",
+      "logo": "/udemy.svg",
       "link": "https://drive.google.com/file/d/1-tqhKO-byth2VlJZ8wMstEOSxlvz9AOh/view?usp=drive_link"
     }
   ]

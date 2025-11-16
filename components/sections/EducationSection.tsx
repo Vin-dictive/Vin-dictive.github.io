@@ -28,13 +28,24 @@ export default function EducationSection({ education }: EducationSectionProps) {
           >
             <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(edu.link, '_blank')}>
               <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  {edu.degree}
-                  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </CardTitle>
-                <CardDescription>
-                  {edu.institution} • {edu.duration}
-                </CardDescription>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-white/10 rounded-lg backdrop-blur-sm">
+                    <img 
+                      src={edu.logo} 
+                      alt={edu.institution}
+                      className="w-5 h-5 object-contain filter brightness-0 invert"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="flex items-center justify-between">
+                      {edu.degree}
+                      <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </CardTitle>
+                    <CardDescription>
+                      {edu.institution} • {edu.duration}
+                    </CardDescription>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-2">{edu.details}</p>

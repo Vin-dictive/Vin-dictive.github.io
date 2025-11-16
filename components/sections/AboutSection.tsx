@@ -22,7 +22,7 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+          className="text-5xl md:text-7xl font-bold m-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
         >
           {personal.name}
         </motion.h1>
@@ -84,7 +84,7 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
         className="mb-8"
       >
         <Card className="hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
-          <CardHeader>
+          <CardHeader className="text-center">
             <CardTitle>About Me</CardTitle>
           </CardHeader>
           <CardContent>

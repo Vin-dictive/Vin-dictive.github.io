@@ -28,13 +28,20 @@ export default function CertificationsSection({ certifications }: Certifications
           >
             <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group" onClick={() => window.open(cert.link, '_blank')}>
               <CardContent className="p-4">
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-white/10 rounded-lg backdrop-blur-sm">
+                    <img 
+                      src={cert.logo} 
+                      alt={cert.organization}
+                      className="w-5 h-5 object-contain filter brightness-0 invert"
+                    />
+                  </div>
                   <div className="flex-1">
                     <p className="text-sm font-medium leading-relaxed">
-                      {cert.name.replace(/\s*\(\d{4}\)\s*$/, '')}
+                      {cert.name}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      {cert.name.match(/\((\d{4})\)/)?.[1] || 'N/A'}
+                      {cert.organization} • {cert.year}
                     </p>
                   </div>
                   <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
