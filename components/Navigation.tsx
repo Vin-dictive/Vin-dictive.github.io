@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { User, Briefcase, Code, GraduationCap, Award } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 const navItems = [
   { id: 'about', label: 'About', icon: User },
@@ -12,6 +13,26 @@ const navItems = [
 ]
 
 export default function Navigation() {
+  const [activeSection, setActiveSection] = useState('about')
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => document.getElementById(item.id))
+      const scrollPosition = window.scrollY + 100
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(navItems[i].id)
+          break
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -33,7 +54,11 @@ export default function Navigation() {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-white/20 dark:hover:bg-white/10 hover:scale-105"
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105 ${
+                activeSection === item.id
+                  ? 'bg-gray-500/20 text-gray-700 dark:text-gray-300 shadow-lg'
+                  : 'hover:bg-white/20 dark:hover:bg-white/10'
+              }`}
             >
               <Icon className="w-4 h-4" />
               <span className="hidden md:inline">{item.label}</span>
