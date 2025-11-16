@@ -8,18 +8,15 @@
     "github": "Vin-dictive",
     "linkedin": "vinay-valson",
     "website": "Profile Page",
-    "about": "Passionate Software Engineer and Data Scientist with expertise in machine learning, web development, and cloud technologies. Currently pursuing Masters in Data Science at UBC while working as a Senior Software Engineer at Blue Rabbit Group. I specialize in building AI-driven solutions, portfolio management systems, and scalable web applications. With experience across multiple programming languages and frameworks, I enjoy solving complex problems and creating innovative solutions that bridge the gap between data science and software engineering."
+    "about": "Full Stack Spider ambitiously juggling between front-end silky aesthetics and back-end sticky logic! Currently weaving my web as a Senior Software Engineer at Blue Rabbit Group while spinning through a Masters in Data Science at UBC. My journey across continents - from the tech hubs of India to the bustling streets of Hong Kong, and now the scenic landscapes of Vancouver - has taught me to adapt quickly and think globally. Each destination has woven new perspectives into my problem-solving approach, making me more resilient and culturally aware. Travel has been my greatest teacher, showing me that the best solutions often come from understanding diverse viewpoints and embracing change. Whether debugging code or exploring new cities, I bring the same curiosity and determination to uncover what lies beneath the surface."
   },
   "skills": {
     "programmingLanguages": [
       "JavaScript",
       "TypeScript",
       "Python",
+      "JAVA",
       "SQL",
-      "Java",
-      "C++",
-      "XSLT",
-      "C# (Unity)",
       "R"
     ],
     "frameworks": [
@@ -27,14 +24,21 @@
       "ReactJS",
       "PostgreSQL",
       "MongoDB",
-      "Django",
-      "Flask"
+      "Django"
+    ],
+    "dataScience": [
+      "Jupyter Notebook",
+      "R Studio RMD",
+      "Altair",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "ggplot2"
     ],
     "cloudDevOps": [
       "Docker",
       "Railway App",
       "GCP",
-      "Jenkins",
       "Github Actions",
       "Inngest",
       "Posthog Analytics"

@@ -93,7 +93,7 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
         </Card>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -140,6 +140,27 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.8 }}
+        >
+          <Card className="hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
+            <CardHeader>
+              <CardTitle>Data Science & ML</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                {skills.dataScience.map((skill: string, index: number) => (
+                  <span key={index} className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.0 }}
         >
           <Card className="hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
             <CardHeader>
