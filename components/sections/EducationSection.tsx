@@ -33,7 +33,7 @@ export default function EducationSection({ education }: EducationSectionProps) {
                     <img 
                       src={edu.logo} 
                       alt={edu.institution}
-                      className="w-5 h-5 object-contain filter brightness-0 invert"
+                      className="w-5 h-5 object-contain logo-icon"
                     />
                   </div>
                   <div className="flex-1">

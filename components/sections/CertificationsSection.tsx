@@ -33,7 +33,7 @@ export default function CertificationsSection({ certifications }: Certifications
                     <img 
                       src={cert.logo} 
                       alt={cert.organization}
-                      className="w-5 h-5 object-contain filter brightness-0 invert"
+                      className="w-5 h-5 object-contain logo-icon"
                     />
                   </div>
                   <div className="flex-1">

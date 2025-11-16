@@ -123,3 +123,12 @@
       transparent 56px);
   transition: background 0.2s ease;
 }
+
+/* Theme-responsive icons */
+.logo-icon {
+  filter: brightness(0) invert(0);
+}
+
+.dark .logo-icon {
+  filter: brightness(0) invert(1);
+}

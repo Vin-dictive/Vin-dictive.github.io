@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Vinay Valson - Developer Profile',
   description: 'Software Engineer & Data Scientist Portfolio',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.jpg',
   },
 }
 
