@@ -2,14 +2,17 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import FluidBackground from '@/components/FluidBackground'
+import profileData from '@/data/profile.json'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const { personal, skills, experience, projects, education, certifications } = profileData
+
 export const metadata: Metadata = {
   title: 'Vinay Valson - Developer Profile',
-  description: 'Software Engineer & Data Scientist Portfolio',
+  description: personal.title,
   icons: {
-    icon: '/favicon.jpg',
+    icon: '/favicon.png',
   },
 }
 
