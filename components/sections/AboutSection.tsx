@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useState, useEffect } from 'react'
 
 interface AboutSectionProps {
   personal: any
@@ -10,6 +11,14 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({ personal, skills }: AboutSectionProps) {
+  const [randomSlogan, setRandomSlogan] = useState('')
+
+  useEffect(() => {
+    if (personal.slogans && personal.slogans.length > 0) {
+      const randomIndex = Math.floor(Math.random() * personal.slogans.length)
+      setRandomSlogan(personal.slogans[randomIndex])
+    }
+  }, [])
   return (
     <section id="about" className="min-h-screen py-20">
       <motion.div
@@ -38,9 +47,9 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="text-lg md:text-xl font-medium text-blue-400 mb-8"
+          className="text-lg md:text-xl font-medium text-blue-400 mb-8 italic"
         >
-          {personal.slogan}
+          "{randomSlogan}"
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

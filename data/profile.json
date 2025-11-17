@@ -1,8 +1,17 @@
 {
   "personal": {
     "name": "VINAY VALSON",
-    "title": "Software Engineer/Data Scientist",
-    "slogan": "Transforming Ideas into Intelligent Solutions",
+    "title": "Full-Stack Developer & AI Engineer",
+    "slogans": [
+      "Innovation distinguishes between a leader and a follower.",
+      "Stay hungry, stay foolish.",
+      "Think different.",
+      "The people in the computer industry use the same words as people in the food industry. They speak of recipes, ingredients, and cooking. So I decided to be more direct and honest. I'm going to tell you exactly what we do.",
+      "Design is not just what it looks like and feels like. Design is how it works.",
+      "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.",
+      "I'm convinced that about half of what separates successful entrepreneurs from the non-successful ones is pure perseverance.",
+      "The desktop metaphor is a revolutionary step forward, but I think it's time we moved beyond it."
+    ],
     "location": "Vancouver BC",
     "email": "vinay.valson@gmail.com",
     "github": "Vin-dictive",
