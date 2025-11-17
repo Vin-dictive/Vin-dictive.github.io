@@ -53,13 +53,13 @@ export default function FluidBackground() {
       const intensity = Math.max(0, 1 - distance / 150)
       const pulse = Math.sin(time * 0.002 + distance * 0.01) * 0.3 + 0.7
       const isDark = document.documentElement.classList.contains('dark')
-      
+
       const baseOpacity = isDark ? 0.1 : 0.05
       const hoverOpacity = isDark ? 0.4 : 0.3
-      
+
       ctx.strokeStyle = `rgba(59, 130, 246, ${(baseOpacity + intensity * hoverOpacity) * pulse})`
       ctx.lineWidth = intensity * 2 + 0.5
-      
+
       ctx.beginPath()
       for (let i = 0; i < 6; i++) {
         const angle = (i * Math.PI) / 3
@@ -74,20 +74,20 @@ export default function FluidBackground() {
     const drawParticles = () => {
       const isDark = document.documentElement.classList.contains('dark')
       scrollVelocityRef.current *= 0.95
-      
+
       particlesRef.current.forEach(particle => {
         particle.x += particle.vx
         particle.y += particle.vy + scrollVelocityRef.current
-        
+
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
         if (particle.y < 0 || particle.y > canvas.height) {
           particle.y = particle.y < 0 ? canvas.height : 0
         }
-        
+
         const mouseDistance = Math.sqrt((particle.x - mouseRef.current.x) ** 2 + (particle.y - mouseRef.current.y) ** 2)
         const mouseEffect = Math.max(0, 1 - mouseDistance / 120)
         const finalOpacity = particle.opacity + mouseEffect * 0.4
-        
+
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(147, 51, 234, ${finalOpacity * (isDark ? 0.7 : 0.5)})`
@@ -98,11 +98,11 @@ export default function FluidBackground() {
     const animate = () => {
       timeRef.current += 16
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
+
       const hexSize = 20
       const hexWidth = hexSize * 2
       const hexHeight = hexSize * Math.sqrt(3)
-      
+
       for (let row = 0; row * hexHeight * 0.75 < canvas.height + hexHeight; row++) {
         for (let col = 0; col * hexWidth * 0.75 < canvas.width + hexWidth; col++) {
           const x = col * hexWidth * 0.75 + (row % 2) * hexWidth * 0.375
@@ -110,7 +110,7 @@ export default function FluidBackground() {
           drawHexagon(x, y, hexSize, mouseRef.current.x, mouseRef.current.y, timeRef.current)
         }
       }
-      
+
       drawParticles()
       requestAnimationFrame(animate)
     }
@@ -122,13 +122,13 @@ export default function FluidBackground() {
 
     const handleScroll = () => {
       const newScroll = window.scrollY * 0.01
-      scrollVelocityRef.current = (newScroll - scrollRef.current) * 0.3
+      scrollVelocityRef.current = (newScroll - scrollRef.current) * 2
       scrollRef.current = newScroll
     }
 
     window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('scroll', handleScroll)
-    
+
     return () => {
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', handleMouseMove)
