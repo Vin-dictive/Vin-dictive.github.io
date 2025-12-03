@@ -16,8 +16,7 @@ export default function FluidBackground() {
   const mouseRef = useRef({ x: 0, y: 0 })
   const particlesRef = useRef<Particle[]>([])
   const timeRef = useRef(0)
-  const scrollRef = useRef(0)
-  const scrollVelocityRef = useRef(0)
+
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -73,11 +72,10 @@ export default function FluidBackground() {
 
     const drawParticles = () => {
       const isDark = document.documentElement.classList.contains('dark')
-      scrollVelocityRef.current *= 0.95
 
       particlesRef.current.forEach(particle => {
         particle.x += particle.vx
-        particle.y += particle.vy + scrollVelocityRef.current
+        particle.y += particle.vy
 
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
         if (particle.y < 0 || particle.y > canvas.height) {
@@ -120,19 +118,11 @@ export default function FluidBackground() {
       mouseRef.current = { x: e.clientX, y: e.clientY }
     }
 
-    const handleScroll = () => {
-      const newScroll = window.scrollY * 0.01
-      scrollVelocityRef.current = (newScroll - scrollRef.current) * 2
-      scrollRef.current = newScroll
-    }
-
     window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('scroll', handleScroll)
 
     return () => {
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
