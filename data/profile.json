@@ -41,6 +41,7 @@
       "Altair",
       "Pandas",
       "NumPy",
+      "Quarto",
       "Scikit-learn",
       "ggplot2"
     ],
