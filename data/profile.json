@@ -24,130 +24,173 @@
       "JavaScript",
       "TypeScript",
       "Python",
-      "JAVA",
-      "SQL",
+      "Java",
       "R"
     ],
     "frameworks": [
       "NextJS",
       "ReactJS",
+      "Django",
+      "OJET",
+      "JAVARX",
+      "Springboot",
       "PostgreSQL",
       "MongoDB",
-      "Django"
+      "Mastra AI Agents"
     ],
     "dataScience": [
-      "Jupyter Notebook",
-      "R Studio RMD",
+      "Jupyter",
+      "R Studio",
       "Altair",
       "Pandas",
       "NumPy",
-      "Quarto",
       "Scikit-learn",
-      "ggplot2"
+      "ggplot2",
+      "Quarto",
+      "Statistics",
+      "Pytorch"
     ],
     "cloudDevOps": [
       "Docker",
-      "Railway App",
       "GCP",
-      "Github Actions",
+      "AWS",
+      "GitHub Actions",
+      "Railway",
       "Inngest",
-      "Posthog Analytics"
+      "Posthog Analytics",
+      "Clerk Authentication"
     ]
   },
   "experience": [
     {
-      "title": "Senior Software Engineer",
-      "company": "Blue Rabbit Group Ltd.",
-      "duration": "April 2024 - Present",
-      "location": "Hong Kong, EU, India",
-      "description": "Spearheading the design and integration of machine learning models into web platforms to develop systems for AI-driven portfolio management, web analytics, automated trading, asset-risk score framework, data ingestion pipeline and AI for crypto market analysis.",
-      "techStack": "Python, Django Restful Framework, ReactJS, Docker containers, Timescale - PostgreSQL, NextJS, MongoDB, Inngest - queue, Posthog - Web Analytics, Strapi, Slack bots, Github actions, GCP, Railway App, Clerk Authentication, PGP Keys, Postmark, AI Agent Framework Mastra, Reports generation using puppeteer",
-      "logo": "/bluerabbit-logo-white.svg",
-      "link": "https://www.bluerabbit.ai/#hero"
+      "title": "Teaching Assistant",
+      "company": "University of British Columbia",
+      "duration": "January 2026 - April 2026",
+      "location": "Vancouver, Canada",
+      "description": "Teaching assistant at the Computer Science Department for CPSC436C Cloud computing subject.",
+      "techStack": "Cloud Computing",
+      "logo": "/ubc.svg",
+      "link": "https://www.ubc.ca/"
     },
     {
-      "title": "Staff Consultant - Oracle Financial Services",
-      "company": "Oracle Financial Services Software Limited",
-      "duration": "Aug 2021 - April 2024",
-      "location": "Bangalore, India / Hong Kong",
-      "description": "Collaborated with clients in Hong Kong, addressed issues, gathered requirements, and oversaw design and implementation of components like Fraud Detection, Foreign Exchange, Open API, roles and access management in Oracle Banking Digital Experience (OBDX) project.",
-      "techStack": "Java, UNIX, SQL, Web Services (SOAP and REST), OJET, Docker",
+      "title": "Freelance Developer",
+      "company": "Volentia Healthcare Services",
+      "duration": "January 2026 - February 2026",
+      "location": "Vancouver, Canada",
+      "description": "Website development and deployment using Nextjs, Postgres, Railway and GITHUB.",
+      "techStack": "NextJS, PostgreSQL, Railway, GitHub",
+      "logo": "/school.svg",
+      "link": "https://volentia.ca/"
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": "Blue Rabbit Group Ltd.",
+      "duration": "April 2024 - November 2025",
+      "location": "Hong Kong/EU/India",
+      "description": "Spearheaded ML model integration for AI-driven portfolio management and automated trading systems. Built crypto market analysis AI, asset-risk frameworks, and data ingestion pipelines.",
+      "techStack": "Python, Django Restful Framework, ReactJS, Docker containers, Timescale - PostgreSQL, NextJS, MongoDB, Inngest - queue, Posthog - Web Analytics, Strapi, Slack bots, Github actions, GCP, Railway App, Clerk Authentication, PGP Keys, Postmark, AI Agent Framework Mastra, Reports generation using puppeteer",
+      "logo": "/bluerabbit-logo-white.svg",
+      "link": "https://www.bluerabbit.ai"
+    },
+    {
+      "title": "Associate Consultant -- Staff Consultant",
+      "company": "Oracle Financial Services",
+      "duration": "August 2021 - April 2024",
+      "location": "Bangalore/Hong Kong",
+      "description": "Led onsite client collaboration in Hong Kong for Oracle Banking Digital Experience (OBDX). Designed Fraud Detection, Foreign Exchange Dashboard, Open API, and access management components. Received Rising Star Award and Ever Ready Award; mentored new team members.",
+      "techStack": "Java, UNIX, SQL, SOAP/REST Web Services, OJET, Docker, OBDX",
       "logo": "/oracle.svg",
-      "link": "https://drive.google.com/file/d/128DK-Z2C_LcB_KPVti4fQdGSp2fOnXK0/view"
+      "link": "https://www.oracle.com/financial-services/"
     },
     {
       "title": "Software Developer Intern",
-      "company": "Accops Systems Pvt. Ltd",
-      "duration": "Jan 2020 - Jul 2020",
+      "company": "Accops Systems",
+      "duration": "January 2020 - July 2020",
       "location": "Pune, India",
-      "description": "Developed a Bookmark widget for Ubuntu systems using Gnome toolkit, implemented as Chrome extension and Electron app. Tested and corrected Deal Management web application using MEAN stack.",
-      "techStack": "MEAN Stack, Gnome Toolkit, Chrome Extensions, Electron",
+      "description": "Developed Ubuntu Bookmark widget using Gnome toolkit, Chrome extension, and Electron app. Tested and debugged Deal Management web application using MEAN stack.",
+      "techStack": "JavaScript, Node.js, MongoDB, Express.js, Angular, Gnome Toolkit, Electron",
       "logo": "/accops.svg",
-      "link": "https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view?usp=drive_link"
+      "link": "https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view"
+    },
+    {
+      "title": "Tech Developer/R&D Technology Intern",
+      "company": "CREBACO Global Inc",
+      "duration": "July 2019 - October 2019",
+      "location": "Pune, India",
+      "description": "Developed Ubuntu Bookmark widget using Gnome toolkit, Chrome extension, and Electron app. Tested and debugged Deal Management web application using MEAN stack.",
+      "techStack": "JavaScript, Node.js, MongoDB, Express.js, Angular, Gnome Toolkit, Electron",
+      "logo": "/school.svg",
+      "link": "https://drive.google.com/file/d/0ByU6T88-W-VCVG5WV3c0MWVIWDhZSDlfNDVULWFoelpNc09v/view?usp=drive_link&resourcekey=0-njvtEq4Sfl4Ik_txCxI40A"
     }
   ],
   "projects": [
     {
+      "name": "Fake Real News Detection",
+      "description": "Classify news articles as real or fake using Naive Bayes classification techniques.",
+      "link": "https://github.com/Vin-dictive/fake-real-news-detection"
+    },
+    {
       "name": "Customer Reviews Polarity Analysis",
-      "description": "Machine learning project for sentiment analysis of customer reviews using natural language processing techniques to determine positive/negative polarity.",
+      "description": "ML sentiment analysis using NLP techniques for positive/negative classification.",
       "link": "https://github.com/Vin-dictive/customer-reviews-polarity"
     },
     {
       "name": "UBC Reddit Reporter",
-      "description": "Automated reporting system for UBC-related Reddit content with data analysis and visualization capabilities.",
+      "description": "AWS Lambda serverless app with sentiment analysis using Amazon Bedrock.",
       "link": "https://github.com/Vin-dictive/ubc-reddit-reporter"
     },
     {
-      "name": "ARgorithm",
-      "description": "An open-source technology for visualizing data structures and algorithms in augmented reality created with Python-Flask, C#, Unity Game Engine, Google ARcore libraries, and GitHub for collaboration.",
-      "link": "https://github.com/ARgorithm"
-    },
-    {
-      "name": "Developer portfolio v2",
-      "description": "A modern, animated developer portfolio built with Next.js, featuring fluid dynamics background that follows mouse movement, smooth animations, and a clean design using Tailwind CSS and shadcn UI components.",
+      "name": "Developer Portfolio",
+      "description": "Modern Next.js portfolio with fluid dynamics and Tailwind CSS.",
       "link": "https://github.com/Vin-dictive/Vin-dictive.github.io"
     },
     {
-      "name": "Developer portfolio v1",
-      "description": "Developed and deployed a personal profile page utilizing ReactJS for dynamic user interface and THREE.js for 3D graphics. Successfully hosted the project on GitHub Pages.",
-      "link": "https://github.com/Vin-dictive/myProfile"
+      "name": "ARgorithm",
+      "description": "Open-source AR platform for visualizing algorithms using Python-Flask, C#, Unity, ARCore.",
+      "link": "https://github.com/ARgorithm"
+    },
+    {
+      "name": "Tapatap",
+      "description": "An app created using Paperjs and Howlerjs to make a clone version of Tapatap.com.",
+      "link": "https://vin-dictive.github.io/Patatap_Clone/"
     }
   ],
   "education": [
     {
-      "degree": "Masters - Data Science",
-      "institution": "University of British Columbia, Vancouver, Canada",
-      "duration": "Sep 2025 - present",
-      "details": "ML, AI, Python - Pandas, Numpy, R, Github, Academic Representative",
+      "degree": "Master of Data Science",
+      "institution": "University of British Columbia, Vancouver",
+      "duration": "September 2025 - Present",
+      "details": "Academic Representative | Scholarship | ML, AI, Python, R",
       "logo": "/ubc.svg",
       "link": "https://ubc.ca"
     },
     {
       "degree": "Bachelor of Engineering - Computer Engineering",
-      "institution": "Army Institute of Technology, Savitribai Phule Pune University, India",
-      "duration": "Jun 2017 - Jun 2021",
-      "details": "DSA, OOP, OS, Web technologies, Computer architecture, ML, VR/AR",
-      "grade": "CGPA: 8.91 - First Class with Distinction",
+      "institution": "Army Institute of Technology, Pune",
+      "duration": "June 2017 - June 2021",
+      "details": "Scholarship | First Class with Distinction",
+      "grade": "CGPA: 8.91",
       "logo": "/ait.svg",
       "link": "https://drive.google.com/drive/folders/1_kYyl5WIPU3xeUSrKNRUu6LJtFVVvgdc"
     },
     {
-      "degree": "Higher Secondary School - CBSE",
-      "institution": "The Greenhills Public School, Sultan Bathery, Kerala, India",
-      "duration": "Jun 2015 - Jul 2017",
+      "degree": "Higher Secondary - CBSE",
+      "institution": "Greenhills Public School, Kerala",
+      "duration": "June 2015 - July 2017",
       "details": "Physics, Chemistry, Maths, Computer Science",
-      "grade": "Percentage: 91%",
+      "grade": "91%",
       "logo": "/school.svg",
-      "link": "https://drive.google.com/file/d/1VARFBUx4rC9j-e-Ytx9APBkTcmJlHvkE/view?usp=drive_link"
+      "link": "https://drive.google.com/file/d/1VARFBUx4rC9j-e-Ytx9APBkTcmJlHvkE/view"
     }
   ],
   "certifications": [
     {
-      "name": "IELTS - Academic English Proficiency Test - Overall Band Score 8 - CEFR - C1",
-      "organization": "IELTS",
+      "name": "IELTS Academic English Proficiency Test",
+      "organization": "IELTS Official",
       "year": "2024",
+      "details": "Band 8 (C1)",
       "logo": "/IELTS_logo.svg",
-      "link": "https://drive.google.com/file/d/1-XeJSohhjVDwCHUq0cFDXV3cGf0BEN0o/view?usp=sharing"
+      "link": "https://drive.google.com/file/d/1-XeJSohhjVDwCHUq0cFDXV3cGf0BEN0o/view"
     },
     {
       "name": "Python and Django Full Stack Web Developer Bootcamp",
@@ -171,39 +214,11 @@
       "link": "https://drive.google.com/file/d/1p6AXXfRJtpG_pde_bYuxBSDmI6WgW8JJ/view?usp=drive_link"
     },
     {
-      "name": "Java SE 8 Programming, Oracle WebLogic Server 12c: Administration Essentials",
-      "organization": "Oracle",
+      "name": "Oracle Certifications",
+      "organization": "Oracle University",
       "year": "2021",
       "logo": "/oracle.svg",
-      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
-    },
-    {
-      "name": "API Testing using Postman",
-      "organization": "Oracle",
-      "year": "2021",
-      "logo": "/oracle.svg",
-      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
-    },
-    {
-      "name": "JPA with EclipseLink",
-      "organization": "Oracle",
-      "year": "2021",
-      "logo": "/oracle.svg",
-      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
-    },
-    {
-      "name": "Oracle JS Extension Toolkit (OJET)",
-      "organization": "Oracle",
-      "year": "2021",
-      "logo": "/oracle.svg",
-      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
-    },
-    {
-      "name": "Apache CORDOVA",
-      "organization": "Oracle",
-      "year": "2021",
-      "logo": "/oracle.svg",
-      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge?usp=drive_link"
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge"
     },
     {
       "name": "IoT Foundation Workshop (3-day)",
@@ -213,11 +228,11 @@
       "link": "https://drive.google.com/file/d/1m9VfEwCVfVPLW1fl06AJ8X2vvlnbDLaG/view?usp=sharing"
     },
     {
-      "name": "Machine Learning A-Z™: Hands-On Python & R In Data Science",
+      "name": "Machine Learning A-Z: Hands-On Python & R",
       "organization": "Udemy",
       "year": "2019",
       "logo": "/udemy.svg",
-      "link": "https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view?usp=drive_link"
+      "link": "https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view"
     },
     {
       "name": "The Web Developer Bootcamp",
@@ -231,7 +246,7 @@
       "organization": "Udemy",
       "year": "2017",
       "logo": "/udemy.svg",
-      "link": "https://drive.google.com/file/d/1-tqhKO-byth2VlJZ8wMstEOSxlvz9AOh/view?usp=drive_link"
+      "link": ""
     }
   ]
 }

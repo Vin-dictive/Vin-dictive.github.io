@@ -1,9 +1,10 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Phone, FileText } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface AboutSectionProps {
   personal: any
@@ -27,6 +28,22 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex justify-center mb-6"
+        >
+          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-400/30 shadow-2xl">
+            <Image
+              src="/headshot.jpeg"
+              alt={personal.name}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
         <motion.h1
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
@@ -82,6 +99,9 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
           </a>
           <a href={`https://linkedin.com/in/${personal.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors">
             <Linkedin className="w-6 h-6" />
+          </a>
+          <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors" title="Download CV">
+            <FileText className="w-6 h-6" />
           </a>
         </motion.div>
       </motion.div>
