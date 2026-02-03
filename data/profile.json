@@ -125,6 +125,11 @@
   ],
   "projects": [
     {
+      "name": "Imitation Game",
+      "description": "Python utility package that provides a high-level interface for both Symmetric (shared secret) and Asymmetric (Public/Private key) encryption.",
+      "link": "https://github.com/UBC-MDS/imitation_game"
+    },
+    {
       "name": "Fake Real News Detection",
       "description": "Classify news articles as real or fake using Naive Bayes classification techniques.",
       "link": "https://github.com/Vin-dictive/fake-real-news-detection"
