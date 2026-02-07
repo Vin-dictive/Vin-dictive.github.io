@@ -25,16 +25,16 @@
       "TypeScript",
       "Python",
       "Java",
-      "R"
+      "R",
+      "SQL"
     ],
     "frameworks": [
       "NextJS",
       "ReactJS",
-      "Django",
+      "Django Rest API",
       "OJET",
       "JAVARX",
       "Springboot",
-      "PostgreSQL",
       "MongoDB",
       "Mastra AI Agents"
     ],
@@ -55,8 +55,10 @@
       "GCP",
       "AWS",
       "GitHub Actions",
+      "Jenkins",
       "Railway",
       "Inngest",
+      "Airflow",
       "Posthog Analytics",
       "Clerk Authentication"
     ]
@@ -67,7 +69,7 @@
       "company": "University of British Columbia",
       "duration": "January 2026 - April 2026",
       "location": "Vancouver, Canada",
-      "description": "Teaching assistant at the Computer Science Department for CPSC436C Cloud computing subject.",
+      "description": "Delivering instruction and support for CPSC436C Cloud Computing to improve student comprehension of Software Engineering and GCP/AWS deployment patterns and designs.",
       "techStack": "Cloud Computing",
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
@@ -77,7 +79,7 @@
       "company": "Volentia Healthcare Services",
       "duration": "January 2026 - February 2026",
       "location": "Vancouver, Canada",
-      "description": "Website development and deployment using Nextjs, Postgres, Railway and GITHUB.",
+      "description": "Built and deployed a healthcare web application using Next.js, PostgreSQL, and Railway to enable client operations;delivered within 2-week timeline.",
       "techStack": "NextJS, PostgreSQL, Railway, GitHub",
       "logo": "/school.svg",
       "link": "https://volentia.ca/"

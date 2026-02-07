@@ -100,7 +100,7 @@ export default function AboutSection({ personal, skills }: AboutSectionProps) {
           <a href={`https://linkedin.com/in/${personal.linkedin}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors">
             <Linkedin className="w-6 h-6" />
           </a>
-          <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors" title="Download CV">
+          <a href="https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf?raw=true" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors" title="Download CV">
             <FileText className="w-6 h-6" />
           </a>
         </motion.div>
