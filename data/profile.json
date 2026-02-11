@@ -160,6 +160,11 @@
       "name": "Tapatap",
       "description": "An app created using Paperjs and Howlerjs to make a clone version of Tapatap.com.",
       "link": "https://vin-dictive.github.io/Patatap_Clone/"
+    },
+    {
+      "name": "Old Developer Portfolio",
+      "description": "Developed and deployed a personal profile page utilizing ReactJS for dynamic user interface and THREE.js for 3D graphics. Successfully hosted the project on GitHub Pages.",
+      "link": "https://vin-dictive.github.io/myProfile"
     }
   ],
   "education": [
