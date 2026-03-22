@@ -49,7 +49,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="dark scroll-pt-28 sm:scroll-pt-32"
+      className="dark scroll-smooth scroll-pt-28 sm:scroll-pt-32"
     >
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
         <Script id="theme-init" strategy="beforeInteractive">

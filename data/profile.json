@@ -3,14 +3,14 @@
     "name": "VINAY VALSON",
     "title": "Full-Stack Developer & AI Engineer",
     "slogans": [
-      "Code is poetry written in logic, and I'm here to craft elegant solutions.",
-      "Transforming complex problems into simple, scalable solutions—one commit at a time.",
-      "Building the future with clean code, innovative thinking, and relentless curiosity.",
-      "Where data science meets software engineering—creating intelligent systems that make a difference.",
-      "Turning ideas into production-ready applications that users love and businesses trust.",
-      "Full-stack by nature, problem-solver by passion, innovator by design.",
-      "Architecting tomorrow's technology today, with precision, passion, and purpose.",
-      "From concept to deployment—delivering excellence across the entire software lifecycle."
+      "It works on my machine—and on my machine alone. That is not a bug; that is a lifestyle.",
+      "The only thing standing between you and greatness is one missing semicolon, fourteen tabs, and the will to keep going.",
+      "Merge conflicts do not break you—they merely reveal who you were always meant to resolve.",
+      "When production whispers at 3 a.m., answer. That is not anxiety; that is on-call enlightenment.",
+      "Your stack trace is not an error; it is the universe handing you a personalized roadmap to humility.",
+      "They said deploy on Friday. You smiled. You learned. You now inspire others through cautionary legend.",
+      "Rubber duck not listening? Speak louder. The bug fears confidence, not acoustics.",
+      "It compiled yesterday. It will compile again. Believe in the pipeline of eternal hope."
     ],
     "location": "Vancouver BC",
     "email": "vinay.valson@gmail.com",
@@ -71,7 +71,7 @@
       "duration": "January 2026 - April 2026",
       "location": "Vancouver, BC",
       "description": "Delivering instruction and support for CPSC 436C Cloud Computing to improve student comprehension of software engineering and GCP/AWS deployment patterns and designs.",
-      "techStack": "Cloud computing, GCP, AWS, pedagogy",
+      "techStack": null,
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
     },
@@ -81,7 +81,7 @@
       "duration": "January 2026 - February 2026",
       "location": "Vancouver, BC",
       "description": "Built and deployed a healthcare web application using Next.js, PostgreSQL, and Railway to enable client operations; delivered within a 2-week timeline.",
-      "techStack": "Next.js, PostgreSQL, Railway",
+      "techStack": null,
       "logo": "/school.svg",
       "link": "https://app.volentia.ca"
     },
@@ -189,15 +189,6 @@
       "grade": "CGPA: 8.91",
       "logo": "/ait.svg",
       "link": "https://drive.google.com/drive/folders/1_kYyl5WIPU3xeUSrKNRUu6LJtFVVvgdc"
-    },
-    {
-      "degree": "Higher Secondary - CBSE",
-      "institution": "Greenhills Public School, Kerala",
-      "duration": "June 2015 - July 2017",
-      "details": "Physics, Chemistry, Maths, Computer Science",
-      "grade": "91%",
-      "logo": "/school.svg",
-      "link": "https://drive.google.com/file/d/1VARFBUx4rC9j-e-Ytx9APBkTcmJlHvkE/view"
     }
   ],
   "certifications": [

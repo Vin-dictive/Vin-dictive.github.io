@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  /** Full-viewport section band (hash targets use scroll-padding on <html> in layout). */
+  .folio-section {
+    @apply min-h-svh;
+  }
   .technical-label {
     font-family: var(--font-space-grotesk), ui-monospace, monospace;
   }
@@ -159,10 +163,4 @@
 .dark .logo-icon {
   filter: brightness(0) invert(1);
   opacity: 1;
-}
-
-/* Social icon links — subtle hover, no scale (avoids layout “swell”) */
-a[href*="github.com"],
-a[href*="linkedin.com"] {
-  @apply rounded-lg p-2 -m-2 transition-colors duration-200 hover:bg-folio-primary/20 dark:hover:bg-folio-primary/30;
 }

@@ -16,8 +16,8 @@ export default function Home() {
       <Navigation resumeUrl={personal.resumeUrl} />
       <main>
         <HomeSection personal={personal} skills={skills} />
-        <AboutSection personal={personal} />
-        <ExperienceEducationSection experience={experience} education={education} />
+        <AboutSection personal={personal} education={education} />
+        <ExperienceEducationSection experience={experience} />
         <ProjectsSection projects={projects} githubUsername={personal.github} />
         <CertificationsSection certifications={certifications} />
         <ContactSection personal={personal} />

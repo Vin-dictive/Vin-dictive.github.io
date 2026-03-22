@@ -1,5 +1,6 @@
 import { ArrowUpRight, Github } from 'lucide-react'
-import { sectionGlassCardStatic, sectionGlassShell } from '@/components/sections/sectionGlass'
+import { sectionGlassCard, sectionGlassShell } from '@/components/sections/sectionGlass'
+import { cn } from '@/lib/utils'
 
 interface Project {
   name: string
@@ -18,7 +19,7 @@ const VISIBLE_COUNT = 10
 
 /** Compact preview so cards stay text-forward */
 const previewFrameClass =
-  'relative mx-auto aspect-video w-full max-w-[200px] shrink-0 overflow-hidden rounded-lg border border-folio-outline-variant/20 bg-folio-surface-low sm:max-w-[240px] dark:bg-zinc-950'
+  'relative mx-auto aspect-video w-full max-w-[200px] shrink-0 overflow-hidden rounded-xl border border-folio-outline-variant/20 bg-folio-surface-low sm:max-w-[240px] dark:bg-zinc-950'
 
 export default function ProjectsSection({
   projects,
@@ -38,7 +39,7 @@ export default function ProjectsSection({
   return (
     <section
       id="projects"
-      className="bg-transparent px-4 py-28 sm:px-6 md:px-10 md:py-32 lg:px-14 lg:py-36"
+      className="folio-section bg-transparent px-4 py-28 sm:px-6 md:px-10 md:py-32 lg:px-14 lg:py-36"
       aria-labelledby="projects-heading"
     >
       <div className="mx-auto max-w-screen-xl">
@@ -49,54 +50,53 @@ export default function ProjectsSection({
           Projects
         </h2>
         <p className="technical-label mb-12 text-center text-sm tracking-widest text-folio-on-surface-variant md:mb-16">
-          Four builds I&apos;m especially proud of
+          Builds I&apos;m especially proud of
         </p>
 
         <div className={sectionGlassShell}>
           <ul className="grid list-none grid-cols-1 gap-6 p-0 md:grid-cols-2 md:gap-8 lg:gap-10">
             {shown.map((project, index) => {
               const n = String(index + 1).padStart(2, '0')
-              const borderHover =
-                index % 3 === 1
-                  ? 'hover:border-folio-tertiary hover:shadow-lg hover:shadow-folio-tertiary/25 dark:hover:border-folio-tertiary dark:hover:shadow-folio-tertiary/30'
-                  : 'hover:border-folio-primary hover:shadow-lg hover:shadow-folio-primary/25 dark:hover:border-folio-primary dark:hover:shadow-folio-primary/30'
 
               return (
                 <li key={project.link} className="flex min-h-0 md:h-full">
-                  <div
-                    className={`flex min-h-0 w-full flex-col overflow-hidden transition-[border-color,box-shadow] duration-300 ${sectionGlassCardStatic} ${borderHover}`}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      'group flex h-full min-h-0 w-full flex-col overflow-hidden',
+                      sectionGlassCard,
+                    )}
                   >
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div className="mb-3 flex items-start justify-between gap-3">
-                        <span className="technical-label text-[10px] font-bold uppercase tracking-[0.35em] text-folio-secondary">
-                          {n}
-                        </span>
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-folio-outline-variant/25 bg-folio-surface-high/80 dark:border-white/10 dark:bg-zinc-900/60">
-                          <Github
-                            className="h-5 w-5 text-folio-on-surface-variant"
-                            aria-hidden
-                          />
-                        </div>
-                      </div>
-                      <h3 className="text-lg font-bold leading-snug text-folio-on-surface sm:text-xl">
-                        {project.name}
-                      </h3>
-                      <p className="technical-label mt-2 text-[11px] uppercase tracking-wider text-folio-on-surface-variant">
-                        GitHub · Repository
-                      </p>
-                      <p className="mt-3 flex-1 text-sm leading-relaxed text-folio-on-surface-variant">
-                        {project.description}
-                      </p>
-                      <span className="technical-label mt-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-folio-on-surface">
-                        Open project
-                        <ArrowUpRight className="h-4 w-4" aria-hidden />
+                    <div className="mb-3 flex items-start justify-between gap-3">
+                      <span className="technical-label text-[10px] font-bold uppercase tracking-[0.35em] text-folio-secondary">
+                        {n}
                       </span>
-                    </a>
-                  </div>
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-folio-outline-variant/25 bg-folio-surface-high/80 dark:border-white/10 dark:bg-zinc-900/60">
+                        <Github
+                          className="h-5 w-5 text-folio-on-surface-variant"
+                          aria-hidden
+                        />
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-bold leading-snug text-folio-on-surface sm:text-xl">
+                      {project.name}
+                    </h3>
+                    <p className="technical-label mt-2 text-[11px] uppercase tracking-wider text-folio-on-surface-variant">
+                      GitHub · Repository
+                    </p>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-folio-on-surface-variant">
+                      {project.description}
+                    </p>
+                    <span className="technical-label mt-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-folio-on-surface">
+                      Open project
+                      <ArrowUpRight
+                        className="h-4 w-4 shrink-0 text-folio-on-surface-variant transition-colors group-hover:text-folio-primary"
+                        aria-hidden
+                      />
+                    </span>
+                  </a>
                 </li>
               )
             })}

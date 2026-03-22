@@ -18,7 +18,7 @@ export default function CertificationsSection({
   return (
     <section
       id="certifications"
-      className="bg-transparent px-4 py-28 sm:px-6 md:px-10 md:py-32 lg:px-14 lg:py-36"
+      className="folio-section bg-transparent px-4 py-28 sm:px-6 md:px-10 md:py-32 lg:px-14 lg:py-36"
     >
       <div className="mx-auto max-w-screen-xl">
         <h2 className="kinetic-monolith mb-4 text-center text-4xl font-black uppercase text-folio-on-surface sm:text-5xl md:mb-6">
@@ -34,7 +34,7 @@ export default function CertificationsSection({
               const hasLink = Boolean(cert.link?.trim())
               const inner = (
                 <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-folio-outline-variant/25 bg-folio-surface-high/80 backdrop-blur-sm dark:border-white/10 dark:bg-zinc-900/60">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-folio-outline-variant/25 bg-folio-surface-high/80 backdrop-blur-sm dark:border-white/10 dark:bg-zinc-900/60">
                     <img
                       src={cert.logo}
                       alt={cert.organization}

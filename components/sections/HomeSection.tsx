@@ -1,10 +1,16 @@
 import Link from 'next/link'
 import SkillsBentoSection from '@/components/sections/SkillsBentoSection'
 
-function heroQuote(slogans: string[]) {
-  const s = slogans[0] ?? ''
-  const i = s.indexOf('.')
-  return i > 0 ? s.slice(0, i + 1) : s
+/** Picks a slogan by UTC day so SSR/build and client stay aligned; cycles through the list. */
+function heroSlogan(slogans: string[]) {
+  const list = slogans.map((s) => s.trim()).filter(Boolean)
+  if (list.length === 0) return ''
+  const now = new Date()
+  const y = now.getUTCFullYear()
+  const start = Date.UTC(y, 0, 1)
+  const today = Date.UTC(y, now.getUTCMonth(), now.getUTCDate())
+  const dayOfYear = Math.floor((today - start) / 86400000)
+  return list[dayOfYear % list.length]
 }
 
 interface Personal {
@@ -27,13 +33,13 @@ export default function HomeSection({
   personal: Personal
   skills: Skills
 }) {
-  const quote = heroQuote(personal.slogans)
+  const quote = heroSlogan(personal.slogans)
 
   return (
     <section
       id="home"
       aria-label="Home"
-      className="relative flex min-h-[100svh] flex-col items-center overflow-x-hidden bg-transparent px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 md:px-8 md:pt-36"
+      className="folio-section relative flex flex-col items-center overflow-x-hidden bg-transparent px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 md:px-8 md:pt-36"
     >
       <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center gap-8 sm:gap-10 md:gap-12">
         <h1 className="kinetic-monolith max-w-full whitespace-nowrap px-2 pt-4 text-center text-[clamp(1.25rem,calc(0.5rem+4.8vw),7.5rem)] font-black uppercase leading-[0.92] text-folio-on-surface sm:px-4 sm:pt-6 sm:leading-[0.9] md:pt-8">
@@ -49,7 +55,7 @@ export default function HomeSection({
 
         <div className="flex w-full max-w-md flex-col gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
           <Link
-            href="#projects"
+            href="#experience"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-sm px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-folio-on-primary pulse-gradient shadow-md shadow-folio-primary/25 transition-[opacity,box-shadow] hover:opacity-100 hover:shadow-lg hover:shadow-folio-primary/40 sm:min-h-0 sm:w-auto sm:px-8 sm:py-4"
           >
             Explore Work

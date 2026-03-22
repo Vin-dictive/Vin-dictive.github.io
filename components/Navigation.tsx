@@ -1,13 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import type { LucideIcon } from "lucide-react"
 import {
   Award,
   Briefcase,
   FileText,
   FolderKanban,
-  GraduationCap,
   Home,
   Mail,
   Menu,
@@ -26,6 +25,13 @@ const NAV: readonly { id: string; label: string; Icon: LucideIcon }[] = [
   { id: "contact", label: "Contact", Icon: Mail },
 ] as const
 
+const NAV_IDS = new Set(NAV.map((item) => item.id))
+
+function navIdFromHash(hash: string): string {
+  const id = hash.replace(/^#/, "")
+  return NAV_IDS.has(id) ? id : NAV[0].id
+}
+
 const DEFAULT_RESUME_URL =
   "https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf"
 
@@ -42,32 +48,102 @@ export default function Navigation({
 }) {
   const [active, setActive] = useState("home")
   const [open, setOpen] = useState(false)
+  /** While true, scroll-driven updates are skipped so smooth #nav jumps keep the correct highlight. */
+  const hashNavLockRef = useRef(false)
+  const hashUnlockTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined
+  )
 
   useEffect(() => {
-    const elements = NAV.map(({ id }) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => Boolean(el)
-    )
+    const basePath = () =>
+      `${window.location.pathname}${window.location.search}`
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-        const id = visible[0]?.target.id
-        if (id) setActive(id)
-      },
-      { rootMargin: "-96px 0px -52% 0px", threshold: [0.08, 0.12, 0.2, 0.35] }
-    )
+    const probeFromScrollPadding = () => {
+      const raw = getComputedStyle(document.documentElement).scrollPaddingTop
+      const n = parseFloat(raw)
+      return Number.isFinite(n) ? Math.round(n) : 112
+    }
 
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+    const syncFromHashOnly = () => {
+      setActive(navIdFromHash(window.location.hash))
+    }
+
+    const syncFromScroll = () => {
+      const probe = probeFromScrollPadding()
+      let current = NAV[0].id
+      for (const { id } of NAV) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const { top } = el.getBoundingClientRect()
+        if (top <= probe) {
+          current = id
+        }
+      }
+
+      setActive(current)
+
+      if (current === NAV[0].id && window.scrollY < 8) {
+        if (window.location.hash) {
+          window.history.replaceState(window.history.state, "", basePath())
+        }
+      } else if (window.location.hash !== `#${current}`) {
+        window.history.replaceState(
+          window.history.state,
+          "",
+          `${basePath()}#${current}`
+        )
+      }
+    }
+
+    const clearHashNavLock = () => {
+      hashNavLockRef.current = false
+      if (hashUnlockTimerRef.current !== undefined) {
+        clearTimeout(hashUnlockTimerRef.current)
+        hashUnlockTimerRef.current = undefined
+      }
+      syncFromScroll()
+    }
+
+    const onHashChange = () => {
+      hashNavLockRef.current = true
+      if (hashUnlockTimerRef.current !== undefined) {
+        clearTimeout(hashUnlockTimerRef.current)
+      }
+      syncFromHashOnly()
+      hashUnlockTimerRef.current = window.setTimeout(clearHashNavLock, 750)
+    }
+
+    const onScroll = () => {
+      if (hashNavLockRef.current) return
+      syncFromScroll()
+    }
+
+    const onScrollEnd = () => {
+      if (!hashNavLockRef.current) return
+      clearHashNavLock()
+    }
+
+    syncFromHashOnly()
+    const initialSync = requestAnimationFrame(() => {
+      syncFromScroll()
+    })
+
+    window.addEventListener("hashchange", onHashChange)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll, { passive: true })
+    window.addEventListener("scrollend", onScrollEnd as EventListener)
+
+    return () => {
+      cancelAnimationFrame(initialSync)
+      if (hashUnlockTimerRef.current !== undefined) {
+        clearTimeout(hashUnlockTimerRef.current)
+      }
+      window.removeEventListener("hashchange", onHashChange)
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+      window.removeEventListener("scrollend", onScrollEnd as EventListener)
+    }
   }, [])
-
-  const go = (id: string) => {
-    setOpen(false)
-    const el = document.getElementById(id)
-    el?.scrollIntoView({ behavior: "smooth" })
-  }
 
   return (
     <nav
@@ -87,10 +163,9 @@ export default function Navigation({
                 const Icon = item.Icon
                 const isActive = active === item.id
                 return (
-                  <button
+                  <a
                     key={item.id}
-                    type="button"
-                    onClick={() => go(item.id)}
+                    href={`#${item.id}`}
                     className={cn(
                       navLinkBase,
                       "group/navlink",
@@ -98,6 +173,7 @@ export default function Navigation({
                         ? "text-folio-primary dark:text-folio-primary"
                         : "text-folio-on-surface-variant hover:text-folio-primary dark:text-zinc-400 dark:hover:text-folio-primary"
                     )}
+                    aria-current={isActive ? "page" : undefined}
                   >
                     <Icon
                       className={cn(
@@ -109,7 +185,7 @@ export default function Navigation({
                       aria-hidden
                     />
                     <span className="whitespace-nowrap">{item.label}</span>
-                  </button>
+                  </a>
                 )
               })}
             </div>
@@ -157,16 +233,17 @@ export default function Navigation({
                 const Icon = item.Icon
                 const isActive = active === item.id
                 return (
-                  <button
+                  <a
                     key={item.id}
-                    type="button"
-                    onClick={() => go(item.id)}
+                    href={`#${item.id}`}
+                    onClick={() => setOpen(false)}
                     className={cn(
                       "flex min-h-12 w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm font-bold uppercase tracking-wide transition-colors",
                       isActive
                         ? "bg-folio-primary/10 text-folio-primary dark:bg-folio-primary/20 dark:text-folio-primary"
                         : "text-folio-on-surface hover:bg-folio-primary/10 hover:text-folio-primary dark:text-zinc-300 dark:hover:bg-folio-primary/20 dark:hover:text-folio-primary"
                     )}
+                    aria-current={isActive ? "page" : undefined}
                   >
                     <span
                       className={cn(
@@ -183,7 +260,7 @@ export default function Navigation({
                       />
                     </span>
                     {item.label}
-                  </button>
+                  </a>
                 )
               })}
             </div>

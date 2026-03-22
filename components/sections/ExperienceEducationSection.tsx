@@ -1,4 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
+import { sectionGlassShell } from '@/components/sections/sectionGlass'
+import { cn } from '@/lib/utils'
 
 interface ExperienceItem {
   title: string
@@ -6,121 +8,90 @@ interface ExperienceItem {
   duration: string
   location: string
   description: string
-  techStack: string
-  logo: string
-  link: string
-}
-
-interface EducationItem {
-  degree: string
-  institution: string
-  duration: string
-  details: string
-  grade?: string
+  techStack: string | null
   logo: string
   link: string
 }
 
 export default function ExperienceEducationSection({
   experience,
-  education,
 }: {
   experience: ExperienceItem[]
-  education: EducationItem[]
 }) {
   return (
-    <section className="py-24 px-8 bg-folio-surface-low/50 backdrop-blur-md border-y border-folio-outline-variant/10">
-      <div className="max-w-screen-xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-24">
-          <div id="experience">
-            <h2 className="text-4xl font-black kinetic-monolith text-folio-on-surface uppercase mb-12">
-              Professional Timeline
-            </h2>
-            <div className="space-y-12">
-              {experience.map((exp, index) => (
-                <div
-                  key={`${exp.company}-${exp.duration}`}
-                  className={`relative pl-8 border-l ${
-                    index === 0 ? 'border-folio-primary/30' : 'border-folio-outline-variant/30'
-                  }`}
-                >
-                  <div
-                    className={`absolute -left-1.5 top-0 w-3 h-3 rounded-full ${
-                      index === 0 ? 'bg-folio-primary' : 'bg-folio-outline-variant'
-                    }`}
-                  />
-                  <div
-                    className={`technical-label text-[10px] font-bold mb-2 uppercase ${
-                      index === 0 ? 'text-folio-primary' : 'text-folio-on-surface-variant'
-                    }`}
-                  >
-                    {exp.duration}
-                  </div>
+    <section
+      id="experience"
+      className="folio-section bg-transparent px-4 py-24 sm:px-6 md:px-8"
+    >
+      <div className="mx-auto max-w-screen-xl">
+        <h2 className="kinetic-monolith mb-2 text-4xl font-black uppercase text-folio-on-surface">
+          Professional Timeline
+        </h2>
+        <p className="technical-label mb-10 text-sm tracking-widest text-folio-on-surface-variant md:mb-12">
+          Roles, impact, and stack
+        </p>
+
+        <div className={cn(sectionGlassShell, 'relative overflow-hidden')}>
+          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-folio-primary/10 blur-3xl" />
+          <div className="relative space-y-0">
+            {experience.map((exp, index) => (
+              <article
+                key={`${exp.company}-${exp.duration}`}
+                className={cn(
+                  'flex flex-col gap-5 border-t border-folio-outline-variant/15 py-10 first:border-t-0 first:pt-6 last:pb-6 dark:border-white/10 sm:flex-row sm:items-start sm:gap-8 md:gap-10',
+                )}
+              >
+                <div className="flex shrink-0 flex-row items-center gap-4 sm:w-36 sm:flex-col sm:items-start md:w-44">
                   <a
                     href={exp.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block rounded-sm outline-offset-2"
+                    className="group/logo flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-folio-outline-variant/25 bg-folio-surface-high/80 transition-[border-color,box-shadow] hover:border-folio-primary/40 hover:shadow-md hover:shadow-folio-primary/15 dark:border-white/10 dark:bg-zinc-900/60 md:h-16 md:w-16"
+                    aria-label={`${exp.company} (opens in new tab)`}
                   >
-                    <h4 className="mb-1 flex items-center gap-2 text-xl font-bold text-folio-on-surface transition-colors group-hover:text-folio-primary">
-                      {exp.title}
-                      <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-folio-primary" />
-                    </h4>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={exp.logo}
+                      alt={exp.company}
+                      className="logo-icon h-8 w-8 object-contain md:h-9 md:w-9"
+                    />
                   </a>
-                  <p className="technical-label text-sm text-folio-on-surface-variant mb-4 uppercase">
+                  <div
+                    className={cn(
+                      'technical-label min-w-0 text-[10px] font-bold uppercase leading-snug sm:max-w-none',
+                      index === 0 ? 'text-folio-primary' : 'text-folio-on-surface-variant',
+                    )}
+                  >
+                    {exp.duration}
+                  </div>
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/title inline-flex flex-wrap items-center gap-2 rounded-xl outline-offset-2"
+                  >
+                    <h3 className="text-xl font-bold text-folio-on-surface transition-colors group-hover/title:text-folio-primary md:text-2xl">
+                      {exp.title}
+                    </h3>
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-folio-primary opacity-0 transition-opacity group-hover/title:opacity-100" />
+                  </a>
+                  <p className="technical-label mt-2 text-sm uppercase text-folio-on-surface-variant">
                     {exp.company} · {exp.location}
                   </p>
-                  <p className="text-folio-on-surface-variant text-sm leading-relaxed">
+                  <p className="mt-4 text-sm leading-relaxed text-folio-on-surface-variant md:text-base">
                     {exp.description}
                   </p>
-                  <p className="technical-label text-[10px] text-folio-on-surface-variant/80 mt-3 uppercase tracking-wider">
-                    {exp.techStack}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div id="education">
-            <h2 className="text-4xl font-black kinetic-monolith text-folio-on-surface uppercase mb-12">
-              Academic Credentials
-            </h2>
-            <div className="space-y-12">
-              {education.map((edu, index) => (
-                <a
-                  key={`${edu.institution}-${edu.degree}`}
-                  href={edu.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block overflow-hidden rounded-sm border border-folio-outline-variant/20 bg-folio-surface-highest p-8 transition-[border-color,box-shadow] hover:border-folio-primary hover:shadow-md hover:shadow-folio-primary/20 dark:hover:border-folio-primary dark:hover:shadow-folio-primary/25"
-                >
-                  <div
-                    className={`absolute top-0 right-0 w-32 h-32 blur-2xl transition-all ${
-                      index % 2 === 0
-                        ? 'bg-folio-secondary/5 group-hover:bg-folio-secondary/20'
-                        : 'bg-folio-primary/5 group-hover:bg-folio-primary/20'
-                    }`}
-                  />
-                  <div
-                    className={`technical-label text-[10px] font-bold mb-2 uppercase ${
-                      index % 2 === 0 ? 'text-folio-secondary' : 'text-folio-primary'
-                    }`}
-                  >
-                    {edu.duration}
-                  </div>
-                  <h4 className="text-xl font-bold text-folio-on-surface mb-1 pr-8">
-                    {edu.degree}
-                  </h4>
-                  <p className="technical-label text-sm text-folio-on-surface-variant uppercase">
-                    {edu.institution}
-                  </p>
-                  <p className="text-folio-on-surface-variant text-sm mt-3">{edu.details}</p>
-                  {edu.grade ? (
-                    <p className="text-sm font-medium text-folio-primary mt-2">{edu.grade}</p>
+                  {exp.techStack ? (
+                    <p className="technical-label mt-4 text-[10px] uppercase tracking-wider text-folio-on-surface-variant/85">
+                      {exp.techStack}
+                    </p>
                   ) : null}
-                  <ArrowUpRight className="absolute top-6 right-6 w-4 h-4 text-folio-on-surface-variant group-hover:text-folio-primary transition-colors" />
-                </a>
-              ))}
-            </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
