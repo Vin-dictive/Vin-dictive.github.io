@@ -20,8 +20,8 @@
 
 /* Portfolio surfaces — toggled with `dark` on <html> (see ThemeToggle + theme script) */
 :root {
-  /* Cursor grid dots (RGB triplet for canvas); white reads on warm light surfaces */
-  --folio-dot-grid: 255 255 255;
+  /* Cursor grid dots (RGB triplet for canvas); dark dots on light surfaces */
+  --folio-dot-grid: 0 0 0;
   --folio-surface: 252 250 248;
   --folio-surface-low: 245 244 242;
   --folio-surface-container: 238 236 232;
