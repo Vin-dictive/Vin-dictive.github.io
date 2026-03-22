@@ -50,9 +50,8 @@ export default function Navigation({
   const [open, setOpen] = useState(false)
   /** While true, scroll-driven updates are skipped so smooth #nav jumps keep the correct highlight. */
   const hashNavLockRef = useRef(false)
-  const hashUnlockTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
-    undefined
-  )
+  /** Browser timers are numeric IDs; avoid NodeJS.Timeout from `setTimeout` typing. */
+  const hashUnlockTimerRef = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     const basePath = () =>
