@@ -124,10 +124,10 @@
       "preview": "https://raw.githubusercontent.com/UBC-MDS/DSCI-532_2026_8_cocoaboard/refs/heads/main/img/updated_demo.gif"
     },
     {
-      "name": "Fake Real News Detection",
-      "description": "Naive Bayes fake-news classifier with NLP preprocessing and feature extraction.",
-      "link": "https://github.com/Vin-dictive/fake-real-news-detection",
-      "preview": "https://raw.githubusercontent.com/Vin-dictive/fake-real-news-detection/refs/heads/main/img/fake_title_word_cloud.png"
+      "name": "Lameness Detection ML Pipeline",
+      "description": "Deployed to OpenStack Arbutus cloud as Docker microservices for cow lameness detection.",
+      "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
+      "preview": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless/blob/main/docs/ARCHITECTURE.md#detailed-ascii-diagram-updated"
     },
     {
       "name": "UBC Reddit Reporter",
@@ -138,26 +138,38 @@
     {
       "name": "Imitation Game",
       "description": "Python utility for symmetric and asymmetric encryption—a shared-secret and public-key cryptography interface.",
-      "link": "https://github.com/UBC-MDS/imitation_game",
+      "link": "https://ubc-mds.github.io/imitation_game/",
       "preview": "https://ubc-mds.github.io/imitation_game/"
+    },
+    {
+      "name": "Fake Real News Detection",
+      "description": "Naive Bayes fake-news classifier with NLP preprocessing and feature extraction.",
+      "link": "https://vin-dictive.github.io/fake-real-news-detection/reports/fake_news_classification_analysis.html",
+      "preview": "https://vin-dictive.github.io/fake-real-news-detection/reports/fake_news_classification_analysis.html"
     },
     {
       "name": "Customer Reviews Polarity Analysis",
       "description": "ML sentiment analysis (NLP) for positive/negative product-review classification.",
       "link": "https://github.com/Vin-dictive/customer-reviews-polarity",
-      "preview": ""
+      "preview": "https://github.com/Vin-dictive/customer-reviews-polarity/blob/main/notebook.ipynb"
     },
     {
       "name": "Developer Portfolio",
       "description": "This site—Next.js portfolio with Tailwind CSS and a Stitch-inspired UI.",
       "link": "https://github.com/Vin-dictive/Vin-dictive.github.io",
-      "preview": ""
+      "preview": "https://vin-dictive.github.io/"
     },
     {
-      "name": "Lameness Detection ML Pipeline",
-      "description": "Deployed to OpenStack Arbutus cloud as Docker microservices for cow lameness detection.",
-      "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
-      "preview": ""
+      "name": "ARgorithm",
+      "description": "ARgorithm is a project aimed at providing educators and enthusiasts a tool to create AR visualizations that explain the workings of data structures and algorithms with ease.",
+      "link": "https://argorithm.github.io/",
+      "preview": "https://argorithm.github.io/toolkit/"
+    },
+    {
+      "name": "Patatap Clone",
+      "description": "TThis is an app created using Paperjs and Howlerjs to make a clone version of Tapatap.com.. My own effort to create one. Will add more colors and more shapes and sounds in the future.",
+      "link": "https://vin-dictive.github.io/Patatap_Clone/",
+      "preview": "https://vin-dictive.github.io/Patatap_Clone/"
     }
   ],
   "education": [

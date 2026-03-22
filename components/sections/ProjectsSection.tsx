@@ -13,66 +13,12 @@ interface Project {
   preview?: string
 }
 
-const VISIBLE_COUNT = 4
+const VISIBLE_COUNT = 10
 
-const IMAGE_SRC_RE = /\.(png|jpe?g|gif|webp|svg|avif|bmp|ico)(?:[?#]|$)/i
-
-function isDirectImageSrc(src: string): boolean {
-  const s = src.trim()
-  if (!s) return false
-  if (s.startsWith('data:image/')) return true
-  const pathOnly = s.split('?')[0].split('#')[0]
-  return IMAGE_SRC_RE.test(pathOnly)
-}
 
 /** Compact preview so cards stay text-forward */
 const previewFrameClass =
   'relative mx-auto aspect-video w-full max-w-[200px] shrink-0 overflow-hidden rounded-lg border border-folio-outline-variant/20 bg-folio-surface-low sm:max-w-[240px] dark:bg-zinc-950'
-
-function ProjectPreviewMedia({ src, label }: { src?: string; label: string }) {
-  const trimmed = src?.trim()
-  if (trimmed) {
-    const frameTitle = `Live preview: ${label}`
-
-    if (isDirectImageSrc(trimmed)) {
-      return (
-        <div className={previewFrameClass}>
-          <img
-            src={trimmed}
-            alt={`Preview of ${label}`}
-            className="h-full w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      )
-    }
-
-    return (
-      <div className={previewFrameClass}>
-        <iframe
-          src={trimmed}
-          title={frameTitle}
-          className="h-full w-full border-0 bg-white dark:bg-zinc-950"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-        />
-      </div>
-    )
-  }
-
-  return (
-    <div
-      className={`relative mx-auto flex aspect-video w-full max-w-[200px] shrink-0 items-center justify-center overflow-hidden rounded-lg border border-dashed border-folio-outline-variant/35 bg-gradient-to-br from-folio-surface-high/80 to-folio-surface-low/60 sm:max-w-[240px] dark:border-white/15 dark:from-zinc-900/80 dark:to-zinc-950/60`}
-      aria-hidden
-    >
-      <span className="technical-label max-w-[90%] px-4 text-center text-[10px] uppercase leading-relaxed tracking-[0.3em] text-folio-on-surface-variant/45 dark:text-zinc-500">
-        Preview slot — add &quot;preview&quot; in profile.json
-      </span>
-    </div>
-  )
-}
 
 export default function ProjectsSection({
   projects,
@@ -120,15 +66,10 @@ export default function ProjectsSection({
                   <div
                     className={`flex min-h-0 w-full flex-col overflow-hidden transition-[border-color,box-shadow] duration-300 ${sectionGlassCardStatic} ${borderHover}`}
                   >
-                    <div className="p-4 pb-0 sm:p-5 sm:pb-0">
-                      <ProjectPreviewMedia src={project.preview} label={project.name} />
-                    </div>
-
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex min-h-0 flex-1 flex-col p-5 pt-4 outline-offset-2 transition-colors hover:bg-folio-primary/10 focus-visible:bg-folio-primary/10 sm:p-6 sm:pt-5 dark:hover:bg-folio-primary/20 dark:focus-visible:bg-folio-primary/20"
                     >
                       <div className="mb-3 flex items-start justify-between gap-3">
                         <span className="technical-label text-[10px] font-bold uppercase tracking-[0.35em] text-folio-secondary">
