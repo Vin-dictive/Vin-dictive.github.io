@@ -33,7 +33,7 @@ function navIdFromHash(hash: string): string {
 }
 
 const DEFAULT_RESUME_URL =
-  "https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf"
+  "https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf?raw=true"
 
 const navLinkBase =
   "inline-flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs font-bold uppercase tracking-wide transition-colors sm:px-3 sm:text-sm"
