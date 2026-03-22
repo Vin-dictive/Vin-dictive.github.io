@@ -1,71 +1,195 @@
 "use client"
 
-import { motion } from 'framer-motion'
-import { User, Briefcase, Code, GraduationCap, Award } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from "react"
+import type { LucideIcon } from "lucide-react"
+import {
+  Award,
+  Briefcase,
+  FileText,
+  FolderKanban,
+  GraduationCap,
+  Home,
+  Mail,
+  Menu,
+  User,
+  X,
+} from "lucide-react"
+import { ThemeToggleButton } from "@/components/ThemeToggle"
+import { cn } from "@/lib/utils"
 
-const navItems = [
-  { id: 'about', label: 'About', icon: User },
-  { id: 'experience', label: 'Experience', icon: Briefcase },
-  { id: 'projects', label: 'Projects', icon: Code },
-  { id: 'education', label: 'Education', icon: GraduationCap },
-  { id: 'certifications', label: 'Certifications', icon: Award },
-]
+const NAV: readonly { id: string; label: string; Icon: LucideIcon }[] = [
+  { id: "home", label: "Home", Icon: Home },
+  { id: "about", label: "About", Icon: User },
+  { id: "experience", label: "Experience", Icon: Briefcase },
+  { id: "projects", label: "Projects", Icon: FolderKanban },
+  { id: "certifications", label: "Certs", Icon: Award },
+  { id: "contact", label: "Contact", Icon: Mail },
+] as const
 
-export default function Navigation() {
-  const [activeSection, setActiveSection] = useState('about')
+const DEFAULT_RESUME_URL =
+  "https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf"
+
+const navLinkBase =
+  "inline-flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs font-bold uppercase tracking-wide transition-colors sm:px-3 sm:text-sm"
+
+const navActionPill =
+  "inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-lg border border-folio-on-surface/15 bg-folio-surface-highest/40 px-3 text-xs font-bold uppercase tracking-wider text-folio-on-surface shadow-sm backdrop-blur-sm transition-colors hover:border-folio-primary hover:bg-folio-primary/20 dark:border-white/10 dark:bg-zinc-900/50 dark:text-zinc-100 dark:hover:border-folio-primary dark:hover:bg-folio-primary/25 sm:px-4"
+
+export default function Navigation({
+  resumeUrl = DEFAULT_RESUME_URL,
+}: {
+  resumeUrl?: string
+}) {
+  const [active, setActive] = useState("home")
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.id))
-      const scrollPosition = window.scrollY + 100
+    const elements = NAV.map(({ id }) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => Boolean(el)
+    )
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i]
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id)
-          break
-        }
-      }
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        const id = visible[0]?.target.id
+        if (id) setActive(id)
+      },
+      { rootMargin: "-96px 0px -52% 0px", threshold: [0.08, 0.12, 0.2, 0.35] }
+    )
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    elements.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+  const go = (id: string) => {
+    setOpen(false)
+    const el = document.getElementById(id)
+    el?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="fixed top-4 left-4 right-4 z-50"
+    <nav
+      className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-6 sm:pt-4"
+      aria-label="Primary"
     >
-      <div className="flex items-center justify-center gap-2 p-2 bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl shadow-lg max-w-4xl mx-auto">
-        {navItems.map((item) => {
-          const Icon = item.icon
-          return (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                activeSection === item.id
-                  ? 'bg-gray-500/20 text-gray-700 dark:text-gray-300 shadow-lg'
-                  : 'hover:bg-white/20 dark:hover:bg-white/10'
-              }`}
+      <div className="pointer-events-auto w-full max-w-screen-2xl overflow-hidden rounded-xl border border-folio-on-surface/10 bg-folio-surface-highest/35 shadow-xl shadow-folio-surface/10 backdrop-blur-2xl transition-[box-shadow] dark:border-white/10 dark:bg-zinc-950/40 dark:shadow-black/40 md:backdrop-blur-3xl">
+        {/* Desktop + mobile header row */}
+        <div className="relative flex h-14 w-full items-center px-3 sm:h-16 sm:px-5">
+          {/* Spacer balances center cluster on large screens */}
+          <div className="hidden w-[min(11rem,22vw)] shrink-0 lg:block" aria-hidden />
+
+          {/* Centered nav — desktop only */}
+          <div className="absolute left-1/2 top-1/2 hidden max-w-[min(100%-10rem,56rem)] -translate-x-1/2 -translate-y-1/2 lg:flex lg:items-center lg:justify-center">
+            <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1 xl:gap-x-2">
+              {NAV.map((item) => {
+                const Icon = item.Icon
+                const isActive = active === item.id
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => go(item.id)}
+                    className={cn(
+                      navLinkBase,
+                      "group/navlink",
+                      isActive
+                        ? "text-folio-primary dark:text-folio-primary"
+                        : "text-folio-on-surface-variant hover:text-folio-primary dark:text-zinc-400 dark:hover:text-folio-primary"
+                    )}
+                  >
+                    <Icon
+                      className={cn(
+                        "h-4 w-4 shrink-0 transition-colors",
+                        isActive
+                          ? "text-folio-primary"
+                          : "opacity-80 group-hover/navlink:text-folio-primary group-hover/navlink:opacity-100"
+                      )}
+                      aria-hidden
+                    />
+                    <span className="whitespace-nowrap">{item.label}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Actions: mobile uses ms-auto; desktop right column */}
+          <div className="ms-auto flex items-center gap-2 sm:gap-2.5 lg:ms-0 lg:flex-1 lg:justify-end">
+            <ThemeToggleButton />
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(navActionPill, "min-w-0")}
+              aria-label="Open resume PDF"
             >
-              <Icon className="w-4 h-4" />
-              <span className="hidden md:inline">{item.label}</span>
+              <FileText className="h-4 w-4 shrink-0" aria-hidden />
+              <span className="max-[380px]:sr-only">Resume</span>
+            </a>
+            <button
+              type="button"
+              className={cn(
+                navActionPill,
+                "w-10 px-0 sm:w-11 lg:hidden",
+                open &&
+                  "border-folio-primary bg-folio-primary/10 dark:border-folio-primary dark:bg-folio-primary/20"
+              )}
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-label={open ? "Close menu" : "Open menu"}
+            >
+              {open ? (
+                <X className="h-5 w-5" aria-hidden />
+              ) : (
+                <Menu className="h-5 w-5" aria-hidden />
+              )}
             </button>
-          )
-        })}
+          </div>
+        </div>
+
+        {/* Mobile sheet */}
+        {open ? (
+          <div className="border-t border-folio-outline-variant/15 bg-folio-surface-highest/30 px-3 py-3 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/35 lg:hidden">
+            <div className="mx-auto flex max-w-md flex-col gap-1">
+              {NAV.map((item) => {
+                const Icon = item.Icon
+                const isActive = active === item.id
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => go(item.id)}
+                    className={cn(
+                      "flex min-h-12 w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm font-bold uppercase tracking-wide transition-colors",
+                      isActive
+                        ? "bg-folio-primary/10 text-folio-primary dark:bg-folio-primary/20 dark:text-folio-primary"
+                        : "text-folio-on-surface hover:bg-folio-primary/10 hover:text-folio-primary dark:text-zinc-300 dark:hover:bg-folio-primary/20 dark:hover:text-folio-primary"
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-folio-outline-variant/20 dark:border-white/10",
+                        isActive && "border-folio-primary bg-folio-primary/20"
+                      )}
+                    >
+                      <Icon
+                        className={cn(
+                          "h-4 w-4",
+                          isActive ? "text-folio-primary" : "opacity-80"
+                        )}
+                        aria-hidden
+                      />
+                    </span>
+                    {item.label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        ) : null}
       </div>
-    </motion.nav>
+    </nav>
   )
 }

@@ -1,13 +1,11 @@
-"use client"
-
-import ThemeToggle from '@/components/ThemeToggle'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import HomeSection from '@/components/sections/HomeSection'
 import AboutSection from '@/components/sections/AboutSection'
-import ExperienceSection from '@/components/sections/ExperienceSection'
 import ProjectsSection from '@/components/sections/ProjectsSection'
-import EducationSection from '@/components/sections/EducationSection'
+import ExperienceEducationSection from '@/components/sections/ExperienceEducationSection'
 import CertificationsSection from '@/components/sections/CertificationsSection'
+import ContactSection from '@/components/sections/ContactSection'
 import profileData from '@/data/profile.json'
 
 export default function Home() {
@@ -15,16 +13,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <ThemeToggle />
-      <Navigation />
-      <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <AboutSection personal={personal} skills={skills} />
-        <ExperienceSection experience={experience} />
-        <ProjectsSection projects={projects} />
-        <EducationSection education={education} />
+      <Navigation resumeUrl={personal.resumeUrl} />
+      <main>
+        <HomeSection personal={personal} skills={skills} />
+        <AboutSection personal={personal} />
+        <ExperienceEducationSection experience={experience} education={education} />
+        <ProjectsSection projects={projects} githubUsername={personal.github} />
         <CertificationsSection certifications={certifications} />
-      </div>
-      <Footer />
+        <ContactSection personal={personal} />
+      </main>
+      <Footer
+        brand={personal.name}
+        github={personal.github}
+        linkedin={personal.linkedin}
+        email={personal.email}
+      />
     </div>
   )
 }

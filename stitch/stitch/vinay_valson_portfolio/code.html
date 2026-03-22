@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vinay Valson | Full-Stack Developer &amp; AI Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#531a80",
+                        "background": "#0e0e0e",
+                        "secondary-fixed-dim": "#ffaeb8",
+                        "inverse-primary": "#bc181d",
+                        "primary-container": "#ff766b",
+                        "tertiary-dim": "#be85ee",
+                        "secondary-fixed": "#ffc2c9",
+                        "primary": "#ff8e83",
+                        "surface-container-low": "#131313",
+                        "surface-tint": "#ff8e83",
+                        "on-primary-container": "#4f0004",
+                        "tertiary": "#d29dff",
+                        "error-dim": "#d73357",
+                        "on-surface-variant": "#adaaaa",
+                        "primary-fixed-dim": "#ff5a51",
+                        "outline-variant": "#484847",
+                        "surface-dim": "#0e0e0e",
+                        "on-tertiary-container": "#3e006a",
+                        "on-secondary-fixed": "#6a0b27",
+                        "on-secondary-fixed-variant": "#912b42",
+                        "error-container": "#a70138",
+                        "on-primary": "#650006",
+                        "secondary-dim": "#f3778c",
+                        "surface-container": "#1a1a1a",
+                        "on-error-container": "#ffb2b9",
+                        "on-tertiary-fixed": "#280047",
+                        "on-primary-fixed": "#000000",
+                        "tertiary-fixed-dim": "#c48bf4",
+                        "on-secondary-container": "#ffc0c7",
+                        "surface-container-highest": "#262626",
+                        "on-tertiary": "#4b1079",
+                        "error": "#ff6e84",
+                        "tertiary-fixed": "#d19aff",
+                        "secondary-container": "#842138",
+                        "surface-container-high": "#20201f",
+                        "outline": "#767575",
+                        "on-error": "#490013",
+                        "primary-fixed": "#ff766b",
+                        "on-primary-fixed-variant": "#600005",
+                        "on-surface": "#ffffff",
+                        "on-secondary": "#56001b",
+                        "tertiary-container": "#c68df7",
+                        "on-background": "#ffffff",
+                        "inverse-on-surface": "#565555",
+                        "surface-variant": "#262626",
+                        "inverse-surface": "#fcf9f8",
+                        "surface-container-lowest": "#000000",
+                        "surface": "#0e0e0e",
+                        "surface-bright": "#2c2c2c",
+                        "secondary": "#fd7e93",
+                        "primary-dim": "#db322f"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .technical-label {
+            font-family: 'Space Grotesk', monospace;
+        }
+        .kinetic-monolith {
+            letter-spacing: -0.02em;
+        }
+        .pulse-gradient {
+            background: linear-gradient(90deg, #ff8e83, #ff766b);
+        }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800/50 shadow-2xl shadow-black/50">
+<div class="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
+<div class="text-xl font-black tracking-tighter text-white dark:text-zinc-100 uppercase">VINAY VALSON</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Inter'] font-bold tracking-tight text-sm uppercase text-red-500 border-b-2 border-red-500 pb-1" href="#">Home</a>
+<a class="font-['Inter'] font-bold tracking-tight text-sm uppercase text-zinc-500 hover:text-zinc-200 transition-all duration-300" href="#experience">Experience</a>
+<a class="font-['Inter'] font-bold tracking-tight text-sm uppercase text-zinc-500 hover:text-zinc-200 transition-all duration-300" href="#projects">Projects</a>
+<a class="font-['Inter'] font-bold tracking-tight text-sm uppercase text-zinc-500 hover:text-zinc-200 transition-all duration-300" href="#skills">Skills</a>
+<a class="font-['Inter'] font-bold tracking-tight text-sm uppercase text-zinc-500 hover:text-zinc-200 transition-all duration-300" href="#education">Education</a>
+<a class="font-['Inter'] font-bold tracking-tight text-sm uppercase text-zinc-500 hover:text-zinc-200 transition-all duration-300" href="#contact">Contact</a>
+</div>
+<button class="px-6 py-2 bg-red-600 text-white font-bold text-xs uppercase tracking-widest rounded-sm active:scale-95 duration-150 transition-all hover:bg-red-500">Resume</button>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center px-8 overflow-hidden bg-surface">
+<div class="absolute top-1/4 -right-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="max-w-screen-xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-8 z-10">
+<div class="technical-label text-primary uppercase tracking-[0.3em] text-xs mb-6 font-bold flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                        Status: Engineering for Performance
+                    </div>
+<h1 class="text-7xl md:text-9xl font-black kinetic-monolith leading-[0.9] text-on-surface mb-8">
+                        VINAY <br/> VALSON
+                    </h1>
+<p class="text-2xl md:text-3xl font-light text-on-surface-variant max-w-2xl mb-12">
+                        Full-Stack Developer &amp; AI Engineer. <span class="text-on-surface font-medium italic">"Code is poetry written in logic."</span>
+</p>
+<div class="flex flex-wrap gap-4">
+<a class="px-8 py-4 pulse-gradient text-on-primary font-bold rounded-sm uppercase tracking-widest text-sm hover:opacity-90 transition-opacity" href="#projects">Explore Work</a>
+<a class="px-8 py-4 border border-outline-variant text-on-surface font-bold rounded-sm uppercase tracking-widest text-sm hover:bg-surface-container-high transition-colors" href="#contact">Get In Touch</a>
+</div>
+</div>
+<div class="md:col-span-4 relative hidden md:block">
+<div class="aspect-square bg-surface-container-high border border-outline-variant/20 rounded-sm relative overflow-hidden group">
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700" data-alt="Dark abstract code on a screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMzD87t8P05lm1WP7ALi73fqICMZcGx1X02Fd0em1eTCu71Oh8OmIERMn6nmQXvpC6YMr8U5ium1crqof9-Kc-avKKU907QylCgXWtGCm4OLrjL7ICHcn0cle_dTRCskQKZ_IaNidjClUpuovWAJS-6KlOCaFkF8WXfZhotZbCeWbbYh0WyWSP5AfuEFKpWNZJQofedSQ8RULPSY4CHn0eoIffYaNIbVMPkWFdG_sfuvNWrECklPzSDywSl5aK2rTj0WVBsUPYkfY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-6 left-6 technical-label text-xs text-on-surface-variant">
+                            0x76 0x69 0x6e 0x61 0x79
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Bento Grid -->
+<section class="py-24 px-8 bg-surface-container-low" id="skills">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="text-5xl font-black kinetic-monolith text-on-surface uppercase mb-4">Core Stack</h2>
+<p class="technical-label text-on-surface-variant text-sm tracking-widest">Multi-disciplinary engineering expertise</p>
+</div>
+<div class="h-px bg-outline-variant/30 flex-grow mx-8 hidden md:block mb-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Frontend -->
+<div class="bg-surface-container-highest p-8 border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">terminal</span>
+<h3 class="technical-label text-lg font-bold text-on-surface mb-6">Frontend</h3>
+<ul class="space-y-3 technical-label text-xs text-on-surface-variant uppercase tracking-widest">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> React / Next.js</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> TypeScript</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> Tailwind CSS</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> Three.js / D3.js</li>
+</ul>
+</div>
+<!-- Backend -->
+<div class="bg-surface-container-highest p-8 border-l-4 border-tertiary">
+<span class="material-symbols-outlined text-tertiary mb-6 text-4xl">database</span>
+<h3 class="technical-label text-lg font-bold text-on-surface mb-6">Backend</h3>
+<ul class="space-y-3 technical-label text-xs text-on-surface-variant uppercase tracking-widest">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> Node.js / Go</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> Python / FastAPI</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> PostgreSQL / Redis</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> GraphQL / gRPC</li>
+</ul>
+</div>
+<!-- ML/DS -->
+<div class="bg-surface-container-highest p-8 border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary mb-6 text-4xl">psychology</span>
+<h3 class="technical-label text-lg font-bold text-on-surface mb-6">ML &amp; Data Science</h3>
+<ul class="space-y-3 technical-label text-xs text-on-surface-variant uppercase tracking-widest">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> PyTorch / TensorFlow</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> Scikit-learn</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> NLP / Computer Vision</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> LLM Fine-tuning</li>
+</ul>
+</div>
+<!-- Cloud/DevOps -->
+<div class="bg-surface-container-highest p-8 border-l-4 border-on-surface">
+<span class="material-symbols-outlined text-on-surface mb-6 text-4xl">cloud_queue</span>
+<h3 class="technical-label text-lg font-bold text-on-surface mb-6">Cloud &amp; DevOps</h3>
+<ul class="space-y-3 technical-label text-xs text-on-surface-variant uppercase tracking-widest">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> AWS / Azure</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> Docker / K8s</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> CI/CD Pipelines</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary rounded-full"></span> Terraform</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-24 px-8 bg-surface" id="projects">
+<div class="max-w-screen-xl mx-auto">
+<h2 class="text-5xl font-black kinetic-monolith text-on-surface uppercase mb-16 text-center">Highlighted Deployments</h2>
+<div class="space-y-32">
+<!-- Project 1: Imitation Game -->
+<div class="group grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<div class="technical-label text-secondary text-xs font-bold tracking-[0.4em] mb-4 uppercase">Project_01</div>
+<h3 class="text-4xl font-bold mb-6 group-hover:text-primary transition-colors">Imitation Game</h3>
+<p class="text-on-surface-variant body-lg mb-8 leading-relaxed">
+                                A high-fidelity human behavior simulation engine leveraging multi-agent reinforcement learning. Designed to analyze complex social dynamics in digital environments using specialized neural architectures.
+                            </p>
+<div class="flex flex-wrap gap-3 mb-10">
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">PyTorch</span>
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">React</span>
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">FastAPI</span>
+</div>
+<a class="flex items-center gap-2 technical-label text-xs font-bold uppercase tracking-widest text-on-surface group-hover:translate-x-2 transition-transform" href="#">
+                                View Case Study <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="order-1 md:order-2 bg-surface-container-low aspect-video overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Microchip circuitry glowing with red light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEQ2tCIrdQg3HGkfo_A3gSGGS73_bKixy1ToUwGvXu0mAJM8NCbHzXNwvOiVPpbFTlTzt1CUtnRixqXg7aaNwOxz70_BTeJagTa18scyGnbX0_Jz-5aY1bUDnmrAjTBKBIbtDKOxT7evNM3eoX--8eyo3kfNwrJFmhr4fJh0u0t6CSSNPiGyvbO8ijcJrl8fEqdsHXbV0svQ1ZySyMa7SAqDYDjxVwatvhGA5eKQcKJFGy3_8Ub-Wy7KUXnbwdOI3pAy7GY-Ew3X4"/>
+</div>
+</div>
+<!-- Project 2: Fake Real News Detection -->
+<div class="group grid md:grid-cols-2 gap-12 items-center">
+<div class="bg-surface-container-low aspect-video overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="High tech security screen with data nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMHVMwUQqaZiFOPLbLPOZZ41-MYFfCb6sTnQVQJZYZtH1mlN2iYHaHUhghM1t9WCbebny5SMlArsulEPbEXWsN66QKFDKNX1Mx4XRdyhdVpw8_UL1mc9ON_cXGCWd3pMhZkl5ydDReKlmQB02xLXFSduXkb5K44nB2yfzNMjebwPMhuhcbo5LVFqC9AqcictI8Z2fojt1HfGEiUyPNgNAVp-u5kG3Oqek5MSfAPhbhm0axQC_s1svIQC9OB0JaIQrKC6olpHylDb0"/>
+</div>
+<div>
+<div class="technical-label text-secondary text-xs font-bold tracking-[0.4em] mb-4 uppercase">Project_02</div>
+<h3 class="text-4xl font-bold mb-6 group-hover:text-tertiary transition-colors">Fake Real News Detection</h3>
+<p class="text-on-surface-variant body-lg mb-8 leading-relaxed">
+                                An end-to-end NLP pipeline that classifies textual data using ensemble learning techniques. Utilizes BERT-based transformers to identify linguistic patterns associated with misinformation.
+                            </p>
+<div class="flex flex-wrap gap-3 mb-10">
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">NLP</span>
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">Transformers</span>
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">Scikit-Learn</span>
+</div>
+<a class="flex items-center gap-2 technical-label text-xs font-bold uppercase tracking-widest text-on-surface group-hover:translate-x-2 transition-transform" href="#">
+                                View Repository <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Project 3: ARgorithm -->
+<div class="group grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<div class="technical-label text-secondary text-xs font-bold tracking-[0.4em] mb-4 uppercase">Project_03</div>
+<h3 class="text-4xl font-bold mb-6 group-hover:text-primary transition-colors">ARgorithm</h3>
+<p class="text-on-surface-variant body-lg mb-8 leading-relaxed">
+                                An augmented reality platform designed to visualize complex data structures and algorithms in 3D space. Bridging the gap between abstract computer science concepts and tangible visual learning.
+                            </p>
+<div class="flex flex-wrap gap-3 mb-10">
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">ARCore</span>
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">Unity</span>
+<span class="px-3 py-1 bg-surface-container-highest technical-label text-[10px] text-on-surface-variant border border-outline-variant/20 uppercase">C#</span>
+</div>
+<a class="flex items-center gap-2 technical-label text-xs font-bold uppercase tracking-widest text-on-surface group-hover:translate-x-2 transition-transform" href="#">
+                                Live Demo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="order-1 md:order-2 bg-surface-container-low aspect-video overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Augmented reality glasses on a futuristic desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIKQY4NHzCo_cninWFjgSg8b89s36i64BRlhU53SW34IVLuPPUFU4y9yGx7AOb1Wj4kCPcI5ec6FIemLnHXXVy34YplBDWI13OSXv_dEGpQxrKzuOx_Zz5qZ-SRPCMZuHMw1Vh7dz6Xh7JvJ2DPdvfSw0G3xE5DMLZ3BYUstr8VEaXd7l8qiiPrgYX-YZe1qtanpOFPEloXxbmfqlc0AqVnEgflsB0b_uaFToaECEUBP1ZCG9bgw_QQy2vj3k8KFmzl7x6t969hps"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience & Education -->
+<section class="py-24 px-8 bg-surface-container-low border-y border-outline-variant/10" id="experience">
+<div class="max-w-screen-xl mx-auto">
+<div class="grid md:grid-cols-2 gap-24">
+<!-- Professional History -->
+<div>
+<h2 class="text-4xl font-black kinetic-monolith text-on-surface uppercase mb-12">Professional Timeline</h2>
+<div class="space-y-12">
+<div class="relative pl-8 border-l border-primary/30">
+<div class="absolute -left-1.5 top-0 w-3 h-3 bg-primary rounded-full"></div>
+<div class="technical-label text-[10px] text-primary font-bold mb-2 uppercase">2023 - Present</div>
+<h4 class="text-xl font-bold text-on-surface mb-1">Software Engineer</h4>
+<p class="technical-label text-sm text-on-surface-variant mb-4 uppercase">Oracle</p>
+<p class="text-on-surface-variant text-sm">Developing scalable cloud infrastructure and enterprise-grade data management systems within the core cloud division.</p>
+</div>
+<div class="relative pl-8 border-l border-outline-variant/30">
+<div class="absolute -left-1.5 top-0 w-3 h-3 bg-outline-variant rounded-full"></div>
+<div class="technical-label text-[10px] text-on-surface-variant font-bold mb-2 uppercase">2022 - 2023</div>
+<h4 class="text-xl font-bold text-on-surface mb-1">AI Researcher</h4>
+<p class="technical-label text-sm text-on-surface-variant mb-4 uppercase">Blue Rabbit</p>
+<p class="text-on-surface-variant text-sm">Spearheaded the integration of Large Language Models for automated content analysis and user behavior forecasting.</p>
+</div>
+<div class="relative pl-8 border-l border-outline-variant/30">
+<div class="absolute -left-1.5 top-0 w-3 h-3 bg-outline-variant rounded-full"></div>
+<div class="technical-label text-[10px] text-on-surface-variant font-bold mb-2 uppercase">2021</div>
+<h4 class="text-xl font-bold text-on-surface mb-1">Graduate Research Assistant</h4>
+<p class="technical-label text-sm text-on-surface-variant mb-4 uppercase">University of British Columbia</p>
+<p class="text-on-surface-variant text-sm">Collaborated on cross-departmental data science initiatives focusing on scalable statistical modeling.</p>
+</div>
+</div>
+</div>
+<!-- Academic Background -->
+<div id="education">
+<h2 class="text-4xl font-black kinetic-monolith text-on-surface uppercase mb-12">Academic Credentials</h2>
+<div class="space-y-12">
+<div class="bg-surface-container-highest p-8 rounded-sm relative group overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-2xl group-hover:bg-secondary/10 transition-all"></div>
+<div class="technical-label text-[10px] text-secondary font-bold mb-2 uppercase">Masters Degree</div>
+<h4 class="text-xl font-bold text-on-surface mb-1">Master of Data Science (MDS)</h4>
+<p class="technical-label text-sm text-on-surface-variant uppercase">University of British Columbia</p>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-sm relative group overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-all"></div>
+<div class="technical-label text-[10px] text-primary font-bold mb-2 uppercase">Bachelor's Degree</div>
+<h4 class="text-xl font-bold text-on-surface mb-1">Bachelor of Engineering (B.E)</h4>
+<p class="technical-label text-sm text-on-surface-variant uppercase">Army Institute of Technology (AIT)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact/Call to Action -->
+<section class="py-32 px-8 bg-surface" id="contact">
+<div class="max-w-screen-xl mx-auto text-center">
+<div class="inline-block p-4 border border-primary/20 bg-primary/5 technical-label text-xs uppercase tracking-[0.5em] text-primary mb-12">Initiate Connection</div>
+<h2 class="text-6xl md:text-8xl font-black kinetic-monolith text-on-surface uppercase mb-8">Ready for the <br/> next challenge?</h2>
+<p class="text-xl text-on-surface-variant max-w-2xl mx-auto mb-16">
+                    Currently accepting inquiries for high-impact AI engineering roles and collaborative architectural projects. Let's engineer something extraordinary.
+                </p>
+<div class="flex flex-col md:flex-row justify-center items-center gap-6">
+<a class="w-full md:w-auto px-12 py-5 pulse-gradient text-on-primary font-bold rounded-sm uppercase tracking-widest text-sm" href="mailto:contact@vinayvalson.com">Send Email</a>
+<a class="w-full md:w-auto px-12 py-5 border border-outline-variant text-on-surface font-bold rounded-sm uppercase tracking-widest text-sm hover:bg-surface-container-high transition-colors" href="#">Schedule Call</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-zinc-950 w-full py-12 border-t border-zinc-900">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 gap-6 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="font-black text-white uppercase tracking-tighter">VINAY VALSON</span>
+<span class="text-zinc-800 text-lg">|</span>
+<p class="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest text-zinc-500">© 2024 VINAY VALSON. ENGINEERED FOR PERFORMANCE.</p>
+</div>
+<div class="flex gap-10">
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-zinc-600 hover:text-red-500 transition-colors" href="#">GitHub</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-zinc-600 hover:text-red-500 transition-colors" href="#">LinkedIn</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-zinc-600 hover:text-red-500 transition-colors" href="#">Email</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -2,6 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .technical-label {
+    font-family: var(--font-space-grotesk), ui-monospace, monospace;
+  }
+  .kinetic-monolith {
+    letter-spacing: -0.02em;
+  }
+  .pulse-gradient {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--folio-primary)),
+      rgb(var(--folio-primary-fixed))
+    );
+  }
+}
+
+/* Portfolio surfaces — toggled with `dark` on <html> (see ThemeToggle + theme script) */
+:root {
+  /* Cursor grid dots (RGB triplet for canvas); white reads on warm light surfaces */
+  --folio-dot-grid: 255 255 255;
+  --folio-surface: 252 250 248;
+  --folio-surface-low: 245 244 242;
+  --folio-surface-container: 238 236 232;
+  --folio-surface-high: 232 229 224;
+  --folio-surface-highest: 224 221 216;
+  --folio-on-surface: 28 27 26;
+  --folio-on-surface-variant: 92 88 84;
+  --folio-primary: 255 142 131;
+  --folio-primary-fixed: 255 118 107;
+  --folio-on-primary: 101 0 6;
+  --folio-tertiary: 176 110 220;
+  --folio-secondary: 230 90 120;
+  --folio-outline: 140 136 132;
+  --folio-outline-variant: 200 196 192;
+}
+
+.dark {
+  --folio-dot-grid: 255 255 255;
+  --folio-surface: 14 14 14;
+  --folio-surface-low: 19 19 19;
+  --folio-surface-container: 26 26 26;
+  --folio-surface-high: 32 32 31;
+  --folio-surface-highest: 38 38 38;
+  --folio-on-surface: 255 255 255;
+  --folio-on-surface-variant: 173 170 170;
+  --folio-primary: 255 142 131;
+  --folio-primary-fixed: 255 118 107;
+  --folio-on-primary: 101 0 6;
+  --folio-tertiary: 210 157 255;
+  --folio-secondary: 253 126 147;
+  --folio-outline: 118 117 117;
+  --folio-outline-variant: 72 72 71;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -54,7 +108,15 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-folio-surface text-folio-on-surface antialiased;
+  }
+
+  ::selection {
+    @apply bg-folio-primary/35 text-folio-on-surface;
+  }
+
+  .dark ::selection {
+    @apply bg-folio-primary text-folio-on-primary;
   }
   
   /* Transparent scrollbar */
@@ -88,16 +150,19 @@
 
 
 
-/* Theme-responsive icons */
+/* Theme-responsive icons (cert / employer marks on tinted cards) */
 .logo-icon {
-  filter: brightness(0) invert(0);
+  filter: brightness(0) saturate(100%);
+  opacity: 0.85;
 }
 
 .dark .logo-icon {
   filter: brightness(0) invert(1);
+  opacity: 1;
 }
 
-/* Social icon button effect */
-a[href*="github.com"], a[href*="linkedin.com"] {
-  @apply transition-all duration-200 hover:scale-110 hover:bg-blue-500/10 hover:rounded-lg p-2 -m-2;
+/* Social icon links — subtle hover, no scale (avoids layout “swell”) */
+a[href*="github.com"],
+a[href*="linkedin.com"] {
+  @apply rounded-lg p-2 -m-2 transition-colors duration-200 hover:bg-folio-primary/20 dark:hover:bg-folio-primary/30;
 }

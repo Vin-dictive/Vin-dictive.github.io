@@ -16,7 +16,27 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        label: ["var(--font-space-grotesk)", "ui-monospace", "monospace"],
+      },
       colors: {
+        folio: {
+          surface: "rgb(var(--folio-surface) / <alpha-value>)",
+          "surface-low": "rgb(var(--folio-surface-low) / <alpha-value>)",
+          "surface-container": "rgb(var(--folio-surface-container) / <alpha-value>)",
+          "surface-high": "rgb(var(--folio-surface-high) / <alpha-value>)",
+          "surface-highest": "rgb(var(--folio-surface-highest) / <alpha-value>)",
+          "on-surface": "rgb(var(--folio-on-surface) / <alpha-value>)",
+          "on-surface-variant": "rgb(var(--folio-on-surface-variant) / <alpha-value>)",
+          primary: "rgb(var(--folio-primary) / <alpha-value>)",
+          "primary-fixed": "rgb(var(--folio-primary-fixed) / <alpha-value>)",
+          "on-primary": "rgb(var(--folio-on-primary) / <alpha-value>)",
+          tertiary: "rgb(var(--folio-tertiary) / <alpha-value>)",
+          secondary: "rgb(var(--folio-secondary) / <alpha-value>)",
+          outline: "rgb(var(--folio-outline) / <alpha-value>)",
+          "outline-variant": "rgb(var(--folio-outline-variant) / <alpha-value>)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
