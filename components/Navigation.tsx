@@ -50,10 +50,11 @@ export default function Navigation({
   const [open, setOpen] = useState(false)
   /** While true, scroll-driven updates are skipped so smooth #nav jumps keep the correct highlight. */
   const hashNavLockRef = useRef(false)
-  /** Browser timers are numeric IDs; avoid NodeJS.Timeout from `setTimeout` typing. */
-  const hashUnlockTimerRef = useRef<number | undefined>(undefined)
 
   useEffect(() => {
+    /** Timer id lives in the effect closure so DOM `number` vs Node `Timeout` typings never clash. */
+    let hashUnlockTimerId: number | undefined
+
     const basePath = () =>
       `${window.location.pathname}${window.location.search}`
 
@@ -96,20 +97,20 @@ export default function Navigation({
 
     const clearHashNavLock = () => {
       hashNavLockRef.current = false
-      if (hashUnlockTimerRef.current !== undefined) {
-        clearTimeout(hashUnlockTimerRef.current)
-        hashUnlockTimerRef.current = undefined
+      if (hashUnlockTimerId !== undefined) {
+        window.clearTimeout(hashUnlockTimerId)
+        hashUnlockTimerId = undefined
       }
       syncFromScroll()
     }
 
     const onHashChange = () => {
       hashNavLockRef.current = true
-      if (hashUnlockTimerRef.current !== undefined) {
-        clearTimeout(hashUnlockTimerRef.current)
+      if (hashUnlockTimerId !== undefined) {
+        window.clearTimeout(hashUnlockTimerId)
       }
       syncFromHashOnly()
-      hashUnlockTimerRef.current = window.setTimeout(clearHashNavLock, 750)
+      hashUnlockTimerId = window.setTimeout(clearHashNavLock, 750)
     }
 
     const onScroll = () => {
@@ -134,8 +135,8 @@ export default function Navigation({
 
     return () => {
       cancelAnimationFrame(initialSync)
-      if (hashUnlockTimerRef.current !== undefined) {
-        clearTimeout(hashUnlockTimerRef.current)
+      if (hashUnlockTimerId !== undefined) {
+        window.clearTimeout(hashUnlockTimerId)
       }
       window.removeEventListener("hashchange", onHashChange)
       window.removeEventListener("scroll", onScroll)
