@@ -69,7 +69,7 @@
       "company": "University of British Columbia",
       "duration": "January 2026 - April 2026",
       "location": "Vancouver, BC",
-      "description": "Delivering instruction and support for CPSC 436C Cloud Computing to improve student comprehension of software engineering and GCP/AWS deployment patterns and designs.",
+      "description": "Ran tutorials and office hours and explained difficult ideas in accessible terms for a Cloud Computing course. Contributed hands-on coaching to capstone teams through architecture and design reviews, surfacing trade-offs in components and deployment styles and improving iteration quality for scalable project delivery.",
       "techStack": null,
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
@@ -79,7 +79,7 @@
       "company": "Volentia Healthcare Services",
       "duration": "January 2026 - February 2026",
       "location": "Vancouver, BC",
-      "description": "Built and deployed a healthcare web application using Next.js, PostgreSQL, and Railway to enable client operations; delivered within a 2-week timeline.",
+      "description": "Delivered a production-ready healthcare web app in two weeks so hospital staff, research teams, and physicians could rely on one hosted product for translation workflows instead of ad hoc tooling. Set up CI/CD for quick, repeatable deployments and aligned hosting with scalable services for growing operational traffic.",
       "techStack": null,
       "logo": "/school.svg",
       "link": "https://app.volentia.ca"
@@ -89,7 +89,7 @@
       "company": "Blue Rabbit Group Ltd.",
       "duration": "April 2024 - November 2025",
       "location": "Hong Kong / EU / India",
-      "description": "Designed and built ETL pipelines for AI-driven portfolio management to support automated trading decisions and asset rebalancing across Django, React, and Fastify services. Website data analytics using PostHog for A/B testing. Developed crypto market data analysis AI and asset-risk frameworks using Python, TypeScript, and PostgreSQL / Timescale with sub-second query latency for real-time dashboards and client live interaction. Implemented data ingestion and event-driven workflows with Inngest and Mastra AI to reduce manual processing; integrated PostHog analytics for user behaviour tracking.",
+      "description": "Delivered data pipelines, real-time analytics, and workflow automation for AI-driven portfolio management and trading; moved priority market datasets to same-day freshness and reduced repetitive manual handling by an estimated 50-60% for the analytics team within the first two quarters. Shipped client-facing dashboards with median sub-second response for live positions, risk, and market views. Ran continuous product experiments and funnel analytics supporting regular A/B tests across key conversion paths over 12 months.",
       "techStack": "Python, TypeScript, Django, React, Fastify, PostgreSQL, Timescale, Inngest, Mastra AI, PostHog",
       "logo": "/bluerabbit-logo-white.svg",
       "link": "https://www.bluerabbit.ai/"
@@ -99,7 +99,7 @@
       "company": "Oracle Financial Services Software Limited",
       "duration": "August 2021 - April 2024",
       "location": "Bangalore / Hong Kong",
-      "description": "Led onsite deployment in Hong Kong for Oracle Banking Digital Experience (OBDX); designed Fraud Detection and Foreign Exchange dashboard components using JAVARX, OJET, REST APIs, and Jenkins. Implemented Open API and access management modules for multi-tenant banking; received Rising Star Award and Ever Ready Award; mentored 3+ new team members.",
+      "description": "Led onsite delivery in Hong Kong for Oracle Banking Digital Experience (OBDX), shipping fraud-detection and foreign-exchange operations dashboards into production for daily bank operations use. Delivered multi-tenant open-banking and access-management capabilities that reduced typical partner onboarding effort by about 40% versus the prior approach. Owned successive go-live milestones and post-launch stabilization, recognized with Rising Star and Ever Ready awards, and onboarded and mentored 4 engineers.",
       "techStack": "Java, JAVARX, OJET, REST, Jenkins, OBDX",
       "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-jgHIOObUBN6xGD65sRVC2eJtKNsAaJ6?usp=sharing"
@@ -118,7 +118,7 @@
   "projects": [
     {
       "name": "CocoaBoard",
-      "description": "Interactive Python Shiny dashboard for chocolate sales analytics.",
+      "description": "Interactive Python Shiny dashboard for chocolate sales for data analytics.",
       "link": "https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard",
       "preview": "https://raw.githubusercontent.com/UBC-MDS/DSCI-532_2026_8_cocoaboard/refs/heads/main/img/updated_demo.gif"
     },
@@ -136,8 +136,8 @@
     },
     {
       "name": "Imitation Game",
-      "description": "Python utility for symmetric and asymmetric encryption—a shared-secret and public-key cryptography interface.",
-      "link": "https://ubc-mds.github.io/imitation_game/",
+      "description": "Python utility for symmetric and asymmetric encryption; shared-secret and public-key cryptography interface.",
+      "link": "https://github.com/UBC-MDS/imitation_game",
       "preview": "https://ubc-mds.github.io/imitation_game/"
     },
     {
@@ -253,7 +253,7 @@
       "organization": "Udemy",
       "year": "2017",
       "logo": "/udemy.svg",
-      "link": ""
+      "link": "https://drive.google.com/file/d/1-tqhKO-byth2VlJZ8wMstEOSxlvz9AOh/view?usp=sharing"
     }
   ]
 }
