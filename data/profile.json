@@ -88,8 +88,8 @@
       "title": "Senior Software Engineer",
       "company": "Blue Rabbit Group Ltd.",
       "duration": "April 2024 - November 2025",
-      "location": "Hong Kong / EU / India",
-      "description": "Delivered data pipelines, real-time analytics, and workflow automation for AI-driven portfolio management and trading; moved priority market datasets to same-day freshness and reduced repetitive manual handling by an estimated 50-60% for the analytics team within the first two quarters. Shipped client-facing dashboards with median sub-second response for live positions, risk, and market views. Ran continuous product experiments and funnel analytics supporting regular A/B tests across key conversion paths over 12 months.",
+      "location": "Hong Kong / India",
+      "description": "Delivered data pipelines, real-time analytics, and workflow automation for AI-driven portfolio management and trading; automated risk assessments of portoflio assets using AI agents to cut repetitive tasks by an estimated 50--60% for the business analytics team.Shipped client-facing dashboards with median sub-second response for live positions, risk, and market views. Intergration with DBS Bank API. Ran continuous product experiments and funnel analytics that supported regular A/B tests and catered to key conversion paths over 12 months.",
       "techStack": "Python, TypeScript, Django, React, Fastify, PostgreSQL, Timescale, Inngest, Mastra AI, PostHog",
       "logo": "/bluerabbit-logo-white.svg",
       "link": "https://www.bluerabbit.ai/"
