@@ -11,7 +11,7 @@
       "Rubber duck not listening? Speak louder. The bug fears confidence, not acoustics.",
       "It compiled yesterday. It will compile again. Believe in the pipeline of eternal hope."
     ],
-    "location": "Vancouver BC",
+    "location": "Vancouver, Canada",
     "email": "vinay.valson@gmail.com",
     "github": "Vin-dictive",
     "linkedin": "vinay-valson",
@@ -38,7 +38,11 @@
       "OJET",
       "Spring Boot",
       "MongoDB",
-      "Mastra AI"
+      "Mastra AI",
+      "Gemini",
+      "ChatGPT",
+      "Cursor",
+      "Claude Code CLI"
     ],
     "dataScience": [
       "Jupyter",
@@ -60,7 +64,9 @@
       "Railway",
       "Inngest",
       "Airflow",
-      "PostHog"
+      "PostHog",
+      "SageMaker",
+      "PySpark"
     ]
   },
   "experience": [
@@ -68,8 +74,8 @@
       "title": "Teaching Assistant",
       "company": "University of British Columbia",
       "duration": "January 2026 - April 2026",
-      "location": "Vancouver, BC",
-      "description": "Ran tutorials and office hours and explained difficult ideas in accessible terms for a Cloud Computing course. Contributed hands-on coaching to capstone teams through architecture and design reviews, surfacing trade-offs in components and deployment styles and improving iteration quality for scalable project delivery.",
+      "location": "Vancouver, Canada",
+      "description": "Ran tutorials and office hours and explained difficult ideas in accessible terms for Cloud Computing course. Contributed hands-on coaching to capstone teams through architecture and design reviews, surfacing trade-offs on components and deployment styles; tightening iteration habits so students could turn cloud projects into more polished, scalable deliverables.",
       "techStack": null,
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
@@ -78,8 +84,8 @@
       "title": "Developer",
       "company": "Volentia Healthcare Services",
       "duration": "January 2026 - February 2026",
-      "location": "Vancouver, BC",
-      "description": "Delivered a production-ready healthcare web app in two weeks so hospital staff, research teams, and physicians could rely on one hosted product for translation workflows instead of ad hoc tooling. Set up CI/CD for quick, repeatable deployments and aligned hosting with scalable services for growing operational traffic.",
+      "location": "Vancouver, Canada",
+      "description": "Delivered a production-ready healthcare web app in two weeks so Volentia could have hospital staff, research teams and physicians relying on it for translation through one hosted product instead of ad hoc tooling. Developed with Cursor/Claude Code, CI/CD for quick, repeatable deployments and hosting with scalable services.",
       "techStack": null,
       "logo": "/school.svg",
       "link": "https://app.volentia.ca"
@@ -89,7 +95,7 @@
       "company": "Blue Rabbit Group Ltd.",
       "duration": "April 2024 - November 2025",
       "location": "Hong Kong / India",
-      "description": "Delivered data pipelines, real-time analytics, and workflow automation for AI-driven portfolio management and trading; automated risk assessments of portoflio assets using AI agents to cut repetitive tasks by an estimated 50--60% for the business analytics team.Shipped client-facing dashboards with median sub-second response for live positions, risk, and market views. Intergration with DBS Bank API. Ran continuous product experiments and funnel analytics that supported regular A/B tests and catered to key conversion paths over 12 months.",
+      "description": "Delivered data pipelines, real-time analytics, and workflow automation for AI-driven portfolio management and trading; automated risk assessments of portfolio assets using AI agents to cut repetitive tasks by an estimated 50--60% for the business analytics team. Shipped client-facing dashboards with median sub-second response for live positions, risk, and market views. Integration with DBS Bank API. Ran continuous product experiments and funnel analytics that supported regular A/B tests and catered to key conversion paths using Cursor/Claude Code.",
       "techStack": "Python, TypeScript, Django, React, Fastify, PostgreSQL, Timescale, Inngest, Mastra AI, PostHog",
       "logo": "/bluerabbit-logo-white.svg",
       "link": "https://www.bluerabbit.ai/"
@@ -99,7 +105,7 @@
       "company": "Oracle Financial Services Software Limited",
       "duration": "August 2021 - April 2024",
       "location": "Bangalore / Hong Kong",
-      "description": "Led onsite delivery in Hong Kong for Oracle Banking Digital Experience (OBDX), shipping fraud-detection and foreign-exchange operations dashboards into production for daily bank operations use. Delivered multi-tenant open-banking and access-management capabilities that reduced typical partner onboarding effort by about 40% versus the prior approach. Owned successive go-live milestones and post-launch stabilization, recognized with Rising Star and Ever Ready awards, and onboarded and mentored 4 engineers.",
+      "description": "Led onsite delivery in Hong Kong for Oracle Banking Digital Experience (OBDX); shipped fraud-detection and foreign-exchange operations dashboards into production for daily bank operations use. Delivered multi-tenant open-banking and access-management capabilities that cut typical partner onboarding effort by about 40% versus the prior approach. Owned successive go-live milestones and post-launch stabilization; recognized with Rising Star and Ever Ready awards; onboarded and mentored 4 engineers.",
       "techStack": "Java, JAVARX, OJET, REST, Jenkins, OBDX",
       "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-jgHIOObUBN6xGD65sRVC2eJtKNsAaJ6?usp=sharing"
@@ -109,13 +115,25 @@
       "company": "Accops Systems",
       "duration": "January 2020 - July 2020",
       "location": "Pune, India",
-      "description": "Ubuntu bookmark widget using Gnome Toolkit, Chrome extension, and Electron for cross-platform deployment. Tested and debugged Deal Management web application using the MEAN stack.",
+      "description": "Ubuntu Bookmark widget using Gnome Toolkit, Chrome extension, and Electron for cross-platform deployment. Tested and debugged Deal Management web application using MEAN stack.",
       "techStack": "JavaScript, Node.js, MongoDB, Express.js, Angular, Gnome Toolkit, Electron",
       "logo": "/accops.svg",
       "link": "https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view"
     }
   ],
   "projects": [
+    {
+      "name": "Agentic Instagram Posting",
+      "description": "Local-first Python pipeline that scores photos, generates captions with Ollama/Gemini, enforces manual approval, and posts via Instagram Graph API.",
+      "link": "https://github.com/Vin-dictive/insta-AI-post",
+      "preview": "https://github.com/Vin-dictive/insta-AI-post"
+    },
+    {
+      "name": "Music RAG AI Search",
+      "description": "Context-aware search over Amazon Digital Music with natural-language queries using BM25 and optional dense retrieval.",
+      "link": "https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28",
+      "preview": "https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28"
+    },
     {
       "name": "CocoaBoard",
       "description": "Interactive Python Shiny dashboard for chocolate sales for data analytics.",
@@ -174,16 +192,16 @@
   "education": [
     {
       "degree": "Master of Data Science",
-      "institution": "University of British Columbia, Vancouver",
-      "duration": "September 2025 - June 2026",
+      "institution": "University of British Columbia",
+      "duration": "2025 -- 2026",
       "details": "Academic Representative | Scholarship | ML, AI, Python, R",
       "logo": "/ubc.svg",
       "link": "https://drive.google.com/file/d/1Jn_nbdKk7a8jJ3SVO-jBUDCc6Pz92d-K/view?usp=sharing"
     },
     {
-      "degree": "Bachelor of Engineering - Computer Engineering",
-      "institution": "Army Institute of Technology, Pune",
-      "duration": "June 2017 - June 2021",
+      "degree": "Bachelor of Computer Engineering",
+      "institution": "Savitribai Phule Pune University, Army Institute of Technology",
+      "duration": "2017 -- 2021",
       "details": "Scholarship | First Class with Distinction",
       "grade": "CGPA: 8.91",
       "logo": "/ait.svg",
