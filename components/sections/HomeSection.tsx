@@ -1,22 +1,9 @@
 import Link from 'next/link'
 import SkillsBentoSection from '@/components/sections/SkillsBentoSection'
 
-/** Picks a slogan by UTC day so SSR/build and client stay aligned; cycles through the list. */
-function heroSlogan(slogans: string[]) {
-  const list = slogans.map((s) => s.trim()).filter(Boolean)
-  if (list.length === 0) return ''
-  const now = new Date()
-  const y = now.getUTCFullYear()
-  const start = Date.UTC(y, 0, 1)
-  const today = Date.UTC(y, now.getUTCMonth(), now.getUTCDate())
-  const dayOfYear = Math.floor((today - start) / 86400000)
-  return list[dayOfYear % list.length]
-}
-
 interface Personal {
   name: string
   title: string
-  slogans: string[]
 }
 
 interface Skills {
@@ -33,8 +20,6 @@ export default function HomeSection({
   personal: Personal
   skills: Skills
 }) {
-  const quote = heroSlogan(personal.slogans)
-
   return (
     <section
       id="home"
@@ -48,9 +33,6 @@ export default function HomeSection({
 
         <p className="mx-auto max-w-2xl px-1 text-center text-pretty text-base font-light sm:text-xl sm:leading-snug lg:text-2xl xl:text-3xl">
           <span className="block text-folio-on-surface-variant">{personal.title}.</span>
-          <span className="mt-2 block font-medium italic text-folio-on-surface sm:mt-3">
-            &quot;{quote}&quot;
-          </span>
         </p>
 
         <div className="flex w-full max-w-md flex-col gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">

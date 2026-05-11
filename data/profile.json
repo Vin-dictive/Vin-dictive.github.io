@@ -73,9 +73,7 @@
       "PostHog",
       "SageMaker",
       "PySpark",
-      "CI/CD",
-      "Cursor",
-      "Claude Code"
+      "CI/CD"
     ]
   },
   "experience": [
