@@ -16,28 +16,30 @@
     "github": "Vin-dictive",
     "linkedin": "vinay-valson",
     "website": "Profile Page",
-    "resumeUrl": "https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf?raw=true",
+    "resumeUrl": "/Vinay_Valson.pdf",
     "about": "Full Stack Spider ambitiously juggling between front-end silky aesthetics and back-end sticky logic! Currently weaving my web through Masters in Data Science at UBC. My journey across continents - from the tech hubs of India to the bustling streets of Hong Kong, and now the scenic landscapes of Vancouver - has taught me to adapt quickly and think globally. Each destination has woven new perspectives into my problem-solving approach, making me more resilient and culturally aware. Travel has been my greatest teacher, showing me that the best solutions often come from understanding diverse viewpoints and embracing change. Whether debugging code or exploring new cities, I bring the same curiosity and determination to uncover what lies beneath the surface."
   },
   "skills": {
     "programmingLanguages": [
       "Python",
-      "JavaScript",
       "TypeScript",
+      "JavaScript",
       "Java",
-      "R",
-      "SQL"
+      "SQL",
+      "R"
     ],
     "frameworks": [
-      "PostgreSQL",
-      "Next.js",
       "React",
-      "Flask",
+      "Next.js",
       "Django",
+      "REST APIs",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Flask",
       "FastAPI",
       "OJET",
       "Spring Boot",
-      "MongoDB",
       "Mastra AI",
       "Gemini",
       "ChatGPT",
@@ -52,7 +54,11 @@
       "Quarto",
       "Statistics",
       "PyTorch",
-      "Machine Learning"
+      "Machine Learning",
+      "LLM workflows",
+      "RAG",
+      "Agent orchestration",
+      "Prompt and evaluation loops"
     ],
     "cloudDevOps": [
       "Docker",
@@ -66,7 +72,10 @@
       "Airflow",
       "PostHog",
       "SageMaker",
-      "PySpark"
+      "PySpark",
+      "CI/CD",
+      "Cursor",
+      "Claude Code"
     ]
   },
   "experience": [
@@ -75,7 +84,7 @@
       "company": "University of British Columbia",
       "duration": "January 2026 - April 2026",
       "location": "Vancouver, Canada",
-      "description": "Ran tutorials and office hours and explained difficult ideas in accessible terms for Cloud Computing course. Contributed hands-on coaching to capstone teams through architecture and design reviews, surfacing trade-offs on components and deployment styles; tightening iteration habits so students could turn cloud projects into more polished, scalable deliverables.",
+      "description": "Ran tutorials and office hours for a cohort of 60+ graduate students in Cloud Computing, explaining distributed-systems and deployment concepts in accessible terms. Coached 12 capstone teams through architecture and design reviews, helping teams improve project quality and ship more production-ready cloud deliverables.",
       "techStack": null,
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
@@ -85,18 +94,18 @@
       "company": "Volentia Healthcare Services",
       "duration": "January 2026 - February 2026",
       "location": "Vancouver, Canada",
-      "description": "Delivered a production-ready healthcare web app in two weeks so Volentia could have hospital staff, research teams and physicians relying on it for translation through one hosted product instead of ad hoc tooling. Developed with Cursor/Claude Code, CI/CD for quick, repeatable deployments and hosting with scalable services.",
+      "description": "Built and launched a healthcare web application in two weeks, unifying translation request workflows for 40+ users across hospital staff, physicians, and research teams. Implemented CI/CD and cloud deployment pipelines, and supported translation/review workflow automation with human approval gates to improve release reliability and turnaround speed.",
       "techStack": null,
       "logo": "/school.svg",
-      "link": "https://app.volentia.ca"
+      "link": "https://www.volentia.ca"
     },
     {
-      "title": "Senior Software Engineer",
+      "title": "Software Engineer",
       "company": "Blue Rabbit Group Ltd.",
       "duration": "April 2024 - November 2025",
       "location": "Hong Kong / India",
-      "description": "Delivered data pipelines, real-time analytics, and workflow automation for AI-driven portfolio management and trading; automated risk assessments of portfolio assets using AI agents to cut repetitive tasks by an estimated 50--60% for the business analytics team. Shipped client-facing dashboards with median sub-second response for live positions, risk, and market views. Integration with DBS Bank API. Ran continuous product experiments and funnel analytics that supported regular A/B tests and catered to key conversion paths using Cursor/Claude Code.",
-      "techStack": "Python, TypeScript, Django, React, Fastify, PostgreSQL, Timescale, Inngest, Mastra AI, PostHog",
+      "description": "Built data pipelines, real-time analytics workflows, and AI-assisted automation for portfolio and trading operations, reducing manual risk review workload across investment workflows. Shipped a Series A MVP using Django and React, including order placement and client dashboards with sub-second median response times for positions, risk, and market views; integrated DBS Bank APIs. Instrumented product funnels and A/B experiments with PostHog, and orchestrated agent-style analytics/reporting workflows with validation steps before operational use.",
+      "techStack": "Python, TypeScript, Django, React, PostgreSQL, PostHog",
       "logo": "/bluerabbit-logo-white.svg",
       "link": "https://www.bluerabbit.ai/"
     },
@@ -104,8 +113,8 @@
       "title": "Staff Consultant",
       "company": "Oracle Financial Services Software Limited",
       "duration": "August 2021 - April 2024",
-      "location": "Bangalore / Hong Kong",
-      "description": "Led onsite delivery in Hong Kong for Oracle Banking Digital Experience (OBDX); shipped fraud-detection and foreign-exchange operations dashboards into production for daily bank operations use. Delivered multi-tenant open-banking and access-management capabilities that cut typical partner onboarding effort by about 40% versus the prior approach. Owned successive go-live milestones and post-launch stabilization; recognized with Rising Star and Ever Ready awards; onboarded and mentored 4 engineers.",
+      "location": "Bangalore, India / Hong Kong",
+      "description": "Led onsite delivery for Oracle Banking Digital Experience (OBDX) in Hong Kong, shipping fraud detection and foreign exchange operations dashboards used in daily bank workflows. Built multi-tenant open banking and access management capabilities that reduced partner onboarding effort by approximately 40% compared with the prior process. Received Rising Star and Ever Ready awards; mentored and onboarded software engineers to the team.",
       "techStack": "Java, JAVARX, OJET, REST, Jenkins, OBDX",
       "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-jgHIOObUBN6xGD65sRVC2eJtKNsAaJ6?usp=sharing"
@@ -123,26 +132,32 @@
   ],
   "projects": [
     {
-      "name": "Agentic Instagram Posting",
-      "description": "Local-first Python pipeline that scores photos, generates captions with Ollama/Gemini, enforces manual approval, and posts via Instagram Graph API.",
+      "name": "Predictive Analytics of External Factors on Clarius Scanner Sales",
+      "description": "Graduate capstone: forecasting and exploratory analysis on how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US.",
+      "link": "https://clarius.com/",
+      "preview": "https://clarius.com/"
+    },
+    {
+      "name": "AI Agent Content Operations",
+      "description": "Python application with content scoring, caption generation, human approval gates, and Instagram Graph API integration.",
       "link": "https://github.com/Vin-dictive/insta-AI-post",
       "preview": "https://github.com/Vin-dictive/insta-AI-post"
     },
     {
-      "name": "Music RAG AI Search",
-      "description": "Context-aware search over Amazon Digital Music with natural-language queries using BM25 and optional dense retrieval.",
+      "name": "RAG Music Search Platform",
+      "description": "Natural-language retrieval system over Amazon Digital Music data using BM25 and optional dense retrieval for relevance improvements.",
       "link": "https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28",
       "preview": "https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28"
     },
     {
       "name": "CocoaBoard",
-      "description": "Interactive Python Shiny dashboard for chocolate sales for data analytics.",
+      "description": "Interactive analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration across country, product, and time dimensions.",
       "link": "https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard",
       "preview": "https://raw.githubusercontent.com/UBC-MDS/DSCI-532_2026_8_cocoaboard/refs/heads/main/img/updated_demo.gif"
     },
     {
       "name": "Lameness Detection ML Pipeline",
-      "description": "Deployed to OpenStack Arbutus cloud as Docker microservices for cow lameness detection.",
+      "description": "Containerized inference services deployed on OpenStack with Docker for scalable computer vision workloads.",
       "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
       "preview": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless/blob/main/docs/ARCHITECTURE.md#detailed-ascii-diagram-updated"
     },
@@ -154,7 +169,7 @@
     },
     {
       "name": "Imitation Game",
-      "description": "Python utility for symmetric and asymmetric encryption; shared-secret and public-key cryptography interface.",
+      "description": "Python encryption utility implementing symmetric and asymmetric cryptography with shared-secret and public-key interfaces.",
       "link": "https://github.com/UBC-MDS/imitation_game",
       "preview": "https://ubc-mds.github.io/imitation_game/"
     },
@@ -184,7 +199,7 @@
     },
     {
       "name": "Patatap Clone",
-      "description": "TThis is an app created using Paperjs and Howlerjs to make a clone version of Tapatap.com.. My own effort to create one. Will add more colors and more shapes and sounds in the future.",
+      "description": "This is an app created using Paperjs and Howlerjs to make a clone version of Tapatap.com.. My own effort to create one. Will add more colors and more shapes and sounds in the future.",
       "link": "https://vin-dictive.github.io/Patatap_Clone/",
       "preview": "https://vin-dictive.github.io/Patatap_Clone/"
     }
@@ -193,7 +208,7 @@
     {
       "degree": "Master of Data Science",
       "institution": "University of British Columbia",
-      "duration": "2025 -- 2026",
+      "duration": "2025 - 2026",
       "details": "Academic Representative | Scholarship | ML, AI, Python, R",
       "logo": "/ubc.svg",
       "link": "https://drive.google.com/file/d/1Jn_nbdKk7a8jJ3SVO-jBUDCc6Pz92d-K/view?usp=sharing"
@@ -201,7 +216,7 @@
     {
       "degree": "Bachelor of Computer Engineering",
       "institution": "Savitribai Phule Pune University, Army Institute of Technology",
-      "duration": "2017 -- 2021",
+      "duration": "2017 - 2021",
       "details": "Scholarship | First Class with Distinction",
       "grade": "CGPA: 8.91",
       "logo": "/ait.svg",

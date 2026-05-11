@@ -32,8 +32,7 @@ function navIdFromHash(hash: string): string {
   return NAV_IDS.has(id) ? id : NAV[0].id
 }
 
-const DEFAULT_RESUME_URL =
-  "https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf?raw=true"
+const DEFAULT_RESUME_URL = "/Vinay_Valson.pdf"
 
 const navLinkBase =
   "inline-flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs font-bold uppercase tracking-wide transition-colors sm:px-3 sm:text-sm"

@@ -1,0 +1,146 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[left=0.35in,right=0.35in,top=0.3in,bottom=0.3in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0}
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Section formatting — room above/below each section title + rule
+\titleformat{\section}{\large\bfseries\uppercase}{}{0pt}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{5pt}
+
+% Space before each job/project block; clear gap company → role → body
+\newcommand{\resumeHeading}[4]{%
+  \vspace{2pt}%
+  \noindent\textbf{#1} \hfill #2 \\[1pt]%
+  \noindent\textit{\small#3} \hfill \textit{\small #4}%
+  \par\vspace{0pt}%
+}
+% Body under each role / project
+\newcommand{\resumePara}[1]{\noindent\small#1\par\vspace{6pt}}
+% Tight bullet list for experience (Professional Experience)
+\newenvironment{resumeItems}{%
+  \vspace{-5pt}%
+  \begin{itemize}[leftmargin=12pt,label={-}]%
+    \setlength{\itemsep}{-4pt}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \small
+}{%
+  \end{itemize}%
+  \vspace{-9pt}%
+}
+
+\begin{document}
+
+% --- CONTACT INFORMATION ---
+\begin{center}
+    {\huge \textbf{VINAY VALSON}} \\
+    Vancouver, Canada | \href{mailto:vinay.valson@gmail.com}{vinay.valson@gmail.com} | +1 263 9999870 \\
+    \href{https://vin-dictive.github.io}{Portfolio} | \href{https://linkedin.com/in/vinay-valson}{LinkedIn} | \href{https://github.com/Vin-dictive}{GitHub}
+\end{center}
+
+% --- SUMMARY ---
+\section{Summary}
+{\small
+\noindent Full-stack AI software engineer with 4+ years of experience building fintech and data-intensive web products across startup and enterprise teams. Experience with delivery in backend, frontend services, CI/CD, and cloud deployments, plus hands-on AI-agent and RAG project work for automation and support.\par
+}
+\vspace{1pt}
+
+% --- TECHNICAL SKILLS ---
+\section{Technical Skills}
+{\small
+\noindent\textbf{Languages:} Python, TypeScript, JavaScript, Java, SQL \\[1pt]
+\noindent\textbf{Frameworks \& Platforms:} React, Next.js, Django, REST APIs, PostgreSQL, MongoDB, Redis \\[1pt]
+\noindent\textbf{AI \& Agentic Systems:} LLM workflows, RAG, Agent orchestration, Prompt and evaluation loops \\[1pt]
+\noindent\textbf{Cloud, DevOps \& Tooling:} AWS, GCP, Docker, Kubernetes, GitHub Actions, CI/CD, Airflow, PostHog, Cursor, Claude Code\par
+}
+\vspace{1pt}
+
+% --- EXPERIENCE ---
+\section{Professional Experience}
+\resumeHeading
+  {\href{https://www.ubc.ca}{University of British Columbia}}{Vancouver, Canada}
+  {Teaching Assistant}{Jan 2026 -- Apr 2026}
+\begin{resumeItems}
+  \item Ran tutorials and office hours for a cohort of 60+ graduate students in Cloud Computing, explaining distributed-systems and deployment concepts in accessible terms. Coached 12 capstone teams through architecture and design reviews, helping teams improve project quality and ship more production-ready cloud deliverables.
+\end{resumeItems}
+
+\resumeHeading
+  {\href{https://www.volentia.ca}{Volentia Healthcare Services}}{Vancouver, Canada}
+  {Freelance Developer}{Jan 2026 -- Feb 2026}
+\begin{resumeItems}
+  \item Built and launched a healthcare web application in two weeks, unifying translation request workflows for 40+ users across hospital staff, physicians, and research teams. Implemented CI/CD and cloud deployment pipelines, and supported translation/review workflow automation with human approval gates to improve release reliability and turnaround speed.
+\end{resumeItems}
+
+\resumeHeading
+  {\href{https://www.bluerabbit.ai/}{Blue Rabbit Group Ltd.}}{Hong Kong / India}
+  {Software Engineer}{Apr 2024 -- Nov 2025}
+\begin{resumeItems}
+  \item Built data pipelines, real-time analytics workflows, and AI-assisted automation for portfolio and trading operations, reducing manual risk review workload across investment workflows.
+  \item Shipped a Series A MVP using Django and React, including order placement and client dashboards with sub-second median response times for positions, risk, and market views; integrated DBS Bank APIs.
+  \item Instrumented product funnels and A/B experiments with PostHog, and orchestrated agent-style analytics/reporting workflows with validation steps before operational use.
+\end{resumeItems}
+
+\resumeHeading
+  {\href{https://drive.google.com/drive/folders/1-jgHIOObUBN6xGD65sRVC2eJtKNsAaJ6?usp=sharing}{Oracle Financial Services Software Limited}}{Bangalore, India / Hong Kong}
+  {Staff Consultant}{Aug 2021 -- Apr 2024}
+\begin{resumeItems}
+  \item Led onsite delivery for Oracle Banking Digital Experience (OBDX) in Hong Kong, shipping fraud detection and foreign exchange operations dashboards used in daily bank workflows.
+  \item Built multi-tenant open banking and access management capabilities that reduced partner onboarding effort by approximately 40\% compared with the prior process.
+  \item Received Rising Star and Ever Ready awards; mentored and onboarded software engineers to the team.
+\end{resumeItems}
+
+% \resumeHeading
+%   {\href{https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view?usp=sharing}{Accops Systems}}{Pune, India}
+%   {Software Developer Intern}{Jan 2020 -- July 2020}
+% \begin{resumeItems}
+%   \item Built, tested, and debugged a deal management web application and bookmark widget using GNOME Toolkit, Chrome Extension APIs, and Electron.
+% \end{resumeItems}
+
+% --- EDUCATION ---
+\section{Education}
+\resumeHeading
+  {\href{https://drive.google.com/file/d/1Jn_nbdKk7a8jJ3SVO-jBUDCc6Pz92d-K/view?usp=sharing}{University of British Columbia}}{Vancouver, Canada}
+  {Master of Data Science}{2025 -- 2026}
+\noindent\small Academic Representative | Scholarship | ML, AI, Python, R\par\vspace{4pt}
+
+\resumeHeading
+  {\href{https://drive.google.com/drive/folders/1_kYyl5WIPU3xeUSrKNRUu6LJtFVVvgdc?usp=sharing}{Savitribai Phule Pune University, Army Institute of Technology}}{Pune, India}
+  {Bachelor of Computer Engineering}{2017 -- 2021}
+\noindent\small CGPA: 8.91 | Scholarship | First Class with Distinction\par
+
+% --- PROJECTS ---
+\section{Projects}
+{\small
+\noindent\textbf{\href{https://clarius.com/}{Predictive Analytics of External Factors on Clarius Scanner Sales}} -- For my Graduate Program capstone, performed forecasting and exploratory analysis to evaluate how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US. \par\vspace{3pt}
+\noindent\textbf{\href{https://github.com/Vin-dictive/insta-AI-post}{AI Agent Content Operations}} -- Python application with content scoring, caption generation, human approval gates, and Instagram Graph API integration.\par\vspace{3pt}
+\noindent\textbf{\href{https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard}{CocoaBoard}} -- Interactive analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration across country, product, and time dimensions.\par\vspace{3pt}
+\noindent\textbf{\href{https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28}{RAG Music Search Platform}} -- Natural-language retrieval system over Amazon Digital Music data using BM25 and optional dense retrieval for relevance improvements.\par\vspace{3pt}
+\noindent\textbf{\href{https://github.com/UBC-MDS/imitation_game}{Imitation Game}} -- Python encryption utility implementing symmetric and asymmetric cryptography with shared-secret and public-key interfaces.\par\vspace{3pt}
+\noindent\textbf{\href{https://github.com/UBC-AWP/vision-sam3-yolo-lameless}{Lameness Detection ML Pipeline}} -- Containerized inference services deployed on OpenStack with Docker for scalable computer vision workloads.\par\vspace{3pt}
+% \noindent\textbf{\href{https://github.com/Vin-dictive/ubc-reddit-reporter}{UBC Reddit Reporter}} -- AWS Lambda serverless app with Amazon Bedrock sentiment analysis for automated UBC community reporting.\par\vspace{4pt}
+% \noindent\textbf{\href{https://github.com/Vin-dictive/fake-real-news-detection}{Fake Real News Detection}} -- Naive Bayes fake-news classifier with NLP preprocessing and feature extraction.\par\vspace{4pt}
+% \noindent\textbf{\href{https://github.com/Vin-dictive/customer-reviews-polarity}{Customer Reviews Polarity Analysis}} -- ML sentiment analysis (NLP) for positive/negative product-review classification.\par\vspace{4pt}
+}
+
+% \vspace{4pt}
+
+% % --- CERTIFICATIONS ---
+% \section{Certifications}
+% {\small
+% \noindent\textbf{\href{https://drive.google.com/file/d/1-ORKVAx0udZ0dV8Vc_lQebV5gjcrCkPH/view}{Python and Django Full Stack Web Developer Bootcamp}}, Udemy \hfill 2023\par\vspace{4pt}
+% \noindent\textbf{\href{https://drive.google.com/file/d/1Iny_yK69sipAXIlXUl-OZhhfCKdR1l_e/view}{Continuous Delivery \& DevOps}}, Coursera \hfill 2022\par\vspace{4pt}
+% \noindent\textbf{\href{https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge}{Oracle Certifications}}, Oracle University \hfill 2021\par\vspace{4pt}
+% \noindent\textbf{\href{https://drive.google.com/file/d/1p6AXXfRJtpG_pde_bYuxBSDmI6WgW8JJ/view}{Building Cloud Services with the Java Spring Framework}}, Coursera \hfill 2021\par
+% }
+
+\end{document}
