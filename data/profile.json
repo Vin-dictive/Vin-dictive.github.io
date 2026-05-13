@@ -78,17 +78,17 @@
   },
   "experience": [
     {
-      "title": "Teaching Assistant",
+      "title": "Research and Teaching Assistant",
       "company": "University of British Columbia",
-      "duration": "January 2026 - April 2026",
+      "duration": "January 2026 - Present",
       "location": "Vancouver, Canada",
-      "description": "Ran tutorials and office hours for a cohort of 60+ graduate students in Cloud Computing, explaining distributed-systems and deployment concepts in accessible terms. Coached 12 capstone teams through architecture and design reviews, helping teams improve project quality and ship more production-ready cloud deliverables.",
+      "description": "Building computer vision and MLOps components for a cow lameness detection pipeline for segmentation of workflows, evaluation metrics, backend-frontend, infra setup, with containerized inference services on OpenStack for scalable workloads. TA for Cloud Computing: ran tutorials and office hours for 60+ graduate students on distributed systems and deployment topics, and coached 12 capstone teams through architecture and design reviews toward more production-ready cloud deliverables.",
       "techStack": null,
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
     },
     {
-      "title": "Developer",
+      "title": "Freelance Developer",
       "company": "Volentia Healthcare Services",
       "duration": "January 2026 - February 2026",
       "location": "Vancouver, Canada",
@@ -116,16 +116,6 @@
       "techStack": "Java, JAVARX, OJET, REST, Jenkins, OBDX",
       "logo": "/oracle.svg",
       "link": "https://drive.google.com/drive/folders/1-jgHIOObUBN6xGD65sRVC2eJtKNsAaJ6?usp=sharing"
-    },
-    {
-      "title": "Software Developer Intern",
-      "company": "Accops Systems",
-      "duration": "January 2020 - July 2020",
-      "location": "Pune, India",
-      "description": "Ubuntu Bookmark widget using Gnome Toolkit, Chrome extension, and Electron for cross-platform deployment. Tested and debugged Deal Management web application using MEAN stack.",
-      "techStack": "JavaScript, Node.js, MongoDB, Express.js, Angular, Gnome Toolkit, Electron",
-      "logo": "/accops.svg",
-      "link": "https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view"
     }
   ],
   "projects": [
