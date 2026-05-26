@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "VINAY VALSON",
-    "title": "Full-Stack Developer & AI Engineer",
+    "title": "Full-stack AI software engineer",
     "slogans": [
       "The only thing standing between you and greatness is one missing semicolon, fourteen tabs, and the will to keep going.",
       "Merge conflicts do not break you—they merely reveal who you were always meant to resolve.",
@@ -25,8 +25,7 @@
       "TypeScript",
       "JavaScript",
       "Java",
-      "SQL",
-      "R"
+      "SQL"
     ],
     "frameworks": [
       "React",
@@ -35,25 +34,12 @@
       "REST APIs",
       "PostgreSQL",
       "MongoDB",
-      "Redis",
-      "Flask",
-      "FastAPI",
-      "OJET",
-      "Spring Boot",
-      "Mastra AI",
-      "Gemini",
-      "ChatGPT",
-      "Cursor",
-      "Claude Code CLI"
+      "Redis"
     ],
     "dataScience": [
       "Jupyter",
       "R Studio",
-      "Shiny",
-      "Pandas",
-      "Quarto",
       "Statistics",
-      "PyTorch",
       "Machine Learning",
       "LLM workflows",
       "RAG",
@@ -61,19 +47,16 @@
       "Prompt and evaluation loops"
     ],
     "cloudDevOps": [
+      "AWS",
+      "GCP",
       "Docker",
       "Kubernetes",
-      "GCP",
-      "AWS",
       "GitHub Actions",
-      "Jenkins",
-      "Railway",
-      "Inngest",
+      "CI/CD",
       "Airflow",
       "PostHog",
-      "SageMaker",
-      "PySpark",
-      "CI/CD"
+      "Cursor",
+      "Claude Code"
     ]
   },
   "experience": [
@@ -88,8 +71,8 @@
       "link": "https://www.ubc.ca/"
     },
     {
-      "title": "Freelance Developer",
-      "company": "Volentia Healthcare Services",
+      "title": "Software Developer",
+      "company": "Volentia Healthcare Translation",
       "duration": "January 2026 - February 2026",
       "location": "Vancouver, Canada",
       "description": "Built and launched a healthcare web application in two weeks, unifying translation request workflows for 40+ users across hospital staff, physicians, and research teams. Implemented CI/CD and cloud deployment pipelines, and supported translation/review workflow automation with human approval gates to improve release reliability and turnaround speed.",
@@ -98,7 +81,7 @@
       "link": "https://www.volentia.ca"
     },
     {
-      "title": "Software Engineer",
+      "title": "Software Engineer (Remote)",
       "company": "Blue Rabbit Group Ltd.",
       "duration": "April 2024 - November 2025",
       "location": "Hong Kong / India",
@@ -108,20 +91,26 @@
       "link": "https://www.bluerabbit.ai/"
     },
     {
-      "title": "Staff Consultant",
+      "title": "Staff Consultant - Software Engineer",
       "company": "Oracle Financial Services Software Limited",
       "duration": "August 2021 - April 2024",
       "location": "Bangalore, India / Hong Kong",
       "description": "Led onsite delivery for Oracle Banking Digital Experience (OBDX) in Hong Kong, shipping fraud detection and foreign exchange operations dashboards used in daily bank workflows. Built multi-tenant open banking and access management capabilities that reduced partner onboarding effort by approximately 40% compared with the prior process. Received Rising Star and Ever Ready awards; mentored and onboarded software engineers to the team.",
       "techStack": "Java, JAVARX, OJET, REST, Jenkins, OBDX",
       "logo": "/oracle.svg",
-      "link": "https://drive.google.com/drive/folders/1-jgHIOObUBN6xGD65sRVC2eJtKNsAaJ6?usp=sharing"
+      "link": "https://www.oracle.com/financial-services/"
     }
   ],
   "projects": [
     {
+      "name": "Cow Lameness Detection (CV / MLOps)",
+      "description": "In-progress research pipeline for automated lameness screening: model integration, containerized inference on OpenStack with Docker; timeline fast-tracked toward deployable inference.",
+      "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
+      "preview": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless/blob/main/docs/ARCHITECTURE.md#detailed-ascii-diagram-updated"
+    },
+    {
       "name": "Predictive Analytics of External Factors on Clarius Scanner Sales",
-      "description": "Graduate capstone: forecasting and exploratory analysis on how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US.",
+      "description": "Graduate capstone: forecasting and exploratory analysis to evaluate how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US.",
       "link": "https://clarius.com/",
       "preview": "https://clarius.com/"
     },
@@ -199,7 +188,7 @@
       "duration": "2025 - 2026",
       "details": "Academic Representative | Scholarship | ML, AI, Python, R",
       "logo": "/ubc.svg",
-      "link": "https://drive.google.com/file/d/1Jn_nbdKk7a8jJ3SVO-jBUDCc6Pz92d-K/view?usp=sharing"
+      "link": "https://masterdatascience.ubc.ca/"
     },
     {
       "degree": "Bachelor of Computer Engineering",
@@ -208,7 +197,7 @@
       "details": "Scholarship | First Class with Distinction",
       "grade": "CGPA: 8.91",
       "logo": "/ait.svg",
-      "link": "https://drive.google.com/drive/folders/1_kYyl5WIPU3xeUSrKNRUu6LJtFVVvgdc"
+      "link": "https://www.aitpune.com/"
     }
   ],
   "certifications": [
