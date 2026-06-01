@@ -5,18 +5,10 @@ import { ArrowUpRight } from 'lucide-react'
 import { sectionGlassCard } from '@/components/sections/sectionGlass'
 import { cn } from '@/lib/utils'
 
-function firstNameHexLabel(fullName: string) {
-  const first = fullName.trim().split(/\s+/)[0] ?? fullName
-  return first
-    .toLowerCase()
-    .split('')
-    .map((c) => `0x${c.charCodeAt(0).toString(16)}`)
-    .join(' ')
-}
-
 interface Personal {
   name: string
   about: string
+  quote?: string
 }
 
 interface EducationItem {
@@ -87,9 +79,11 @@ export default function AboutSection({
                       <div className="absolute inset-0 bg-gradient-to-br from-folio-primary/25 via-folio-surface-highest to-folio-tertiary/25 transition-opacity duration-500 group-hover/about:from-folio-primary/40" />
                     )}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-folio-surface-highest/90 via-transparent to-transparent opacity-90 transition-opacity duration-500 group-hover/about:opacity-40" />
-                    <div className="technical-label pointer-events-none absolute bottom-4 left-4 text-xs text-folio-on-surface-variant transition-colors duration-500 group-hover/about:text-folio-on-surface md:bottom-6 md:left-6">
-                      {firstNameHexLabel(personal.name)}
-                    </div>
+                    {personal.quote ? (
+                      <p className="pointer-events-none absolute bottom-4 left-4 right-4 max-w-[90%] text-pretty text-xs font-medium italic leading-snug text-folio-on-surface-variant transition-colors duration-500 group-hover/about:text-folio-on-surface sm:text-sm md:bottom-6 md:left-6 md:right-6">
+                        &ldquo;{personal.quote}&rdquo;
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </div>

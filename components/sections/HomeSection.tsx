@@ -4,6 +4,7 @@ import SkillsBentoSection from '@/components/sections/SkillsBentoSection'
 interface Personal {
   name: string
   title: string
+  quote?: string
 }
 
 interface Skills {
@@ -34,6 +35,14 @@ export default function HomeSection({
         <p className="mx-auto max-w-2xl px-1 text-center text-pretty text-base font-light sm:text-xl sm:leading-snug lg:text-2xl xl:text-3xl">
           <span className="block text-folio-on-surface-variant">{personal.title}.</span>
         </p>
+
+        {personal.quote ? (
+          <blockquote className="mx-auto max-w-xl px-2 text-center">
+            <p className="text-pretty text-base font-medium italic leading-relaxed text-folio-on-surface sm:text-lg md:text-xl">
+              &ldquo;{personal.quote}&rdquo;
+            </p>
+          </blockquote>
+        ) : null}
 
         <div className="flex w-full max-w-md flex-col gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
           <Link
