@@ -3,7 +3,7 @@ import SkillsBentoSection from '@/components/sections/SkillsBentoSection'
 
 interface Personal {
   name: string
-  title: string
+  title?: string
   quote?: string
 }
 
@@ -31,10 +31,6 @@ export default function HomeSection({
         <h1 className="kinetic-monolith max-w-full whitespace-nowrap px-2 pt-4 text-center text-[clamp(1.25rem,calc(0.5rem+4.8vw),7.5rem)] font-black uppercase leading-[0.92] text-folio-on-surface sm:px-4 sm:pt-6 sm:leading-[0.9] md:pt-8">
           {personal.name.trim()}
         </h1>
-
-        <p className="mx-auto max-w-2xl px-1 text-center text-pretty text-base font-light sm:text-xl sm:leading-snug lg:text-2xl xl:text-3xl">
-          <span className="block text-folio-on-surface-variant">{personal.title}.</span>
-        </p>
 
         {personal.quote ? (
           <blockquote className="mx-auto max-w-xl px-2 text-center">

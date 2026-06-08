@@ -20,8 +20,8 @@ const spaceGrotesk = Space_Grotesk({
 const { personal } = profileData
 
 export const metadata: Metadata = {
-  title: `${personal.name} | ${personal.title}`,
-  description: personal.title,
+  title: personal.name,
+  description: personal.about,
   icons: {
     icon: '/favicon.png',
   },
