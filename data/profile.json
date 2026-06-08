@@ -18,7 +18,7 @@
     "linkedin": "vinay-valson",
     "website": "Profile Page",
     "resumeUrl": "/Vinay_Valson.pdf",
-    "about": "Full Stack Spider ambitiously juggling between front-end silky aesthetics and back-end sticky logic! Currently weaving my web through Masters in Data Science at UBC. My journey across continents - from the tech hubs of India to the bustling streets of Hong Kong, and now the scenic landscapes of Vancouver - has taught me to adapt quickly and think globally. Each destination has woven new perspectives into my problem-solving approach, making me more resilient and culturally aware. Travel has been my greatest teacher, showing me that the best solutions often come from understanding diverse viewpoints and embracing change. Whether debugging code or exploring new cities, I bring the same curiosity and determination to uncover what lies beneath the surface."
+    "about": "Graduate Research and Teaching Assistant at UBC, building computer vision and MLOps pipelines for automated lameness screening while supporting cloud computing coursework and capstone teams. Previously shipped fintech and banking products at Blue Rabbit Group and Oracle in Hong Kong—full-stack web apps, data pipelines, CI/CD, and AI-assisted automation across healthcare, trading, and enterprise banking workflows."
   },
   "skills": {
     "programmingLanguages": [
@@ -34,18 +34,18 @@
       "Django",
       "REST APIs",
       "PostgreSQL",
-      "MongoDB",
-      "Redis"
+      "Microservices",
+      "OJET",
+      "JPA-ORM"
     ],
     "dataScience": [
-      "Jupyter",
-      "R Studio",
-      "Statistics",
-      "Machine Learning",
+      "Computer Vision",
+      "MLOps",
       "LLM workflows",
       "RAG",
       "Agent orchestration",
-      "Prompt and evaluation loops"
+      "Statistics",
+      "Machine Learning"
     ],
     "cloudDevOps": [
       "AWS",
@@ -54,20 +54,21 @@
       "Kubernetes",
       "GitHub Actions",
       "CI/CD",
-      "Airflow",
+      "AWS",
+      "GCP",
+      "GitHub",
       "PostHog",
-      "Cursor",
-      "Claude Code"
+      "Inngest"
     ]
   },
   "experience": [
     {
-      "title": "Research and Teaching Assistant",
+      "title": "Graduate Research and Teaching Assistant",
       "company": "University of British Columbia",
       "duration": "January 2026 - Present",
       "location": "Vancouver, Canada",
       "description": "Building computer vision and MLOps components for a cow lameness detection pipeline for segmentation of workflows, evaluation metrics, backend-frontend, infra setup, with containerized inference services on OpenStack for scalable workloads. TA for Cloud Computing: ran tutorials and office hours for 60+ graduate students on distributed systems and deployment topics, and coached 12 capstone teams through architecture and design reviews toward more production-ready cloud deliverables.",
-      "techStack": null,
+      "techStack": "Python, Computer Vision, MLOps, Docker, OpenStack, CI/CD, LLM workflows, RAG, Agent orchestration, GitHub",
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
     },
@@ -77,7 +78,7 @@
       "duration": "January 2026 - February 2026",
       "location": "Vancouver, Canada",
       "description": "Built and launched a healthcare web application in two weeks, unifying translation request workflows for 40+ users across hospital staff, physicians, and research teams. Implemented CI/CD and cloud deployment pipelines, and supported translation/review workflow automation with human approval gates to improve release reliability and turnaround speed.",
-      "techStack": null,
+      "techStack": "React, Next.js, REST APIs, CI/CD, AWS, GCP, Cursor, Claude, GitHub",
       "logo": "/school.svg",
       "link": "https://www.volentia.ca"
     },
@@ -87,17 +88,17 @@
       "duration": "April 2024 - November 2025",
       "location": "Hong Kong / India",
       "description": "Built data pipelines, real-time analytics workflows, and AI-assisted automation for portfolio and trading operations, reducing manual risk review workload across investment workflows. Shipped a Series A MVP using Django and React, including order placement and client dashboards with sub-second median response times for positions, risk, and market views; integrated DBS Bank APIs. Instrumented product funnels and A/B experiments with PostHog, and orchestrated agent-style analytics/reporting workflows with validation steps before operational use.",
-      "techStack": "Python, TypeScript, Django, React, PostgreSQL, PostHog",
+      "techStack": "Python, Django, React, Next.js, PostgreSQL, Microservices, REST APIs, PostHog, LLM, Slack Bots, Inngest, Clerk auth",
       "logo": "/bluerabbit-logo-white.svg",
       "link": "https://www.bluerabbit.ai/"
     },
     {
-      "title": "Staff Consultant - Software Engineer",
+      "title": "Staff Consultant | Software Engineer",
       "company": "Oracle Financial Services Software Limited",
       "duration": "August 2021 - April 2024",
       "location": "Bangalore, India / Hong Kong",
       "description": "Led onsite delivery for Oracle Banking Digital Experience (OBDX) in Hong Kong, shipping fraud detection and foreign exchange operations dashboards used in daily bank workflows. Built multi-tenant open banking and access management capabilities that reduced partner onboarding effort by approximately 40% compared with the prior process. Received Rising Star and Ever Ready awards; mentored and onboarded software engineers to the team.",
-      "techStack": "Java, JAVARX, OJET, REST, Jenkins, OBDX",
+      "techStack": "Java, Eclipse, OJET, JPA-ORM, SQL, Oracle DB, SOAP/XML, OBDX, Apache FOP",
       "logo": "/oracle.svg",
       "link": "https://www.oracle.com/financial-services/"
     }
@@ -111,7 +112,7 @@
     },
     {
       "name": "Predictive Analytics of External Factors on Clarius Scanner Sales",
-      "description": "Graduate capstone: forecasting and exploratory analysis to evaluate how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US.",
+      "description": "Graduate capstone: performed forecasting and exploratory analysis to evaluate how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US.",
       "link": "https://clarius.com/",
       "preview": "https://clarius.com/"
     },
@@ -187,7 +188,7 @@
       "degree": "Master of Data Science",
       "institution": "University of British Columbia",
       "duration": "2025 - 2026",
-      "details": "Academic Representative | Scholarship | ML, AI, Python, R",
+      "details": "Academic Representative | Scholarship | ML, LLM, AI, Python, R, Statistics",
       "logo": "/ubc.svg",
       "link": "https://masterdatascience.ubc.ca/"
     },

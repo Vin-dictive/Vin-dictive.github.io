@@ -3,6 +3,8 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{textcomp}
+\newcommand{\pipe}{\textbar}
 \hypersetup{
     colorlinks=false,
     pdfborder={0 0 0}
@@ -12,11 +14,11 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
-% Section formatting — room above/below each section title + rule
+% Section formatting | room above/below each section title + rule
 \titleformat{\section}{\large\bfseries\uppercase}{}{0pt}{}[\titlerule]
 \titlespacing{\section}{0pt}{3pt}{5pt}
 
-% Space before each job/project block; clear gap company → role → body
+% Space before each job/project block; clear gap company, role, body
 \newcommand{\resumeHeading}[4]{%
   \vspace{2pt}%
   \noindent\textbf{#1} \hfill #2 \\[1pt]%
@@ -25,6 +27,8 @@
 }
 % Body under each role / project
 \newcommand{\resumePara}[1]{\noindent\small#1\par\vspace{6pt}}
+% Tech stack line under each role
+\newcommand{\techStack}[1]{\vspace{3pt}\noindent{\small\textbf{Tech Stack:} #1}\par\vspace{2pt}}
 % Tight bullet list for experience (Professional Experience)
 \newenvironment{resumeItems}{%
   \vspace{-5pt}%
@@ -38,42 +42,37 @@
   \end{itemize}%
   \vspace{-9pt}%
 }
+% Projects list with a little breathing room between items
+\newenvironment{projectItems}{%
+  \begin{itemize}[leftmargin=12pt,label={-}]%
+    \setlength{\itemsep}{4pt}%
+    \setlength{\topsep}{2pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \small
+}{%
+  \end{itemize}%
+}
 
 \begin{document}
 
 % --- CONTACT INFORMATION ---
 \begin{center}
     {\huge \textbf{VINAY VALSON}} \\
-    Vancouver, Canada | \href{mailto:vinay.valson@gmail.com}{vinay.valson@gmail.com} | +1 263 9999870 \\
-    \href{https://vin-dictive.github.io}{Portfolio} | \href{https://linkedin.com/in/vinay-valson}{LinkedIn} | \href{https://github.com/Vin-dictive}{GitHub}
+    Vancouver, Canada \pipe\ \href{mailto:vinay.valson@gmail.com}{vinay.valson@gmail.com} \pipe\ +1 263 9999870 \\
+    \href{https://vin-dictive.github.io}{Portfolio} \pipe\ \href{https://linkedin.com/in/vinay-valson}{LinkedIn} \pipe\ \href{https://github.com/Vin-dictive}{GitHub}
 \end{center}
-
-% --- SUMMARY ---
-\section{Summary}
-{\small
-\noindent Full-stack AI software engineer with 4+ years of experience building fintech and data-intensive web products across startup and enterprise teams. Experience with delivery in backend, frontend services, CI/CD, and cloud deployments, plus hands-on AI-agent and RAG project work for automation and support.\par
-}
-\vspace{1pt}
-
-% --- TECHNICAL SKILLS ---
-\section{Technical Skills}
-{\small
-\noindent\textbf{Languages:} Python, TypeScript, JavaScript, Java, SQL \\[1pt]
-\noindent\textbf{Frameworks \& Platforms:} React, Next.js, Django, REST APIs, PostgreSQL, MongoDB, Redis \\[1pt]
-\noindent\textbf{AI \& Agentic Systems:} LLM workflows, RAG, Agent orchestration, Prompt and evaluation loops \\[1pt]
-\noindent\textbf{Cloud, DevOps \& Tooling:} AWS, GCP, Docker, Kubernetes, GitHub Actions, CI/CD, Airflow, PostHog, Cursor, Claude Code\par
-}
-\vspace{1pt}
 
 % --- EXPERIENCE ---
 \section{Professional Experience}
 \resumeHeading
   {\href{https://www.ubc.ca}{University of British Columbia}}{Vancouver, Canada}
-  {Research and Teaching Assistant}{Jan 2026 -- Present}
+  {Graduate Research and Teaching Assistant}{Jan 2026 -- Present}
 \begin{resumeItems}
   \item Building computer vision and MLOps components for a cow lameness detection pipeline for segmentation of workflows, evaluation metrics, backend-frontend, infra setup, with containerized inference services on OpenStack for scalable workloads.
   \item TA for Cloud Computing: ran tutorials and office hours for 60+ graduate students on distributed systems and deployment topics, and coached 12 capstone teams through architecture and design reviews toward more production-ready cloud deliverables.
 \end{resumeItems}
+\techStack{Python, Computer Vision, MLOps, Docker, OpenStack, CI/CD, LLM workflows, RAG, Agent orchestration, GitHub}
 
 \resumeHeading
   {\href{https://www.volentia.ca}{Volentia Healthcare Translation}}{Vancouver, Canada}
@@ -81,6 +80,7 @@
 \begin{resumeItems}
   \item Built and launched a healthcare web application in two weeks, unifying translation request workflows for 40+ users across hospital staff, physicians, and research teams. Implemented CI/CD and cloud deployment pipelines, and supported translation/review workflow automation with human approval gates to improve release reliability and turnaround speed.
 \end{resumeItems}
+\techStack{React, Next.js, REST APIs, CI/CD, AWS, GCP, Cursor, Claude, GitHub}
 
 \resumeHeading
   {\href{https://www.bluerabbit.ai/}{Blue Rabbit Group Ltd.}}{Hong Kong / India}
@@ -90,15 +90,17 @@
   \item Shipped a Series A MVP using Django and React, including order placement and client dashboards with sub-second median response times for positions, risk, and market views; integrated DBS Bank APIs.
   \item Instrumented product funnels and A/B experiments with PostHog, and orchestrated agent-style analytics/reporting workflows with validation steps before operational use.
 \end{resumeItems}
+\techStack{Python, Django, React, Next.js, PostgreSQL, Microservices, REST APIs, PostHog, LLM, Slack Bots, Inngest, Clerk auth}
 
 \resumeHeading
   {\href{https://www.oracle.com/financial-services/}{Oracle Financial Services Software Limited}}{Bangalore, India / Hong Kong}
-  {Staff Consultant - Software Engineer}{Aug 2021 -- Apr 2024}
+  {Staff Consultant \pipe\ Software Engineer}{Aug 2021 -- Apr 2024}
 \begin{resumeItems}
   \item Led onsite delivery for Oracle Banking Digital Experience (OBDX) in Hong Kong, shipping fraud detection and foreign exchange operations dashboards used in daily bank workflows.
   \item Built multi-tenant open banking and access management capabilities that reduced partner onboarding effort by approximately 40\% compared with the prior process.
   \item Received Rising Star and Ever Ready awards; mentored and onboarded software engineers to the team.
 \end{resumeItems}
+\techStack{Java, Eclipse, OJET, JPA-ORM, SQL, Oracle DB, SOAP/XML, OBDX, Apache FOP}
 
 % \resumeHeading
 %   {\href{https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view?usp=sharing}{Accops Systems}}{Pune, India}
@@ -112,26 +114,23 @@
 \resumeHeading
   {\href{https://masterdatascience.ubc.ca/}{University of British Columbia}}{Vancouver, Canada}
   {Master of Data Science}{2025 -- 2026}
-\noindent\small Academic Representative | Scholarship | ML, AI, Python, R\par\vspace{4pt}
+\noindent\small Academic Representative \pipe\ Scholarship \pipe\ ML, LLM, AI, Python, R, Statistics \pipe\ \par\vspace{4pt}
 
 \resumeHeading
   {\href{https://www.aitpune.com/}{Savitribai Phule Pune University, Army Institute of Technology}}{Pune, India}
   {Bachelor of Computer Engineering}{2017 -- 2021}
-\noindent\small CGPA: 8.91 | Scholarship | First Class with Distinction\par
+\noindent\small CGPA: 8.91 \pipe\ Scholarship \pipe\ First Class with Distinction\par
 
 % --- PROJECTS ---
 \section{Projects}
-{\small
-\noindent\textbf{\href{https://github.com/UBC-AWP/vision-sam3-yolo-lameless}{Cow Lameness Detection (CV / MLOps)}} -- In-progress research pipeline for automated lameness screening: model integration, containerized inference on OpenStack with Docker; timeline fast-tracked toward deployable inference.\par\vspace{3pt}
-\noindent\textbf{Predictive Analytics of External Factors on Clarius Scanner Sales} -- For my Graduate Program capstone, performed forecasting and exploratory analysis to evaluate how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US. \par\vspace{3pt}
-\noindent\textbf{\href{https://github.com/Vin-dictive/insta-AI-post}{AI Agent Content Operations}} -- Python application with content scoring, caption generation, human approval gates, and Instagram Graph API integration.\par\vspace{3pt}
-\noindent\textbf{\href{https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard}{CocoaBoard}} -- Interactive analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration across country, product, and time dimensions.\par\vspace{3pt}
-\noindent\textbf{\href{https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28}{RAG Music Search Platform}} -- Natural-language retrieval system over Amazon Digital Music data using BM25 and optional dense retrieval for relevance improvements.\par\vspace{3pt}
-\noindent\textbf{\href{https://github.com/UBC-MDS/imitation_game}{Imitation Game}} -- Python encryption utility implementing symmetric and asymmetric cryptography with shared-secret and public-key interfaces.\par\vspace{3pt}
-% \noindent\textbf{\href{https://github.com/Vin-dictive/ubc-reddit-reporter}{UBC Reddit Reporter}} -- AWS Lambda serverless app with Amazon Bedrock sentiment analysis for automated UBC community reporting.\par\vspace{4pt}
-% \noindent\textbf{\href{https://github.com/Vin-dictive/fake-real-news-detection}{Fake Real News Detection}} -- Naive Bayes fake-news classifier with NLP preprocessing and feature extraction.\par\vspace{4pt}
-% \noindent\textbf{\href{https://github.com/Vin-dictive/customer-reviews-polarity}{Customer Reviews Polarity Analysis}} -- ML sentiment analysis (NLP) for positive/negative product-review classification.\par\vspace{4pt}
-}
+\begin{projectItems}
+  \item \textbf{\href{https://github.com/UBC-AWP/vision-sam3-yolo-lameless}{Cow Lameness Detection (CV / MLOps)}:} In-progress research pipeline for automated lameness screening: model integration, containerized inference on OpenStack with Docker; timeline fast-tracked toward deployable inference.
+  \item \textbf{Predictive Analytics of External Factors on Clarius Scanner Sales:} For my Graduate Program capstone, performed forecasting and exploratory analysis to evaluate how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US.
+  \item \textbf{\href{https://github.com/Vin-dictive/insta-AI-post}{AI Agent Content Operations}:} Python application with content scoring, caption generation, human approval gates, and Instagram Graph API integration.
+  \item \textbf{\href{https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard}{CocoaBoard}:} Interactive analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration across country, product, and time dimensions.
+  \item \textbf{\href{https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28}{RAG Music Search Platform}:} Natural-language retrieval system over Amazon Digital Music data using BM25 and optional dense retrieval for relevance improvements.
+  \item \textbf{\href{https://github.com/UBC-MDS/imitation_game}{Imitation Game}:} Python encryption utility implementing symmetric and asymmetric cryptography with shared-secret and public-key interfaces.
+\end{projectItems}
 
 % \vspace{4pt}
 
