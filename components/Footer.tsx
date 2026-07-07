@@ -9,7 +9,7 @@ export default function Footer({ brand, github, linkedin, email }: FooterProps) 
   const year = new Date().getFullYear()
   return (
     <footer className="w-full border-t border-folio-outline-variant/25 bg-folio-surface-low/60 py-12 backdrop-blur-lg dark:border-zinc-900 dark:bg-zinc-950/75">
-      <div className="flex flex-col md:flex-row justify-between items-center px-8 gap-6 w-full max-w-screen-2xl mx-auto">
+      <div className="mx-auto flex w-full max-w-[100rem] flex-col items-center justify-between gap-6 px-4 sm:px-6 md:flex-row md:px-8 lg:px-10 xl:px-12 2xl:px-16">
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-left">
           <span className="font-black text-folio-on-surface uppercase tracking-tighter dark:text-white">
             {brand}

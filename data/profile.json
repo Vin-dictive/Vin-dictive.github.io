@@ -53,8 +53,6 @@
       "Kubernetes",
       "GitHub Actions",
       "CI/CD",
-      "AWS",
-      "GCP",
       "GitHub",
       "PostHog",
       "Inngest"
@@ -132,12 +130,6 @@
       "description": "Interactive analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration across country, product, and time dimensions.",
       "link": "https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard",
       "preview": "https://raw.githubusercontent.com/UBC-MDS/DSCI-532_2026_8_cocoaboard/refs/heads/main/img/updated_demo.gif"
-    },
-    {
-      "name": "Lameness Detection ML Pipeline",
-      "description": "Containerized inference services deployed on OpenStack with Docker for scalable computer vision workloads.",
-      "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
-      "preview": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless/blob/main/docs/ARCHITECTURE.md#detailed-ascii-diagram-updated"
     },
     {
       "name": "UBC Reddit Reporter",
@@ -265,6 +257,123 @@
       "year": "2017",
       "logo": "/udemy.svg",
       "link": "https://drive.google.com/file/d/1-tqhKO-byth2VlJZ8wMstEOSxlvz9AOh/view?usp=sharing"
+    }
+  ],
+  "pictures": [
+    {
+      "src": "/pictures/IMG_0867.JPG",
+      "alt": "Photography",
+      "caption": "IMG 0867"
+    },
+    {
+      "src": "/pictures/IMG_0909.JPG",
+      "alt": "Photography",
+      "caption": "IMG 0909"
+    },
+    {
+      "src": "/pictures/IMG_0920.JPG",
+      "alt": "Photography",
+      "caption": "IMG 0920"
+    },
+    {
+      "src": "/pictures/IMG_0930.JPG",
+      "alt": "Photography",
+      "caption": "IMG 0930"
+    },
+    {
+      "src": "/pictures/IMG_0982.JPG",
+      "alt": "Photography",
+      "caption": "IMG 0982"
+    },
+    {
+      "src": "/pictures/IMG_0988.JPG",
+      "alt": "Photography",
+      "caption": "IMG 0988"
+    },
+    {
+      "src": "/pictures/IMG_0997.JPG",
+      "alt": "Photography",
+      "caption": "IMG 0997"
+    },
+    {
+      "src": "/pictures/IMG_1029.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1029"
+    },
+    {
+      "src": "/pictures/IMG_1040.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1040"
+    },
+    {
+      "src": "/pictures/IMG_1051.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1051"
+    },
+    {
+      "src": "/pictures/IMG_1089.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1089"
+    },
+    {
+      "src": "/pictures/IMG_1112.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1112"
+    },
+    {
+      "src": "/pictures/IMG_1125.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1125"
+    },
+    {
+      "src": "/pictures/IMG_1137.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1137"
+    },
+    {
+      "src": "/pictures/IMG_1147.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1147"
+    },
+    {
+      "src": "/pictures/IMG_1160.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1160"
+    },
+    {
+      "src": "/pictures/IMG_1164.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1164"
+    },
+    {
+      "src": "/pictures/IMG_1181.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1181"
+    },
+    {
+      "src": "/pictures/IMG_1187.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1187"
+    },
+    {
+      "src": "/pictures/IMG_1219.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1219"
+    },
+    {
+      "src": "/pictures/IMG_1228.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1228"
+    },
+    {
+      "src": "/pictures/IMG_1241.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1241"
+    },
+    {
+      "src": "/pictures/IMG_1255.JPG",
+      "alt": "Photography",
+      "caption": "IMG 1255"
     }
   ]
 }

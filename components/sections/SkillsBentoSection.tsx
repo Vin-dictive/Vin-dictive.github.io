@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Terminal, Layers, Brain, Cloud } from 'lucide-react'
+import { folioContainerClass, folioSectionXPad } from '@/components/sections/folioLayout'
 
 interface Skills {
   programmingLanguages: string[]
@@ -59,7 +60,7 @@ function CoreStackInner({ skills }: { skills: Skills }) {
         </div>
         <div className="mb-2 hidden h-px flex-grow bg-folio-outline-variant/25 md:mx-8 md:block dark:bg-white/10" />
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-5 xl:gap-6 2xl:gap-8">
         {stacks.map(({ key, title, borderClass, iconClass, Icon }) => (
           <div
             key={key}
@@ -70,8 +71,8 @@ function CoreStackInner({ skills }: { skills: Skills }) {
               {title}
             </h3>
             <ul className="technical-label space-y-2.5 text-[11px] uppercase tracking-widest text-folio-on-surface-variant sm:space-y-3 sm:text-xs">
-              {skills[key].map((item) => (
-                <li key={item} className="flex items-center gap-2">
+              {skills[key].map((item, index) => (
+                <li key={`${key}-${index}`} className="flex items-center gap-2">
                   <span className="h-1 w-1 shrink-0 rounded-full bg-folio-secondary" />
                   {item}
                 </li>
@@ -114,7 +115,7 @@ export default function SkillsBentoSection({
 }) {
   if (variant === 'embedded') {
     return (
-      <GlassShell className="p-6 sm:p-8 md:p-10">
+      <GlassShell className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14">
         <CoreStackInner skills={skills} />
       </GlassShell>
     )
@@ -122,10 +123,10 @@ export default function SkillsBentoSection({
 
   return (
     <section
-      className="border-y border-folio-outline-variant/10 bg-folio-surface-low/50 px-4 py-20 backdrop-blur-md sm:px-6 md:px-8 md:py-24"
+      className={`border-y border-folio-outline-variant/10 bg-folio-surface-low/50 py-20 backdrop-blur-md md:py-24 ${folioSectionXPad}`}
       id="skills"
     >
-      <div className="mx-auto max-w-screen-xl">
+      <div className={folioContainerClass}>
         <CoreStackInner skills={skills} />
       </div>
     </section>

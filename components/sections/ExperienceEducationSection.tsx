@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import { sectionGlassShell } from '@/components/sections/sectionGlass'
+import { folioContainerClass, folioSectionXPad } from '@/components/sections/folioLayout'
 import { cn } from '@/lib/utils'
 
 interface ExperienceItem {
@@ -21,9 +22,9 @@ export default function ExperienceEducationSection({
   return (
     <section
       id="experience"
-      className="folio-section bg-transparent px-4 py-24 sm:px-6 md:px-8"
+      className={`folio-section bg-transparent py-24 ${folioSectionXPad}`}
     >
-      <div className="mx-auto max-w-screen-xl">
+      <div className={folioContainerClass}>
         <h2 className="kinetic-monolith mb-2 text-4xl font-black uppercase text-folio-on-surface">
           Professional Timeline
         </h2>
@@ -38,10 +39,10 @@ export default function ExperienceEducationSection({
               <article
                 key={`${exp.company}-${exp.duration}`}
                 className={cn(
-                  'flex flex-col gap-5 border-t border-folio-outline-variant/15 py-10 first:border-t-0 first:pt-6 last:pb-6 dark:border-white/10 sm:flex-row sm:items-start sm:gap-8 md:gap-10',
+                  'flex flex-col gap-5 border-t border-folio-outline-variant/15 py-10 first:border-t-0 first:pt-6 last:pb-6 dark:border-white/10 sm:flex-row sm:items-start sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14',
                 )}
               >
-                <div className="flex shrink-0 flex-row items-center gap-4 sm:w-36 sm:flex-col sm:items-start md:w-44">
+                <div className="flex shrink-0 flex-row items-center gap-4 sm:w-36 sm:flex-col sm:items-start md:w-44 lg:w-52">
                   <a
                     href={exp.link}
                     target="_blank"

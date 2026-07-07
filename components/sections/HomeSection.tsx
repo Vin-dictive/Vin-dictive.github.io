@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import SkillsBentoSection from '@/components/sections/SkillsBentoSection'
+import { folioContainerClass, folioSectionXPad } from '@/components/sections/folioLayout'
 
 interface Personal {
   name: string
@@ -25,15 +26,15 @@ export default function HomeSection({
     <section
       id="home"
       aria-label="Home"
-      className="folio-section relative flex flex-col items-center overflow-x-hidden bg-transparent px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 md:px-8 md:pt-36"
+      className={`folio-section relative flex flex-col items-center overflow-x-hidden bg-transparent pb-16 pt-28 sm:pb-20 sm:pt-32 md:pt-36 ${folioSectionXPad}`}
     >
-      <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center gap-8 sm:gap-10 md:gap-12">
+      <div className={`flex w-full flex-col items-center gap-8 sm:gap-10 md:gap-12 ${folioContainerClass}`}>
         <h1 className="kinetic-monolith max-w-full whitespace-nowrap px-2 pt-4 text-center text-[clamp(1.25rem,calc(0.5rem+4.8vw),7.5rem)] font-black uppercase leading-[0.92] text-folio-on-surface sm:px-4 sm:pt-6 sm:leading-[0.9] md:pt-8">
           {personal.name.trim()}
         </h1>
 
         {personal.quote ? (
-          <blockquote className="mx-auto max-w-xl px-2 text-center">
+          <blockquote className="mx-auto max-w-xl px-2 text-center xl:max-w-3xl 2xl:max-w-4xl">
             <p className="text-pretty text-base font-medium italic leading-relaxed text-folio-on-surface sm:text-lg md:text-xl">
               &ldquo;{personal.quote}&rdquo;
             </p>
@@ -55,7 +56,7 @@ export default function HomeSection({
           </Link>
         </div>
 
-        <div className="mt-2 w-full max-w-5xl sm:mt-4">
+        <div className="mt-2 w-full sm:mt-4 xl:max-w-6xl 2xl:max-w-7xl">
           <SkillsBentoSection skills={skills} variant="embedded" />
         </div>
       </div>

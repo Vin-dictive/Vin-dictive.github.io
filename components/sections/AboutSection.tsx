@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { sectionGlassCard } from '@/components/sections/sectionGlass'
+import { folioContainerClass, folioSectionXPad } from '@/components/sections/folioLayout'
 import { cn } from '@/lib/utils'
 
 interface Personal {
@@ -41,11 +42,11 @@ export default function AboutSection({
   return (
     <section
       id="about"
-      className="folio-section bg-transparent px-4 py-20 sm:px-6 md:px-8"
+      className={`folio-section bg-transparent py-20 ${folioSectionXPad}`}
     >
-      <div className="mx-auto max-w-screen-xl">
+      <div className={folioContainerClass}>
         <div
-          className="group/about relative overflow-hidden rounded-xl border border-folio-on-surface/10 bg-folio-surface-highest/25 p-8 shadow-xl shadow-folio-surface/10 backdrop-blur-2xl transition-[border-color,box-shadow] duration-500 dark:border-white/10 dark:bg-zinc-950/35 dark:shadow-black/20 md:p-12 md:backdrop-blur-3xl hover:border-folio-primary hover:shadow-xl hover:shadow-folio-primary/25 dark:hover:border-folio-primary dark:hover:shadow-folio-primary/30"
+          className="group/about relative overflow-hidden rounded-xl border border-folio-on-surface/10 bg-folio-surface-highest/25 p-8 shadow-xl shadow-folio-surface/10 backdrop-blur-2xl transition-[border-color,box-shadow] duration-500 dark:border-white/10 dark:bg-zinc-950/35 dark:shadow-black/20 md:p-12 lg:p-14 xl:p-16 md:backdrop-blur-3xl hover:border-folio-primary hover:shadow-xl hover:shadow-folio-primary/25 dark:hover:border-folio-primary dark:hover:shadow-folio-primary/30"
         >
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-folio-primary/[0.07] via-transparent to-folio-tertiary/[0.06] opacity-80" />
           <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-folio-primary/10 blur-3xl" />
@@ -55,8 +56,8 @@ export default function AboutSection({
               About
             </h2>
 
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-stretch md:gap-0 md:divide-x md:divide-folio-outline-variant/20 dark:md:divide-white/10">
-              <div className="min-w-0 space-y-5 pr-0 text-base leading-relaxed text-folio-on-surface-variant md:pr-8 lg:pr-10 md:text-lg">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-0 lg:divide-x lg:divide-folio-outline-variant/20 dark:lg:divide-white/10">
+              <div className="min-w-0 space-y-5 pr-0 text-base leading-relaxed text-folio-on-surface-variant lg:pr-10 xl:pr-14 md:text-lg xl:text-xl">
                 {paragraphs.map((text, i) => (
                   <p key={i} className="text-pretty">
                     {text}
@@ -64,8 +65,8 @@ export default function AboutSection({
                 ))}
               </div>
 
-              <div className="flex min-h-0 min-w-0 items-center justify-center pl-0 md:pl-8 lg:pl-10">
-                <div className="relative mx-auto aspect-square w-full max-w-md md:mx-0 md:max-w-none">
+              <div className="flex min-h-0 min-w-0 items-center justify-center pl-0 lg:pl-10 xl:pl-14">
+                <div className="relative mx-auto aspect-square w-full max-w-md lg:mx-0 lg:max-w-none xl:max-w-xl 2xl:max-w-2xl">
                   <div className="relative h-full w-full overflow-hidden rounded-xl border-2 border-folio-primary bg-folio-surface-high/50 shadow-inner transition-[border-color,box-shadow] duration-500 group-hover/about:border-folio-primary group-hover/about:shadow-md group-hover/about:shadow-folio-primary/20">
                     {photoOk ? (
                       // eslint-disable-next-line @next/next/no-img-element
@@ -102,7 +103,7 @@ export default function AboutSection({
 
             <ul
               role="list"
-              className="flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch] md:grid md:snap-none md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 lg:gap-8"
+              className="flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch] md:grid md:snap-none md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 lg:gap-8 xl:grid-cols-2 2xl:gap-10"
             >
               {education.map((edu, index) => (
                 <li

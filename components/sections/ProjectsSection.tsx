@@ -1,5 +1,6 @@
 import { ArrowUpRight, Github } from 'lucide-react'
 import { sectionGlassCard, sectionGlassShell } from '@/components/sections/sectionGlass'
+import { folioContainerClass, folioSectionXPad } from '@/components/sections/folioLayout'
 import { cn } from '@/lib/utils'
 
 interface Project {
@@ -39,10 +40,10 @@ export default function ProjectsSection({
   return (
     <section
       id="projects"
-      className="folio-section bg-transparent px-4 py-28 sm:px-6 md:px-10 md:py-32 lg:px-14 lg:py-36"
+      className={`folio-section bg-transparent py-28 md:py-32 lg:py-36 ${folioSectionXPad}`}
       aria-labelledby="projects-heading"
     >
-      <div className="mx-auto max-w-screen-xl">
+      <div className={folioContainerClass}>
         <h2
           id="projects-heading"
           className="kinetic-monolith mb-4 text-center text-4xl font-black uppercase text-folio-on-surface sm:text-5xl md:mb-6"
@@ -54,12 +55,12 @@ export default function ProjectsSection({
         </p>
 
         <div className={sectionGlassShell}>
-          <ul className="grid list-none grid-cols-1 gap-6 p-0 md:grid-cols-2 md:gap-8 lg:gap-10">
+          <ul className="grid list-none grid-cols-1 gap-6 p-0 md:grid-cols-2 md:gap-8 lg:gap-10 xl:grid-cols-3 2xl:gap-12">
             {shown.map((project, index) => {
               const n = String(index + 1).padStart(2, '0')
 
               return (
-                <li key={project.link} className="flex min-h-0 md:h-full">
+                <li key={`${project.name}-${index}`} className="flex min-h-0 md:h-full">
                   <a
                     href={project.link}
                     target="_blank"
