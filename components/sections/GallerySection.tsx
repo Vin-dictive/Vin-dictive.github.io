@@ -8,7 +8,66 @@ import { cn } from "@/lib/utils"
 export interface GalleryPicture {
   src: string
   alt: string
+  /** Your short description — edit in data/profile.json */
   caption?: string
+  /** From geotag or manual entry — edit in data/profile.json */
+  location?: string
+}
+
+function pictureCaptionText(picture: GalleryPicture) {
+  return picture.caption?.trim() ?? ""
+}
+
+function pictureLocationText(picture: GalleryPicture) {
+  return picture.location?.trim() ?? ""
+}
+
+function PictureMeta({
+  picture,
+  variant = "page",
+}: {
+  picture: GalleryPicture
+  variant?: "page" | "lightbox"
+}) {
+  const caption = pictureCaptionText(picture)
+  const location = pictureLocationText(picture)
+
+  if (!caption && !location) return null
+
+  const isLightbox = variant === "lightbox"
+
+  return (
+    <div
+      className={cn(
+        "shrink-0",
+        isLightbox ? "text-left" : "mt-3 text-center sm:mt-4",
+      )}
+    >
+      {caption ? (
+        <p
+          className={cn(
+            "text-pretty font-medium leading-snug",
+            isLightbox
+              ? "text-sm text-white/90 sm:text-base"
+              : "text-sm text-folio-on-surface sm:text-base",
+          )}
+        >
+          {caption}
+        </p>
+      ) : null}
+      {location ? (
+        <p
+          className={cn(
+            "technical-label mt-1 text-[10px] uppercase tracking-[0.28em] sm:text-[11px]",
+            isLightbox ? "text-white/50" : "text-folio-on-surface-variant",
+            !caption && "mt-0",
+          )}
+        >
+          {location}
+        </p>
+      ) : null}
+    </div>
+  )
 }
 
 function blockSaveIntent(e: React.SyntheticEvent) {
@@ -241,11 +300,7 @@ export default function GallerySection({
               />
             </div>
 
-            {current.caption ? (
-              <p className="technical-label mt-3 shrink-0 text-center text-[11px] uppercase tracking-wider text-folio-on-surface-variant sm:mt-4">
-                {current.caption}
-              </p>
-            ) : null}
+            <PictureMeta picture={current} />
           </div>
         </div>
       </section>
@@ -271,11 +326,9 @@ export default function GallerySection({
             onTouchEnd={onTouchEnd}
           >
             <div className="flex shrink-0 items-center justify-between gap-4 border-b border-white/10 px-4 py-3 sm:px-6 sm:py-4">
-              <div className="min-w-0">
-                <p className="technical-label truncate text-xs uppercase tracking-widest text-white/80">
-                  {current.caption ?? current.alt}
-                </p>
-                <p className="technical-label mt-1 text-[10px] uppercase tracking-[0.3em] text-white/45">
+              <div className="min-w-0 flex-1">
+                <PictureMeta picture={current} variant="lightbox" />
+                <p className="technical-label mt-2 text-[10px] uppercase tracking-[0.3em] text-white/45">
                   {counter}
                 </p>
               </div>
