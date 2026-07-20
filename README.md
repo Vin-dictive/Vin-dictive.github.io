@@ -46,11 +46,9 @@ Give it a Description `aws-tailscale-demo`, then run on VM
 sudo tailscale up --auth-key="tskey-auth-xxxxx-xxxxx"  --hostname=development-website  --accept-routes
 ```
 
-This will add Tailscale to your mesh network.
-
+This will add Tailscale to your mesh network. It should be visible to you on `https://console.tailscale.com/admin/machines`
 
 Trying with VPN connection (NordVPN), the above ssh using `ec2-user@ec2-XX-XX-XX-XX.region.compute.amazonaws.com` should  not work because it was blocked using rules set during EC2 security rules setup.
-
 
 ```bash
 ssh -i ~/Downloads/developer.pem ec2-user@development-website.tailXXXX.ts.net
@@ -72,19 +70,20 @@ cd app
 git checkout development
 chmod +x scripts/setup-dev-nginx.sh
 
-# Configure Tailscale hostname for nginx
-cp .env.example .env
-# edit SERVER_NAME=... in .env
+# Create .env and set your Tailscale hostname for nginx
+cat > .env <<'EOF'
+SERVER_NAME=development-website.XXXXX.ts.net
+EOF
+# Edit SERVER_NAME if your MagicDNS name is different
 
 # Install deps, yarn build (dev banner), configure nginx, restart
 ./scripts/setup-dev-nginx.sh
 ```
 
-The script reads `SERVER_NAME` (and optional `LISTEN_IP`, `SKIP_INSTALL`) from:
+The script reads `SERVER_NAME` from:
 
 1. `.env`
-2. `.env.local` (overrides `.env`)
-3. Or shell environment: `SERVER_NAME=... ./scripts/setup-dev-nginx.sh`
+2. Or shell environment: `SERVER_NAME=... ./scripts/setup-dev-nginx.sh`
 
 Then it:
 
@@ -94,23 +93,13 @@ Then it:
 4. Fixes home-dir permissions so nginx can read the export
 5. Enables and restarts nginx
 
-Open (laptop on Tailscale):
+Open the MagicDNS on your Laptop with Tailscale connected:
 
 ```text
 http://development-website.tailXXXX.ts.net/
 ```
 
-Optional: bind nginx only to the Tailscale IP in `.env`:
-
-```bash
-LISTEN_IP=100.x.x.x
-```
-
-or:
-
-```bash
-LISTEN_IP="$(tailscale ip -4)" ./scripts/setup-dev-nginx.sh
-```
+Website should open up. Without tailscale connected it should say `This site can’t be reached`
 
 ### 4. Redeploy after changes
 
@@ -119,18 +108,6 @@ cd ~/app
 git pull
 # keep your local .env (it is gitignored)
 ./scripts/setup-dev-nginx.sh
-```
-
-Rebuild only (packages already installed):
-
-```bash
-SKIP_INSTALL=1 ./scripts/setup-dev-nginx.sh
-```
-
-Or via Yarn:
-
-```bash
-yarn setup:dev-nginx
 ```
 
 ---
