@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_PUBLIC_SITE_ENV=development next dev",
     "build": "next build",
+    "build:dev": "NEXT_PUBLIC_SITE_ENV=development next build",
+    "setup:dev-nginx": "bash scripts/setup-dev-nginx.sh",
     "sync-gallery": "node scripts/sync-gallery.mjs",
     "start": "next start",
     "lint": "next lint"
