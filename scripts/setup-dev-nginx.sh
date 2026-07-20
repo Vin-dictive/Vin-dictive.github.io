@@ -2,29 +2,42 @@
 # Setup / redeploy the development portfolio on Amazon Linux with nginx (no Docker).
 # Uses Yarn for install + build. Enables the "Development site" banner.
 #
-# First time on a fresh VM (as ec2-user):
-#   curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
-#   sudo dnf install -y nodejs nginx git
-#   sudo npm install -g yarn
-#   git clone https://github.com/Vin-dictive/Vin-dictive.github.io.git app
-#   cd app && git checkout development
-#   chmod +x scripts/setup-dev-nginx.sh
-#   ./scripts/setup-dev-nginx.sh
+# Config via environment or .env files in the repo root (loaded in order):
+#   .env
+#   .env.local          # overrides .env (gitignored)
 #
-# Later updates:
-#   cd ~/app && git pull && ./scripts/setup-dev-nginx.sh
-#   # or rebuild only:
-#   SKIP_INSTALL=1 ./scripts/setup-dev-nginx.sh
-#
-# Optional env:
+# Supported keys:
+#   SERVER_NAME=development-website.tailXXXX.ts.net
+#   LISTEN_IP=          # empty = all interfaces; Tailscale IP to bind only there
 #   SITE_ROOT=/home/ec2-user/app
-#   SERVER_NAME=development-website.tailc52fb7.ts.net
-#   LISTEN_IP=          # empty = all interfaces; set to Tailscale IP to bind only there
+#   SKIP_INSTALL=1
+#
+# Usage:
+#   cp .env.example .env   # edit SERVER_NAME
+#   ./scripts/setup-dev-nginx.sh
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+log() { printf '\n==> %s\n' "$*"; }
+die() { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
+
+load_env_file() {
+  local file="$1"
+  [[ -f "$file" ]] || return 0
+  log "Loading env from ${file}"
+  set -a
+  # shellcheck disable=SC1090
+  source "$file"
+  set +a
+}
+
+# Load .env before applying defaults (.env.local overrides .env)
+load_env_file "${REPO_ROOT}/.env"
+load_env_file "${REPO_ROOT}/.env.local"
+
 SITE_ROOT="${SITE_ROOT:-$REPO_ROOT}"
 OUT_DIR="${SITE_ROOT}/out"
 NGINX_CONF="/etc/nginx/conf.d/portfolio-dev.conf"
@@ -32,11 +45,17 @@ SERVER_NAME="${SERVER_NAME:-development-website.tailc52fb7.ts.net}"
 LISTEN_IP="${LISTEN_IP:-}"
 SKIP_INSTALL="${SKIP_INSTALL:-0}"
 
-log() { printf '\n==> %s\n' "$*"; }
-die() { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
-
 [[ -f "${SITE_ROOT}/package.json" ]] || die "package.json not found in ${SITE_ROOT}"
 [[ "$(id -u)" -eq 0 ]] && die "Do not run as root. Run as ec2-user (script uses sudo when needed)."
+
+if [[ -z "${SERVER_NAME}" ]]; then
+  die "SERVER_NAME is empty. Set it in .env or the environment."
+fi
+
+log "Using SERVER_NAME=${SERVER_NAME}"
+if [[ -n "$LISTEN_IP" ]]; then
+  log "Using LISTEN_IP=${LISTEN_IP}"
+fi
 
 if [[ "$SKIP_INSTALL" != "1" ]]; then
   log "Installing system packages (nodejs, nginx, git)"
