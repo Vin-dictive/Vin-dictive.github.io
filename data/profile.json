@@ -17,7 +17,7 @@
     "linkedin": "vinay-valson",
     "website": "Profile Page",
     "resumeUrl": "/Vinay_Valson.pdf",
-    "about": "Graduate Research and Teaching Assistant at UBC, building computer vision and MLOps pipelines for automated lameness screening while supporting cloud computing coursework and capstone teams. Previously shipped fintech and banking products at Blue Rabbit Group and Oracle in Hong Kong—full-stack web apps, data pipelines, CI/CD, and AI-assisted automation across healthcare, trading, and enterprise banking workflows."
+    "about": "Solutions Engineer at Tailscale, demonstrating secure private connectivity with Tailnets, MagicDNS, ACLs, and CI over Tailscale. Previously Graduate Research and Teaching Assistant at UBC, building computer vision and MLOps pipelines for automated lameness screening while supporting cloud computing coursework and capstone teams. Earlier shipped fintech and banking products at Blue Rabbit Group and Oracle in Hong Kong—full-stack web apps, data pipelines, CI/CD, and AI-assisted automation across healthcare, trading, and enterprise banking workflows."
   },
   "skills": {
     "programmingLanguages": [
@@ -60,9 +60,19 @@
   },
   "experience": [
     {
+      "title": "Tailscale Solutions Engineer",
+      "company": "Tailscale",
+      "duration": "July 2026 - Present",
+      "location": "Remote",
+      "description": "Built a private development preview of this portfolio on AWS EC2, reachable only over a Tailnet: MagicDNS + nginx serving a static Next.js export, SSH over Tailscale with public inbound locked down, ACL tags for least-privilege access, and GitHub Actions that joins the Tailnet (tag:ci) to redeploy the EC2 host (tag:dev-server) without exposing SSH to the public internet.",
+      "techStack": "Tailscale, MagicDNS, ACLs, Auth keys, OAuth, AWS EC2, nginx, Next.js, GitHub Actions, CI/CD",
+      "logo": "/tailscale.svg",
+      "link": "https://tailscale.com/"
+    },
+    {
       "title": "Graduate Research and Teaching Assistant",
       "company": "University of British Columbia",
-      "duration": "January 2026 - Present",
+      "duration": "January 2026 - July 2026",
       "location": "Vancouver, Canada",
       "description": "Building computer vision and MLOps components for a cow lameness detection pipeline for segmentation of workflows, evaluation metrics, backend-frontend, infra setup, with containerized inference services on OpenStack for scalable workloads. TA for Cloud Computing: ran tutorials and office hours for 60+ graduate students on distributed systems and deployment topics, and coached 12 capstone teams through architecture and design reviews toward more production-ready cloud deliverables.",
       "techStack": "Python, Computer Vision, MLOps, Docker, OpenStack, CI/CD, LLM workflows, RAG, Agent orchestration, GitHub",

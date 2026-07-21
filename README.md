@@ -1,20 +1,97 @@
 # Developer Profile
 
-A modern developer portfolio built with Next.js — interactive cursor background, section navigation, gallery, and JSON-driven content. Styled with Tailwind CSS.
+A modern developer portfolio built with Next.js. Contains interactive cursor background, section navigation, gallery, and JSON-driven content. Styled with Tailwind CSS.
+
+To see the difference between what was there before and what was additionally added to this branch check out [this PR](https://github.com/Vin-dictive/Vin-dictive.github.io/pull/3)
 
 ## Development deploy on AWS EC2 (Tailscale + nginx)
 
-Use this for a private preview of the `development` branch. The site is reachable only on Tailscale network (not the public internet), assuming the security group is locked down.
-When deploying on AWS EC2, spin up a container and then create key pair called developer.pem and select only IP for accepting SSH connections to the VM.
+Use this for a private preview of the `development` branch. The site is reachable only on Tailscale network (not the public internet), assuming the security group is locked down. When deploying on AWS EC2, spin up a container and then create key pair called `developer.pem` and select only your IP for accepting SSH connections to the VM.
+
+This setup follows Tailscale’s guidance for [setting up a server on your Tailscale network](https://tailscale.com/docs/how-to/set-up-servers): install the client, authenticate with an [auth key](https://tailscale.com/docs/features/access-control/auth-keys), optionally apply [tags](https://tailscale.com/docs/features/tags), and reach the host via [MagicDNS](https://tailscale.com/docs/features/magicdns).
+
+## AI Disclosures
+
+- For base website development of personal developer profile, AI was used for modules and updating content as per CV. 
+- Rest of the setup steps were already known during a previous setup on an EC2 VM.
+- All the steps was taken from Tailscales documentation (links collected in [Tailscale docs referenced](#tailscale-docs-referenced) below).
+- The Mermaid architecture diagram below was drafted with AI assistance; I reviewed the node/edge labels against this repo’s actual flow (laptop browse, MagicDNS, nginx -> `out/`, GitHub Actions + `tag:ci` -> `tag:dev-server:22`) and adjusted wording to match.
+
+
 
 ### Architecture
 
 ```text
-Laptop (Tailscale) ->EC2 (Tailscale + nginx) ->out/
+Laptop (Tailscale) or Mobile Phone (Tailscale) -> EC2 (Tailscale + nginx) ->out/
 ```
 
-- **Production**: GitHub Pages (`main`)
-- **Development**: EC2 + Tailscale (`development` branch), with **Development site** banner
+```mermaid
+flowchart LR
+  subgraph clients [Clients]
+    Laptop["Laptop - Tailscale client"]
+  end
+
+  subgraph cicd [CI CD]
+    GHA["GitHub Actions runner - tag ci"]
+  end
+
+  subgraph tailnet [Tailnet private mesh]
+    DNS["MagicDNS FQDN"]
+  end
+
+  subgraph ec2 [AWS EC2 tag dev-server]
+    TS["Tailscale node"]
+    Nginx["nginx"]
+    Out["static export out/"]
+    TS --> Nginx
+    Nginx --> Out
+  end
+
+  Laptop -->|"HTTP browse"| DNS
+  DNS --> TS
+  Laptop -->|"SSH ops"| TS
+  GHA -->|"SSH deploy ACL"| TS
+```
+
+
+
+**Paths**
+
+
+| Path        | Who            | How                                              | ACL / identity                  |
+| ----------- | -------------- | ------------------------------------------------ | ------------------------------- |
+| Browse      | Laptop         | HTTP to MagicDNS -> nginx -> `out/`              | Tailnet member                  |
+| Ops SSH     | Laptop         | SSH to MagicDNS hostname                         | Tailnet member                  |
+| Auto-deploy | GitHub Actions | Runner joins Tailnet, SSH + `setup-dev-nginx.sh` | `tag:ci` -> `tag:dev-server:22` |
+
+
+- **Production**: GitHub Pages (`main`) : public, no Tailscale
+- **Development**: EC2 + Tailscale (`development` branch), with **Development site** banner.
+
+Traffic stays on the Tailnet: your laptop and the EC2 node are peers. The portfolio is served by nginx on the VM and addressed by MagicDNS (`development-website.<tailnet>.ts.net`), so nothing on ports 80/443 needs to be public. CI never needs a public SSH ingress. The runner authenticates into the Tailnet with an [OAuth client](https://tailscale.com/docs/features/oauth-clients) and is limited by [tags](https://tailscale.com/docs/features/tags) / ACLs.
+
+### Traditional approach vs Tailscale
+
+This project is a small stand-in for a common customer problem: **preview or reach a private service without putting it on the public internet**.
+
+
+| Approach                         | How access usually works                                                                                                      | Pain for this use case                                                                                                                                                                  |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Open ports / public HTTP**     | Security group allows `0.0.0.0/0` on 80/443 (or SSH)                                                                          | Dev site is crawlable; attack surface grows with every open port                                                                                                                        |
+| **Bastion / jump host**          | SSH into a bastion, then hop to the private box                                                                               | Extra host to patch; key distribution; still often needs a public SSH listener                                                                                                          |
+| **Consumer VPN (e.g. NordVPN)**  | Your laptop egresses from a *different* public IP                                                                             | Does **not** grant private access to your VPC; if SSH is locked to *your* home IP, a VPN exit IP is simply blocked : which is useful as a negative test, not as a connectivity solution |
+| **Site-to-site / corporate VPN** | Tunnel whole networks together                                                                                                | Heavyweight for one preview VM, slow to onboard a contractor or a one-off device                                                                                                        |
+| **Tailscale**                    | Nodes join a private mesh; identity + [ACLs](https://tailscale.com/docs/features/tailnet-policy-file) decide who reaches what | No public 80/443. MagicDNS name only works on the Tailnet. CI joins briefly with `tag:ci`                                                                                               |
+
+
+**What NordVPN was used for here:**  
+EC2 security groups allow SSH only from a known public IP which was set during key pair addition. With NordVPN connected, the laptop’s egress IP changes, so:
+
+```bash
+ssh -i ~/Downloads/developer.pem ec2-user@ec2-XX-XX-XX-XX.region.compute.amazonaws.com
+```
+
+should **fail** (source IP no longer matches the allow list). That proves the VM is not “open to the world” : a random or VPN-shifted IP cannot SSH in. After Tailscale is up, the same laptop reaches the host over the Tailnet (`development-website.tailXXXX.ts.net`) without widening the public security group. Turning Tailscale **off** again drops MagicDNS / Tailnet SSH, which is the positive and negative proof pair for this demo.
 
 ### 1. AWS EC2
 
@@ -32,23 +109,34 @@ chmod 400 ~/Downloads/developer.pem
 ssh -i ~/Downloads/developer.pem ec2-user@ec2-XX-XX-XX-XX.region.compute.amazonaws.com
 ```
 
-Install and join your Tailnet:
+Install and join your Tailnet ([Install Tailscale on Linux](https://tailscale.com/docs/install/linux)):
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-You need Tailscale auth keys for connecting your AWS VM to your Mesh Network. 
-For that go to Tailscale dashboard -> Settings -> Keys -> `Generate auth Key..`
-Give it a Description `aws-tailscale-demo`, then run on VM
+You need Tailscale [auth keys](https://tailscale.com/docs/features/access-control/auth-keys) for connecting your AWS VM to your Mesh Network without interactive browser login.  
+For that go to Tailscale dashboard -> Settings -> Keys -> `Generate auth Key..` ([Keys page](https://login.tailscale.com/admin/settings/keys)).  
+Give it a Description `aws-tailscale-demo`, then run on VM [tailscale up](https://tailscale.com/docs/reference/tailscale-cli/up)
 
 ```bash
 sudo tailscale up --auth-key="tskey-auth-xxxxx-xxxxx"  --hostname=development-website  --accept-routes
 ```
 
-This will add Tailscale to your mesh network. It should be visible to you on `https://console.tailscale.com/admin/machines`
+`--hostname` sets the machine name used in MagicDNS. See also [key and secret management](https://tailscale.com/docs/reference/key-secret-management) for storing auth keys safely (do not commit them).
 
-Trying with VPN connection (NordVPN), the above ssh using `ec2-user@ec2-XX-XX-XX-XX.region.compute.amazonaws.com` should  not work because it was blocked using rules set during EC2 security rules setup.
+This will add Tailscale to your mesh network. It should be visible to you on [https://console.tailscale.com/admin/machines](https://console.tailscale.com/admin/machines) ([Machines](https://login.tailscale.com/admin/machines)).
+
+**Negative test with NordVPN (different public IP):**  
+With the EC2 security group allowing SSH only from your usual public IP, connect NordVPN on the laptop so egress uses another IP, then retry public SSH:
+
+```bash
+ssh -i ~/Downloads/developer.pem ec2-user@ec2-XX-XX-XX-XX.region.compute.amazonaws.com
+```
+
+That attempt should **fail** : the VM intentionally blocks the VPN’s exit IP. This is not “Tailscale vs NordVPN as products”, it just shows that locking SSH to a known IP works, and that a consumer VPN does not magically grant private access. Full framing: [Traditional approach vs Tailscale](#traditional-approach-vs-tailscale).
+
+Once the node is on the Tailnet, SSH via the [MagicDNS](https://tailscale.com/docs/features/magicdns) name instead of the public DNS:
 
 ```bash
 ssh -i ~/Downloads/developer.pem ec2-user@development-website.tailXXXX.ts.net
@@ -71,6 +159,7 @@ git checkout development
 chmod +x scripts/setup-dev-nginx.sh
 
 # Create .env and set your Tailscale hostname for nginx
+# Use the MagicDNS FQDN from the Machines page (see https://tailscale.com/docs/features/magicdns)
 cat > .env <<'EOF'
 SERVER_NAME=development-website.XXXXX.ts.net
 EOF
@@ -93,7 +182,7 @@ Then it:
 4. Fixes home-dir permissions so nginx can read the export
 5. Enables and restarts nginx
 
-Open the MagicDNS on your Laptop with Tailscale connected:
+Open the [MagicDNS](https://tailscale.com/docs/features/magicdns) name on your Laptop with Tailscale connected (your tailnet DNS name is on the [DNS page](https://login.tailscale.com/admin/dns) of the admin console):
 
 ```text
 http://development-website.tailXXXX.ts.net/
@@ -110,15 +199,21 @@ git pull
 ./scripts/setup-dev-nginx.sh
 ```
 
+
+
 ### 5. GitHub Actions ->Tailscale ->EC2 (auto-deploy)
 
 Pushing to `development` can redeploy the VM automatically. The runner joins the Tailnet, then SSHs to the EC2 and runs `setup-dev-nginx.sh`.
+
+This uses the official [Tailscale GitHub Action](https://tailscale.com/docs/integrations/github/github-action) so the workflow gets an ephemeral Tailnet node for the duration of the job.
 
 Workflow file: `.github/workflows/deploy-dev-tailscale.yml`
 
 #### A. Tailscale ACL tags
 
-In the Tailscale admin console -> **Access controls**, define a CI tag and allow it to reach the VM (SSH / port 22). Example ACL fragment:
+In the Tailscale admin console -> **Access controls** ([tailnet policy file](https://tailscale.com/docs/features/tailnet-policy-file)), define a CI tag and allow it to reach the VM (SSH / port 22). Tags group non-human devices by purpose ([Group devices with tags](https://tailscale.com/docs/features/tags)); see also [ACL policy examples](https://tailscale.com/docs/reference/examples/acls) and the [policy file syntax reference](https://tailscale.com/docs/reference/syntax/policy-file).
+
+Example ACL fragment:
 
 ```json
 {
@@ -141,33 +236,41 @@ In the Tailscale admin console -> **Access controls**, define a CI tag and allow
 }
 ```
 
-On the EC2, tag the machine as `tag:dev-server` (Tailscale admin -> machine -> Edit ACL tags), or re-auth with:
+On the EC2, tag the machine as `tag:dev-server` (Tailscale admin -> machine -> Edit ACL tags), or re-auth with `[--advertise-tags](https://tailscale.com/docs/reference/tailscale-cli/up)`:
 
 ```bash
 sudo tailscale up --auth-key="tskey-auth-..." --hostname=development-website --advertise-tags=tag:dev-server
 ```
 
+
+
 #### B. Tailscale OAuth client (for GitHub Actions)
+
+The Action creates short-lived nodes via an [OAuth client](https://tailscale.com/docs/features/oauth-clients) with the `auth_keys` scope (prefer this over a long-lived reusable auth key in CI). Create it under [Trust credentials](https://login.tailscale.com/admin/settings/trust-credentials):
 
 1. Tailscale admin ->**Settings** ->**Tailnet Settings** ->**Trust Credentials**
 2. Description in step 1: `github-actions`
-2. Scopes: enable devices / auth-key creation 
-3. Set **Tags**: `tag:ci`
-4. Copy **Client ID** and **Client secret**
+3. Scopes: enable devices / auth-key creation
+4. Set **Tags**: `tag:ci`
+5. Copy **Client ID** and **Client secret**
+
+
 
 #### C. GitHub repository secrets
 
 Repo ->**Settings** ->**Secrets and variables** ->**Actions**:
 
-| Secret | Value |
-|--------|--------|
-| `TS_OAUTH_CLIENT_ID` | Tailscale OAuth client ID |
-| `TS_OAUTH_SECRET` | Tailscale OAuth client secret |
-| `EC2_SSH_KEY` | Full contents of `developer.pem` (private key) |
-| `EC2_HOST` | `development-website.tailXXXX.ts.net` |
-| `EC2_USER` | `ec2-user` (optional; defaults to `ec2-user` in the workflow) |
 
-Keep `.env` with `SERVER_NAME=...` on the VM only (gitignored). The Action does not upload it.
+| Secret               | Value                                                         |
+| -------------------- | ------------------------------------------------------------- |
+| `TS_OAUTH_CLIENT_ID` | Tailscale OAuth client ID                                     |
+| `TS_OAUTH_SECRET`    | Tailscale OAuth client secret                                 |
+| `EC2_SSH_KEY`        | Full contents of `developer.pem` (private key)                |
+| `EC2_HOST`           | `development-website.tailXXXX.ts.net`                         |
+| `EC2_USER`           | `ec2-user` (optional; defaults to `ec2-user` in the workflow) |
+
+
+Keep `.env` with `SERVER_NAME=...` on the VM only (gitignored). The Action does not upload it. Store OAuth secrets only in GitHub encrypted secrets ([key and secret management](https://tailscale.com/docs/reference/key-secret-management)).
 
 #### D. Trigger
 
@@ -182,6 +285,26 @@ git push origin development
 ```
 
 **Note:** Production (`main` ->GitHub Pages) stays on `.github/workflows/nextjs.yml` and does not use Tailscale.
+
+### Tailscale docs referenced
+
+
+| Topic                   | Docs                                                                                                                                     |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Install on Linux        | [https://tailscale.com/docs/install/linux](https://tailscale.com/docs/install/linux)                                                     |
+| Set up a server         | [https://tailscale.com/docs/how-to/set-up-servers](https://tailscale.com/docs/how-to/set-up-servers)                                     |
+| Auth keys               | [https://tailscale.com/docs/features/access-control/auth-keys](https://tailscale.com/docs/features/access-control/auth-keys)             |
+| `tailscale up`          | [https://tailscale.com/docs/reference/tailscale-cli/up](https://tailscale.com/docs/reference/tailscale-cli/up)                           |
+| MagicDNS                | [https://tailscale.com/docs/features/magicdns](https://tailscale.com/docs/features/magicdns)                                             |
+| Tags                    | [https://tailscale.com/docs/features/tags](https://tailscale.com/docs/features/tags)                                                     |
+| Tailnet policy / ACLs   | [https://tailscale.com/docs/features/tailnet-policy-file](https://tailscale.com/docs/features/tailnet-policy-file)                       |
+| ACL examples            | [https://tailscale.com/docs/reference/examples/acls](https://tailscale.com/docs/reference/examples/acls)                                 |
+| OAuth clients           | [https://tailscale.com/docs/features/oauth-clients](https://tailscale.com/docs/features/oauth-clients)                                   |
+| GitHub Action           | [https://tailscale.com/docs/integrations/github/github-action](https://tailscale.com/docs/integrations/github/github-action)             |
+| Key / secret management | [https://tailscale.com/docs/reference/key-secret-management](https://tailscale.com/docs/reference/key-secret-management)                 |
+| Invite users            | [https://tailscale.com/docs/features/sharing/how-to/invite-any-user](https://tailscale.com/docs/features/sharing/how-to/invite-any-user) |
+| Tailscale API           | [https://tailscale.com/docs/reference/tailscale-api](https://tailscale.com/docs/reference/tailscale-api)                                 |
+
 
 ---
 
