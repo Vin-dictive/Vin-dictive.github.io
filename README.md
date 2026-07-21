@@ -10,7 +10,7 @@ When deploying on AWS EC2, spin up a container and then create key pair called d
 ### Architecture
 
 ```text
-Laptop (Tailscale) → EC2 (Tailscale + nginx) → out/
+Laptop (Tailscale) ->EC2 (Tailscale + nginx) ->out/
 ```
 
 - **Production**: GitHub Pages (`main`)
@@ -109,6 +109,79 @@ git pull
 # keep your local .env (it is gitignored)
 ./scripts/setup-dev-nginx.sh
 ```
+
+### 5. GitHub Actions ->Tailscale ->EC2 (auto-deploy)
+
+Pushing to `development` can redeploy the VM automatically. The runner joins the Tailnet, then SSHs to the EC2 and runs `setup-dev-nginx.sh`.
+
+Workflow file: `.github/workflows/deploy-dev-tailscale.yml`
+
+#### A. Tailscale ACL tags
+
+In the Tailscale admin console -> **Access controls**, define a CI tag and allow it to reach the VM (SSH / port 22). Example ACL fragment:
+
+```json
+{
+  "tagOwners": {
+    "tag:ci": ["autogroup:admin"],
+    "tag:dev-server": ["autogroup:admin"]
+  },
+  "acls": [
+    {
+      "action": "accept",
+      "src": ["tag:ci"],
+      "dst": ["tag:dev-server:22"]
+    },
+    {
+      "action": "accept",
+      "src": ["autogroup:member"],
+      "dst": ["*:*"]
+    }
+  ]
+}
+```
+
+On the EC2, tag the machine as `tag:dev-server` (Tailscale admin -> machine -> Edit ACL tags), or re-auth with:
+
+```bash
+sudo tailscale up --auth-key="tskey-auth-..." --hostname=development-website --advertise-tags=tag:dev-server
+```
+
+#### B. Tailscale OAuth client (for GitHub Actions)
+
+1. Tailscale admin ->**Settings** ->**Tailnet Settings** ->**Trust Credentials**
+2. Description in step 1: `github-actions`
+2. Scopes: enable devices / auth-key creation 
+3. Set **Tags**: `tag:ci`
+4. Copy **Client ID** and **Client secret**
+
+#### C. GitHub repository secrets
+
+Repo ->**Settings** ->**Secrets and variables** ->**Actions**:
+
+| Secret | Value |
+|--------|--------|
+| `TS_OAUTH_CLIENT_ID` | Tailscale OAuth client ID |
+| `TS_OAUTH_SECRET` | Tailscale OAuth client secret |
+| `EC2_SSH_KEY` | Full contents of `developer.pem` (private key) |
+| `EC2_HOST` | `development-website.tailXXXX.ts.net` |
+| `EC2_USER` | `ec2-user` (optional; defaults to `ec2-user` in the workflow) |
+
+Keep `.env` with `SERVER_NAME=...` on the VM only (gitignored). The Action does not upload it.
+
+#### D. Trigger
+
+- Automatic: push to `development`
+- Manual: **Actions** ->**Deploy development (Tailscale ->EC2)** ->**Run workflow**
+
+```text
+git push origin development
+  ->GitHub runner joins Tailscale (tag:ci)
+  ->SSH to EC2
+  ->git pull + SKIP_INSTALL=1 ./scripts/setup-dev-nginx.sh
+```
+
+**Note:** Production (`main` ->GitHub Pages) stays on `.github/workflows/nextjs.yml` and does not use Tailscale.
 
 ---
 
