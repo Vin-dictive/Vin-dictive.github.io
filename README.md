@@ -4,6 +4,19 @@ A modern developer portfolio built with Next.js. Contains interactive cursor bac
 
 To see the difference between what was there before and what was additionally added to this branch check out [this PR](https://github.com/Vin-dictive/Vin-dictive.github.io/pull/3)
 
+## Why I chose this use case
+
+I needed a **private preview of the** `development` **branch** that teammates (or I, from another device) could open without putting HTTP/HTTPS on the public internet. Opening ports 80/443 on EC2, standing up a bastion, or relying on IP allowlists alone widens the attack surface. A Tailnet gives identity-based access: the site is served on the VM behind nginx and reached only via [MagicDNS](https://tailscale.com/docs/features/magicdns) while Tailscale is connected. So the demo stays small, realistic, and easy to explain (private web service + SSH + ACLs/tags + CI over Tailscale). It mimics a development environment which has new features that are being tested internal before production deployments, without exposing them to the public net.
+
+## Assumptions / prerequisites
+
+- An **AWS account** and permission to launch a small EC2 instance (Amazon Linux), plus an SSH key pair (e.g. `developer.pem`)
+- A **Tailscale account** and an existing **Tailnet** ([admin console](https://login.tailscale.com/admin))
+- **Tailscale client** installed and logged in on your laptop (and optionally phone) for browse/SSH tests
+- Ability to create a Tailscale **[auth key](https://tailscale.com/docs/features/access-control/auth-keys)** for the EC2 node and (for auto-deploy) an **[OAuth client](https://tailscale.com/docs/features/oauth-clients)** with `auth_keys` scope and tags
+- For CI: GitHub repo **secrets** (`TS_OAUTH_CLIENT_ID`, `TS_OAUTH_SECRET`, `EC2_SSH_KEY`, `EC2_HOST`, optional `EC2_USER`)
+- First bootstrap may briefly allow **SSH from your public IP** (or use Session Manager) until Tailscale is up. Afterwards, day-to-day access should use the Tailnet.
+
 ## Development deploy on AWS EC2 (Tailscale + nginx)
 
 Use this for a private preview of the `development` branch. The site is reachable only on Tailscale network (not the public internet), assuming the security group is locked down. When deploying on AWS EC2, spin up a container and then create key pair called `developer.pem` and select only your IP for accepting SSH connections to the VM.
