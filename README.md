@@ -6,7 +6,9 @@ To see the difference between what was there before and what was additionally ad
 
 ## Why I chose this use case
 
-I needed a **private preview of the** `development` **branch** that teammates (or I, from another device) could open without putting HTTP/HTTPS on the public internet. Opening ports 80/443 on EC2, standing up a bastion, or relying on IP allowlists alone widens the attack surface. A Tailnet gives identity-based access: the site is served on the VM behind nginx and reached only via [MagicDNS](https://tailscale.com/docs/features/magicdns) while Tailscale is connected. So the demo stays small, realistic, and easy to explain (private web service + SSH + ACLs/tags + CI over Tailscale). It mimics a development environment which has new features that are being tested internal before production deployments, without exposing them to the public net.
+Hi I am Vinay, so for Tailscales take home assignment I decided to do this. 
+
+I needed a **private preview of my developer portfolio of the** `development` **branch** that teammates (or I, from another device) could open without putting HTTP/HTTPS on the public internet. Opening ports 80/443 on EC2, standing up a bastion, or relying on IP allowlists alone widens the attack surface. A Tailnet gives identity-based access where the site is served on the VM behind nginx and reached only via [MagicDNS](https://tailscale.com/docs/features/magicdns) while Tailscale is connected. So the demo stays small, realistic, and easy to explain. It mimics a development environment which has new features that are being tested internal before production deployments, without exposing them to the public net.
 
 ## Assumptions / prerequisites
 
@@ -16,6 +18,8 @@ I needed a **private preview of the** `development` **branch** that teammates (o
 - Ability to create a Tailscale **[auth key](https://tailscale.com/docs/features/access-control/auth-keys)** for the EC2 node and (for auto-deploy) an **[OAuth client](https://tailscale.com/docs/features/oauth-clients)** with `auth_keys` scope and tags
 - For CI: GitHub repo **secrets** (`TS_OAUTH_CLIENT_ID`, `TS_OAUTH_SECRET`, `EC2_SSH_KEY`, `EC2_HOST`, optional `EC2_USER`)
 - First bootstrap may briefly allow **SSH from your public IP** (or use Session Manager) until Tailscale is up. Afterwards, day-to-day access should use the Tailnet.
+
+
 
 ## Development deploy on AWS EC2 (Tailscale + nginx)
 
@@ -28,6 +32,8 @@ This setup follows Tailscale’s guidance for [setting up a server on your Tails
 - For base website development of personal developer profile, AI was used for modules and updating content as per CV. 
 - All the steps was taken from Tailscales documentation (links collected in [Tailscale docs referenced](#tailscale-docs-referenced) below).
 - The Mermaid architecture diagram below was drafted with AI assistance; I reviewed the node/edge labels against this repo’s actual flow (laptop browse, MagicDNS, nginx -> `out/`, GitHub Actions + `tag:ci` -> `tag:dev-server:22`) and adjusted wording to match.
+
+
 
 ### Architecture
 
@@ -95,6 +101,8 @@ should **fail** (source IP no longer matches the allow list). That proves the VM
 2. Prefer **no public inbound** on 80/443 (Allow SSH from your IP only for first bootstrap).
 3. Attach (or create) an SSH key pair and download the `.pem`.
 4. Note the public DNS for first SSH (or use Session Manager).
+
+
 
 ### 2. Tailscale on the VM
 
@@ -195,6 +203,8 @@ git pull
 ./scripts/setup-dev-nginx.sh
 ```
 
+
+
 ### 5. GitHub Actions ->Tailscale ->EC2 (auto-deploy)
 
 GH runners never needs a public SSH ingress. The runner authenticates into the Tailnet with an [OAuth client](https://tailscale.com/docs/features/oauth-clients) and is limited by [tags](https://tailscale.com/docs/features/tags) / ACLs. **Why?** Because we do not want our auth keys to expire in 90 days. Nodes are typically **ephemeral** and tagged (`tag:ci`): they join for the job, then disappear, no permanent “CI runner” left on the Tailnet. 
@@ -238,6 +248,8 @@ On the EC2, tag the machine as `tag:dev-server` (Tailscale admin -> machine -> E
 sudo tailscale up --auth-key="tskey-auth-..." --hostname=development-website --advertise-tags=tag:dev-server
 ```
 
+
+
 #### B. Tailscale OAuth client (for GitHub Actions)
 
 The Action creates short-lived nodes via an [OAuth client](https://tailscale.com/docs/features/oauth-clients) with the `auth_keys` scope. Create it under [Trust credentials](https://login.tailscale.com/admin/settings/trust-credentials):
@@ -247,6 +259,8 @@ The Action creates short-lived nodes via an [OAuth client](https://tailscale.com
 3. Scopes: enable devices / auth-key creation
 4. Set **Tags**: `tag:ci`
 5. Copy **Client ID** and **Client secret**
+
+
 
 #### C. GitHub repository secrets
 
@@ -287,11 +301,15 @@ git push origin development
 - Tagging (`tag:ci` → `tag:dev-server:22`) made the least-privilege story easy to explain and enforce.
 - Adding another user to the tailnet was super easy using the tailnet dashboard. Best way to manage a team of developers and onboarding them to a private project.
 
+
+
 ## What was difficult or surprising
 
 - First-time bootstrap still needs a narrow public SSH allowlist (or Session Manager) before Tailscale is up. After that, the aim is to stop relying on public SSH for day-to-day access.
 - nginx on Amazon Linux needed home-directory permissions fixed so the service account could read `~/app/out`.
 - First GitHub Actions failed because my github branch was outdated and I have updated it locally for making minor adjustments in the nginx deployment scripts
+
+
 
 ## What I would do differently with more time
 
@@ -299,6 +317,8 @@ git push origin development
 - Though I have not shown to many logs in the video demo, It showed clearly what runner was connected. It gives a lot of information which I would like to deep dive into seeing what each action generates.
 - DNS configuration as well would be nice to play around with. But did not get time to look into and see how to play around with that.
 - If I had more time, I would setup an AI chat agent on my Gaming laptop with a private site on which I can chat with my locally running Chat bot. Lets call it my second brain, always active and accessible from anywhere via my Tailscale mesh network. It would store and keep all of my stories, journals etc. So I just need to chat with it. Even my calender if I added it as a tool.
+
+
 
 ## Support
 
