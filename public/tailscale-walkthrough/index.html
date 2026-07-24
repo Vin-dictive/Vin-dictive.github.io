@@ -29,6 +29,7 @@
       --accent: var(--signal);
       --card: var(--paper);
       --line: var(--mist);
+      --logo-opacity: 0;
     }
 
     * {
@@ -54,10 +55,36 @@
         radial-gradient(ellipse 50% 40% at 0% 100%, rgba(208, 72, 65, 0.07), transparent 50%);
     }
 
+    .deck-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: var(--logo-opacity, 0);
+      transition: opacity 0.7s ease;
+    }
+
+    .deck-bg img {
+      width: min(68vmin, 620px);
+      height: auto;
+      user-select: none;
+      object-fit: contain;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .deck-bg {
+        transition: none;
+      }
+    }
+
     .deck {
       height: 100%;
       width: 100%;
       position: relative;
+      z-index: 1;
     }
 
     .slide {
@@ -706,6 +733,7 @@
       width: 100%;
     }
 
+    .flowchart[data-path="cosco"] .vpn-view-cosco,
     .flowchart[data-path="nord"] .vpn-view-nord,
     .flowchart[data-path="mesh"] .vpn-view-mesh {
       display: block;
@@ -743,6 +771,38 @@
     .vpn-mesh-svg .mesh-link.soft {
       opacity: 0.38;
       stroke-width: 1.5;
+    }
+
+    .vpn-mesh-svg .cosco-link {
+      stroke: #c4a820;
+      stroke-width: 2.2;
+      fill: none;
+      opacity: 0.95;
+      stroke-dasharray: 7 6;
+      animation: dashMove 1s linear infinite;
+    }
+
+    .vpn-mesh-svg .cosco-link.soft {
+      opacity: 0.35;
+      stroke-width: 1.5;
+    }
+
+    .vpn-mesh-svg .mesh-node-hit.cosco {
+      stroke: #c4a820;
+      filter: drop-shadow(0 4px 10px rgba(196, 168, 32, 0.28));
+    }
+
+    .vpn-mesh-svg .mesh-node-hit.cosco-hub {
+      stroke: #8a7520;
+      stroke-width: 3;
+      fill: #fffdf0;
+      filter: drop-shadow(0 4px 12px rgba(138, 117, 32, 0.3));
+    }
+
+    .vpn-mesh-svg .ticket-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 9px;
+      fill: #8a7520;
     }
 
     .vpn-mesh-svg .nord-link {
@@ -923,6 +983,46 @@
       overflow-x: auto;
       white-space: pre-wrap;
       word-break: break-word;
+      margin: 0;
+    }
+
+    .code-block {
+      position: relative;
+      margin-top: 0.15rem;
+    }
+
+    .code-block pre {
+      padding-right: 3.4rem;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.4rem;
+      z-index: 2;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0.28rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.1);
+      color: #e8eef4;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(90, 130, 222, 0.55);
+    }
+
+    .copy-btn.copied {
+      background: rgba(90, 130, 222, 0.35);
+      border-color: rgba(90, 130, 222, 0.7);
+      color: #fff;
     }
 
     .check-card .expect {
@@ -936,14 +1036,333 @@
       color: var(--network-b);
     }
 
+    .check-card .shot {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--mist);
+      background: var(--linen);
+    }
+
     .slide.demo-slide h2 {
       max-width: 28ch;
       margin-bottom: 1rem;
+    }
+
+    /* Cosco VPN (fictional competitor stand-in) */
+    .cosco-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .cosco-logo {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background:
+        radial-gradient(circle at 35% 30%, #fff8a8 0%, #e8d44a 45%, #c4a820 100%);
+      border: 2px solid #8a7520;
+      box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.35),
+        0 4px 14px rgba(138, 117, 32, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cosco-logo::before,
+    .cosco-logo::after {
+      content: "";
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 50%;
+      width: 140%;
+      height: 140%;
+    }
+
+    .cosco-logo::before {
+      left: -55%;
+      top: -20%;
+    }
+
+    .cosco-logo::after {
+      right: -55%;
+      bottom: -20%;
+    }
+
+    .cosco-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cosco-name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .cosco-name span {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ash);
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    .img-slot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--linen);
+      border: 2px dashed var(--mist);
+      border-radius: 12px;
+      color: var(--ash);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      line-height: 1.45;
+      padding: 1rem;
+      min-height: 7.5rem;
+      overflow: hidden;
+    }
+
+    .img-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .img-slot.has-image {
+      border-style: solid;
+      background: var(--paper);
+      padding: 0.35rem;
+    }
+
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+      align-items: center;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .story-layout ul {
+      max-width: none;
+    }
+
+    .story-media {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .story-media img {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid var(--mist);
+      box-shadow: 0 10px 28px rgba(24, 23, 23, 0.12);
+      background: var(--ink);
+    }
+
+    @media (max-width: 720px) {
+      .story-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .story-media img {
+        max-width: 260px;
+      }
+    }
+
+    .settings-wall {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .settings-wall .chip {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.68rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 6px;
+      background: #fbf6f5;
+      border: 1px solid rgba(208, 72, 65, 0.28);
+      color: var(--graphite);
+    }
+
+    /* Value tiles */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .value-tile {
+      position: relative;
+      background: var(--paper);
+      border: 1px solid var(--mist);
+      border-radius: 14px;
+      padding: 1rem 1rem 1.05rem;
+      overflow: hidden;
+      cursor: default;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      min-height: 8.5rem;
+    }
+
+    .value-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 100% 0%, rgba(90, 130, 222, 0.14), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .value-tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(90, 130, 222, 0.55);
+      box-shadow: 0 12px 28px rgba(50, 73, 148, 0.14);
+    }
+
+    .value-tile:hover::before {
+      opacity: 1;
+    }
+
+    .value-tile .icon {
+      width: 2.35rem;
+      height: 2.35rem;
+      margin-bottom: 0.7rem;
+      color: var(--network-b);
+      transition: transform 0.3s ease, color 0.25s ease;
+    }
+
+    .value-tile:hover .icon {
+      transform: scale(1.12) rotate(-4deg);
+      color: var(--signal);
+    }
+
+    .value-tile .icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .value-tile h3 {
+      font-size: 0.98rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+      position: relative;
+    }
+
+    .value-tile p {
+      font-size: 0.84rem;
+      color: var(--charcoal);
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .value-tile.endless {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 8.5rem;
+      padding: 1.1rem 1rem;
+      background: var(--network);
+      border-color: transparent;
+      box-shadow: 0 10px 28px rgba(50, 73, 148, 0.28);
+      color: #fff;
+    }
+
+    .value-tile.endless::before {
+      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.22), transparent 55%);
+    }
+
+    .value-tile.endless:hover {
+      border-color: transparent;
+      box-shadow: 0 14px 32px rgba(50, 73, 148, 0.38);
+    }
+
+    .value-tile.endless .icon {
+      margin-bottom: 0.55rem;
+      color: #fff;
+    }
+
+    .value-tile.endless:hover .icon {
+      transform: scale(1.15) rotate(8deg);
+      color: #fff;
+    }
+
+    .value-tile.endless h3 {
+      margin-bottom: 0.3rem;
+      font-size: 1.05rem;
+      color: #fff;
+      max-width: 14ch;
+    }
+
+    .value-tile.endless p {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 720px) {
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-tile.endless {
+        grid-column: auto;
+        grid-row: auto;
+        order: -1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .value-tile,
+      .value-tile .icon,
+      .value-tile::before {
+        transition: none;
+      }
+
+      .value-tile:hover {
+        transform: none;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="deck-bg" aria-hidden="true">
+    <img src="../pictures/tailscale-logo.webp" alt="" />
+  </div>
   <div class="progress" id="progress"></div>
   <div class="deck" id="deck">
 
@@ -969,81 +1388,119 @@
       <p class="eyebrow">Agenda</p>
       <h2>What we'll cover</h2>
       <ul>
-        <li>Assumptions and prerequisites</li>
+        <li>Developer story: private preview</li>
+        <li>Personal story: GCP OAuth + gaming VPNs</li>
+        <li>“Cosco VPN” vs Tailscale advantages</li>
         <li>Use case and why Tailscale</li>
-        <li>Architecture and demos (browse, SSH, AWS host, CI)</li>
+        <li>Architecture + demos (browse, SSH, CI)</li>
         <li>Access control and credentials</li>
         <li>Validation and Tailscale vs consumer VPN</li>
-        <li>Reflection and customer pitch</li>
-        <li>Q&amp;A, then how Tailscale works (WireGuard)</li>
+        <li>Reflection and value for newcomers</li>
+        <li>Q&amp;A</li>
       </ul>
     </section>
+        <!-- Story -->
+        <section class="slide" data-title="Story">
+          <p class="eyebrow">Imagine</p>
+          <h2>You're a software developer</h2>
+          <div class="story-layout">
+            <ul>
+              <li>Dev builds with unfinished features or known holes</li>
+              <li>You do not want the public (or crawlers) to see them</li>
+              <li>You do not want to expose essential services to the public internet</li>
+              <li>Laptop prototype: show a friend, not the open web</li>
+              <li>Public staging / IP allowlists / VPN tickets feel like overkill</li>
+            </ul>
+            <div class="story-media">
+              <img src="../pictures/dev.gif" alt="Developer typing intensely at a computer" />
+            </div>
+            </div>
+        </section>
+        <!-- Personal story time -->
+        <section class="slide" data-title="Story time">
+          <p class="eyebrow">Story time</p>
+          <h2>What I tried before Tailscale</h2>
+          <div class="story-layout">
+            <ul>
+              <li><strong>GCP OAuth</strong> for serverless: many consoles, clients, redirects, secrets</li>
+              <li><strong>Private VPNs for gaming</strong>: “private LAN” with friends</li>
+              <li><strong>Cosco VPN</strong> at work: ticket after ticket just to join the network</li>
+              <li>Felt slow, fiddly, and hard to keep working</li>
+              <li>I wanted private access that stays simple for real services</li>
+            </ul>
+            <div class="story-media">
+              <img src="../pictures/monkey-developer.gif"
+                alt="Frustrated developer energy before finding a simpler private network" />
+            </div>
+          </div>
+        </section>
+        <!-- Cosco VPN vs Tailscale (Cosco = fictional stand-in) -->
+        <section class="slide" data-title="Cosco VPN">
+          <p class="eyebrow">The usual answer</p>
+          <div class="cosco-brand">
+            <!-- IMAGE 1: Drop a tennis-ball Cosco logo PNG here -->
+            <div class="cosco-logo" aria-hidden="true" title="Placeholder tennis ball: swap for your Cosco logo"></div>
+            <div class="cosco-name">
+              Cosco VPN
+              <span>Fictional Company · example only</span>
+            </div>
+          </div>
+          <h2>Cosco VPN vs Tailscale</h2>
+          <div class="grid-2">
+            <div class="card bad">
+              <h3>Cosco VPN</h3>
+              <ul class="compact">
+                <li>IT ticket + specialist to onboard</li>
+                <li>Expensive-may require custom hardware</li>
+                <li>Appliance / gateway centered</li>
+                <li>Settings maze (IKE, PAC, split tunnel…)</li>
+                <li>Whole-network access mindset</li>
+                <li>Slow for “just share a preview”</li>
+              </ul>
+              </div>
+              <div class="card good">
+                <h3>Tailscale</h3>
+                <ul class="compact">
+                  <li>Install client → authenticate → join</li>
+                  <li>Peer mesh-no hardware setups required</li>
+                  <li>Identity + tags + ACLs, not IP allowlists</li>
+                  <li>MagicDNS names</li>
+                  <li>Easy integration with existing CI/CD</li>
+                </ul>
+              </div>
+              </div>
+              </section>
+              <!-- Use case -->
+              <section class="slide" data-title="Use case">
+                <p class="eyebrow">Use case</p>
+                <h2>Private preview of <span class="mono">development/staging</span></h2>
+                <div class="story-layout">
+                  <ul>
+                    <li>Dev site on AWS EC2, shared over a Tailnet</li>
+                    <li>MagicDNS URL + identity-based access</li>
+                    <li><strong>No public ports 80/443</strong></li>
+                    <li>Same pattern: internal staging or “show a friend”</li>
+                    <li>Features stay private until production-ready</li>
+                  </ul>
+                  <div class="story-media">
+                    <img src="../pictures/privacy.webp" alt="Private access: keep development and staging off the public internet" />
+                  </div>
+                </div>
+              </section>
 
     <!-- Assumptions -->
     <section class="slide" data-title="Assumptions">
       <p class="eyebrow">Setup</p>
-      <h2>Assumptions / prerequisites</h2>
+      <h2>Assumptions</h2>
       <ul class="compact">
-        <li>An <strong>AWS account</strong> and permission to launch a small EC2 (Amazon Linux), plus SSH key <span
-            class="mono">~/Downloads/developer.pem</span></li>
-        <li>A <strong>Tailscale account</strong> and Tailnet (<a href="https://login.tailscale.com/admin"
-            target="_blank" rel="noopener noreferrer">admin console</a>)</li>
-        <li><strong>Tailscale client</strong> on laptop (and optionally phone) for browse / SSH demos</li>
-        <li>Ability to create an <a href="https://tailscale.com/docs/features/access-control/auth-keys" target="_blank"
-            rel="noopener noreferrer">auth key</a> for EC2, and an <a
-            href="https://tailscale.com/docs/features/oauth-clients" target="_blank" rel="noopener noreferrer">OAuth
-            client</a> with <span class="mono">auth_keys</span> for CI</li>
-        <li>GitHub secrets for Actions: <span class="mono">TS_OAUTH_CLIENT_ID</span>, <span
-            class="mono">TS_OAUTH_SECRET</span>, <span class="mono">EC2_SSH_KEY</span>, <span
-            class="mono">EC2_HOST</span></li>
-        <li>First bootstrap may briefly allow <strong>SSH from your public IP</strong> until Tailscale is up; day-to-day
-          access uses the Tailnet</li>
-        <li>Dev preview host: <span class="mono">development-website.tailc52fb7.ts.net</span> (no public 80/443 required
-          for the demo)</li>
+        <li>AWS - EC2</li>
+        <li>SSH</li>
+        <li>Tailscale multiple accounts</li>
+        <li>CICD using Github Actions</li>
       </ul>
     </section>
-
-    <!-- 3 -->
-    <section class="slide" data-title="Use case">
-      <p class="eyebrow">Use case</p>
-      <h2>Private preview of <span class="mono">development</span> with no public HTTP</h2>
-      <p class="lede">I needed teammates (or myself on another device) to open a <strong>dev build of my
-          website</strong> without exposing to the public internet. Same pattern as an internal staging site. New
-        features stay on the Tailnet until they're ready for production.</p>
-
-      <p class="analogy"><span class="analogy-label">Analogy</span> Like a backstage pass for a show still in rehearsal:
-        cast and crew get in while the public stays out.</p>
-    </section>
-
-    <!-- 4 -->
-    <section class="slide" data-title="Problem">
-      <p class="eyebrow">The problem</p>
-      <h2>What I didn't want</h2>
-
-      <div class="grid-2">
-        <div class="card bad">
-          <h3>Open ports</h3>
-          <p>Public 80/443 on EC2 means a crawlable site and a larger attack surface.</p>
-        </div>
-        <div class="card bad">
-          <h3>Bastion only</h3>
-          <p>Extra jump host to patch which is often a public SSH listener.</p>
-        </div>
-        <div class="card bad">
-          <h3>Whitelist every teammate</h3>
-          <p>Each time I add someone to a private project, traditionally I would whitelist their IP, then lean on an
-            entire IT team to provision and manage that person's VPN and access. Breaks on travel, home ISP changes, and
-            consumer VPNs that shift egress.</p>
-        </div>
-        <div class="card good">
-          <h3>Identity on a Tailnet</h3>
-          <p>Invite the person (or tag the machine). Who they are decides access, not a ticket to update firewall rules.
-            No public port required for the preview.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5 -->
+    
+    <!-- Architecture -->
     <section class="slide" data-title="Architecture">
       <p class="eyebrow">Architecture</p>
       <h2>Three paths, one Tailnet</h2>
@@ -1119,8 +1576,7 @@
         </div>
 
         <p class="flow-caption" id="flow-caption">
-          <strong>Browse:</strong> Team laptop or mobile (Tailscale client) hits MagicDNS over the Tailnet; nginx serves
-          the static export. No public ports 80/443.
+          <strong>Browse:</strong> MagicDNS over Tailnet → nginx. No public 80/443.
         </p>
       </div>
     </section>
@@ -1131,19 +1587,18 @@
       <h2>Prove private browse works</h2>
       <div class="claim-box">
         <div class="label">Claim</div>
-        <p>With Tailscale on, MagicDNS opens the site. With Tailscale off, it fails.</p>
+        <p>Tailscale on → site loads. Tailscale off → fails.</p>
       </div>
       <div class="check-grid">
         <div class="check-card">
           <h3>Tailscale ON</h3>
-          <pre>open "http://development-website.tailc52fb7.ts.net/"
-curl -sI "http://development-website.tailc52fb7.ts.net/" | head -n 5</pre>
-          <p class="expect"><strong>Expect:</strong> site loads with Development banner; HTTP 200</p>
+          <pre>open "http://development-website.tailc52fb7.ts.net/"</pre>
+          <p class="expect"><strong>Expect:</strong> Dev banner; HTTP 200</p>
         </div>
         <div class="check-card">
-          <h3>Tailscale OFF, then run</h3>
-          <pre>curl -v --connect-timeout 3 "http://development-website.tailc52fb7.ts.net/"</pre>
-          <p class="expect"><strong>Expect:</strong> timeout / can't connect. Reconnect Tailscale after.</p>
+          <h3>Tailscale OFF</h3>
+          <pre>open "http://development-website.tailc52fb7.ts.net/"</pre>
+          <p class="expect"><strong>Expect:</strong> timeout / can't connect</p>
         </div>
       </div>
     </section>
@@ -1151,41 +1606,35 @@ curl -sI "http://development-website.tailc52fb7.ts.net/" | head -n 5</pre>
     <!-- Demo B -->
     <section class="slide demo-slide" data-title="Demo SSH">
       <div class="demo-badge">Demo time · 2 of 3</div>
-      <h2>Prove SSH is Tailnet, and show AWS</h2>
+      <h2>Prove SSH is Tailnet + show AWS</h2>
       <div class="claim-box">
         <div class="label">Claim</div>
-        <p>MagicDNS SSH lands on the real AWS EC2. Public SSH fails when your IP is not allowlisted (e.g. NordVPN).</p>
+        <p>MagicDNS SSH → real EC2. Public SSH fails off-allowlist.</p>
       </div>
       <div class="check-grid">
         <div class="check-card">
-          <h3>Tailscale ON · SSH into EC2</h3>
+          <h3>Tailscale ON · SSH</h3>
           <pre>ssh -i ~/Downloads/developer.pem \
   ec2-user@development-website.tailc52fb7.ts.net</pre>
-          <p class="expect"><strong>Expect:</strong> shell on the Amazon Linux EC2</p>
+          <p class="expect"><strong>Expect:</strong> shell on Amazon Linux EC2</p>
         </div>
         <div class="check-card">
-          <h3>On the VM · show the deploy</h3>
-          <pre>hostname
-curl -s http://169.254.169.254/latest/meta-data/instance-id
-ls ~/app/out | head
-sudo nginx -t
-curl -sI http://127.0.0.1/ | head -n 5
-tailscale status | head -n 8</pre>
-          <p class="expect"><strong>Expect:</strong> instance-id, static <span class="mono">out/</span>, nginx ok,
-            Tailscale node up</p>
+          <h3>On the VM</h3>
+          <pre>tailscale status
+                                        hostname -f</pre>
+          <p class="expect"><strong>Expect:</strong> Tailscale online; <span class="mono">*.ts.net</span> MagicDNS name</p>
         </div>
         <div class="check-card">
-          <h3>Optional · AWS Console</h3>
-          <pre>open "https://console.aws.amazon.com/ec2/home#Instances:"</pre>
-          <p class="expect"><strong>Expect:</strong> show the running instance; SG has no public 80/443 for the preview
-          </p>
+          <h3>AWS EC2 settings for Security Group</h3>
+          <img class="shot" src="../pictures/AWS-console.png" alt="AWS EC2 launch: Security Group allows SSH from My IP only" />
+          <p class="expect"><strong>Expect:</strong> SSH from My IP for bootstrap; no public 80/443 for preview</p>
         </div>
         <div class="check-card">
-          <h3>NordVPN ON · public SSH (expect fail)</h3>
+          <h3>NordVPN ON · public SSH (fail)</h3>
           <pre>ssh -i ~/Downloads/developer.pem \
   -o ConnectTimeout=5 \
   ec2-user@ec2-16-147-216-162.us-west-2.compute.amazonaws.com</pre>
-          <p class="expect"><strong>Expect:</strong> timeout / denied (SG blocks the VPN egress IP)</p>
+          <p class="expect"><strong>Expect:</strong> timeout / denied</p>
         </div>
       </div>
     </section>
@@ -1193,39 +1642,36 @@ tailscale status | head -n 8</pre>
     <!-- 8 -->
     <section class="slide" data-title="Access control">
       <p class="eyebrow">Access control</p>
-      <h2>Tags = machine identity, not people</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>tag:dev-server</h3>
-          <p>EC2 portfolio host: a shared server identity, not “my user account.”</p>
-        </div>
-        <div class="card">
-          <h3>tag:ci</h3>
-          <p>Ephemeral GitHub Actions nodes with least privilege for deploy only.</p>
-        </div>
-      </div>
-      <p class="note" style="margin-top:1.25rem">ACL: <span class="mono">tag:ci</span> may reach <span
-          class="mono">tag:dev-server</span> on <strong>port 22 only</strong>. Humans use member access for browse/SSH.
-        OAuth is scoped so CI can only create keys for <span class="mono">tag:ci</span>.</p>
-
-      <p class="analogy"><span class="analogy-label">Analogy</span> Tags are job roles on a badge: "CI runner" may only
-        open the server's SSH closet, not every office on the floor.</p>
+      <h2>Tags = machine identity</h2>
+      <ul>
+        <li><span class="mono">tag:dev-server</span> → shared EC2 identity (not a person)</li>
+        <li><span class="mono">tag:ci</span> → ephemeral Actions nodes, deploy only</li>
+        <li>ACL: <span class="mono">tag:ci</span> → <span class="mono">tag:dev-server:22</span> only</li>
+        <li>Humans: member access for browse / SSH</li>
+        <li>OAuth scoped to mint keys for <span class="mono">tag:ci</span> only</li>
+      </ul>
     </section>
 
     <!-- 9 -->
     <section class="slide" data-title="OAuth vs auth key">
       <p class="eyebrow">Credential choice</p>
-      <h2>Why OAuth in Actions, auth key on EC2</h2>
+      <h2>Auth key on EC2, OAuth in Actions</h2>
       <div class="grid-2">
         <div class="card">
           <h3>EC2 → auth key</h3>
-          <p>One long-lived server. Bootstrap with <span class="mono">tailscale up --auth-key</span>. Stable hostname
-            for MagicDNS.</p>
+          <ul class="compact">
+            <li>One long-lived server</li>
+            <li><span class="mono">tailscale up --auth-key</span></li>
+            <li>Stable MagicDNS hostname</li>
+          </ul>
         </div>
         <div class="card good">
           <h3>CI → OAuth client</h3>
-          <p>No reusable join key in GitHub forever. Each run gets a short-lived tagged node; key expiry / blast radius
-            is much better for automation.</p>
+          <ul class="compact">
+            <li>No forever join key in GitHub</li>
+            <li>Short-lived tagged node per run</li>
+            <li>Smaller blast radius</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -1233,34 +1679,29 @@ tailscale status | head -n 8</pre>
     <!-- Demo C -->
     <section class="slide demo-slide" data-title="Demo CI">
       <div class="demo-badge">Demo time · 3 of 3</div>
-      <h2>Prove CI deploys to AWS over Tailscale</h2>
+      <h2>Prove CI deploys over Tailscale</h2>
       <div class="claim-box">
         <div class="label">Claim</div>
-        <p>Commit from your editor, push <span class="mono">development</span>, Actions joins the Tailnet, and the AWS
-          EC2 preview updates.</p>
+        <p>Push <span class="mono">development</span> → Actions joins Tailnet → EC2 updates.</p>
       </div>
       <div class="check-grid">
         <div class="check-card">
-          <h3>In the editor</h3>
-          <p>Make a small change, commit, push to <span class="mono">development</span>.</p>
+          <h3>Editor</h3>
           <pre>git push origin development</pre>
           <p class="expect"><strong>Expect:</strong> push succeeds</p>
         </div>
         <div class="check-card">
-          <h3>Watch GitHub Actions</h3>
+          <h3>GitHub Actions</h3>
           <pre>open "https://github.com/Vin-dictive/Vin-dictive.github.io/actions"</pre>
-          <p class="expect"><strong>Expect:</strong> “Deploy development (Tailscale → EC2)” goes green</p>
+          <p class="expect"><strong>Expect:</strong> Deploy workflow goes green</p>
         </div>
         <div class="check-card">
-          <h3>Confirm on AWS / site</h3>
-          <pre>open "https://console.aws.amazon.com/ec2/home#Instances:"
-open "http://development-website.tailc52fb7.ts.net/"
-# optional on the box:
+          <h3>Confirm site / VM</h3>
+          <pre>open "http://development-website.tailc52fb7.ts.net/"
 ssh -i ~/Downloads/developer.pem \
   ec2-user@development-website.tailc52fb7.ts.net \
-  'cd ~/app && git log -1 --oneline && ls out/index.html'</pre>
-          <p class="expect"><strong>Expect:</strong> EC2 still running; MagicDNS page shows your change; latest commit
-            on the VM</p>
+  'cd ~/app && git log -1 --oneline'</pre>
+  <p class="expect"><strong>Expect:</strong> change visible; latest commit on VM</p>
         </div>
       </div>
     </section>
@@ -1270,33 +1711,103 @@ ssh -i ~/Downloads/developer.pem \
       <p class="eyebrow">Validation</p>
       <h2>How I proved it works</h2>
       <ul>
-        <li><strong>Positive:</strong> With Tailscale on → open MagicDNS URL → site loads (dev banner)</li>
-        <li><strong>Negative:</strong> Tailscale off → “can't be reached”</li>
-        <li><strong>NordVPN test:</strong> Public SSH from a shifted egress IP fails (SG allowlist), so the VM isn't
-          open to the world</li>
-        <li><strong>Tailnet SSH:</strong> Same laptop reaches <span class="mono">development-website…ts.net</span> over
-          Tailscale without widening 80/443</li>
-        <li><strong>CI:</strong> Push to <span class="mono">development</span> → Action joins Tailnet → AWS EC2
-          redeploy succeeds</li>
+        <li><strong>On:</strong> MagicDNS → site loads (dev banner)</li>
+        <li><strong>Off:</strong> “can't be reached”</li>
+        <li><strong>NordVPN:</strong> public SSH fails (SG allowlist)</li>
+        <li><strong>Tailnet SSH:</strong> same laptop, no public 80/443</li>
+        <li><strong>CI:</strong> push → Tailnet join → EC2 redeploy</li>
       </ul>
     </section>
 
-    <!-- Tailscale vs consumer VPN -->
+    <!-- Tailscale vs Cosco / Nord / mesh -->
     <section class="slide" data-title="VPN vs Tailscale">
       <p class="eyebrow">Comparison</p>
-      <h2>Tailscale vs another VPN service (NordVPN)</h2>
-      <p class="lede" style="margin-bottom:0.85rem">Same word “VPN,” different jobs. NordVPN changes <strong>your
-          egress</strong>. Tailscale builds a <strong>private mesh</strong> between your machines.</p>
-      <div class="flowchart" id="vpn-flowchart" data-path="nord">
+      <h2>Same word “VPN,” different jobs</h2>
+      <ul class="compact" style="margin-bottom:0.85rem">
+        <li><strong>Cosco:</strong> hub appliance + tickets into a corp network</li>
+        <li><strong>NordVPN:</strong> changes your egress / public IP</li>
+        <li><strong>Tailscale:</strong> private mesh between your machines</li>
+      </ul>
+      <div class="flowchart" id="vpn-flowchart" data-path="cosco">
         <div class="flow-tabs" role="tablist" aria-label="VPN comparison paths">
-          <button type="button" class="flow-tab active signal" data-path="nord" role="tab" aria-selected="true">1 · Nord
+          <button type="button" class="flow-tab active signal" data-path="cosco" role="tab" aria-selected="true">1 · Cosco
+            hub</button>
+          <button type="button" class="flow-tab" data-path="nord" role="tab" aria-selected="false">2 · Nord
             egress</button>
-          <button type="button" class="flow-tab" data-path="mesh" role="tab" aria-selected="false">2 · Tailscale
+          <button type="button" class="flow-tab" data-path="mesh" role="tab" aria-selected="false">3 · Tailscale
             mesh</button>
         </div>
-      
+
         <div class="flow-canvas vpn-canvas" aria-live="polite">
-          <!-- View 1: Nord star egress (same SVG style as mesh) -->
+          <!-- View 1: Cosco enterprise hub -->
+          <div class="vpn-view vpn-view-cosco">
+            <svg class="vpn-mesh-svg" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="Cosco VPN hub and spoke diagram">
+              <defs>
+                <marker id="arrowCoscoSvg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#c4a820" />
+                </marker>
+              </defs>
+              <text x="320" y="24" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#8a7520"
+                letter-spacing="0.06em">COSCO VPN · HUB APPLIANCE</text>
+          
+              <!-- Laptop -> Cosco hub -->
+              <line class="cosco-link" x1="100" y1="120" x2="300" y2="120" marker-end="url(#arrowCoscoSvg)" />
+              <!-- Cosco hub -> corp LAN -->
+              <line class="cosco-link" x1="380" y1="120" x2="530" y2="80" marker-end="url(#arrowCoscoSvg)" />
+              <line class="cosco-link" x1="380" y1="120" x2="530" y2="160" marker-end="url(#arrowCoscoSvg)" />
+              <line class="cosco-link soft" x1="380" y1="120" x2="530" y2="230" />
+          
+              <!-- Ticket callouts -->
+              <rect x="40" y="48" width="88" height="22" rx="6" fill="#fffdf0" stroke="#c4a820" stroke-width="1.5" />
+              <text class="ticket-label" x="84" y="63" text-anchor="middle">IT ticket #1</text>
+              <rect x="40" y="200" width="100" height="22" rx="6" fill="#fffdf0" stroke="#c4a820" stroke-width="1.5" />
+              <text class="ticket-label" x="90" y="215" text-anchor="middle">IT ticket #2…</text>
+          
+              <g>
+                <circle class="mesh-node-hit cosco" cx="100" cy="120" r="36" />
+                <text x="100" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600"
+                  fill="#181717">Laptop</text>
+                <text x="100" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
+                  fill="#8a7520">client</text>
+              </g>
+              <g>
+                <rect x="300" y="78" width="80" height="84" rx="12" fill="#fffdf0" stroke="#8a7520" stroke-width="3"
+                  filter="drop-shadow(0 4px 12px rgba(138, 117, 32, 0.3))" />
+                <text x="340" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
+                  fill="#181717">Cosco</text>
+                <text x="340" y="124" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
+                  fill="#181717">appliance</text>
+                <text x="340" y="142" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                  fill="#8a7520">hardware / VM</text>
+              </g>
+              <g>
+                <circle class="mesh-node-hit cosco" cx="530" cy="80" r="30" />
+                <text x="530" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
+                  fill="#181717">Corp LAN</text>
+                <text x="530" y="90" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                  fill="#8a7520">whole net</text>
+              </g>
+              <g>
+                <circle class="mesh-node-hit cosco" cx="530" cy="160" r="30" />
+                <text x="530" y="156" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
+                  fill="#181717">Files / DB</text>
+                <text x="530" y="170" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a7520">via
+                  hub</text>
+              </g>
+              <g>
+                <circle class="mesh-node-hit blocked" cx="530" cy="230" r="28" opacity="0.85" />
+                <text x="530" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
+                  fill="#181717">Preview</text>
+                <text x="530" y="240" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
+                  fill="#d04841">more tickets</text>
+                <line class="nord-x" x1="512" y1="214" x2="548" y2="246" />
+                <line class="nord-x" x1="548" y1="214" x2="512" y2="246" />
+              </g>
+            </svg>
+          </div>
+          
+          <!-- View 2: Nord star egress -->
           <div class="vpn-view vpn-view-nord">
             <svg class="vpn-mesh-svg" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img"
               aria-label="NordVPN star egress diagram">
@@ -1362,7 +1873,7 @@ ssh -i ~/Downloads/developer.pem \
             </svg>
           </div>
 
-          <!-- View 2: Tailscale mesh -->
+          <!-- View 3: Tailscale mesh (how it works) -->
           <div class="vpn-view vpn-view-mesh">
             <svg class="vpn-mesh-svg" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img"
               aria-label="Tailscale mesh with multiple peer connections">
@@ -1373,7 +1884,7 @@ ssh -i ~/Downloads/developer.pem \
                 </linearGradient>
               </defs>
               <text x="320" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13"
-                fill="#324994" letter-spacing="0.06em">PRIVATE TAILNET MESH</text>
+                fill="#324994" letter-spacing="0.06em">TAILSCALE · HOW IT WORKS (MESH)</text>
 
               <line class="mesh-link" x1="110" y1="90" x2="320" y2="90" />
               <line class="mesh-link" x1="320" y1="90" x2="530" y2="90" />
@@ -1439,10 +1950,6 @@ ssh -i ~/Downloads/developer.pem \
 
         <p class="flow-caption" id="vpn-caption"></p>
       </div>
-      <p class="analogy"><span class="analogy-label">Analogy</span> NordVPN is a disguise on the public street: you look
-        like someone else to the outside world. Tailscale is a membership card for a private club: the bouncer checks
-        who you are, not which street you walked in from. A disguise does not get you past the club door; the card does.
-      </p>
     </section>
 
     <!-- 12 -->
@@ -1450,12 +1957,11 @@ ssh -i ~/Downloads/developer.pem \
       <p class="eyebrow">Reflection</p>
       <h2>What worked well</h2>
       <ul class="compact">
-        <li>Small scope: one private static site still showed MagicDNS, SSH, tags, and CI</li>
-        <li>Auth key for EC2 + OAuth for Actions matched the docs' intent</li>
-        <li>NordVPN + Tailscale-off negative tests made the story obvious</li>
-        <li>One <span class="mono">setup-dev-nginx.sh</span> for humans and CI; <span class="mono">SERVER_NAME</span>
-          stays in VM <span class="mono">.env</span></li>
-        <li>Inviting another user to the Tailnet was trivial for “team preview”</li>
+        <li>Small scope still covered MagicDNS, SSH, tags, CI</li>
+        <li>Auth key (EC2) + OAuth (Actions) matched docs intent</li>
+        <li>NordVPN + Tailscale-off made the story obvious</li>
+        <li>One setup script for humans and CI</li>
+        <li>Inviting a user for team preview was trivial</li>
       </ul>
     </section>
 
@@ -1464,11 +1970,9 @@ ssh -i ~/Downloads/developer.pem \
       <p class="eyebrow">Reflection</p>
       <h2>Difficult or surprising</h2>
       <ul>
-        <li>Bootstrap still needs a narrow public SSH (or SSM) <em>before</em> Tailscale is up</li>
-        <li>nginx on Amazon Linux couldn't read <span class="mono">~/app/out</span> until home-dir permissions were
-          fixed</li>
-        <li>First Actions failure was a stale remote branch vs local script fixes: a coordination issue, not Tailscale
-          itself</li>
+        <li>Bootstrap still needs narrow public SSH (or SSM) first</li>
+        <li>nginx needed home-dir permission fixes for <span class="mono">~/app/out</span></li>
+        <li>First CI fail: stale remote vs local scripts (not Tailscale)</li>
       </ul>
     </section>
 
@@ -1477,97 +1981,119 @@ ssh -i ~/Downloads/developer.pem \
       <p class="eyebrow">With more time</p>
       <h2>What I'd improve</h2>
       <ul>
-        <li>Deeper ACL / grants demos for multi-team least privilege</li>
-        <li>Richer Action logs walkthrough (what the ephemeral node sees)</li>
-        <li>Play with DNS settings beyond default MagicDNS</li>
-        <li>Stretch goal: private “second brain” chat on a home GPU box, always on the same Tailnet</li>
+        <li>Deeper ACL / grants for multi-team least privilege</li>
+        <li>Richer Action logs (what the ephemeral node sees)</li>
+        <li>DNS beyond default MagicDNS</li>
+        <li>Stretch: private “second brain” on a home GPU box</li>
       </ul>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" data-title="Customer value">
-      <p class="eyebrow">Customer conversation</p>
-      <h2>How I'd open the conversation</h2>
-      <ul>
-        <li>Have you ever wondered: if you deployed a website on your own system, how would people see it on the web?
-        </li>
-        <li>Are you worried a development deployment gets hacked before it even reaches production?</li>
-        <li>Or why do you think your company takes so long setting up a company VPN for you?</li>
-      </ul>
-      <p class="lede" style="margin-top:1.25rem">Those questions land in the same place: <strong>private access without
-          public exposure</strong>:identity on a Tailnet instead of open ports or a heavyweight corporate VPN.</p>
+    <!-- Value for newcomers -->
+    <section class="slide" data-title="Value">
+      <p class="eyebrow">For someone new to Tailscale</p>
+      <h2>How I'd explain the value</h2>
+      <div class="value-grid">
+        <article class="value-tile">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <circle cx="12" cy="12" r="3" />
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1" />
+            </svg>
+          </div>
+          <h3>Local projects</h3>
+          <p>MagicDNS URLs to show WIP work. No public deploy.</p>
+        </article>
+        <article class="value-tile">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M4 7h16M4 12h16M4 17h10" />
+              <circle cx="18" cy="17" r="2.5" />
+            </svg>
+          </div>
+          <h3>Environments</h3>
+          <p>Custom MagicDNS names for dev / staging / prod.</p>
+        </article>
+        <article class="value-tile">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="3" y="7" width="18" height="11" rx="2" />
+              <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M8 18v2M16 18v2" />
+              <circle cx="9" cy="12.5" r="1" fill="currentColor" stroke="none" />
+              <circle cx="15" cy="12.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          <h3>Local games</h3>
+          <p>Play with friends as if you share one LAN.</p>
+        </article>
+        <article class="value-tile">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M12 3a6 6 0 0 1 6 6c0 4-6 10-6 10S6 13 6 9a6 6 0 0 1 6-6Z" />
+              <circle cx="12" cy="9" r="2" />
+              <path d="M4 20h16" />
+            </svg>
+          </div>
+          <h3>Home LLM</h3>
+          <p>Chat with your model via Open WebUI, privately.</p>
+        </article>
+        <article class="value-tile endless">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+              <circle cx="5" cy="12" r="2" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          <h3>The possibilities are endless</h3>
+          <p>Identity on a Tailnet. Private access without the public internet.</p>
+        </article>
+        <article class="value-tile">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <ellipse cx="12" cy="6" rx="7" ry="3" />
+              <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
+            </svg>
+          </div>
+          <h3>NAS / home cloud</h3>
+          <p>Your storage, reachable from anywhere on the Tailnet.</p>
+          </article>
+          <article class="value-tile">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <rect x="4" y="4" width="16" height="16" rx="3" />
+                <path d="M8 12h8M12 8v8" />
+              </svg>
+            </div>
+          <h3>This walkthrough</h3>
+          <p>Private staging preview. No public ports 80/443.</p>
+          </article>
+          <article class="value-tile">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <circle cx="9" cy="10" r="3" />
+                <circle cx="16" cy="11" r="2.5" />
+                <path d="M3 19c0-2.5 2.5-4 6-4s6 1.5 6 4M13.5 19c.4-1.8 2-3 4.5-3 1.2 0 2.2.3 3 .8" />
+              </svg>
+            </div>
+          <h3>Invite teammates</h3>
+          <p>Share by identity. No IP allowlists or VPN tickets.</p>
+          </article>
+          <article class="value-tile">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <rect x="5" y="3" width="14" height="18" rx="2" />
+                <path d="M9 7h6M9 11h6M9 15h4" />
+              </svg>
+            </div>
+          <h3>Home lab SSH</h3>
+          <p>Reach your workstation or Pi from your phone, privately.</p>
+          </article>
+      </div>
     </section>
 
-    <!-- 17 -->
+    <!-- Close -->
     <section class="slide" data-title="Close">
       <p class="eyebrow">Thanks</p>
       <h1>Questions?</h1>
-    </section>
-
-    <!-- Technical: WireGuard -->
-    <section class="slide" data-title="How Tailscale works">
-      <p class="eyebrow">Technical deep dive</p>
-      <h2>How Tailscale works (WireGuard under the hood)</h2>
-      <p class="lede" style="margin-bottom:1rem">Tailscale is not “just another VPN app.” The <strong>data
-          plane</strong> is <a href="https://www.wireguard.com/" target="_blank"
-          rel="noopener noreferrer">WireGuard</a>: fast, modern crypto between peers. Tailscale adds the control plane
-        so keys, identity, and ACLs stay manageable.</p>
-      <div class="grid-2">
-        <div class="card">
-          <h3>1 · Keys on each node</h3>
-          <p>Every device generates its own WireGuard keypair. The <strong>private key never leaves the device</strong>.
-            That is why relays cannot read your traffic.</p>
-        </div>
-        <div class="card">
-          <h3>2 · Coordination server</h3>
-          <p>Nodes register public keys + reachability with the coordination server (control plane). Peers download each
-            other's public keys and allowed IPs for the Tailnet. See <a
-              href="https://tailscale.com/blog/how-tailscale-works" target="_blank" rel="noopener noreferrer">How
-              Tailscale works</a>.</p>
-        </div>
-        <div class="card">
-          <h3>3 · Direct WireGuard path</h3>
-          <p>When possible, peers form a <strong>direct</strong> WireGuard tunnel (NAT traversal via STUN/ICE-style
-            discovery). Encrypted packets go peer-to-peer: laptop ↔ EC2 in this demo.</p>
-        </div>
-        <div class="card">
-          <h3>4 · DERP fallback</h3>
-          <p>If UDP is blocked or NAT is harsh, traffic can relay via <a
-              href="https://tailscale.com/docs/reference/derp-servers" target="_blank"
-              rel="noopener noreferrer">DERP</a>. Relays forward already-encrypted WireGuard packets; they do not hold
-            your private keys. Docs: <a href="https://tailscale.com/docs/concepts/tailscale-encryption" target="_blank"
-              rel="noopener noreferrer">encryption</a>.</p>
-        </div>
-      </div>
-      <table style="margin-top:1rem">
-        <thead>
-          <tr>
-            <th>Layer</th>
-            <th>What it does in this project</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>WireGuard (data)</strong></td>
-            <td>Encrypts browse/SSH/CI traffic between laptop, EC2, and the ephemeral Actions node</td>
-          </tr>
-          <tr>
-            <td><strong>Coordination + ACLs</strong></td>
-            <td>Who is on the Tailnet; tags like <span class="mono">tag:ci</span> → <span
-                class="mono">tag:dev-server:22</span></td>
-          </tr>
-          <tr>
-            <td><strong>MagicDNS</strong></td>
-            <td>Names resolve to Tailscale IPs so you never need a public A record for the preview</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="note">Check live path type with <span class="mono">tailscale status</span> (direct vs relay). That is
-        how I talk about “secure connectivity” without hand-waving.</p>
-
-      <p class="analogy"><span class="analogy-label">Analogy</span> WireGuard is the armored truck between two
-        buildings. The coordination server is the dispatcher that shares addresses. DERP is a sealed courier if the
-        direct road is blocked; the courier never has the truck's keys.</p>
     </section>
 
   </div>
@@ -1603,6 +2129,10 @@ ssh -i ~/Downloads/developer.pem \
         progress.style.width = ((i + 1) / slides.length) * 100 + "%";
         document.title = (slides[i].dataset.title || "Slide") + " · Tailscale walkthrough";
 
+        /* Logo fades in by slide; last slide = full opacity */
+        const t = slides.length <= 1 ? 1 : i / (slides.length - 1);
+        document.documentElement.style.setProperty("--logo-opacity", String(t));
+
         const hash = "#" + (i + 1);
         if (location.hash !== hash && !opts.fromHash) {
           syncingHash = true;
@@ -1632,10 +2162,10 @@ ssh -i ~/Downloads/developer.pem \
       const flowchart = document.getElementById("flowchart");
       const caption = document.getElementById("flow-caption");
       const captions = {
-        browse: "<strong>Browse:</strong> Team laptop or mobile (Tailscale client) hits MagicDNS over the Tailnet; nginx serves the static export. No public ports 80/443.",
-        ssh: "<strong>Team SSH:</strong> Same MagicDNS hostname from a teammate's laptop or phone SSH client, port 22 over Tailscale for ops. Not the public EC2 DNS.",
-        ci: "<strong>CI deploy:</strong> Ephemeral GitHub Actions node (tag:ci) joins the Tailnet and SSH-deploys to tag:dev-server:22 only.",
-        all: "<strong>All paths:</strong> One Tailnet connects team laptops/phones, CI, and EC2. Identity and tags decide who can reach what."
+        browse: "<strong>Browse:</strong> MagicDNS over Tailnet → nginx. No public 80/443.",
+        ssh: "<strong>Team SSH:</strong> Same MagicDNS host, port 22 over Tailscale. Not public EC2 DNS.",
+        ci: "<strong>CI deploy:</strong> Ephemeral tag:ci node joins Tailnet → SSH to tag:dev-server:22 only.",
+        all: "<strong>All paths:</strong> One Tailnet. Identity and tags decide who reaches what."
       };
 
       function setPath(path) {
@@ -1663,12 +2193,13 @@ ssh -i ~/Downloads/developer.pem \
         setPath("browse");
       }
 
-      /* Interactive NordVPN vs Tailscale - swap whole diagrams */
+      /* Interactive Cosco / Nord / Tailscale diagrams */
       const vpnFlow = document.getElementById("vpn-flowchart");
       const vpnCaption = document.getElementById("vpn-caption");
       const vpnCaptions = {
-        nord: "<strong>Nord egress:</strong> Star VPN - laptop tunnels to a vendor exit and leaves with a new public IP. Your EC2 is not on this path.",
-        mesh: "<strong>Tailscale mesh:</strong> Many peers, many WireGuard links. Laptop, phone, teammate, CI, MagicDNS, and EC2 share one identity-aware Tailnet - not a single egress hop."
+        cosco: "<strong>Cosco hub:</strong> All traffic through an appliance. Tickets to join; preview still gated.",
+        nord: "<strong>Nord egress:</strong> Star VPN. New public IP. EC2 is not on this path.",
+        mesh: "<strong>Tailscale mesh:</strong> Peers join by identity. MagicDNS + tags. No Cosco appliance."
       };
 
       function setVpnPath(path) {
@@ -1677,10 +2208,10 @@ ssh -i ~/Downloads/developer.pem \
         vpnFlow.querySelectorAll(".flow-tab").forEach((tab) => {
           const on = tab.dataset.path === path;
           tab.classList.toggle("active", on);
-          tab.classList.toggle("signal", on && path === "nord");
+          tab.classList.toggle("signal", on && (path === "nord" || path === "cosco"));
           tab.setAttribute("aria-selected", on ? "true" : "false");
         });
-        if (vpnCaption) vpnCaption.innerHTML = vpnCaptions[path] || vpnCaptions.nord;
+        if (vpnCaption) vpnCaption.innerHTML = vpnCaptions[path] || vpnCaptions.cosco;
       }
 
       if (vpnFlow) {
@@ -1690,7 +2221,7 @@ ssh -i ~/Downloads/developer.pem \
             setVpnPath(tab.dataset.path);
           });
         });
-        setVpnPath("nord");
+        setVpnPath("cosco");
       }
 
       window.addEventListener("keydown", (e) => {
@@ -1702,9 +2233,9 @@ ssh -i ~/Downloads/developer.pem \
           setPath({ "1": "browse", "2": "ssh", "3": "ci", "0": "all" }[e.key]);
           return;
         }
-        if (onVpn && (e.key === "1" || e.key === "2")) {
+        if (onVpn && (e.key === "1" || e.key === "2" || e.key === "3")) {
           e.preventDefault();
-          setVpnPath({ "1": "nord", "2": "mesh" }[e.key]);
+          setVpnPath({ "1": "cosco", "2": "nord", "3": "mesh" }[e.key]);
           return;
         }
         if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
@@ -1721,6 +2252,44 @@ ssh -i ~/Downloads/developer.pem \
       });
 
       show(slideFromHash(), { replace: true });
+
+      /* Copy buttons for terminal / command blocks */
+      document.querySelectorAll(".check-card pre, pre.demo-pre").forEach((pre) => {
+        if (pre.parentElement && pre.parentElement.classList.contains("code-block")) return;
+        const wrap = document.createElement("div");
+        wrap.className = "code-block";
+        pre.parentNode.insertBefore(wrap, pre);
+        wrap.appendChild(pre);
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "copy-btn";
+        btn.textContent = "Copy";
+        btn.setAttribute("aria-label", "Copy command");
+        wrap.appendChild(btn);
+
+        btn.addEventListener("click", async (e) => {
+          e.stopPropagation();
+          const text = pre.textContent.replace(/\n$/, "");
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (_) {
+            const range = document.createRange();
+            range.selectNodeContents(pre);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            document.execCommand("copy");
+            sel.removeAllRanges();
+          }
+          btn.textContent = "Copied";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.textContent = "Copy";
+            btn.classList.remove("copied");
+          }, 1400);
+        });
+      });
     })();
   </script>
 </body>
