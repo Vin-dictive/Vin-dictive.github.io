@@ -120,26 +120,25 @@ Skip deep detail for Sales; SEs may ask about OAuth scope or bootstrap.
 
 ## 9. Demo browse (1 of 3)
 
-**Claim:** Tailscale on → site loads. Tailscale off → fails.
+**Claim:** Tailscale on → site loads. Tailscale off → fails. Same result with commercial VPN on or off.
 
 **Do:**
-1. Tailscale ON → open MagicDNS URL / curl headers → expect Dev banner + HTTP 200.
-2. Tailscale OFF → curl with short timeout → expect timeout / can’t connect.
+1. Tailscale ON → open MagicDNS URL / curl headers → expect Dev banner + HTTP 200 (try with commercial VPN on, then off).
+2. Tailscale OFF → curl with short timeout → expect timeout / can’t connect (again with commercial VPN on or off).
 3. Reconnect Tailscale before the next demo.
 
-**Say:** This is the simplest proof that the preview is private to the Tailnet, not “security by obscure public URL.”
-
+**Say:** This proves the preview is private to the Tailnet. A commercial VPN changing your egress IP does not get you in, and turning it off does not change the Tailscale-on success path.
 ---
 
 ## 10. Demo SSH (2 of 3)
 
-**Claim:** MagicDNS SSH lands on the real AWS EC2. Public SSH fails when your IP is not allowlisted (NordVPN egress demo).
+**Claim:** MagicDNS SSH lands on the real AWS EC2. Public SSH fails when your IP is not allowlisted (commercial VPN egress demo).
 
 **Do:**
 1. SSH via MagicDNS with the pem key → shell on Amazon Linux.
 2. On the box: `tailscale status` (and hostname) → node online with MagicDNS name.
 3. Show AWS EC2 Security Group settings (`AWS-console.png`): SSH from My IP for bootstrap; no public 80/443 for the preview.
-4. Optional negative: NordVPN ON → SSH to public EC2 DNS → timeout / denied because SG blocks that egress IP.
+4. Optional negative: Commercial VPN ON → SSH to public EC2 DNS → timeout / denied because SG blocks that egress IP.
 
 **Say:** Same laptop can reach the host over Tailscale without widening HTTP to the world. Consumer VPN egress is not a substitute for Tailnet membership.
 
@@ -162,8 +161,10 @@ Skip deep detail for Sales; SEs may ask about OAuth scope or bootstrap.
 
 **Say:**
 - EC2 gets an auth key: one long-lived server, `tailscale up --auth-key`, stable MagicDNS hostname.
-- CI gets an OAuth client: no reusable forever join key sitting in GitHub.
-- Each Actions run gets a short-lived tagged node; expiry and blast radius are much better for automation.
+- CI gets an OAuth client: each GitHub Actions run creates an **ephemeral** `tag:ci` node on demand when the runner starts.
+- When the job ends, that node is revoked / disappears. Nothing durable left on the Tailnet from CI.
+- Granular control: the OAuth client is scoped so it can only mint keys for `tag:ci`, and ACL only allows `tag:ci` → `tag:dev-server:22`.
+- No forever reusable join key sitting in GitHub secrets. Smaller blast radius if secrets leak.
 - This is the credential pattern to recommend when customers ask “how should CI join the Tailnet?”
 
 ---
@@ -186,22 +187,22 @@ Skip deep detail for Sales; SEs may ask about OAuth scope or bootstrap.
 **Say (recap, don’t re-demo unless asked):**
 - Positive: Tailscale on → MagicDNS → site loads.
 - Negative: Tailscale off → can’t be reached.
-- NordVPN: public SSH fails → VM isn’t open to shifted egress IPs.
+- Commercial VPN: public SSH fails → VM isn’t open to shifted egress IPs.
 - Tailnet SSH works without opening 80/443.
 - CI path works end to end.
 
 ---
 
-## 15. VPN vs Tailscale (Cosco / Nord / mesh)
+## 15. VPN vs Tailscale (Cosco / commercial VPN / mesh)
 
-**Keys:** `1` Cosco hub · `2` Nord egress · `3` Tailscale mesh
+**Keys:** `1` Cosco hub · `2` Commercial egress · `3` Tailscale mesh
 
 **Say:**
 - Same word “VPN,” three different jobs. Tab through the diagrams.
 - **Cosco hub:** Laptop tunnels to a Cosco appliance (hardware or VM). Everything goes through that hub into the corp LAN. IT tickets to get on; more tickets for special access like a private preview. Expensive and gateway-centered.
-- **Nord egress:** Consumer VPN changes your public IP. Great for “look like I’m elsewhere.” Your EC2 / private preview is not on that path. Phone and CI are not linked as peers.
+- **Commercial egress:** A commercial VPN changes your public IP. Great for “look like I’m elsewhere.” Your EC2 / private preview is not on that path. Phone and CI are not linked as peers.
 - **Tailscale mesh (how it works):** Devices join by identity. Laptop, phone, teammate, CI, MagicDNS, and EC2 share one Tailnet. Peer links, not a Cosco appliance. Tags and ACLs decide who reaches what (e.g. CI → :22 only).
-- Analogy: Nord is a disguise on the public street. Cosco is a locked office building with a security desk and a ticket queue. Tailscale is a membership card for a private club: the bouncer checks who you are.
+- Analogy: A commercial VPN is a disguise on the public street. Cosco is a locked office building with a security desk and a ticket queue. Tailscale is a membership card for a private club: the bouncer checks who you are.
 
 ---
 
@@ -210,9 +211,10 @@ Skip deep detail for Sales; SEs may ask about OAuth scope or bootstrap.
 **Say:**
 - Small scope still demonstrated MagicDNS, SSH, tags, and CI.
 - Auth key for EC2 + OAuth for Actions matched what the docs intend.
-- Negative tests (NordVPN + Tailscale off) made the story obvious to a mixed audience.
+- Negative tests (Commercial VPN + Tailscale off) made the story obvious to a mixed audience.
 - One setup script for humans and CI kept ops simple.
 - Inviting another user for team preview was trivial.
+- Excellent documentation made setup and the right patterns easy to follow.
 
 ---
 
@@ -229,10 +231,12 @@ Skip deep detail for Sales; SEs may ask about OAuth scope or bootstrap.
 ## 18. What I'd improve
 
 **Say:**
-- Deeper ACL / grants demos for multi-team least privilege.
-- Richer Action logs walkthrough (what the ephemeral node sees).
-- DNS settings beyond default MagicDNS.
-- Stretch: private “second brain” chat on a home GPU box, always on the same Tailnet.
+- With more time I’d stand up **another demo** aimed at different Tailscale features (not just private static preview).
+- I’d dig into a **Docker** packaging of this pattern and how it would run inside a **Kubernetes** cluster (sidecar / operator / subnet router patterns worth exploring).
+- Real next step: the **Cow lameness** project with the **AWP UBC lab** ([HerdWell](http://134.87.8.85/), [architecture image](https://github.com/Vin-dictive/deploy-docs-cow-lameness/blob/main/image.png)). That needs an education account, and user management / access control is more complex than this personal Tailnet preview. I’d want to implement a **full-scale** Tailscale solution there (roles, invites, ACLs/grants, maybe shared lab devices).
+- Tighten ops with **auto-approval** for devices, and move CI/CD deploy fully onto **Tailscale SSH** — today SSH ports are still open for bootstrap / deploy paths.
+- Still want deeper ACL / grants demos for multi-team least privilege.
+- Richer Action logs walkthrough: what the ephemeral CI node sees on the Tailnet.
 
 ---
 
@@ -255,8 +259,9 @@ Skip deep detail for Sales; SEs may ask about OAuth scope or bootstrap.
 
 ---
 
-## 20. Questions?
+## 20. Questions? (empty slide)
 
 **Say:**
+- Leave the slide blank so the room focuses on discussion.
 - Invite Sales questions on positioning / objections, SE questions on ACLs, OAuth, bootstrap, and CI patterns.
 - Offer to re-run any demo path if useful.

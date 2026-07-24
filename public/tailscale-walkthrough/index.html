@@ -11,24 +11,26 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
     rel="stylesheet" />
   <style>
-    /* Tailscale-inspired: Bone / Paper / Ink / Signal Red / Network Blue */
+    /* Tailscale dark / grey theme */
     :root {
-      --ink: #181717;
-      --bone: #eeebea;
-      --paper: #ffffff;
-      --linen: #f7f5f4;
-      --graphite: #2e2d2d;
-      --charcoal: #575555;
-      --ash: #706e6d;
-      --mist: #d5d3d2;
+      --ink: #eeebea;
+      --bone: #181717;
+      --paper: #2e2d2d;
+      --linen: #242323;
+      --graphite: #d5d3d2;
+      --charcoal: #b0aeae;
+      --ash: #8f8d8c;
+      --mist: #3f3e3e;
       --signal: #d04841;
       --network-a: #5a82de;
-      --network-b: #324994;
+      --network-b: #7a9eef;
       --network: linear-gradient(135deg, #5a82de 0%, #324994 100%);
       --muted: var(--ash);
       --accent: var(--signal);
       --card: var(--paper);
       --line: var(--mist);
+      --terminal: #0f0e0e;
+      --terminal-fg: #e8eef4;
       --logo-opacity: 0;
     }
 
@@ -51,8 +53,8 @@
     body {
       background-color: var(--bone);
       background-image:
-        radial-gradient(ellipse 70% 50% at 100% 0%, rgba(90, 130, 222, 0.14), transparent 55%),
-        radial-gradient(ellipse 50% 40% at 0% 100%, rgba(208, 72, 65, 0.07), transparent 50%);
+        radial-gradient(ellipse 70% 50% at 100% 0%, rgba(90, 130, 222, 0.16), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 0% 100%, rgba(208, 72, 65, 0.1), transparent 50%);
     }
 
     .deck-bg {
@@ -72,6 +74,7 @@
       height: auto;
       user-select: none;
       object-fit: contain;
+      filter: brightness(1.15) contrast(1.05);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -127,26 +130,13 @@
     }
 
     .brand-mark {
-      width: 1.75rem;
-      height: 1.75rem;
-      border-radius: 0.35rem;
-      background: var(--network);
-      box-shadow: 0 6px 18px rgba(50, 73, 148, 0.28);
-      position: relative;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.4rem;
       flex-shrink: 0;
-    }
-
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      inset: 28%;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow:
-        -0.35rem -0.35rem 0 -0.12rem rgba(255, 255, 255, 0.55),
-        0.35rem -0.35rem 0 -0.12rem rgba(255, 255, 255, 0.55),
-        -0.35rem 0.35rem 0 -0.12rem rgba(255, 255, 255, 0.55),
-        0.35rem 0.35rem 0 -0.12rem rgba(255, 255, 255, 0.55);
+      object-fit: contain;
+      display: block;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     }
 
     .brand-name {
@@ -248,7 +238,7 @@
       border: 1px solid var(--mist);
       border-radius: 14px;
       padding: 1.25rem 1.4rem;
-      box-shadow: 0 1px 0 rgba(24, 23, 23, 0.04);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
     }
 
     .card h3 {
@@ -269,8 +259,8 @@
     }
 
     .card.bad {
-      border-color: rgba(208, 72, 65, 0.35);
-      background: linear-gradient(180deg, #fff 0%, #fbf6f5 100%);
+      border-color: rgba(208, 72, 65, 0.45);
+      background: linear-gradient(180deg, #2e2d2d 0%, #322422 100%);
     }
 
     .card.bad h3 {
@@ -278,8 +268,8 @@
     }
 
     .card.good {
-      border-color: rgba(90, 130, 222, 0.45);
-      background: linear-gradient(180deg, #fff 0%, #f4f7fc 100%);
+      border-color: rgba(90, 130, 222, 0.5);
+      background: linear-gradient(180deg, #2e2d2d 0%, #242a38 100%);
     }
 
     .card.good h3 {
@@ -297,7 +287,7 @@
       border: 1px solid var(--mist);
       border-radius: 16px;
       padding: 1rem 1.1rem 1.15rem;
-      box-shadow: 0 8px 28px rgba(24, 23, 23, 0.06);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
     }
 
     .flow-tabs {
@@ -380,9 +370,9 @@
     .flow-node.lit {
       opacity: 1;
       border-color: var(--network-a);
-      box-shadow: 0 0 0 3px rgba(90, 130, 222, 0.15);
+      box-shadow: 0 0 0 3px rgba(90, 130, 222, 0.2);
       transform: translateY(-1px);
-      background: #fff;
+      background: #363535;
     }
 
     .flow-node.lit.signal {
@@ -397,14 +387,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: linear-gradient(160deg, #f4f7fc 0%, #eef2fa 100%);
+      background: linear-gradient(160deg, #2a3144 0%, #242830 100%);
       border-style: dashed;
       min-height: 100%;
     }
 
     .flow-node.mesh.lit {
       border-style: solid;
-      background: linear-gradient(160deg, #e8eefc 0%, #dce6f8 100%);
+      background: linear-gradient(160deg, #32405c 0%, #2a3348 100%);
     }
 
     .flow-node.ec2 {
@@ -440,7 +430,7 @@
     .flow-chip.lit {
       opacity: 1;
       border-color: var(--network-a);
-      background: #eef3fc;
+      background: #2a3348;
       color: var(--network-b);
     }
 
@@ -636,7 +626,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.85rem 1.5rem;
-      background: linear-gradient(transparent, rgba(238, 235, 234, 0.96) 35%);
+      background: linear-gradient(transparent, rgba(24, 23, 23, 0.96) 35%);
       font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 0.7rem;
       color: var(--ash);
@@ -727,7 +717,7 @@
       max-width: 960px;
     }
 
-    /* NordVPN vs Tailscale - swap whole diagrams (Architecture-style tabs) */
+    /* Commercial VPN vs Tailscale - swap whole diagrams */
     .vpn-view {
       display: none;
       width: 100%;
@@ -795,14 +785,14 @@
     .vpn-mesh-svg .mesh-node-hit.cosco-hub {
       stroke: #8a7520;
       stroke-width: 3;
-      fill: #fffdf0;
+      fill: #32290f;
       filter: drop-shadow(0 4px 12px rgba(138, 117, 32, 0.3));
     }
 
     .vpn-mesh-svg .ticket-label {
       font-family: "IBM Plex Mono", monospace;
       font-size: 9px;
-      fill: #8a7520;
+      fill: #e8d44a;
     }
 
     .vpn-mesh-svg .nord-link {
@@ -827,34 +817,34 @@
     }
 
     .vpn-mesh-svg .mesh-node-hit {
-      fill: #fff;
-      stroke: #324994;
+      fill: #2e2d2d;
+      stroke: #7a9eef;
       stroke-width: 2.5;
-      filter: drop-shadow(0 4px 10px rgba(50, 73, 148, 0.18));
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
     }
 
     .vpn-mesh-svg .mesh-node-hit.nord {
       stroke: #d04841;
-      filter: drop-shadow(0 4px 10px rgba(208, 72, 65, 0.22));
+      filter: drop-shadow(0 4px 10px rgba(208, 72, 65, 0.28));
     }
 
     .vpn-mesh-svg .mesh-node-hit.nord-hub {
       stroke: #d04841;
       stroke-width: 3;
-      fill: #fbf6f5;
-      filter: drop-shadow(0 4px 12px rgba(208, 72, 65, 0.28));
+      fill: #322422;
+      filter: drop-shadow(0 4px 12px rgba(208, 72, 65, 0.32));
     }
 
     .vpn-mesh-svg .mesh-node-hit.internet {
-      stroke: #706e6d;
-      fill: #f0eeed;
-      filter: drop-shadow(0 3px 8px rgba(24, 23, 23, 0.08));
+      stroke: #8f8d8c;
+      fill: #242323;
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
     }
 
     .vpn-mesh-svg .mesh-node-hit.blocked {
       stroke: #d04841;
       stroke-dasharray: 4 3;
-      fill: #f7f5f4;
+      fill: #242323;
       filter: none;
       opacity: 0.85;
     }
@@ -866,13 +856,13 @@
     .vpn-mesh-svg .mesh-node-hit.ci {
       stroke: #d04841;
       stroke-dasharray: 4 3;
-      fill: #eef3fc;
+      fill: #2a3144;
     }
 
     .vpn-mesh-svg .mesh-node-hit.dns {
       stroke: #5a82de;
       stroke-width: 1.75;
-      fill: #f4f7fc;
+      fill: #2a3144;
     }
 
     .vpn-mesh-svg .nord-x {
@@ -976,8 +966,8 @@
       font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 0.72rem;
       line-height: 1.45;
-      background: var(--ink);
-      color: #e8eef4;
+      background: var(--terminal);
+      color: var(--terminal-fg);
       border-radius: 8px;
       padding: 0.7rem 0.8rem;
       overflow-x: auto;
@@ -1178,8 +1168,8 @@
       height: auto;
       border-radius: 14px;
       border: 1px solid var(--mist);
-      box-shadow: 0 10px 28px rgba(24, 23, 23, 0.12);
-      background: var(--ink);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      background: var(--terminal);
     }
 
     @media (max-width: 720px) {
@@ -1204,7 +1194,7 @@
       font-size: 0.68rem;
       padding: 0.35rem 0.55rem;
       border-radius: 6px;
-      background: #fbf6f5;
+      background: #322422;
       border: 1px solid rgba(208, 72, 65, 0.28);
       color: var(--graphite);
     }
@@ -1243,7 +1233,7 @@
     .value-tile:hover {
       transform: translateY(-4px);
       border-color: rgba(90, 130, 222, 0.55);
-      box-shadow: 0 12px 28px rgba(50, 73, 148, 0.14);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     }
 
     .value-tile:hover::before {
@@ -1314,6 +1304,16 @@
     .value-tile.endless .icon {
       margin-bottom: 0.55rem;
       color: #fff;
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+
+    .value-tile.endless .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 0.45rem;
     }
 
     .value-tile.endless:hover .icon {
@@ -1345,6 +1345,64 @@
       }
     }
 
+    .story-media img,
+    .check-card .shot,
+    img.zoomable {
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(6px);
+      cursor: zoom-out;
+    }
+
+    .lightbox.open {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .lightbox img {
+      max-width: min(96vw, 1280px);
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid var(--mist);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      background: var(--paper);
+      cursor: default;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--mist);
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover {
+      border-color: var(--signal);
+      color: var(--signal);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .value-tile,
       .value-tile .icon,
@@ -1354,6 +1412,10 @@
 
       .value-tile:hover {
         transform: none;
+      }
+
+      .lightbox.open {
+        animation: none;
       }
     }
   </style>
@@ -1369,11 +1431,11 @@
     <!-- 1 -->
     <section class="slide active" data-title="Title">
       <div class="brand-row">
-        <div class="brand-mark" aria-hidden="true"></div>
+        <img class="brand-mark" src="../pictures/tailscale-logo.png" alt="Tailscale" />
         <span class="brand-name">Tailscale</span>
       </div>
       <p class="eyebrow">Solutions Engineer · Technical walkthrough</p>
-      <h1>Private development preview over a Tailnet</h1>
+      <h1>Private development preview over Tailscale</h1>
 
       <p class="title-meta">
         Vinay Valson<br />
@@ -1409,7 +1471,7 @@
               <li>You do not want the public (or crawlers) to see them</li>
               <li>You do not want to expose essential services to the public internet</li>
               <li>Laptop prototype: show a friend, not the open web</li>
-              <li>Public staging / IP allowlists / VPN tickets feel like overkill</li>
+              <li>Public staging / IP allowlists / VPN tickets to onboard team</li>
             </ul>
             <div class="story-media">
               <img src="../pictures/dev.gif" alt="Developer typing intensely at a computer" />
@@ -1419,14 +1481,14 @@
         <!-- Personal story time -->
         <section class="slide" data-title="Story time">
           <p class="eyebrow">Story time</p>
-          <h2>What I tried before Tailscale</h2>
+          <h2>What I tried before</h2>
           <div class="story-layout">
             <ul>
+              <li>I wanted private access solution for my agile team</li>
               <li><strong>GCP OAuth</strong> for serverless: many consoles, clients, redirects, secrets</li>
-              <li><strong>Private VPNs for gaming</strong>: “private LAN” with friends</li>
-              <li><strong>Cosco VPN</strong> at work: ticket after ticket just to join the network</li>
-              <li>Felt slow, fiddly, and hard to keep working</li>
-              <li>I wanted private access that stays simple for real services</li>
+              <li>Private LAN VPNs for gaming with friends</li>
+              <li>Fought with my internet provided to allow my local cloud NAS over the web</li>
+              <li>Corporate VPN takes days and tickets to give access to teams</li>
             </ul>
             <div class="story-media">
               <img src="../pictures/monkey-developer.gif"
@@ -1436,7 +1498,7 @@
         </section>
         <!-- Cosco VPN vs Tailscale (Cosco = fictional stand-in) -->
         <section class="slide" data-title="Cosco VPN">
-          <p class="eyebrow">The usual answer</p>
+          <p class="eyebrow">The Traditional Solutions</p>
           <div class="cosco-brand">
             <!-- IMAGE 1: Drop a tennis-ball Cosco logo PNG here -->
             <div class="cosco-logo" aria-hidden="true" title="Placeholder tennis ball: swap for your Cosco logo"></div>
@@ -1466,6 +1528,7 @@
                   <li>Identity + tags + ACLs, not IP allowlists</li>
                   <li>MagicDNS names</li>
                   <li>Easy integration with existing CI/CD</li>
+                  <li>Developer → Focus on business logic</li>
                 </ul>
               </div>
               </div>
@@ -1491,7 +1554,7 @@
     <!-- Assumptions -->
     <section class="slide" data-title="Assumptions">
       <p class="eyebrow">Setup</p>
-      <h2>Assumptions</h2>
+      <h2>Prerequisites</h2>
       <ul class="compact">
         <li>AWS - EC2</li>
         <li>SSH</li>
@@ -1587,18 +1650,18 @@
       <h2>Prove private browse works</h2>
       <div class="claim-box">
         <div class="label">Claim</div>
-        <p>Tailscale on → site loads. Tailscale off → fails.</p>
+        <p>Tailscale on → site loads. Tailscale off → fails. Same with commercial VPN on or off.</p>
       </div>
       <div class="check-grid">
         <div class="check-card">
           <h3>Tailscale ON</h3>
           <pre>open "http://development-website.tailc52fb7.ts.net/"</pre>
-          <p class="expect"><strong>Expect:</strong> Dev banner; HTTP 200</p>
+          <p class="expect"><strong>Expect:</strong> Dev banner; HTTP 200 (commercial VPN on or off)</p>
         </div>
         <div class="check-card">
           <h3>Tailscale OFF</h3>
           <pre>open "http://development-website.tailc52fb7.ts.net/"</pre>
-          <p class="expect"><strong>Expect:</strong> timeout / can't connect</p>
+          <p class="expect"><strong>Expect:</strong> timeout / can't connect (commercial VPN on or off)</p>
         </div>
       </div>
     </section>
@@ -1609,7 +1672,7 @@
       <h2>Prove SSH is Tailnet + show AWS</h2>
       <div class="claim-box">
         <div class="label">Claim</div>
-        <p>MagicDNS SSH → real EC2. Public SSH fails off-allowlist.</p>
+        <p>MagicDNS SSH → real EC2. Public SSH fails off-allowlist (commercial VPN).</p>
       </div>
       <div class="check-grid">
         <div class="check-card">
@@ -1630,7 +1693,7 @@
           <p class="expect"><strong>Expect:</strong> SSH from My IP for bootstrap; no public 80/443 for preview</p>
         </div>
         <div class="check-card">
-          <h3>NordVPN ON · public SSH (fail)</h3>
+          <h3>Commercial VPN ON · public SSH (fail)</h3>
           <pre>ssh -i ~/Downloads/developer.pem \
   -o ConnectTimeout=5 \
   ec2-user@ec2-16-147-216-162.us-west-2.compute.amazonaws.com</pre>
@@ -1639,17 +1702,32 @@
       </div>
     </section>
 
-    <!-- 8 -->
+    <!-- Access control -->
     <section class="slide" data-title="Access control">
       <p class="eyebrow">Access control</p>
       <h2>Tags = machine identity</h2>
-      <ul>
-        <li><span class="mono">tag:dev-server</span> → shared EC2 identity (not a person)</li>
-        <li><span class="mono">tag:ci</span> → ephemeral Actions nodes, deploy only</li>
-        <li>ACL: <span class="mono">tag:ci</span> → <span class="mono">tag:dev-server:22</span> only</li>
-        <li>Humans: member access for browse / SSH</li>
-        <li>OAuth scoped to mint keys for <span class="mono">tag:ci</span> only</li>
-      </ul>
+      <div class="grid-2">
+        <div class="card">
+          <h3>tag:dev-server</h3>
+          <p>Shared EC2 identity (not a person)</p>
+        </div>
+        <div class="card">
+          <h3>tag:ci</h3>
+          <p>Ephemeral Actions nodes, deploy only</p>
+        </div>
+        <div class="card good">
+          <h3>ACL</h3>
+          <p><span class="mono">tag:ci</span> → <span class="mono">tag:dev-server:22</span> only</p>
+        </div>
+        <div class="card">
+          <h3>Humans</h3>
+          <p>Member access for browse / SSH</p>
+        </div>
+        <div class="card">
+          <h3>OAuth scope</h3>
+          <p>CI can mint keys for <span class="mono">tag:ci</span> only</p>
+        </div>
+      </div>
     </section>
 
     <!-- 9 -->
@@ -1668,9 +1746,10 @@
         <div class="card good">
           <h3>CI → OAuth client</h3>
           <ul class="compact">
-            <li>No forever join key in GitHub</li>
-            <li>Short-lived tagged node per run</li>
-            <li>Smaller blast radius</li>
+            <li>Ephemeral <span class="mono">tag:ci</span> node per Actions run</li>
+            <li>Created on demand when the runner starts</li>
+            <li>Revoked / gone when the job ends</li>
+            <li>Granular control: OAuth scoped to mint <span class="mono">tag:ci</span> only</li>
           </ul>
         </div>
       </div>
@@ -1706,33 +1785,45 @@ ssh -i ~/Downloads/developer.pem \
       </div>
     </section>
 
-    <!-- 10 -->
+    <!-- Validation -->
     <section class="slide" data-title="Validation">
       <p class="eyebrow">Validation</p>
       <h2>How I proved it works</h2>
-      <ul>
-        <li><strong>On:</strong> MagicDNS → site loads (dev banner)</li>
-        <li><strong>Off:</strong> “can't be reached”</li>
-        <li><strong>NordVPN:</strong> public SSH fails (SG allowlist)</li>
-        <li><strong>Tailnet SSH:</strong> same laptop, no public 80/443</li>
-        <li><strong>CI:</strong> push → Tailnet join → EC2 redeploy</li>
-      </ul>
+      <div class="grid-2">
+        <div class="card good">
+          <h3>On</h3>
+          <p>MagicDNS → site loads (dev banner)</p>
+        </div>
+        <div class="card bad">
+          <h3>Off</h3>
+          <p>“Can't be reached”</p>
+        </div>
+        <div class="card bad">
+          <h3>Commercial VPN</h3>
+          <p>Public SSH fails (SG allowlist)</p>
+        </div>
+        <div class="card good">
+          <h3>Tailnet SSH</h3>
+          <p>Same laptop, no public 80/443</p>
+        </div>
+        <div class="card good">
+          <h3>CI</h3>
+          <p>Push → Tailnet join → EC2 redeploy</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Tailscale vs Cosco / Nord / mesh -->
+    <!-- Tailscale vs Cosco / commercial VPN / mesh -->
     <section class="slide" data-title="VPN vs Tailscale">
       <p class="eyebrow">Comparison</p>
       <h2>Same word “VPN,” different jobs</h2>
       <ul class="compact" style="margin-bottom:0.85rem">
-        <li><strong>Cosco:</strong> hub appliance + tickets into a corp network</li>
-        <li><strong>NordVPN:</strong> changes your egress / public IP</li>
-        <li><strong>Tailscale:</strong> private mesh between your machines</li>
       </ul>
       <div class="flowchart" id="vpn-flowchart" data-path="cosco">
         <div class="flow-tabs" role="tablist" aria-label="VPN comparison paths">
           <button type="button" class="flow-tab active signal" data-path="cosco" role="tab" aria-selected="true">1 · Cosco
             hub</button>
-          <button type="button" class="flow-tab" data-path="nord" role="tab" aria-selected="false">2 · Nord
+          <button type="button" class="flow-tab" data-path="nord" role="tab" aria-selected="false">2 · Commercial
             egress</button>
           <button type="button" class="flow-tab" data-path="mesh" role="tab" aria-selected="false">3 · Tailscale
             mesh</button>
@@ -1759,46 +1850,46 @@ ssh -i ~/Downloads/developer.pem \
               <line class="cosco-link soft" x1="380" y1="120" x2="530" y2="230" />
           
               <!-- Ticket callouts -->
-              <rect x="40" y="48" width="88" height="22" rx="6" fill="#fffdf0" stroke="#c4a820" stroke-width="1.5" />
+              <rect x="40" y="48" width="88" height="22" rx="6" fill="#32290f" stroke="#c4a820" stroke-width="1.5" />
               <text class="ticket-label" x="84" y="63" text-anchor="middle">IT ticket #1</text>
-              <rect x="40" y="200" width="100" height="22" rx="6" fill="#fffdf0" stroke="#c4a820" stroke-width="1.5" />
+              <rect x="40" y="200" width="100" height="22" rx="6" fill="#32290f" stroke="#c4a820" stroke-width="1.5" />
               <text class="ticket-label" x="90" y="215" text-anchor="middle">IT ticket #2…</text>
           
               <g>
                 <circle class="mesh-node-hit cosco" cx="100" cy="120" r="36" />
                 <text x="100" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600"
-                  fill="#181717">Laptop</text>
+                  fill="#eeebea">Laptop</text>
                 <text x="100" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
                   fill="#8a7520">client</text>
               </g>
               <g>
-                <rect x="300" y="78" width="80" height="84" rx="12" fill="#fffdf0" stroke="#8a7520" stroke-width="3"
+                <rect x="300" y="78" width="80" height="84" rx="12" fill="#32290f" stroke="#8a7520" stroke-width="3"
                   filter="drop-shadow(0 4px 12px rgba(138, 117, 32, 0.3))" />
                 <text x="340" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
-                  fill="#181717">Cosco</text>
+                  fill="#eeebea">Cosco</text>
                 <text x="340" y="124" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
-                  fill="#181717">appliance</text>
+                  fill="#eeebea">appliance</text>
                 <text x="340" y="142" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
                   fill="#8a7520">hardware / VM</text>
               </g>
               <g>
                 <circle class="mesh-node-hit cosco" cx="530" cy="80" r="30" />
                 <text x="530" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
-                  fill="#181717">Corp LAN</text>
+                  fill="#eeebea">Corp LAN</text>
                 <text x="530" y="90" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
                   fill="#8a7520">whole net</text>
               </g>
               <g>
                 <circle class="mesh-node-hit cosco" cx="530" cy="160" r="30" />
                 <text x="530" y="156" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
-                  fill="#181717">Files / DB</text>
+                  fill="#eeebea">Files / DB</text>
                 <text x="530" y="170" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8a7520">via
                   hub</text>
               </g>
               <g>
                 <circle class="mesh-node-hit blocked" cx="530" cy="230" r="28" opacity="0.85" />
                 <text x="530" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
-                  fill="#181717">Preview</text>
+                  fill="#eeebea">Preview</text>
                 <text x="530" y="240" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
                   fill="#d04841">more tickets</text>
                 <line class="nord-x" x1="512" y1="214" x2="548" y2="246" />
@@ -1807,17 +1898,17 @@ ssh -i ~/Downloads/developer.pem \
             </svg>
           </div>
           
-          <!-- View 2: Nord star egress -->
+          <!-- View 2: Commercial VPN star egress -->
           <div class="vpn-view vpn-view-nord">
             <svg class="vpn-mesh-svg" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="NordVPN star egress diagram">
+              aria-label="Commercial VPN star egress diagram">
               <defs>
                 <marker id="arrowNordSvg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
                   <path d="M0,0 L6,3 L0,6 Z" fill="#d04841" />
                 </marker>
               </defs>
               <text x="320" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13"
-                fill="#d04841" letter-spacing="0.06em">NORDVPN · STAR EGRESS</text>
+                fill="#d04841" letter-spacing="0.06em">COMMERCIAL VPN · STAR EGRESS</text>
 
               <line class="nord-link" x1="110" y1="120" x2="320" y2="120" marker-end="url(#arrowNordSvg)" />
               <line class="nord-link" x1="320" y1="120" x2="530" y2="120" marker-end="url(#arrowNordSvg)" />
@@ -1829,21 +1920,21 @@ ssh -i ~/Downloads/developer.pem \
               <g>
                 <circle class="mesh-node-hit nord" cx="110" cy="120" r="36" />
                 <text x="110" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="13"
-                  font-weight="600" fill="#181717">Laptop</text>
+                  font-weight="600" fill="#eeebea">Laptop</text>
                 <text x="110" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
                   fill="#d04841">client</text>
               </g>
               <g>
                 <circle class="mesh-node-hit nord-hub" cx="320" cy="120" r="42" />
                 <text x="320" y="114" text-anchor="middle" font-family="Inter, sans-serif" font-size="13"
-                  font-weight="600" fill="#181717">Nord exit</text>
+                  font-weight="600" fill="#eeebea">VPN exit</text>
                 <text x="320" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
                   fill="#d04841">new public IP</text>
               </g>
               <g>
                 <circle class="mesh-node-hit internet" cx="530" cy="120" r="36" />
                 <text x="530" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="12"
-                  font-weight="600" fill="#181717">Internet</text>
+                  font-weight="600" fill="#eeebea">Internet</text>
                 <text x="530" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
                   fill="#706e6d">egress</text>
               </g>
@@ -1857,7 +1948,7 @@ ssh -i ~/Downloads/developer.pem \
               <g>
                 <circle class="mesh-node-hit blocked" cx="320" cy="220" r="38" />
                 <text x="320" y="214" text-anchor="middle" font-family="Inter, sans-serif" font-size="13"
-                  font-weight="600" fill="#181717">EC2</text>
+                  font-weight="600" fill="#eeebea">EC2</text>
                 <text x="320" y="230" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
                   fill="#d04841">not on path</text>
                 <line class="nord-x" x1="298" y1="202" x2="342" y2="238" />
@@ -1905,42 +1996,42 @@ ssh -i ~/Downloads/developer.pem \
               <g>
                 <circle class="mesh-node-hit" cx="110" cy="90" r="36" />
                 <text x="110" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600"
-                  fill="#181717">Laptop</text>
+                  fill="#eeebea">Laptop</text>
                 <text x="110" y="102" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
                   fill="#324994">client</text>
               </g>
               <g>
                 <circle class="mesh-node-hit" cx="320" cy="90" r="36" />
                 <text x="320" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600"
-                  fill="#181717">Phone</text>
+                  fill="#eeebea">Phone</text>
                 <text x="320" y="102" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
                   fill="#324994">client</text>
               </g>
               <g>
                 <circle class="mesh-node-hit" cx="530" cy="90" r="36" />
                 <text x="530" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600"
-                  fill="#181717">Teammate</text>
+                  fill="#eeebea">Teammate</text>
                 <text x="530" y="102" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
                   fill="#324994">invited</text>
               </g>
               <g>
                 <circle class="mesh-node-hit dns" cx="210" cy="200" r="30" />
                 <text x="210" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
-                  fill="#181717">DNS</text>
+                  fill="#eeebea">DNS</text>
                 <text x="210" y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
                   fill="#324994">MagicDNS</text>
               </g>
               <g>
                 <circle class="mesh-node-hit ec2" cx="320" cy="210" r="42" />
                 <text x="320" y="204" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600"
-                  fill="#181717">EC2</text>
+                  fill="#eeebea">EC2</text>
                 <text x="320" y="220" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
                   fill="#324994">tag:dev-server</text>
               </g>
               <g>
                 <circle class="mesh-node-hit ci" cx="470" cy="200" r="32" />
                 <text x="470" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
-                  fill="#181717">CI</text>
+                  fill="#eeebea">CI</text>
                 <text x="470" y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
                   fill="#d04841">tag:ci</text>
               </g>
@@ -1952,40 +2043,86 @@ ssh -i ~/Downloads/developer.pem \
       </div>
     </section>
 
-    <!-- 12 -->
+    <!-- What worked -->
     <section class="slide" data-title="What worked">
       <p class="eyebrow">Reflection</p>
       <h2>What worked well</h2>
-      <ul class="compact">
-        <li>Small scope still covered MagicDNS, SSH, tags, CI</li>
-        <li>Auth key (EC2) + OAuth (Actions) matched docs intent</li>
-        <li>NordVPN + Tailscale-off made the story obvious</li>
-        <li>One setup script for humans and CI</li>
-        <li>Inviting a user for team preview was trivial</li>
-      </ul>
+      <div class="grid-2">
+        <div class="card good">
+          <h3>Small scope</h3>
+          <p>Still covered MagicDNS, SSH, ACL tags, CI</p>
+        </div>
+        <div class="card good">
+          <h3>Credentials</h3>
+          <p>Auth key (EC2) + OAuth (Actions) matched docs intent</p>
+        </div>
+        <div class="card good">
+          <h3>Negative tests</h3>
+          <p>Commercial VPN + Tailscale-off made the story obvious</p>
+        </div>
+        <div class="card good">
+          <h3>Clean UI</h3>
+          <p>Helps spotting useful features faster</p>
+        </div>
+        <div class="card good">
+          <h3>Team preview</h3>
+          <p>Inviting a user was trivial</p>
+        </div>
+        <div class="card good">
+          <h3>Documentation</h3>
+          <p>Excellent docs made setup and patterns easy to follow</p>
+        </div>
+      </div>
     </section>
 
-    <!-- 13 -->
+    <!-- Hard parts -->
     <section class="slide" data-title="Hard parts">
       <p class="eyebrow">Reflection</p>
       <h2>Difficult or surprising</h2>
-      <ul>
-        <li>Bootstrap still needs narrow public SSH (or SSM) first</li>
-        <li>nginx needed home-dir permission fixes for <span class="mono">~/app/out</span></li>
-        <li>First CI fail: stale remote vs local scripts (not Tailscale)</li>
-      </ul>
+      <div class="grid-2">
+        <div class="card bad">
+          <h3>Bootstrap</h3>
+          <p>Still needs narrow public SSH first.</p>
+        </div>
+        <div class="card bad">
+          <h3>nginx permissions</h3>
+          <p>Home-dir fixes for <span class="mono">~/app/out</span></p>
+        </div>
+        <div class="card">
+          <h3>First CI fail</h3>
+          <p>Stale remote vs local scripts (not Tailscale)</p>
+        </div>
+      </div>
     </section>
 
-    <!-- 14 -->
+    <!-- Next -->
     <section class="slide" data-title="Next">
       <p class="eyebrow">With more time</p>
       <h2>What I'd improve</h2>
-      <ul>
-        <li>Deeper ACL / grants for multi-team least privilege</li>
-        <li>Richer Action logs (what the ephemeral node sees)</li>
-        <li>DNS beyond default MagicDNS</li>
-        <li>Stretch: private “second brain” on a home GPU box</li>
-      </ul>
+      <div class="grid-2">
+        <div class="card good">
+          <h3>Docker + Kubernetes</h3>
+          <p>Explore a Docker setup for this pattern inside a Kubernetes cluster</p>
+        </div>
+        <div class="card good">
+          <h3>Cow lameness · AWP UBC</h3>
+          <p>Education/organization account needed for deeper user management and access control are more complex.</p>
+          <p style="margin-top:0.55rem; font-size:0.9rem; line-height:1.45">
+            <a href="http://134.87.8.85/" target="_blank" rel="noopener noreferrer">HerdWell app</a>
+            ·
+            <a href="https://github.com/Vin-dictive/deploy-docs-cow-lameness/blob/main/image.png" target="_blank"
+              rel="noopener noreferrer">Architecture image</a>
+          </p>
+        </div>
+        <div class="card">
+          <h3>Auto-approval + CI SSH</h3>
+          <p>Auto-approval features for devices. Move CI/CD deploy over Tailscale SSH - today SSH ports are still open.</p>
+        </div>
+        <div class="card">
+          <h3>ACLs / grants</h3>
+          <p>Deeper multi-team least privilege demos</p>
+        </div>
+      </div>
     </section>
 
     <!-- Value for newcomers -->
@@ -2038,13 +2175,9 @@ ssh -i ~/Downloads/developer.pem \
         </article>
         <article class="value-tile endless">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-              <circle cx="5" cy="12" r="2" fill="currentColor" stroke="none" />
-            </svg>
+            <img src="../pictures/tailscale-logo.png" alt="" />
           </div>
           <h3>The possibilities are endless</h3>
-          <p>Identity on a Tailnet. Private access without the public internet.</p>
         </article>
         <article class="value-tile">
           <div class="icon" aria-hidden="true">
@@ -2064,7 +2197,7 @@ ssh -i ~/Downloads/developer.pem \
               </svg>
             </div>
           <h3>This walkthrough</h3>
-          <p>Private staging preview. No public ports 80/443.</p>
+          <p>Private staging preview.</p>
           </article>
           <article class="value-tile">
             <div class="icon" aria-hidden="true">
@@ -2092,8 +2225,6 @@ ssh -i ~/Downloads/developer.pem \
 
     <!-- Close -->
     <section class="slide" data-title="Close">
-      <p class="eyebrow">Thanks</p>
-      <h1>Questions?</h1>
     </section>
 
   </div>
@@ -2102,6 +2233,11 @@ ssh -i ~/Downloads/developer.pem \
     <button type="button" id="prev" aria-label="Previous slide">← Prev</button>
     <span id="counter">1 / 1</span>
     <button type="button" id="next" aria-label="Next slide">Next →</button>
+  </div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close">Close</button>
+    <img id="lightbox-img" alt="" />
   </div>
 
   <script>
@@ -2193,12 +2329,12 @@ ssh -i ~/Downloads/developer.pem \
         setPath("browse");
       }
 
-      /* Interactive Cosco / Nord / Tailscale diagrams */
+      /* Interactive Cosco / commercial VPN / Tailscale diagrams */
       const vpnFlow = document.getElementById("vpn-flowchart");
       const vpnCaption = document.getElementById("vpn-caption");
       const vpnCaptions = {
         cosco: "<strong>Cosco hub:</strong> All traffic through an appliance. Tickets to join; preview still gated.",
-        nord: "<strong>Nord egress:</strong> Star VPN. New public IP. EC2 is not on this path.",
+        nord: "<strong>Commercial egress:</strong> Star VPN. New public IP. EC2 is not on this path.",
         mesh: "<strong>Tailscale mesh:</strong> Peers join by identity. MagicDNS + tags. No Cosco appliance."
       };
 
@@ -2225,6 +2361,14 @@ ssh -i ~/Downloads/developer.pem \
       }
 
       window.addEventListener("keydown", (e) => {
+        const lightbox = document.getElementById("lightbox");
+        if (lightbox && lightbox.classList.contains("open")) {
+          if (e.key === "Escape" || e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            closeLightbox();
+          }
+          return;
+        }
         const title = slides[i] && slides[i].dataset.title;
         const onArch = title === "Architecture";
         const onVpn = title === "VPN vs Tailscale";
@@ -2252,6 +2396,48 @@ ssh -i ~/Downloads/developer.pem \
       });
 
       show(slideFromHash(), { replace: true });
+
+      /* Click-to-enlarge images */
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxClose = document.getElementById("lightbox-close");
+
+      function openLightbox(img) {
+        if (!lightbox || !lightboxImg || !img || !img.src) return;
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt || "Enlarged image";
+        lightbox.hidden = false;
+        lightbox.classList.add("open");
+      }
+
+      function closeLightbox() {
+        if (!lightbox || !lightboxImg) return;
+        lightbox.classList.remove("open");
+        lightbox.hidden = true;
+        lightboxImg.removeAttribute("src");
+        lightboxImg.alt = "";
+      }
+
+      document.querySelectorAll(".slide img, .check-card .shot").forEach((img) => {
+        if (img.closest(".deck-bg") || img.closest(".lightbox") || img.closest(".value-tile .icon") || img.classList.contains("brand-mark")) return;
+        img.classList.add("zoomable");
+        img.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openLightbox(img);
+        });
+      });
+
+      if (lightbox) {
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox || e.target === lightboxClose) closeLightbox();
+        });
+      }
+      if (lightboxClose) {
+        lightboxClose.addEventListener("click", (e) => {
+          e.stopPropagation();
+          closeLightbox();
+        });
+      }
 
       /* Copy buttons for terminal / command blocks */
       document.querySelectorAll(".check-card pre, pre.demo-pre").forEach((pre) => {
