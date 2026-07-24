@@ -106,6 +106,24 @@ Skip deep detail for Sales; SEs may ask about OAuth scope or bootstrap.
 
 ---
 
+## 7b. Join EC2 to the Tailnet
+
+**Say:**
+- After bootstrap SSH from your allowlisted IP, install Tailscale and join with an **auth key**.
+- `--hostname=development-website` gives the stable MagicDNS name; `--accept-routes` if you use subnet routes.
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up \
+  --auth-key="tskey-auth-XXXXXXXX" \
+  --hostname=development-website \
+  --accept-routes
+```
+
+Do not paste a live auth key into the public deck — use a placeholder or rotate after demos.
+
+---
+
 ## 8. Architecture (Three paths, one Tailnet)
 
 **Keys:** `1` Browse · `2` SSH · `3` CI · `0` All

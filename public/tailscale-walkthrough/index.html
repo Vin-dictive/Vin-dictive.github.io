@@ -1562,6 +1562,20 @@
         <li>CICD using Github Actions</li>
       </ul>
     </section>
+
+    <!-- Tailscale on EC2 -->
+    <section class="slide" data-title="Tailscale setup">
+      <p class="eyebrow">Setup</p>
+      <h2>Join EC2 to the Tailnet</h2>
+      <p class="lede">Bootstrap on the Amazon Linux box (after SSH from your allowlisted IP).</p>
+      <pre>curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up \
+  --auth-key="tskey-auth-XXXXXXXX" \
+  --hostname=development-website \
+  --accept-routes</pre>
+      <p class="lede" style="margin-top:0.85rem; font-size:1rem">Node comes online as
+        <span class="mono">development-website.&lt;tailnet&gt;.ts.net</span>.</p>
+    </section>
     
     <!-- Architecture -->
     <section class="slide" data-title="Architecture">
@@ -1696,7 +1710,7 @@
           <h3>Commercial VPN ON · public SSH (fail)</h3>
           <pre>ssh -i ~/Downloads/developer.pem \
   -o ConnectTimeout=5 \
-  ec2-user@ec2-16-147-216-162.us-west-2.compute.amazonaws.com</pre>
+  ec2-user@ec2-52-42-147-56.us-west-2.compute.amazonaws.com</pre>
           <p class="expect"><strong>Expect:</strong> timeout / denied</p>
         </div>
       </div>
