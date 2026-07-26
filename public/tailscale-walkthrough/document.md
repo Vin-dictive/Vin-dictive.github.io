@@ -242,7 +242,9 @@ Do not paste a live auth key into the public deck — use a placeholder or rotat
 - Bootstrap still needs a narrow public SSH path (or SSM) before Tailscale is up.
 - nginx on Amazon Linux couldn’t read `~/app/out` until home-dir permissions were fixed.
 - First Actions failure was stale remote vs local script fixes: coordination issue, not Tailscale itself.
-- Lesson for customers: plan bootstrap separately from day-two Tailnet access.
+- Trying **Caddy with Tailscale’s server setup** kept breaking; landed on nginx for the preview instead.
+- After **revoking auth keys or machines** and bringing nodes back up, they sometimes appeared online on the Tailnet but **SSH still failed** (stale identity / host key / Tailscale SSH policy leftovers).
+- Lesson for customers: plan bootstrap separately from day-two Tailnet access; treat revoke-and-rejoin as its own validation step.
 
 ---
 
@@ -254,6 +256,7 @@ Do not paste a live auth key into the public deck — use a placeholder or rotat
 - Real next step: the **Cow lameness** project with the **AWP UBC lab** ([HerdWell](http://134.87.8.85/), [architecture image](https://github.com/Vin-dictive/deploy-docs-cow-lameness/blob/main/image.png)). That needs an education account, and user management / access control is more complex than this personal Tailnet preview. I’d want to implement a **full-scale** Tailscale solution there (roles, invites, ACLs/grants, maybe shared lab devices).
 - Tighten ops with **auto-approval** for devices, and move CI/CD deploy fully onto **Tailscale SSH** — today SSH ports are still open for bootstrap / deploy paths.
 - Still want deeper ACL / grants demos for multi-team least privilege.
+- Explore **Tailscale API** features to automatically **add or remove users** from the mesh based on API calls (invite / revoke driven by another system).
 - Richer Action logs walkthrough: what the ephemeral CI node sees on the Tailnet.
 
 ---

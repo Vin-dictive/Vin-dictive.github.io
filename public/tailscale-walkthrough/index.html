@@ -2106,6 +2106,14 @@ ssh -i ~/Downloads/developer.pem \
           <h3>First CI fail</h3>
           <p>Stale remote vs local scripts (not Tailscale)</p>
         </div>
+        <div class="card bad">
+          <h3>Caddy + Tailscale</h3>
+          <p>Caddy with Tailscale server setup kept breaking</p>
+        </div>
+        <div class="card bad">
+          <h3>Revoke → rejoin</h3>
+          <p>After revoking auth keys or machines, nodes came back online but SSH sometimes failed</p>
+        </div>
       </div>
     </section>
 
@@ -2130,11 +2138,15 @@ ssh -i ~/Downloads/developer.pem \
         </div>
         <div class="card">
           <h3>Auto-approval + CI SSH</h3>
-          <p>Auto-approval features for devices. Move CI/CD deploy over Tailscale SSH - today SSH ports are still open.</p>
+          <p>Auto-approval and Auto user group features for Users.</p>
         </div>
         <div class="card">
           <h3>ACLs / grants</h3>
           <p>Deeper multi-team least privilege demos</p>
+        </div>
+        <div class="card">
+          <h3>Tailscale API</h3>
+          <p>Explore API features to automatically add or remove users</p>
         </div>
       </div>
     </section>
