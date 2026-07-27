@@ -10,21 +10,21 @@ Suggested timing: ~45 min present + ~15 min Q&A.
 
 **Slide cue:** Brand + “Private development preview over a Tailnet”
 
-**Say:**
+
 - HI Good morning My name is Vinay and I am here to present my Demo. 
 
 ---
 
 ## 2. Agenda
 
-**Say:**
+
 - We will Walk thru the arc of developer pain → personal story → Why Tailscale? → use case → architecture → live demos → access controls → proofs of it working → VPN contrast → My reflection, things that I faced → value for newcomers → Q&A.
 
 ---
 
 ## 3. Story (You're a software developer)
 
-**Say:**
+
 - Imagine you are a software developer still having unfinished features, debug banners, or known security holes.
 - You do not want crawlers, strangers, or competitors finding that URL.
 - You also do not want to expose essential services to the public internet, like a database. 
@@ -39,7 +39,7 @@ Suggested timing: ~45 min present + ~15 min Q&A.
 
 **Slide cue:** Bullets + `monkey-developer.gif` on the right
 
-**Say:**
+
 - I have tried looking for various solutions to solve the previous problems 
 - I set up Google OAuth so serverless pieces could authenticate. It meant bouncing across consoles, OAuth clients, redirect URIs, scopes, and secrets. It eventually worked, but it was complicated and easy to get wrong, especially when the “app” was not a single long-lived server.
 - That experience stuck with me: identity management in the cloud can become a maze before you can even solve private networking.
@@ -51,7 +51,7 @@ Suggested timing: ~45 min present + ~15 min Q&A.
 
 ## 5. Cosco VPN vs Tailscale
 
-**Say:**
+
 - “I don’t want to name real competitors, so for example’s sake let’s call our traditional solutions, Cosco VPN”
 - Cosco VPN requires IT specialist for onboarding, is expensive, and may require hardware installation. 
 - It is Gateway-centered, huge settings surface, often “you’re on the whole network,” too slow for a simple private preview. Developers don’t have time for all this.
@@ -68,7 +68,7 @@ Suggested timing: ~45 min present + ~15 min Q&A.
 
 ## 6. Use case
 
-**Say:**
+
 - This walkthrough solves those exact pains.
 - I run a **development / staging** build of my developer website on AWS EC2 and share it over a Tailnet.
 - Teammates (or me on another device) open a MagicDNS URL with identity-based access.
@@ -149,13 +149,10 @@ So its important from a security point of view that we separate these things out
 2. Open GitHub Actions → wait for “Deploy development (Tailscale → EC2)” to go green.
 3. Refresh MagicDNS site; optional SSH `git log -1` on the VM.
 
-**Say / timing tip:** Narrate OAuth + tags while the workflow runs so you don’t dead-air wait. If CI is slow, have a recent green run ready as backup.
-
 ---
 
 ## 14. Validation
 
-**Say (recap, don’t re-demo unless asked):**
 - Positive: Tailscale on → MagicDNS → site loads.
 - Negative: Tailscale off → can’t be reached.
 - Commercial VPN: public SSH fails → VM isn’t open to shifted egress IPs.
@@ -168,22 +165,22 @@ So its important from a security point of view that we separate these things out
 
 **Keys:** `1` Cosco hub · `2` Commercial egress · `3` Tailscale mesh
 
-**Say:**
-- Same word “VPN,” three different jobs. Tab through the diagrams.
+
+- Same word “VPN,” three different jobs. 
 - **Cosco hub:** Laptop tunnels to a Cosco appliance (hardware or VM). Everything goes through that hub into the corp LAN. IT tickets to get on; more tickets for special access like a private preview. Expensive and gateway-centered.
-- **Commercial egress:** A commercial VPN changes your public IP. Great for “look like I’m elsewhere.” Your EC2 / private preview is not on that path. Phone and CI are not linked as peers.
-- **Tailscale mesh (how it works):** Devices join by identity. Laptop, phone, teammate, CI, MagicDNS, and EC2 share one Tailnet. Peer links, not a Cosco appliance. Tags and ACLs decide who reaches what (e.g. CI → :22 only).
-- Analogy: A commercial VPN is a disguise on the public street. Cosco is a locked office building with a security desk and a ticket queue. Tailscale is a membership card for a private club: the bouncer checks who you are.
+- **Commercial egress:** A commercial VPN changes your public IP. Great for “look like I’m elsewhere.” Your EC2 / private preview is not on that path.
+- **Tailscale mesh:** Devices join by identity. Laptop, phone, teammate, CI, MagicDNS, and EC2 share one Tailnet. Peer links, not a Cosco appliance. Tags and ACLs decide who reaches what and where.
 
 ---
 
 ## 16. What worked well
 
-**Say:**
-- Small scope still demonstrated MagicDNS, SSH, tags, and CI.
+
+so what worked well for me was
+- since my scope was small, I could still demonstrated MagicDNS, SSH, tags, and CI.
 - Auth key for EC2 + OAuth for Actions matched what the docs intend.
-- Negative tests (Commercial VPN + Tailscale off) made the story obvious to a mixed audience.
-- One setup script for humans and CI kept ops simple.
+- Negative tests using the Commercial VPN + Tailscale off - made my story obvious where and how tailscale can be applied.
+- I really appreciate the clean UI — features and settings are explained in a minimal way that still conveyed what each setting does very easily.
 - Inviting another user for team preview was trivial.
 - Excellent documentation made setup and the right patterns easy to follow.
 
@@ -194,32 +191,24 @@ So its important from a security point of view that we separate these things out
 **Say (credibility; don’t linger):**
 - Bootstrap still needs a narrow public SSH path (or SSM) before Tailscale is up.
 - nginx on Amazon Linux couldn’t read `~/app/out` until home-dir permissions were fixed.
-- First Actions failure was stale remote vs local script fixes: coordination issue, not Tailscale itself.
 - Trying **Caddy with Tailscale’s server setup** kept breaking; landed on nginx for the preview instead.
 - After **revoking auth keys or machines** and bringing nodes back up, they sometimes appeared online on the Tailnet but **SSH still failed** (stale identity / host key / Tailscale SSH policy leftovers).
-- Lesson for customers: plan bootstrap separately from day-two Tailnet access; treat revoke-and-rejoin as its own validation step.
 
 ---
 
 ## 18. What I'd improve
 
-**Say:**
 - With more time I’d stand up **another demo** aimed at different Tailscale features (not just private static preview).
 - I’d dig into a **Docker** packaging of this pattern and how it would run inside a **Kubernetes** cluster (sidecar / operator / subnet router patterns worth exploring).
 - Real next step: the **Cow lameness** project with the **AWP UBC lab** ([HerdWell](http://134.87.8.85/), [architecture image](https://github.com/Vin-dictive/deploy-docs-cow-lameness/blob/main/image.png)). That needs an education account, and user management / access control is more complex than this personal Tailnet preview. I’d want to implement a **full-scale** Tailscale solution there (roles, invites, ACLs/grants, maybe shared lab devices).
 - Tighten ops with **auto-approval** for devices, and move CI/CD deploy fully onto **Tailscale SSH** — today SSH ports are still open for bootstrap / deploy paths.
 - Still want deeper ACL / grants demos for multi-team least privilege.
-- Explore **Tailscale API** features to automatically **add or remove users** from the mesh based on API calls (invite / revoke driven by another system).
-- Richer Action logs walkthrough: what the ephemeral CI node sees on the Tailnet.
+- Explore **Tailscale API** features to automatically **add or remove users** from the mesh based on API calls
 
 ---
 
-## 19. Value (for someone new to Tailscale)
+## 19. Value
 
-**Slide cue:** 3×3 hover tiles; blue center = “possibilities are endless”
-
-**Say:**
-- Pretend the listener has never used Tailscale: install, sign in, devices join one private Tailnet.
 - Point around the ring of tiles:
   - **Local projects:** MagicDNS URL to a WIP site, no public deploy.
   - **Environments:** custom MagicDNS names for dev / staging / prod.
@@ -229,31 +218,12 @@ So its important from a security point of view that we separate these things out
   - **This walkthrough:** same pattern as the EC2 staging preview.
   - **Invite teammates:** share by identity, not IP allowlists or Cosco tickets.
   - **Home lab SSH:** workstation or Pi from your phone, privately.
-- Land on the center tile (different color): the possibilities are endless. One pattern: identity on a Tailnet, private access without the public internet.
+- The possibilities are endless. But there is one solution and it is right in front of your eyes
 
 ---
 
 ## 20. Questions? (empty slide)
 
-**Say:**
-- Leave the slide blank so the room focuses on discussion.
-- Invite Sales questions on positioning / objections, SE questions on ACLs, OAuth, bootstrap, and CI patterns.
-- Offer to re-run any demo path if useful.
 
 ---
 
-## 21. Q & A (jump list)
-
-**Say:**
-- Clickable recap of the session. Jump back into any section if a question needs a slide.
-- Last item links to the SSH primer if someone asks what SSH is.
-
----
-
-## 22. What is SSH?
-
-**Say:**
-- **SSH = Secure Shell:** encrypted remote login and commands to another machine.
-- Often key-based (`developer.pem`), not a password typed into a browser.
-- In this talk: team ops SSH to the EC2 MagicDNS name, and GitHub Actions SSH-deploys over the Tailnet.
-- Default port **22**; public SSH was only for bootstrap / allowlisted IP. Day-to-day access is the Tailnet path.
