@@ -176,6 +176,14 @@
       max-width: 22ch;
     }
 
+    h2.wrap-heading {
+      max-width: none;
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 0.35em;
+      row-gap: 0.05em;
+    }
+
     .lede {
       font-size: clamp(1.1rem, 2vw, 1.35rem);
       color: var(--charcoal);
@@ -217,6 +225,29 @@
 
     ul.compact li {
       font-size: 1.05rem;
+    }
+
+    .agenda-list .agenda-link {
+      appearance: none;
+      background: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+
+    .agenda-list .agenda-link:hover,
+    .agenda-list .agenda-link:focus-visible {
+      color: var(--network-b);
+      text-decoration-color: var(--network-b);
+      outline: none;
     }
 
     .grid-2 {
@@ -725,7 +756,9 @@
 
     .flowchart[data-path="cosco"] .vpn-view-cosco,
     .flowchart[data-path="nord"] .vpn-view-nord,
-    .flowchart[data-path="mesh"] .vpn-view-mesh {
+    .flowchart[data-path="mesh"] .vpn-view-mesh,
+    .flowchart[data-path="auth"] .cred-view-auth,
+    .flowchart[data-path="oauth"] .cred-view-oauth {
       display: block;
       animation: fadeIn 0.35s ease;
     }
@@ -962,6 +995,7 @@
     }
 
     .check-card pre,
+    .card pre,
     .demo-pre {
       font-family: "IBM Plex Mono", ui-monospace, monospace;
       font-size: 0.72rem;
@@ -971,9 +1005,14 @@
       border-radius: 8px;
       padding: 0.7rem 0.8rem;
       overflow-x: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
+      white-space: pre;
+      word-break: normal;
+      overflow-wrap: normal;
       margin: 0;
+    }
+
+    .check-card.span-2 {
+      grid-column: 1 / -1;
     }
 
     .code-block {
@@ -1449,16 +1488,20 @@
     <section class="slide" data-title="Agenda">
       <p class="eyebrow">Agenda</p>
       <h2>What we'll cover</h2>
-      <ul>
-        <li>Developer story: private preview</li>
-        <li>Personal story: GCP OAuth + gaming VPNs</li>
-        <li>“Cosco VPN” vs Tailscale advantages</li>
-        <li>Use case and why Tailscale</li>
-        <li>Architecture + demos (browse, SSH, CI)</li>
-        <li>Access control and credentials</li>
-        <li>Validation and Tailscale vs consumer VPN</li>
-        <li>Reflection and value for newcomers</li>
-        <li>Q&amp;A</li>
+      <ul class="agenda-list">
+        <li><button type="button" class="agenda-link" data-goto="Story">Developer story: private preview</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Story time">Personal story: GCP OAuth + gaming VPNs</button>
+        </li>
+        <li><button type="button" class="agenda-link" data-goto="Cosco VPN">Why Tailscale?</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Use case">Use case</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Architecture">Architecture</button>
+        </li>
+        <li><button type="button" class="agenda-link" data-goto="Access control">Access control</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Validation">Same word “VPN” different jobs</button>
+        </li>
+        <li><button type="button" class="agenda-link" data-goto="What worked">Reflection</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Value">Value for newcomers</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Q & A">Q&amp;A</button></li>
       </ul>
     </section>
         <!-- Story -->
@@ -1499,6 +1542,7 @@
         <!-- Cosco VPN vs Tailscale (Cosco = fictional stand-in) -->
         <section class="slide" data-title="Cosco VPN">
           <p class="eyebrow">The Traditional Solutions</p>
+          <h2>Why Tailscale?</h2>
           <div class="cosco-brand">
             <!-- IMAGE 1: Drop a tennis-ball Cosco logo PNG here -->
             <div class="cosco-logo" aria-hidden="true" title="Placeholder tennis ball: swap for your Cosco logo"></div>
@@ -1507,7 +1551,6 @@
               <span>Fictional Company · example only</span>
             </div>
           </div>
-          <h2>Cosco VPN vs Tailscale</h2>
           <div class="grid-2">
             <div class="card bad">
               <h3>Cosco VPN</h3>
@@ -1561,20 +1604,6 @@
         <li>Tailscale multiple accounts</li>
         <li>CICD using Github Actions</li>
       </ul>
-    </section>
-
-    <!-- Tailscale on EC2 -->
-    <section class="slide" data-title="Tailscale setup">
-      <p class="eyebrow">Setup</p>
-      <h2>Join EC2 to the Tailnet</h2>
-      <p class="lede">Bootstrap on the Amazon Linux box (after SSH from your allowlisted IP).</p>
-      <pre>curl -fsSL https://tailscale.com/install.sh | sh
-sudo tailscale up \
-  --auth-key="tskey-auth-XXXXXXXX" \
-  --hostname=development-website \
-  --accept-routes</pre>
-      <p class="lede" style="margin-top:0.85rem; font-size:1rem">Node comes online as
-        <span class="mono">development-website.&lt;tailnet&gt;.ts.net</span>.</p>
     </section>
     
     <!-- Architecture -->
@@ -1664,9 +1693,21 @@ sudo tailscale up \
       <h2>Prove private browse works</h2>
       <div class="claim-box">
         <div class="label">Claim</div>
-        <p>Tailscale on → site loads. Tailscale off → fails. Same with commercial VPN on or off.</p>
+        <p>Tailscale on → site loads. <br>
+          Tailscale off → fails. <br> Same with commercial VPN on or off.</p>
       </div>
       <div class="check-grid">
+        <div class="check-card span-2">
+          <h3>Join EC2 to Tailnet</h3>
+          <pre>curl -fsSL https://tailscale.com/install.sh | sh
+                                                        sudo tailscale up \
+                                                          --auth-key="tskey-auth-XXXXXXXX" \
+                                                          --hostname=development-website \
+                                                          --accept-routes</pre>
+          <p class="expect"><strong>Expect:</strong> online as
+            <span class="mono">development-website.&lt;tailnet&gt;.ts.net</span>
+          </p>
+        </div>
         <div class="check-card">
           <h3>Tailscale ON</h3>
           <pre>open "http://development-website.tailc52fb7.ts.net/"</pre>
@@ -1710,7 +1751,7 @@ sudo tailscale up \
           <h3>Commercial VPN ON · public SSH (fail)</h3>
           <pre>ssh -i ~/Downloads/developer.pem \
   -o ConnectTimeout=5 \
-  ec2-user@ec2-52-42-147-56.us-west-2.compute.amazonaws.com</pre>
+  ec2-user@ec2-54-200-132-159.us-west-2.compute.amazonaws.com</pre>
           <p class="expect"><strong>Expect:</strong> timeout / denied</p>
         </div>
       </div>
@@ -1719,19 +1760,19 @@ sudo tailscale up \
     <!-- Access control -->
     <section class="slide" data-title="Access control">
       <p class="eyebrow">Access control</p>
-      <h2>Tags = machine identity</h2>
+      <h2>Tags and ACL</h2>
       <div class="grid-2">
+        <div class="card good">
+          <h3>ACL</h3>
+          <p><span class="mono">tag:ci</span> → <span class="mono">tag:dev-server:22</span> only</p>
+        </div>
         <div class="card">
           <h3>tag:dev-server</h3>
-          <p>Shared EC2 identity (not a person)</p>
+          <p>Shared EC2 identity. Tags = machine identity</p>
         </div>
         <div class="card">
           <h3>tag:ci</h3>
           <p>Ephemeral Actions nodes, deploy only</p>
-        </div>
-        <div class="card good">
-          <h3>ACL</h3>
-          <p><span class="mono">tag:ci</span> → <span class="mono">tag:dev-server:22</span> only</p>
         </div>
         <div class="card">
           <h3>Humans</h3>
@@ -1747,25 +1788,150 @@ sudo tailscale up \
     <!-- 9 -->
     <section class="slide" data-title="OAuth vs auth key">
       <p class="eyebrow">Credential choice</p>
-      <h2>Auth key on EC2, OAuth in Actions</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>EC2 → auth key</h3>
-          <ul class="compact">
-            <li>One long-lived server</li>
-            <li><span class="mono">tailscale up --auth-key</span></li>
-            <li>Stable MagicDNS hostname</li>
-          </ul>
+      <h2 class="wrap-heading"><span>Auth key on EC2,</span><span>OAuth in GitHub Actions</span></h2>
+      <div class="flowchart" id="cred-flowchart" data-path="auth">
+        <div class="flow-tabs" role="tablist" aria-label="Credential scenarios">
+          <button type="button" class="flow-tab active" data-path="auth" role="tab" aria-selected="true">1 · EC2 auth
+            key</button>
+          <button type="button" class="flow-tab" data-path="oauth" role="tab" aria-selected="false">2 · CI OAuth</button>
         </div>
-        <div class="card good">
-          <h3>CI → OAuth client</h3>
-          <ul class="compact">
-            <li>Ephemeral <span class="mono">tag:ci</span> node per Actions run</li>
-            <li>Created on demand when the runner starts</li>
-            <li>Revoked / gone when the job ends</li>
-            <li>Granular control: OAuth scoped to mint <span class="mono">tag:ci</span> only</li>
-          </ul>
+      
+        <div class="flow-canvas vpn-canvas" aria-live="polite">
+          <!-- View 1: long-lived EC2 auth key -->
+          <div class="vpn-view cred-view-auth">
+            <svg class="vpn-mesh-svg" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="EC2 joins Tailnet with a long-lived auth key">
+              <defs>
+                <marker id="arrowAuth" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#5a82de" />
+                </marker>
+              </defs>
+              <text x="320" y="26" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#5a82de"
+                letter-spacing="0.06em">EC2 · LONG-LIVED AUTH KEY</text>
+      
+              <line x1="100" y1="120" x2="250" y2="120" stroke="#5a82de" stroke-width="2.2" fill="none"
+                marker-end="url(#arrowAuth)" />
+              <line x1="360" y1="120" x2="520" y2="120" stroke="#5a82de" stroke-width="2.2" fill="none"
+                marker-end="url(#arrowAuth)" />
+      
+              <rect x="55" y="48" width="120" height="22" rx="6" fill="#1e2a4a" stroke="#5a82de" stroke-width="1.5" />
+              <text x="115" y="63" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
+                fill="#5a82de">SG: My IP only</text>
+      
+              <g>
+                <circle cx="100" cy="120" r="36" fill="#242323" stroke="#5a82de" stroke-width="2.5" />
+                <text x="100" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600"
+                  fill="#eeebea">You</text>
+                <text x="100" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
+                  fill="#5a82de">bootstrap SSH</text>
+              </g>
+              <g>
+                <rect x="250" y="78" width="110" height="84" rx="12" fill="#1e2a4a" stroke="#5a82de" stroke-width="2.5" />
+                <text x="305" y="108" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600"
+                  fill="#eeebea">EC2</text>
+                <text x="305" y="126" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10"
+                  fill="#5a82de">auth-key</text>
+                <text x="305" y="142" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                  fill="#8f8d8c">tailscale up</text>
+              </g>
+              <g>
+                <circle cx="520" cy="120" r="42" fill="#242323" stroke="#324994" stroke-width="3" />
+                <text x="520" y="112" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
+                  fill="#eeebea">Tailnet</text>
+                <text x="520" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                  fill="#5a82de">MagicDNS</text>
+                <text x="520" y="142" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
+                  fill="#8f8d8c">stays online</text>
+              </g>
+      
+              <text x="320" y="220" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#b0aeae">One
+                server · one key · stable hostname</text>
+              <text x="320" y="244" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11"
+                fill="#5a82de">development-website.&lt;tailnet&gt;.ts.net</text>
+            </svg>
+          </div>
+      
+          <!-- View 2: ephemeral CI OAuth -->
+          <div class="vpn-view cred-view-oauth">
+            <svg class="vpn-mesh-svg" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="GitHub Actions joins Tailnet with OAuth then leaves">
+              <defs>
+                <marker id="arrowOauth" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#5a82de" />
+                </marker>
+                <marker id="arrowOauthGone" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#d04841" />
+                </marker>
+              </defs>
+              <text x="320" y="26" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#5a82de"
+                letter-spacing="0.06em">CI · EPHEMERAL OAUTH</text>
+      
+              <!-- Bad public path blocked -->
+              <line x1="110" y1="210" x2="320" y2="210" stroke="#d04841" stroke-width="1.8" stroke-dasharray="5 5"
+                opacity="0.7" />
+              <line class="nord-x" x1="200" y1="196" x2="230" y2="224" stroke="#d04841" stroke-width="2" />
+              <line class="nord-x" x1="230" y1="196" x2="200" y2="224" stroke="#d04841" stroke-width="2" />
+              <text x="215" y="248" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                fill="#d04841">public SSH blocked (SG ≠ Actions IP)</text>
+      
+              <!-- Good Tailnet path -->
+              <line x1="110" y1="100" x2="250" y2="100" stroke="#5a82de" stroke-width="2.2" marker-end="url(#arrowOauth)" />
+              <line x1="360" y1="100" x2="430" y2="100" stroke="#5a82de" stroke-width="2.2" marker-end="url(#arrowOauth)" />
+              <line x1="510" y1="100" x2="560" y2="100" stroke="#d04841" stroke-width="2" stroke-dasharray="4 4"
+                marker-end="url(#arrowOauthGone)" />
+      
+              <g>
+                <circle cx="110" cy="100" r="36" fill="#242323" stroke="#5a82de" stroke-width="2.5" />
+                <text x="110" y="94" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
+                  fill="#eeebea">Actions</text>
+                <text x="110" y="110" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                  fill="#5a82de">any IP</text>
+                <text x="110" y="124" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
+                  fill="#8f8d8c">OAuth</text>
+              </g>
+              <g>
+                <rect x="250" y="62" width="110" height="76" rx="12" fill="#1e2a4a" stroke="#5a82de" stroke-width="2.5" />
+                <text x="305" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
+                  fill="#eeebea">tag:ci</text>
+                <text x="305" y="108" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                  fill="#5a82de">ephemeral</text>
+                <text x="305" y="122" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
+                  fill="#8f8d8c">minted on demand</text>
+              </g>
+              <g>
+                <circle cx="470" cy="100" r="38" fill="#242323" stroke="#324994" stroke-width="3" />
+                <text x="470" y="94" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600"
+                  fill="#eeebea">EC2</text>
+                <text x="470" y="110" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+                  fill="#5a82de">SSH :22</text>
+              </g>
+              <g>
+                <circle cx="590" cy="100" r="28" fill="#242323" stroke="#d04841" stroke-width="2" opacity="0.9" />
+                <text x="590" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
+                  fill="#eeebea">Gone</text>
+                <text x="590" y="110" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
+                  fill="#d04841">revoked</text>
+              </g>
+      
+              <!-- Phantom public Actions trying public SSH -->
+              <g opacity="0.55">
+                <circle cx="110" cy="210" r="28" fill="#242323" stroke="#d04841" stroke-width="2" />
+                <text x="110" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
+                  fill="#eeebea">Runner</text>
+                <text x="110" y="220" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
+                  fill="#d04841">public IP</text>
+              </g>
+              <g>
+                <circle cx="320" cy="210" r="30" fill="#242323" stroke="#d04841" stroke-width="2" />
+                <text x="320" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600"
+                  fill="#eeebea">EC2 SG</text>
+                <text x="320" y="220" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8"
+                  fill="#d04841">My IP only</text>
+              </g>
+            </svg>
+          </div>
         </div>
+<p class="flow-caption" id="cred-caption"></p>
       </div>
     </section>
 
@@ -1830,7 +1996,7 @@ ssh -i ~/Downloads/developer.pem \
     <!-- Tailscale vs Cosco / commercial VPN / mesh -->
     <section class="slide" data-title="VPN vs Tailscale">
       <p class="eyebrow">Comparison</p>
-      <h2>Same word “VPN,” different jobs</h2>
+      <h2 class="wrap-heading"><span>Same word “VPN”</span><span>different jobs</span></h2>
       <ul class="compact" style="margin-bottom:0.85rem">
       </ul>
       <div class="flowchart" id="vpn-flowchart" data-path="cosco">
@@ -2253,6 +2419,52 @@ ssh -i ~/Downloads/developer.pem \
     <section class="slide" data-title="Close">
     </section>
 
+    <!-- Q & A (jump list) -->
+    <section class="slide" data-title="Q & A">
+      <p class="eyebrow">Wrap-up</p>
+      <h2>Q &amp; A</h2>
+      <ul class="agenda-list">
+        <li><button type="button" class="agenda-link" data-goto="Story">Developer story: private preview</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Story time">Personal story: GCP OAuth + gaming
+            VPNs</button>
+        </li>
+        <li><button type="button" class="agenda-link" data-goto="Cosco VPN">Why Tailscale?</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Use case">Use case</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Architecture">Architecture</button>
+        </li>
+        <li><button type="button" class="agenda-link" data-goto="Access control">Access control</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Validation">Same word “VPN” different jobs</button>
+        </li>
+        <li><button type="button" class="agenda-link" data-goto="What worked">Reflection</button></li>
+        <li><button type="button" class="agenda-link" data-goto="Value">Value for newcomers</button></li>
+        <li><button type="button" class="agenda-link" data-goto="SSH">What is SSH?</button></li>
+      </ul>
+    </section>
+    
+    <!-- What is SSH -->
+    <section class="slide" data-title="SSH">
+      <p class="eyebrow">Quick primer</p>
+      <h2>What is SSH?</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Secure Shell</h3>
+          <p>Encrypted remote login and commands to another machine over a network.</p>
+        </div>
+        <div class="card">
+          <h3>Keys, not passwords</h3>
+          <p>Often uses a private key file (like <span class="mono">developer.pem</span>) instead of a password.</p>
+        </div>
+        <div class="card">
+          <h3>In this walkthrough</h3>
+          <p>Team SSH to EC2 over MagicDNS, and CI deploy over SSH on the Tailnet.</p>
+        </div>
+        <div class="card">
+          <h3>Port 22</h3>
+          <p>Default SSH port. Public SSH stays locked down; Tailnet path is the day-to-day access.</p>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <div class="footer-bar">
@@ -2309,6 +2521,15 @@ ssh -i ~/Downloads/developer.pem \
 
       document.getElementById("prev").addEventListener("click", () => show(i - 1));
       document.getElementById("next").addEventListener("click", () => show(i + 1));
+
+      document.querySelectorAll(".agenda-link").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const title = btn.dataset.goto;
+          const idx = slides.findIndex((s) => s.dataset.title === title);
+          if (idx >= 0) show(idx);
+        });
+      });
 
       window.addEventListener("popstate", () => {
         if (syncingHash) return;
@@ -2386,6 +2607,35 @@ ssh -i ~/Downloads/developer.pem \
         setVpnPath("cosco");
       }
 
+      /* Auth key vs OAuth credential diagrams */
+      const credFlow = document.getElementById("cred-flowchart");
+      const credCaption = document.getElementById("cred-caption");
+      const credCaptions = {
+        auth: "<strong>EC2 auth key:</strong> Bootstrap SSH from your IP → <span class=\"mono\">tailscale up --auth-key</span> → stable MagicDNS node that stays on the Tailnet.",
+        oauth: "<strong>CI OAuth:</strong> Runner can be any IP. Don’t open the SG. Mint ephemeral <span class=\"mono\">tag:ci</span>, deploy over the mesh, revoke — hello, job, goodbye."
+      };
+
+      function setCredPath(path) {
+        if (!credFlow) return;
+        credFlow.dataset.path = path;
+        credFlow.querySelectorAll(".flow-tab").forEach((tab) => {
+          const on = tab.dataset.path === path;
+          tab.classList.toggle("active", on);
+          tab.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        if (credCaption) credCaption.innerHTML = credCaptions[path] || credCaptions.auth;
+      }
+
+      if (credFlow) {
+        credFlow.querySelectorAll(".flow-tab").forEach((tab) => {
+          tab.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setCredPath(tab.dataset.path);
+          });
+        });
+        setCredPath("auth");
+      }
+
       window.addEventListener("keydown", (e) => {
         const lightbox = document.getElementById("lightbox");
         if (lightbox && lightbox.classList.contains("open")) {
@@ -2398,6 +2648,7 @@ ssh -i ~/Downloads/developer.pem \
         const title = slides[i] && slides[i].dataset.title;
         const onArch = title === "Architecture";
         const onVpn = title === "VPN vs Tailscale";
+        const onCred = title === "OAuth vs auth key";
         if (onArch && (e.key === "1" || e.key === "2" || e.key === "3" || e.key === "0")) {
           e.preventDefault();
           setPath({ "1": "browse", "2": "ssh", "3": "ci", "0": "all" }[e.key]);
@@ -2406,6 +2657,11 @@ ssh -i ~/Downloads/developer.pem \
         if (onVpn && (e.key === "1" || e.key === "2" || e.key === "3")) {
           e.preventDefault();
           setVpnPath({ "1": "cosco", "2": "nord", "3": "mesh" }[e.key]);
+          return;
+        }
+        if (onCred && (e.key === "1" || e.key === "2")) {
+          e.preventDefault();
+          setCredPath({ "1": "auth", "2": "oauth" }[e.key]);
           return;
         }
         if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
