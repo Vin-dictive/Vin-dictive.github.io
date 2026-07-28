@@ -1766,8 +1766,9 @@
           <h3>Commercial VPN ON · public SSH (fail)</h3>
           <pre>ssh -i ~/Downloads/developer.pem \
   -o ConnectTimeout=5 \
-  ec2-user@ec2-54-200-132-159.us-west-2.compute.amazonaws.com</pre>
+  ec2-user@ec2-44-247-216-157.us-west-2.compute.amazonaws.com</pre>
           <p class="expect"><strong>Expect:</strong> timeout / denied</p>
+          <p class="expect"><strong>ec2-XX-XXX:</strong> Changes everytime you stop and start the EC2 making it inconsistant</p>
         </div>
       </div>
     </section>
