@@ -1,0 +1,59 @@
+name: Deploy development (Tailscale → EC2)
+
+# Deploys the development branch to the private EC2 via Tailscale.
+# Requires: Tailscale OAuth client + SSH key secrets (see README).
+
+on:
+  push:
+    branches: [development]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-dev-ec2
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Deploy over SSH
+        env:
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+          SSH_HOST: ${{ secrets.EC2_HOST }}
+          SSH_USER: ${{ secrets.EC2_USER }}
+        run: |
+          set -euo pipefail
+          test -n "${SSH_KEY}" || { echo "Missing secret EC2_SSH_KEY"; exit 1; }
+          test -n "${SSH_HOST}" || { echo "Missing secret EC2_HOST"; exit 1; }
+          SSH_USER="${SSH_USER:-ec2-user}"
+
+          install -m 600 /dev/null "${RUNNER_TEMP}/ec2.pem"
+          printf '%s\n' "${SSH_KEY}" > "${RUNNER_TEMP}/ec2.pem"
+
+          ssh -i "${RUNNER_TEMP}/ec2.pem" \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=accept-new \
+            -o ConnectTimeout=30 \
+            "${SSH_USER}@${SSH_HOST}" \
+            'bash -s' <<'REMOTE'
+          set -euo pipefail
+          cd ~/app
+          git fetch origin
+          git checkout development
+          git pull --ff-only origin development
+          chmod +x scripts/setup-dev-nginx.sh
+          # .env with SERVER_NAME should already exist on the VM
+          SKIP_INSTALL=1 ./scripts/setup-dev-nginx.sh
+          REMOTE

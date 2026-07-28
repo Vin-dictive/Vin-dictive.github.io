@@ -14,6 +14,7 @@ import {
   User,
 } from "lucide-react"
 import { ThemeToggleButton } from "@/components/ThemeToggle"
+import { isDevSite } from "@/lib/siteEnv"
 import { cn } from "@/lib/utils"
 
 const GALLERY_PATH = "/gallery/"
@@ -177,7 +178,10 @@ export default function Navigation({
 
   return (
     <nav
-      className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-6 sm:pt-4 xl:px-10 2xl:px-12"
+      className={cn(
+        "pointer-events-none fixed inset-x-0 z-50 flex justify-center px-3 pt-3 sm:px-6 sm:pt-4 xl:px-10 2xl:px-12",
+        isDevSite ? "top-8" : "top-0",
+      )}
       aria-label="Primary"
     >
       <div className="pointer-events-auto w-full max-w-[100rem] overflow-hidden rounded-xl border border-folio-on-surface/10 bg-folio-surface-highest/35 shadow-xl shadow-folio-surface/10 backdrop-blur-2xl transition-[box-shadow] dark:border-white/10 dark:bg-zinc-950/40 dark:shadow-black/40 md:backdrop-blur-3xl">

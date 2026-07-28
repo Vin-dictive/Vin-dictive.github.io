@@ -3,7 +3,10 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import CursorDotBackground from '@/components/CursorDotBackground'
+import DevSiteBanner from '@/components/DevSiteBanner'
+import { isDevSite } from '@/lib/siteEnv'
 import profileData from '@/data/profile.json'
+import { cn } from '@/lib/utils'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -49,13 +52,19 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="dark scroll-smooth scroll-pt-28 sm:scroll-pt-32"
+      className={cn(
+        'dark scroll-smooth',
+        isDevSite
+          ? 'scroll-pt-36 sm:scroll-pt-40'
+          : 'scroll-pt-28 sm:scroll-pt-32',
+      )}
     >
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
         <CursorDotBackground />
+        <DevSiteBanner />
         <div className="relative z-[1] min-h-screen">{children}</div>
       </body>
     </html>
