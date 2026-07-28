@@ -1,0 +1,100 @@
+% Workday / ATS-safe master CV template
+% - Single column, linear reading order (no tables, columns, or hfill splits)
+% - Contact in document body with explicit labels (not header/footer)
+% - Standard sections: Skills, Work Experience, Education, Projects
+% - Each role: Job Title, then Company, Location, then Month YYYY -- Month YYYY
+% - System-style font, simple bullets, text-layer PDF from pdflatex
+% - Color reserved for hyperlinks only
+\documentclass[10pt,letterpaper]{article}
+\input{cv_ats_preamble.tex}
+\hypersetup{
+    pdftitle={Vinay Valson Resume},
+    pdfauthor={Vinay Valson},
+    pdfsubject={Resume}
+}
+
+\begin{document}
+
+% --- CONTACT (body only; left-aligned for parser field mapping) ---
+\cvName{Vinay Valson}
+\cvContactBlock{%
+  Email: \href{mailto:vinay.valson@gmail.com}{vinay.valson@gmail.com}
+  \quad\textbar\quad Phone: +1 263 9999870
+  \quad\textbar\quad Location: Vancouver, Canada\\[1pt]
+  LinkedIn: \href{https://linkedin.com/in/vinay-valson}{linkedin.com/in/vinay-valson}
+  \quad\textbar\quad Portfolio: \href{https://vin-dictive.github.io}{vin-dictive.github.io}
+  \quad\textbar\quad GitHub: \href{https://github.com/Vin-dictive}{github.com/Vin-dictive}%
+}
+\cvContactRule
+
+% --- SKILLS ---
+\section{Skills}
+\skillLine{Frontend:}{React.js, \textbf{Next.js}, OJET, TypeScript, JavaScript, ES6, \textbf{Tailwind}, \textbf{Shadcn} UI, Responsive UI}
+\skillLine{Backend:}{Python, Django, FastAPI, Java, Node.js, Microservices, REST/JSON, SOAP/XML, NATS, API integration}
+\skillLine{Data:}{PostgreSQL, Oracle DB, SQL, JPA-ORM, schema design, query tuning, Alembic, DBeaver}
+\skillLine{Cloud and Delivery:}{AWS, GCP, Docker, OpenStack, CI/CD, GitHub Actions, Sentry, Inngest, Redis, NeonDB, Railway, Jenkins}
+\skillLine{Tools:}{GitHub, PostHog, PyTorch, YOLOv8, LLM workflows, RAG, FAISS, agent orchestration, Clerk, Cursor, Claude}
+
+% --- WORK EXPERIENCE (reverse chronological) ---
+\section{Work Experience}
+\resumeHeading
+  {University of British Columbia}{Vancouver, Canada}
+  {Graduate Research and Teaching Assistant (Part-time)}
+  {\daterange{January 2026}{Present}}
+\begin{resumeItems}
+  \item Designed and deployed a full-stack \textbf{cow lameness} platform on \textbf{OpenStack} Arbutus: \textbf{Next.js} + \textbf{FastAPI} + Postgres + \textbf{NATS} job queue to a vGPU worker (\textbf{YOLOv8}, ByteTrack, DINOv3), with live demo at \href{http://134.87.8.85/}{134.87.8.85}.
+  \item TA for \textbf{Cloud Computing}: ran tutorials and office hours for \textbf{60+ graduate students} on distributed systems and deployment, and coached 12 capstone teams through architecture and design reviews.
+\end{resumeItems}
+
+\resumeHeading
+  {Volentia Healthcare Translation}{Vancouver, Canada}
+  {Software Developer (Contract Part-time)}
+  {\daterange{January 2026}{February 2026}}
+\begin{resumeItems}
+  \item Built and launched a \textbf{healthcare web application} in \textbf{two weeks}, unifying translation request workflows for \textbf{40+ users} across hospital staff, physicians, and research teams; implemented \textbf{CI/CD} and cloud deployment, plus review workflow automation with \textbf{human approval gates}.
+\end{resumeItems}
+
+\resumeHeading
+  {Blue Rabbit Group Ltd.}{Hong Kong, India}
+  {Software Engineer (Full-time, Remote)}
+  {\daterange{April 2024}{November 2025}}
+\begin{resumeItems}
+  \item Joined as the \textbf{first software engineer} and shipped the \textbf{Series A} MVP end to end with \textbf{Django} and \textbf{React} on GCP for \textbf{50+ clients}: order placement and client dashboards with \textbf{sub-second} median responses; integrated \textbf{DBS Bank} APIs.
+  \item Designed \textbf{AI agents} with human review gates that automated analyst research and asset risk scoring, cutting analyst workflow time by roughly \textbf{70\%} without added headcount.
+  \item Drove the migration from monolith to \textbf{microservices} (Next.js, NeonDB, Inngest, Clerk on Railway), automated \textbf{monthly} personalized reports for \textbf{50+ clients}, and ran product funnels and A/B experiments with \textbf{PostHog}.
+\end{resumeItems}
+
+\resumeHeading
+  {Oracle Financial Services Software Limited}{Bangalore, India, Hong Kong}
+  {Staff Consultant, Software Engineer (Full-time, Remote, Onsite)}
+  {\daterange{August 2021}{April 2024}}
+\begin{resumeItems}
+  \item Led onsite \textbf{client-facing} delivery for \textbf{Oracle Banking Digital Experience (OBDX)} in Hong Kong across \textbf{fraud detection}, \textbf{FX} dashboards, payments, QR gateway, and open banking; promoted to \textbf{Staff Consultant} within a year.
+  \item Built multi-tenant \textbf{open banking} and access management that reduced partner onboarding effort by approximately \textbf{40\%}.
+  \item Translated customer requirements into workable \textbf{PRD}s and production code; never closed ``working as designed'' without checking the PRD, and gated changes on POCs plus re-signed PRDs. Rising Star and Ever Ready awards.
+\end{resumeItems}
+
+% --- EDUCATION ---
+\section{Education}
+\resumeHeading
+  {University of British Columbia}{Vancouver, Canada}
+  {Master of Data Science}
+  {\daterange{2025}{2026}}
+\cvDetail{Cumulative Average 91.2, Academic Representative, Scholarship}
+
+\resumeHeading
+  {Savitribai Phule Pune University, Army Institute of Technology}{Pune, India}
+  {Bachelor of Computer Engineering}
+  {\daterange{2017}{2021}}
+\cvDetail{CGPA: 8.91, Scholarship, First Class with Distinction}
+
+% --- PROJECTS ---
+\section{Projects}
+\begin{projectItems}
+  \item \textbf{\href{http://134.87.8.85/}{Cow Lameness Detection (live demo)}} Crowdsourced pairwise scoring app plus GPU inference pipeline on OpenStack (Next.js, FastAPI, NATS, YOLOv8).
+  \item \textbf{\href{https://clarius.com/}{Clarius Scanner Sales Forecasting}} Graduate capstone: forecasting and exploratory analysis of external factors on Clarius Mobile Health monthly scanner sales in Canada and US.
+  \item \textbf{\href{https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28}{RAG Music Search Platform}} Hybrid retrieval over Amazon Digital Music data combining BM25 keyword search with FAISS semantic search.
+  \item \textbf{\href{https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard}{CocoaBoard}} Analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration.
+\end{projectItems}
+
+\end{document}

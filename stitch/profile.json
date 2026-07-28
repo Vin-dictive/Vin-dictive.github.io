@@ -1,0 +1,257 @@
+{
+  "personal": {
+    "name": "VINAY VALSON",
+    "title": "Full-Stack Developer & AI Engineer",
+    "slogans": [
+      "Code is poetry written in logic, and I'm here to craft elegant solutions.",
+      "Transforming complex problems into simple, scalable solutions one commit at a time.",
+      "Building the future with clean code, innovative thinking, and relentless curiosity.",
+      "Where data science meets software engineering creating intelligent systems that make a difference.",
+      "Turning ideas into production-ready applications that users love and businesses trust.",
+      "Full-stack by nature, problem-solver by passion, innovator by design.",
+      "Architecting tomorrow's technology today, with precision, passion, and purpose.",
+      "From concept to deployment delivering excellence across the entire software lifecycle."
+    ],
+    "location": "Vancouver BC",
+    "email": "vinay.valson@gmail.com",
+    "github": "Vin-dictive",
+    "linkedin": "vinay-valson",
+    "website": "Profile Page",
+    "resumeUrl": "https://github.com/Vin-dictive/cv-latex/blob/main/cv.pdf?raw=true",
+    "about": "Full Stack Spider ambitiously juggling between front-end silky aesthetics and back-end sticky logic! Currently weaving my web as a Senior Software Engineer at Blue Rabbit Group while spinning through a Masters in Data Science at UBC. My journey across continents - from the tech hubs of India to the bustling streets of Hong Kong, and now the scenic landscapes of Vancouver - has taught me to adapt quickly and think globally. Each destination has woven new perspectives into my problem-solving approach, making me more resilient and culturally aware. Travel has been my greatest teacher, showing me that the best solutions often come from understanding diverse viewpoints and embracing change. Whether debugging code or exploring new cities, I bring the same curiosity and determination to uncover what lies beneath the surface."
+  },
+  "skills": {
+    "programmingLanguages": [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "Java",
+      "R",
+      "SQL"
+    ],
+    "frameworks": [
+      "PostgreSQL",
+      "Next.js",
+      "React",
+      "Flask",
+      "Django",
+      "FastAPI",
+      "OJET",
+      "Spring Boot",
+      "MongoDB",
+      "Mastra AI"
+    ],
+    "dataScience": [
+      "Jupyter",
+      "R Studio",
+      "Shiny",
+      "Pandas",
+      "Quarto",
+      "Statistics",
+      "PyTorch",
+      "Machine Learning"
+    ],
+    "cloudDevOps": [
+      "Docker",
+      "Kubernetes",
+      "GCP",
+      "AWS",
+      "GitHub Actions",
+      "Jenkins",
+      "Railway",
+      "Inngest",
+      "Airflow",
+      "PostHog"
+    ]
+  },
+  "experience": [
+    {
+      "title": "Teaching Assistant",
+      "company": "University of British Columbia",
+      "duration": "January 2026 - April 2026",
+      "location": "Vancouver, BC",
+      "description": "Delivering instruction and support for CPSC 436C Cloud Computing to improve student comprehension of software engineering and GCP/AWS deployment patterns and designs.",
+      "techStack": "Cloud computing, GCP, AWS, pedagogy",
+      "logo": "/ubc.svg",
+      "link": "https://www.ubc.ca/"
+    },
+    {
+      "title": "Developer",
+      "company": "Volentia Healthcare Services",
+      "duration": "January 2026 - February 2026",
+      "location": "Vancouver, BC",
+      "description": "Built and deployed a healthcare web application using Next.js, PostgreSQL, and Railway to enable client operations delivered within a 2-week timeline.",
+      "techStack": "Next.js, PostgreSQL, Railway",
+      "logo": "/school.svg",
+      "link": "https://app.volentia.ca"
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": "Blue Rabbit Group Ltd.",
+      "duration": "April 2024 - November 2025",
+      "location": "Hong Kong / EU / India",
+      "description": "Designed and built ETL pipelines for AI-driven portfolio management to support automated trading decisions and asset rebalancing across Django, React, and Fastify services. Website data analytics using PostHog for A/B testing. Developed crypto market data analysis AI and asset-risk frameworks using Python, TypeScript, and PostgreSQL / Timescale with sub-second query latency for real-time dashboards and client live interaction. Implemented data ingestion and event-driven workflows with Inngest and Mastra AI to reduce manual processing integrated PostHog analytics for user behaviour tracking.",
+      "techStack": "Python, TypeScript, Django, React, Fastify, PostgreSQL, Timescale, Inngest, Mastra AI, PostHog",
+      "logo": "/bluerabbit-logo-white.svg",
+      "link": "https://www.bluerabbit.ai/"
+    },
+    {
+      "title": "Staff Consultant",
+      "company": "Oracle Financial Services Software Limited",
+      "duration": "August 2021 - April 2024",
+      "location": "Bangalore / Hong Kong",
+      "description": "Led onsite deployment in Hong Kong for Oracle Banking Digital Experience (OBDX) designed Fraud Detection and Foreign Exchange dashboard components using JAVARX, OJET, REST APIs, and Jenkins. Implemented Open API and access management modules for multi-tenant banking received Rising Star Award and Ever Ready Award mentored 3+ new team members.",
+      "techStack": "Java, JAVARX, OJET, REST, Jenkins, OBDX",
+      "logo": "/oracle.svg",
+      "link": "https://drive.google.com/drive/folders/1-jgHIOObUBN6xGD65sRVC2eJtKNsAaJ6?usp=sharing"
+    },
+    {
+      "title": "Software Developer Intern",
+      "company": "Accops Systems",
+      "duration": "January 2020 - July 2020",
+      "location": "Pune, India",
+      "description": "Ubuntu bookmark widget using Gnome Toolkit, Chrome extension, and Electron for cross-platform deployment. Tested and debugged Deal Management web application using the MEAN stack.",
+      "techStack": "JavaScript, Node.js, MongoDB, Express.js, Angular, Gnome Toolkit, Electron",
+      "logo": "/accops.svg",
+      "link": "https://drive.google.com/file/d/19T_XX_sB5litKYkmIuztP1d5P5n1Hi9_/view"
+    }
+  ],
+  "projects": [
+    {
+      "name": "CocoaBoard",
+      "description": "Interactive Python Shiny dashboard for chocolate sales analytics.",
+      "link": "https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard",
+      "preview": ""
+    },
+    {
+      "name": "Lameness Detection ML Pipeline",
+      "description": "Deployed to OpenStack Arbutus cloud as Docker microservices for cow lameness detection.",
+      "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
+      "preview": ""
+    },
+    {
+      "name": "Imitation Game",
+      "description": "Python utility for symmetric and asymmetric encryption a shared-secret and public-key cryptography interface.",
+      "link": "https://github.com/UBC-MDS/imitation_game",
+      "preview": ""
+    },
+    {
+      "name": "UBC Reddit Reporter",
+      "description": "AWS Lambda serverless app with Amazon Bedrock sentiment analysis automated UBC community reporting.",
+      "link": "https://github.com/Vin-dictive/ubc-reddit-reporter",
+      "preview": ""
+    },
+    {
+      "name": "Fake Real News Detection",
+      "description": "Naive Bayes fake-news classifier with NLP preprocessing and feature extraction.",
+      "link": "https://github.com/Vin-dictive/fake-real-news-detection",
+      "preview": ""
+    },
+    {
+      "name": "Customer Reviews Polarity Analysis",
+      "description": "ML sentiment analysis (NLP) for positive/negative product-review classification.",
+      "link": "https://github.com/Vin-dictive/customer-reviews-polarity",
+      "preview": ""
+    },
+    {
+      "name": "Developer Portfolio",
+      "description": "This site Next.js portfolio with Tailwind CSS and a Stitch-inspired UI.",
+      "link": "https://github.com/Vin-dictive/Vin-dictive.github.io",
+      "preview": ""
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Data Science",
+      "institution": "University of British Columbia, Vancouver",
+      "duration": "September 2025 - June 2026",
+      "details": "Academic Representative | Scholarship | ML, AI, Python, R",
+      "logo": "/ubc.svg",
+      "link": "https://drive.google.com/file/d/1Jn_nbdKk7a8jJ3SVO-jBUDCc6Pz92d-K/view?usp=sharing"
+    },
+    {
+      "degree": "Bachelor of Engineering - Computer Engineering",
+      "institution": "Army Institute of Technology, Pune",
+      "duration": "June 2017 - June 2021",
+      "details": "Scholarship | First Class with Distinction",
+      "grade": "CGPA: 8.91",
+      "logo": "/ait.svg",
+      "link": "https://drive.google.com/drive/folders/1_kYyl5WIPU3xeUSrKNRUu6LJtFVVvgdc"
+    },
+    {
+      "degree": "Higher Secondary - CBSE",
+      "institution": "Greenhills Public School, Kerala",
+      "duration": "June 2015 - July 2017",
+      "details": "Physics, Chemistry, Maths, Computer Science",
+      "grade": "91%",
+      "logo": "/school.svg",
+      "link": "https://drive.google.com/file/d/1VARFBUx4rC9j-e-Ytx9APBkTcmJlHvkE/view"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "IELTS Academic English Proficiency Test",
+      "organization": "IELTS Official",
+      "year": "2024",
+      "details": "Band 8 (C1)",
+      "logo": "/IELTS_logo.svg",
+      "link": "https://drive.google.com/file/d/1-XeJSohhjVDwCHUq0cFDXV3cGf0BEN0o/view"
+    },
+    {
+      "name": "Python and Django Full Stack Web Developer Bootcamp",
+      "organization": "Udemy",
+      "year": "2023",
+      "logo": "/udemy.svg",
+      "link": "https://drive.google.com/file/d/1-ORKVAx0udZ0dV8Vc_lQebV5gjcrCkPH/view?usp=drive_link"
+    },
+    {
+      "name": "Continuous Delivery & DevOps",
+      "organization": "Coursera",
+      "year": "2022",
+      "logo": "/coursera.svg",
+      "link": "https://drive.google.com/file/d/1Iny_yK69sipAXIlXUl-OZhhfCKdR1l_e/view?usp=drive_link"
+    },
+    {
+      "name": "Building Cloud Services with the Java Spring Framework",
+      "organization": "Coursera",
+      "year": "2021",
+      "logo": "/coursera.svg",
+      "link": "https://drive.google.com/file/d/1p6AXXfRJtpG_pde_bYuxBSDmI6WgW8JJ/view?usp=drive_link"
+    },
+    {
+      "name": "Oracle Certifications",
+      "organization": "Oracle University",
+      "year": "2021",
+      "logo": "/oracle.svg",
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge"
+    },
+    {
+      "name": "IoT Foundation Workshop (3-day)",
+      "organization": "Copper Cloud IOTech",
+      "year": "2020",
+      "logo": "/copperCloud.png",
+      "link": "https://drive.google.com/file/d/1m9VfEwCVfVPLW1fl06AJ8X2vvlnbDLaG/view?usp=sharing"
+    },
+    {
+      "name": "Machine Learning A-Z: Hands-On Python & R",
+      "organization": "Udemy",
+      "year": "2019",
+      "logo": "/udemy.svg",
+      "link": "https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view"
+    },
+    {
+      "name": "The Web Developer Bootcamp",
+      "organization": "Udemy",
+      "year": "2018",
+      "logo": "/udemy.svg",
+      "link": "https://drive.google.com/file/d/1-t2aF_r2FAPTK-_279hwxgoxBMVLFqKR/view?usp=drive_link"
+    },
+    {
+      "name": "Blockchain and Bitcoin Fundamentals",
+      "organization": "Udemy",
+      "year": "2017",
+      "logo": "/udemy.svg",
+      "link": ""
+    }
+  ]
+}

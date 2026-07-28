@@ -1,0 +1,423 @@
+{
+  "personal": {
+    "name": "VINAY VALSON",
+    "quote": "Ideas are everywhere. Execution is everything.",
+    "slogans": [
+      "The only thing standing between you and greatness is one missing semicolon, fourteen tabs, and the will to keep going.",
+      "Merge conflicts do not break you; they merely reveal who you were always meant to resolve.",
+      "When production whispers at 3 a.m., answer. That is not anxiety; that is on-call enlightenment.",
+      "Your stack trace is not an error; it is the universe handing you a personalized roadmap to humility.",
+      "They said deploy on Friday. You smiled. You learned. You now inspire others through cautionary legend.",
+      "Rubber duck not listening? Speak louder. The bug fears confidence, not acoustics.",
+      "It compiled yesterday. It will compile again. Believe in the pipeline of eternal hope."
+    ],
+    "location": "Vancouver, Canada",
+    "email": "vinay.valson@gmail.com",
+    "github": "Vin-dictive",
+    "linkedin": "vinay-valson",
+    "website": "Profile Page",
+    "resumeUrl": "/Vinay_Valson.pdf",
+    "about": "Our family got its first Intel desktop in 2005, and that was pretty much it for me. I spent years trying to beat games the hard way, hunting edge cases, shaving seconds off puzzles, and poking at anything that felt like a secret. Eventually the fun shifted from clearing levels to figuring out how the machine was pulling it off. Taking PCs apart and putting them back together became a habit. I still default to that same move when something breaks in life. I strip it down, find the real bottleneck, then build up again. Engineering school just gave that instinct a vocabulary.\n\nOutside of work I play drums, love to travel, chase photos wherever I end up, and keep a second brain so I do not lose the stories. The gallery on this site is mostly Banff and the Rockies. Rhythm, light, and systems all feel like the same itch to me. I notice the pattern, then make something with it."
+  },
+  "skills": {
+    "programmingLanguages": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "Java",
+      "SQL",
+      "ES6",
+      "Node.js"
+    ],
+    "frameworks": [
+      "React",
+      "Next.js",
+      "Django",
+      "FastAPI",
+      "REST APIs",
+      "SOAP/XML",
+      "PostgreSQL",
+      "Oracle DB",
+      "Microservices",
+      "OJET",
+      "JPA-ORM",
+      "Tailwind",
+      "Shadcn UI",
+      "NATS",
+      "Alembic"
+    ],
+    "dataScience": [
+      "Computer Vision",
+      "MLOps",
+      "LLM workflows",
+      "RAG",
+      "Agent orchestration",
+      "Statistics",
+      "Machine Learning",
+      "PyTorch",
+      "YOLOv8",
+      "FAISS",
+      "ByteTrack"
+    ],
+    "cloudDevOps": [
+      "AWS",
+      "GCP",
+      "Docker",
+      "Kubernetes",
+      "OpenStack",
+      "GitHub Actions",
+      "CI/CD",
+      "GitHub",
+      "PostHog",
+      "Inngest",
+      "Sentry",
+      "Redis",
+      "NeonDB",
+      "Railway",
+      "Jenkins",
+      "Clerk"
+    ]
+  },
+  "experience": [
+    {
+      "title": "Graduate Research and Teaching Assistant",
+      "company": "University of British Columbia",
+      "duration": "January 2026 - Present",
+      "location": "Vancouver, Canada",
+      "description": "Building computer vision and MLOps components for a cow lameness detection pipeline for segmentation of workflows, evaluation metrics, backend-frontend, infra setup, with containerized inference services on OpenStack for scalable workloads. Designed and deployed the full-stack platform on OpenStack Arbutus: Next.js + FastAPI + Postgres + NATS job queue to a vGPU worker (YOLOv8, ByteTrack, DINOv3), with a live demo at 134.87.8.85. TA for Cloud Computing: ran tutorials and office hours for 60+ graduate students on distributed systems and deployment topics, and coached 12 capstone teams through architecture and design reviews toward more production-ready cloud deliverables.",
+      "techStack": "Python, Next.js, FastAPI, PostgreSQL, NATS, YOLOv8, ByteTrack, DINOv3, Computer Vision, MLOps, Docker, OpenStack, CI/CD, LLM workflows, RAG, Agent orchestration, GitHub",
+      "logo": "/ubc.svg",
+      "link": "https://www.ubc.ca/"
+    },
+    {
+      "title": "Software Developer (Contract Part-time)",
+      "company": "Volentia Healthcare Translation",
+      "duration": "January 2026 - February 2026",
+      "location": "Vancouver, Canada",
+      "description": "Built and launched a healthcare web application in two weeks, unifying translation request workflows for 40+ users across hospital staff, physicians, and research teams. Implemented CI/CD and cloud deployment pipelines, and supported translation/review workflow automation with human approval gates to improve release reliability and turnaround speed.",
+      "techStack": "React, Next.js, REST APIs, CI/CD, AWS, GCP, Cursor, Claude, GitHub",
+      "logo": "/school.svg",
+      "link": "https://www.volentia.ca"
+    },
+    {
+      "title": "Software Engineer (Remote)",
+      "company": "Blue Rabbit Group Ltd.",
+      "duration": "April 2024 - November 2025",
+      "location": "Hong Kong / India",
+      "description": "Joined as the first software engineer and shipped the Series A MVP end to end. Built data pipelines, real-time analytics workflows, and AI-assisted automation for portfolio and trading operations, reducing manual risk review workload across investment workflows. Shipped the product using Django and React on GCP for 50+ clients, including order placement and client dashboards with sub-second median response times for positions, risk, and market views; integrated DBS Bank APIs. Designed AI agents with human review gates that automated analyst research and asset risk scoring, cutting analyst workflow time by roughly 70% without added headcount. Drove the migration from monolith to microservices (Next.js, NeonDB, Inngest, Clerk on Railway), automated monthly personalized reports for 50+ clients, instrumented product funnels and A/B experiments with PostHog, and orchestrated agent-style analytics/reporting workflows with validation steps before operational use.",
+      "techStack": "Python, Django, React, Next.js, PostgreSQL, NeonDB, Microservices, REST APIs, GCP, PostHog, LLM, Slack Bots, Inngest, Clerk auth, Railway",
+      "logo": "/bluerabbit-logo-white.svg",
+      "link": "https://www.bluerabbit.ai/"
+    },
+    {
+      "title": "Staff Consultant | Software Engineer",
+      "company": "Oracle Financial Services Software Limited",
+      "duration": "August 2021 - April 2024",
+      "location": "Bangalore, India / Hong Kong",
+      "description": "Led onsite client-facing delivery for Oracle Banking Digital Experience (OBDX) in Hong Kong across fraud detection, FX dashboards, payments, QR gateway, and open banking; promoted to Staff Consultant within a year. Built multi-tenant open banking and access management capabilities that reduced partner onboarding effort by approximately 40% compared with the prior process. Translated customer requirements into workable PRDs and production code; gated changes on POCs plus re-signed PRDs rather than closing tickets as working as designed. Received Rising Star and Ever Ready awards; mentored and onboarded software engineers to the team.",
+      "techStack": "Java, Eclipse, OJET, JPA-ORM, SQL, Oracle DB, SOAP/XML, OBDX, Apache FOP",
+      "logo": "/oracle.svg",
+      "link": "https://www.oracle.com/financial-services/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Cow Lameness Detection (CV / MLOps)",
+      "description": "Crowdsourced pairwise scoring app plus GPU inference pipeline on OpenStack: Next.js, FastAPI, NATS, YOLOv8, ByteTrack, and DINOv3 for automated lameness screening, with containerized inference and a live demo.",
+      "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
+      "preview": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless/blob/main/docs/ARCHITECTURE.md#detailed-ascii-diagram-updated"
+    },
+    {
+      "name": "Predictive Analytics of External Factors on Clarius Scanner Sales",
+      "description": "Graduate capstone: performed forecasting and exploratory analysis to evaluate how external factors influenced Clarius Mobile Health monthly scanner sales in Canada and US.",
+      "link": "https://clarius.com/",
+      "preview": "https://clarius.com/"
+    },
+    {
+      "name": "AI Agent Content Operations",
+      "description": "Python application with content scoring, caption generation, human approval gates, and Instagram Graph API integration.",
+      "link": "https://github.com/Vin-dictive/insta-AI-post",
+      "preview": "https://github.com/Vin-dictive/insta-AI-post"
+    },
+    {
+      "name": "RAG Music Search Platform",
+      "description": "Hybrid retrieval over Amazon Digital Music data combining BM25 keyword search with FAISS semantic search for natural-language relevance improvements.",
+      "link": "https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28",
+      "preview": "https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28"
+    },
+    {
+      "name": "CocoaBoard",
+      "description": "Interactive analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration across country, product, and time dimensions.",
+      "link": "https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard",
+      "preview": "https://raw.githubusercontent.com/UBC-MDS/DSCI-532_2026_8_cocoaboard/refs/heads/main/img/updated_demo.gif"
+    },
+    {
+      "name": "UBC Reddit Reporter",
+      "description": "AWS Lambda serverless app with Amazon Bedrock sentiment analysis; automated UBC community reporting.",
+      "link": "https://github.com/Vin-dictive/ubc-reddit-reporter",
+      "preview": "https://raw.githubusercontent.com/Vin-dictive/ubc-reddit-reporter/refs/heads/main/bannerBackgroundImage_kch85kh2pgbd1.webp"
+    },
+    {
+      "name": "Imitation Game",
+      "description": "Python encryption utility implementing symmetric and asymmetric cryptography with shared-secret and public-key interfaces.",
+      "link": "https://github.com/UBC-MDS/imitation_game",
+      "preview": "https://ubc-mds.github.io/imitation_game/"
+    },
+    {
+      "name": "Fake Real News Detection",
+      "description": "Naive Bayes fake-news classifier with NLP preprocessing and feature extraction.",
+      "link": "https://vin-dictive.github.io/fake-real-news-detection/reports/fake_news_classification_analysis.html",
+      "preview": "https://vin-dictive.github.io/fake-real-news-detection/reports/fake_news_classification_analysis.html"
+    },
+    {
+      "name": "Customer Reviews Polarity Analysis",
+      "description": "ML sentiment analysis (NLP) for positive/negative product-review classification.",
+      "link": "https://github.com/Vin-dictive/customer-reviews-polarity",
+      "preview": "https://github.com/Vin-dictive/customer-reviews-polarity/blob/main/notebook.ipynb"
+    },
+    {
+      "name": "Developer Portfolio",
+      "description": "This site: Next.js portfolio with Tailwind CSS and a Stitch-inspired UI.",
+      "link": "https://github.com/Vin-dictive/Vin-dictive.github.io",
+      "preview": "https://vin-dictive.github.io/"
+    },
+    {
+      "name": "ARgorithm",
+      "description": "ARgorithm is a project aimed at providing educators and enthusiasts a tool to create AR visualizations that explain the workings of data structures and algorithms with ease.",
+      "link": "https://argorithm.github.io/",
+      "preview": "https://argorithm.github.io/toolkit/"
+    },
+    {
+      "name": "Patatap Clone",
+      "description": "This is an app created using Paperjs and Howlerjs to make a clone version of Tapatap.com.. My own effort to create one. Will add more colors and more shapes and sounds in the future.",
+      "link": "https://vin-dictive.github.io/Patatap_Clone/",
+      "preview": "https://vin-dictive.github.io/Patatap_Clone/"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Data Science",
+      "institution": "University of British Columbia",
+      "duration": "2025 - 2026",
+      "details": "Academic Representative | Scholarship | ML, LLM, AI, Python, R, Statistics",
+      "grade": "Cumulative Average: 91.2",
+      "logo": "/ubc.svg",
+      "link": "https://masterdatascience.ubc.ca/"
+    },
+    {
+      "degree": "Bachelor of Computer Engineering",
+      "institution": "Savitribai Phule Pune University, Army Institute of Technology",
+      "duration": "2017 - 2021",
+      "details": "Scholarship | First Class with Distinction",
+      "grade": "CGPA: 8.91",
+      "logo": "/ait.svg",
+      "link": "https://www.aitpune.com/"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "IELTS Academic English Proficiency Test",
+      "organization": "IELTS Official",
+      "year": "2024",
+      "details": "Band 8 (C1)",
+      "logo": "/IELTS_logo.svg",
+      "link": "https://drive.google.com/file/d/1-XeJSohhjVDwCHUq0cFDXV3cGf0BEN0o/view"
+    },
+    {
+      "name": "Python and Django Full Stack Web Developer Bootcamp",
+      "organization": "Udemy",
+      "year": "2023",
+      "logo": "/udemy.svg",
+      "link": "https://drive.google.com/file/d/1-ORKVAx0udZ0dV8Vc_lQebV5gjcrCkPH/view?usp=drive_link"
+    },
+    {
+      "name": "Continuous Delivery & DevOps",
+      "organization": "Coursera",
+      "year": "2022",
+      "logo": "/coursera.svg",
+      "link": "https://drive.google.com/file/d/1Iny_yK69sipAXIlXUl-OZhhfCKdR1l_e/view?usp=drive_link"
+    },
+    {
+      "name": "Building Cloud Services with the Java Spring Framework",
+      "organization": "Coursera",
+      "year": "2021",
+      "logo": "/coursera.svg",
+      "link": "https://drive.google.com/file/d/1p6AXXfRJtpG_pde_bYuxBSDmI6WgW8JJ/view?usp=drive_link"
+    },
+    {
+      "name": "Oracle Certifications",
+      "organization": "Oracle University",
+      "year": "2021",
+      "logo": "/oracle.svg",
+      "link": "https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge"
+    },
+    {
+      "name": "IoT Foundation Workshop (3-day)",
+      "organization": "Copper Cloud IOTech",
+      "year": "2020",
+      "logo": "/copperCloud.png",
+      "link": "https://drive.google.com/file/d/1m9VfEwCVfVPLW1fl06AJ8X2vvlnbDLaG/view?usp=sharing"
+    },
+    {
+      "name": "Machine Learning A-Z: Hands-On Python & R",
+      "organization": "Udemy",
+      "year": "2019",
+      "logo": "/udemy.svg",
+      "link": "https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view"
+    },
+    {
+      "name": "The Web Developer Bootcamp",
+      "organization": "Udemy",
+      "year": "2018",
+      "logo": "/udemy.svg",
+      "link": "https://drive.google.com/file/d/1-t2aF_r2FAPTK-_279hwxgoxBMVLFqKR/view?usp=drive_link"
+    },
+    {
+      "name": "Blockchain and Bitcoin Fundamentals",
+      "organization": "Udemy",
+      "year": "2017",
+      "logo": "/udemy.svg",
+      "link": "https://drive.google.com/file/d/1-tqhKO-byth2VlJZ8wMstEOSxlvz9AOh/view?usp=sharing"
+    }
+  ],
+  "pictures": [
+    {
+      "src": "/pictures/IMG_0867.JPG",
+      "alt": "Photography: Canmore, Alberta",
+      "caption": "",
+      "location": "Canmore, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_0909.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_0920.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_0930.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_0982.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_0988.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_0997.JPG",
+      "alt": "Photography: Canmore, Alberta",
+      "caption": "",
+      "location": "Canmore, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1029.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1040.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1051.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1089.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1112.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1125.JPG",
+      "alt": "Photography: Banff, Alberta",
+      "caption": "",
+      "location": "Banff, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1137.JPG",
+      "alt": "Photography: Lake Louise, Alberta",
+      "caption": "",
+      "location": "Lake Louise, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1147.JPG",
+      "alt": "Photography: Lake Louise, Alberta",
+      "caption": "",
+      "location": "Lake Louise, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1160.JPG",
+      "alt": "Photography: Lake Louise, Alberta",
+      "caption": "",
+      "location": "Lake Louise, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1164.JPG",
+      "alt": "Photography: Lake Louise, Alberta",
+      "caption": "",
+      "location": "Lake Louise, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1181.JPG",
+      "alt": "Photography: Icefields Parkway, Alberta",
+      "caption": "",
+      "location": "Icefields Parkway, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1187.JPG",
+      "alt": "Photography: Icefields Parkway, Alberta",
+      "caption": "",
+      "location": "Icefields Parkway, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1219.JPG",
+      "alt": "Photography: Icefields Parkway, Alberta",
+      "caption": "",
+      "location": "Icefields Parkway, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1228.JPG",
+      "alt": "Photography: Icefields Parkway, Alberta",
+      "caption": "",
+      "location": "Icefields Parkway, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1241.JPG",
+      "alt": "Photography: Icefields Parkway, Alberta",
+      "caption": "",
+      "location": "Icefields Parkway, Alberta"
+    },
+    {
+      "src": "/pictures/IMG_1255.JPG",
+      "alt": "Photography: Icefields Parkway, Alberta",
+      "caption": "",
+      "location": "Icefields Parkway, Alberta"
+    }
+  ]
+}
