@@ -84,7 +84,7 @@
       "company": "University of British Columbia",
       "duration": "January 2026 - Present",
       "location": "Vancouver, Canada",
-      "description": "Building computer vision and MLOps components for a cow lameness detection pipeline for segmentation of workflows, evaluation metrics, backend-frontend, infra setup, with containerized inference services on OpenStack for scalable workloads. Designed and deployed the full-stack platform on OpenStack Arbutus: Next.js + FastAPI + Postgres + NATS job queue to a vGPU worker (YOLOv8, ByteTrack, DINOv3), with a live demo at 134.87.8.85. TA for Cloud Computing: ran tutorials and office hours for 60+ graduate students on distributed systems and deployment topics, and coached 12 capstone teams through architecture and design reviews toward more production-ready cloud deliverables.",
+      "description": "Building computer vision and MLOps components for a cow lameness detection pipeline for segmentation of workflows, evaluation metrics, backend-frontend, infra setup, with containerized inference services on OpenStack for scalable workloads. Designed and deployed the full-stack platform on OpenStack Arbutus: Next.js + FastAPI + Postgres + NATS job queue to a vGPU worker (YOLOv8, ByteTrack, DINOv3), with a live demo at https://cow-app.tail1c5b2c.ts.net/. TA for Cloud Computing: ran tutorials and office hours for 60+ graduate students on distributed systems and deployment topics, and coached 12 capstone teams through architecture and design reviews toward more production-ready cloud deliverables.",
       "techStack": "Python, Next.js, FastAPI, PostgreSQL, NATS, YOLOv8, ByteTrack, DINOv3, Computer Vision, MLOps, Docker, OpenStack, CI/CD, LLM workflows, RAG, Agent orchestration, GitHub",
       "logo": "/ubc.svg",
       "link": "https://www.ubc.ca/"
@@ -124,8 +124,8 @@
     {
       "name": "Cow Lameness Detection (CV / MLOps)",
       "description": "Crowdsourced pairwise scoring app plus GPU inference pipeline on OpenStack: Next.js, FastAPI, NATS, YOLOv8, ByteTrack, and DINOv3 for automated lameness screening, with containerized inference and a live demo.",
-      "link": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless",
-      "preview": "https://github.com/UBC-AWP/vision-sam3-yolo-lameless/blob/main/docs/ARCHITECTURE.md#detailed-ascii-diagram-updated"
+      "link": "https://cow-app.tail1c5b2c.ts.net/",
+      "preview": "https://cow-app.tail1c5b2c.ts.net/"
     },
     {
       "name": "Predictive Analytics of External Factors on Clarius Scanner Sales",
