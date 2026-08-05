@@ -1,12 +1,57 @@
 % Workday / ATS-safe master CV template
-% - Single column, linear reading order (no tables, columns, or hfill splits)
-% - Contact in document body with explicit labels (not header/footer)
-% - Standard sections: Skills, Work Experience, Education, Projects
-% - Each role: Job Title, then Company, Location, then Month YYYY -- Month YYYY
-% - System-style font, simple bullets, text-layer PDF from pdflatex
-% - Color reserved for hyperlinks only
-\documentclass[10pt,letterpaper]{article}
+% - Single column body; Projects | Certifications share a two-column footer
+% - Contact in document body with explicit labels
+% - Standard sections: Skills, Work Experience, Education, Projects, Certifications
+\documentclass[11pt,letterpaper]{article}
 \input{cv_ats_preamble.tex}
+
+% Professional hierarchy: clean 11pt body, even rhythm, no crushed leading
+\geometry{left=0.48in,right=0.48in,top=0.38in,bottom=0.38in}
+\titlespacing{\section}{0pt}{7pt}{3pt}
+\renewcommand{\cvName}[1]{%
+  {\fontsize{21}{25}\selectfont\bfseries\color{ink} #1}\par
+}
+\renewcommand{\cvContactBlock}[1]{%
+  \vspace{3pt}%
+  {\small\color{muted}#1}\par
+}
+\renewcommand{\resumeHeading}[4]{%
+  \vspace{5.5pt}%
+  \noindent\textcolor{ink}{\textbf{#3}}\hfill~\textcolor{muted}{\small #4}\par
+  \vspace{1pt}%
+  \noindent\textcolor{muted}{\small #1\ \textbar\ #2}\par
+  \vspace{1.5pt}%
+}
+\renewcommand{\cvDetail}[1]{%
+  \noindent{\small #1}\par\vspace{1pt}%
+}
+\renewcommand{\skillLine}[2]{%
+  \noindent\textbf{#1}~#2\par\vspace{1.2pt}%
+}
+\renewenvironment{resumeItems}{%
+  \begin{itemize}[
+    leftmargin=12pt,
+    label=\textbullet,
+    itemsep=1.8pt,
+    topsep=0.4pt,
+    parsep=0pt,
+    partopsep=0pt
+  ]%
+}{%
+  \end{itemize}%
+}
+\renewenvironment{projectItems}{%
+  \begin{itemize}[
+    leftmargin=11pt,
+    label=\textbullet,
+    itemsep=1.2pt,
+    topsep=0.4pt,
+    parsep=0pt,
+    partopsep=0pt
+  ]%
+}{%
+  \end{itemize}%
+}
 \hypersetup{
     pdftitle={Vinay Valson Resume},
     pdfauthor={Vinay Valson},
@@ -15,43 +60,31 @@
 
 \begin{document}
 
-% --- CONTACT (body only; left-aligned for parser field mapping) ---
 \cvName{Vinay Valson}
 \cvContactBlock{%
   Email: \href{mailto:vinay.valson@gmail.com}{vinay.valson@gmail.com}
   \quad\textbar\quad Phone: +1 263 9999870
-  \quad\textbar\quad Location: Vancouver, Canada\\[1pt]
+  \quad\textbar\quad Location: Vancouver, Canada\\[2pt]
   LinkedIn: \href{https://linkedin.com/in/vinay-valson}{linkedin.com/in/vinay-valson}
   \quad\textbar\quad Portfolio: \href{https://vin-dictive.github.io}{vin-dictive.github.io}
   \quad\textbar\quad GitHub: \href{https://github.com/Vin-dictive}{github.com/Vin-dictive}%
 }
-\cvContactRule
+\vspace{4pt}
 
-% --- SKILLS ---
 \section{Skills}
-\skillLine{Frontend:}{React.js, \textbf{Next.js}, OJET, TypeScript, JavaScript, ES6, \textbf{Tailwind}, \textbf{Shadcn} UI, Responsive UI}
-\skillLine{Backend:}{Python, Django, FastAPI, Java, Node.js, Microservices, REST/JSON, SOAP/XML, NATS, API integration}
-\skillLine{Data:}{PostgreSQL, Oracle DB, SQL, JPA-ORM, schema design, query tuning, Alembic, DBeaver}
-\skillLine{Cloud and Delivery:}{AWS, GCP, Docker, OpenStack, CI/CD, GitHub Actions, Sentry, Inngest, Redis, NeonDB, Railway, Jenkins}
-\skillLine{Tools:}{GitHub, PostHog, PyTorch, YOLOv8, LLM workflows, RAG, FAISS, agent orchestration, Clerk, Cursor, Claude}
+\skillLine{Frontend:}{React.js, Next.js, TypeScript, JavaScript, OJET, Tailwind, Shadcn UI}
+\skillLine{Backend:}{Python, Django, FastAPI, Java, Node.js, Microservices, REST/JSON, SOAP/XML, NATS}
+\skillLine{Data:}{PostgreSQL, Oracle DB, SQL, JPA-ORM, schema design, query tuning}
+\skillLine{Cloud and Tools:}{AWS, GCP, Docker, OpenStack, CI/CD, GitHub Actions, Redis, Sentry, PostHog, Inngest, PyTorch, YOLOv8, LLM/RAG, Cursor, Claude}
 
-% --- WORK EXPERIENCE (reverse chronological) ---
 \section{Work Experience}
 \resumeHeading
   {University of British Columbia}{Vancouver, Canada}
   {Graduate Research and Teaching Assistant (Part-time)}
   {\daterange{January 2026}{Present}}
 \begin{resumeItems}
-  \item Designed and deployed a full-stack \textbf{cow lameness} platform on \textbf{OpenStack} Arbutus: \textbf{Next.js} + \textbf{FastAPI} + Postgres + \textbf{NATS} job queue to a vGPU worker (\textbf{YOLOv8}, ByteTrack, DINOv3), with live demo at \href{http://134.87.8.85/}{134.87.8.85}.
-  \item TA for \textbf{Cloud Computing}: ran tutorials and office hours for \textbf{60+ graduate students} on distributed systems and deployment, and coached 12 capstone teams through architecture and design reviews.
-\end{resumeItems}
-
-\resumeHeading
-  {Volentia Healthcare Translation}{Vancouver, Canada}
-  {Software Developer (Contract Part-time)}
-  {\daterange{January 2026}{February 2026}}
-\begin{resumeItems}
-  \item Built and launched a \textbf{healthcare web application} in \textbf{two weeks}, unifying translation request workflows for \textbf{40+ users} across hospital staff, physicians, and research teams; implemented \textbf{CI/CD} and cloud deployment, plus review workflow automation with \textbf{human approval gates}.
+  \item Designed and deployed a full-stack cow lameness platform on OpenStack Arbutus: Next.js, FastAPI, Postgres, and NATS to a vGPU worker (YOLOv8, ByteTrack, DINOv3); live demo at \href{http://134.87.8.85/}{134.87.8.85}.
+  \item TA for Cloud Computing: tutorials and office hours for 60+ graduate students; coached 12 capstone teams through architecture and design reviews.
 \end{resumeItems}
 
 \resumeHeading
@@ -59,42 +92,55 @@
   {Software Engineer (Full-time, Remote)}
   {\daterange{April 2024}{November 2025}}
 \begin{resumeItems}
-  \item Joined as the \textbf{first software engineer} and shipped the \textbf{Series A} MVP end to end with \textbf{Django} and \textbf{React} on GCP for \textbf{50+ clients}: order placement and client dashboards with \textbf{sub-second} median responses; integrated \textbf{DBS Bank} APIs.
-  \item Designed \textbf{AI agents} with human review gates that automated analyst research and asset risk scoring, cutting analyst workflow time by roughly \textbf{70\%} without added headcount.
-  \item Drove the migration from monolith to \textbf{microservices} (Next.js, NeonDB, Inngest, Clerk on Railway), automated \textbf{monthly} personalized reports for \textbf{50+ clients}, and ran product funnels and A/B experiments with \textbf{PostHog}.
+  \item First software engineer; shipped the Series A MVP end to end (Django, React on GCP) for 50+ clients, with sub-second dashboards and DBS Bank API integration.
+  \item Built AI agents with human review gates that automated analyst research and asset risk scoring, cutting workflow time by roughly 70\% without added headcount.
+  \item Migrated monolith to microservices (Next.js, NeonDB, Inngest, Clerk on Railway); automated 50+ monthly client reports; ran PostHog funnels and A/B experiments.
 \end{resumeItems}
 
 \resumeHeading
   {Oracle Financial Services Software Limited}{Bangalore, India, Hong Kong}
-  {Staff Consultant, Software Engineer (Full-time, Remote, Onsite)}
+  {Staff Consultant, Software Engineer (Full-time)}
   {\daterange{August 2021}{April 2024}}
 \begin{resumeItems}
-  \item Led onsite \textbf{client-facing} delivery for \textbf{Oracle Banking Digital Experience (OBDX)} in Hong Kong across \textbf{fraud detection}, \textbf{FX} dashboards, payments, QR gateway, and open banking; promoted to \textbf{Staff Consultant} within a year.
-  \item Built multi-tenant \textbf{open banking} and access management that reduced partner onboarding effort by approximately \textbf{40\%}.
-  \item Translated customer requirements into workable \textbf{PRD}s and production code; never closed ``working as designed'' without checking the PRD, and gated changes on POCs plus re-signed PRDs. Rising Star and Ever Ready awards.
+  \item Led onsite delivery of Oracle Banking Digital Experience in Hong Kong across fraud detection, FX dashboards, payments, QR gateway, and open banking; promoted to Staff Consultant within a year.
+  \item Built multi-tenant open banking and access management that reduced partner onboarding effort by approximately 40\%.
+  \item Translated client requirements into PRDs and production code; gated releases on signed requirements. Rising Star and Ever Ready awards.
 \end{resumeItems}
 
-% --- EDUCATION ---
 \section{Education}
 \resumeHeading
   {University of British Columbia}{Vancouver, Canada}
   {Master of Data Science}
-  {\daterange{2025}{2026}}
+  {\daterange{September 2025}{June 2026}}
 \cvDetail{Cumulative Average 91.2, Academic Representative, Scholarship}
 
 \resumeHeading
   {Savitribai Phule Pune University, Army Institute of Technology}{Pune, India}
   {Bachelor of Computer Engineering}
-  {\daterange{2017}{2021}}
+  {\daterange{June 2017}{June 2021}}
 \cvDetail{CGPA: 8.91, Scholarship, First Class with Distinction}
 
-% --- PROJECTS ---
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
 \section{Projects}
 \begin{projectItems}
-  \item \textbf{\href{http://134.87.8.85/}{Cow Lameness Detection (live demo)}} Crowdsourced pairwise scoring app plus GPU inference pipeline on OpenStack (Next.js, FastAPI, NATS, YOLOv8).
-  \item \textbf{\href{https://clarius.com/}{Clarius Scanner Sales Forecasting}} Graduate capstone: forecasting and exploratory analysis of external factors on Clarius Mobile Health monthly scanner sales in Canada and US.
-  \item \textbf{\href{https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28}{RAG Music Search Platform}} Hybrid retrieval over Amazon Digital Music data combining BM25 keyword search with FAISS semantic search.
-  \item \textbf{\href{https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard}{CocoaBoard}} Analytics dashboard with filtering, aggregation, and LLM chatbot-assisted exploration.
+  \item \textbf{\href{http://134.87.8.85/}{Cow Lameness Detection}} Next.js, FastAPI, YOLOv8.
+  \item \textbf{\href{https://clarius.com/}{Clarius Sales Forecasting}} Capstone for Clarius.
+  \item \textbf{\href{https://github.com/UBC-MDS/DSCI_575_project_vvalson_ksn28}{RAG Music Search}} BM25 plus FAISS.
+  \item \textbf{\href{https://github.com/UBC-MDS/DSCI-532_2026_8_cocoaboard}{CocoaBoard}} Analytics with LLM chat.
 \end{projectItems}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\section{Certifications}
+\begin{projectItems}
+  \item \textbf{\href{https://drive.google.com/file/d/1-ORKVAx0udZ0dV8Vc_lQebV5gjcrCkPH/view?usp=drive_link}{Python \& Django Full Stack}} Udemy, 2023.
+  \item \textbf{\href{https://drive.google.com/file/d/1Iny_yK69sipAXIlXUl-OZhhfCKdR1l_e/view?usp=drive_link}{Continuous Delivery \& DevOps}} Coursera, 2022.
+  \item \textbf{\href{https://drive.google.com/file/d/1p6AXXfRJtpG_pde_bYuxBSDmI6WgW8JJ/view?usp=drive_link}{Java Spring Cloud Services}} Coursera, 2021.
+  \item \textbf{\href{https://drive.google.com/drive/folders/1-gyyUZcfAckczplJ9zbMVv2olWTfP0ge}{Oracle Certifications}} Oracle University, 2021.
+  \item \textbf{\href{https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view}{Machine Learning A-Z}} Udemy, 2019.
+  \item \textbf{\href{https://drive.google.com/file/d/1-t2aF_r2FAPTK-_279hwxgoxBMVLFqKR/view?usp=drive_link}{The Web Developer Bootcamp}} Udemy, 2018.
+\end{projectItems}
+\end{minipage}
 
 \end{document}
