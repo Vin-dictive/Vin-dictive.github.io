@@ -90,16 +90,6 @@
       "link": "https://www.ubc.ca/"
     },
     {
-      "title": "Software Developer (Contract Part-time)",
-      "company": "Volentia Healthcare Translation",
-      "duration": "January 2026 - February 2026",
-      "location": "Vancouver, Canada",
-      "description": "Built and launched a healthcare web application in two weeks, unifying translation request workflows for 40+ users across hospital staff, physicians, and research teams. Implemented CI/CD and cloud deployment pipelines, and supported translation/review workflow automation with human approval gates to improve release reliability and turnaround speed.",
-      "techStack": "React, Next.js, REST APIs, CI/CD, AWS, GCP, Cursor, Claude, GitHub",
-      "logo": "/school.svg",
-      "link": "https://www.volentia.ca"
-    },
-    {
       "title": "Software Engineer (Remote)",
       "company": "Blue Rabbit Group Ltd.",
       "duration": "April 2024 - November 2025",
@@ -257,13 +247,6 @@
       "year": "2020",
       "logo": "/copperCloud.png",
       "link": "https://drive.google.com/file/d/1m9VfEwCVfVPLW1fl06AJ8X2vvlnbDLaG/view?usp=sharing"
-    },
-    {
-      "name": "Machine Learning A-Z: Hands-On Python & R",
-      "organization": "Udemy",
-      "year": "2019",
-      "logo": "/udemy.svg",
-      "link": "https://drive.google.com/file/d/1-oPBYODZvoO7OBJ6yHFBy4YjzACEm69_/view"
     },
     {
       "name": "The Web Developer Bootcamp",
