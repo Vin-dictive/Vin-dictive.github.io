@@ -51,3 +51,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Local tooling scratch (screenshot driver, thumbnails)
+.pw-tmp/
+.thumbs-tmp/

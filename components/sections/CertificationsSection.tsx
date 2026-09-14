@@ -1,6 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
+import ParallaxBackground from '@/components/ParallaxBackground'
 import { sectionGlassCard, sectionGlassShell } from '@/components/sections/sectionGlass'
 import { folioContainerClass, folioSectionXPad } from '@/components/sections/folioLayout'
+import { cn } from '@/lib/utils'
 
 interface Certification {
   name: string
@@ -19,18 +21,21 @@ export default function CertificationsSection({
   return (
     <section
       id="certifications"
-      className={`folio-section bg-transparent py-28 md:py-32 lg:py-36 ${folioSectionXPad}`}
+      className={`folio-slide relative isolate bg-transparent pb-8 pt-24 sm:pt-28 ${folioSectionXPad}`}
     >
-      <div className={folioContainerClass}>
-        <h2 className="kinetic-monolith mb-4 text-center text-4xl font-black uppercase text-folio-on-surface sm:text-5xl md:mb-6">
-          Certifications
-        </h2>
-        <p className="technical-label mb-12 text-center text-sm tracking-widest text-folio-on-surface-variant md:mb-16">
-          Credentials &amp; continuous learning
-        </p>
+      <ParallaxBackground src="/parallax/certifications.jpg" />
+      <div className={`flex min-h-0 w-full flex-col ${folioContainerClass}`}>
+        <div className="mb-5 text-center md:mb-6">
+          <h2 className="kinetic-monolith text-3xl font-black uppercase text-folio-on-surface sm:text-4xl">
+            Certifications
+          </h2>
+          <p className="technical-label mt-1 text-sm tracking-widest text-folio-on-surface-variant">
+            Credentials &amp; continuous learning · scroll →
+          </p>
+        </div>
 
-        <div className={sectionGlassShell}>
-          <div className="grid gap-4 md:grid-cols-2 md:gap-5 lg:gap-6 xl:grid-cols-3 2xl:gap-8">
+        <div className={cn(sectionGlassShell, 'min-h-0 !p-4 sm:!p-5 md:!p-6')}>
+          <ul className="hscroll grid max-h-full snap-x auto-cols-[minmax(17rem,20rem)] grid-flow-col grid-rows-2 gap-4 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]">
             {certifications.map((cert) => {
               const hasLink = Boolean(cert.link?.trim())
               const inner = (
@@ -50,7 +55,7 @@ export default function CertificationsSection({
                       {cert.organization} · {cert.year}
                     </p>
                     {cert.details ? (
-                      <p className="mt-2 text-xs text-folio-on-surface-variant/90">
+                      <p className="mt-2 line-clamp-2 text-xs text-folio-on-surface-variant/90">
                         {cert.details}
                       </p>
                     ) : null}
@@ -61,23 +66,24 @@ export default function CertificationsSection({
                 </div>
               )
 
-              return hasLink ? (
-                <a
-                  key={`${cert.name}-${cert.year}`}
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group block ${sectionGlassCard}`}
-                >
-                  {inner}
-                </a>
-              ) : (
-                <div key={`${cert.name}-${cert.year}`} className={sectionGlassCard}>
-                  {inner}
-                </div>
+              return (
+                <li key={`${cert.name}-${cert.year}`} className="flex min-h-0 snap-start">
+                  {hasLink ? (
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`group block h-full w-full ${sectionGlassCard}`}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className={`h-full w-full ${sectionGlassCard}`}>{inner}</div>
+                  )}
+                </li>
               )
             })}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

@@ -6,6 +6,22 @@
   .folio-section {
     @apply min-h-svh;
   }
+  /**
+   * Viewport-height "slide": section content is vertically centered and capped
+   * to one screen on lg+; overflowing lists become horizontal carousels.
+   * Mobile keeps natural height (forcing h-svh there would clip content).
+   */
+  .folio-slide {
+    @apply flex min-h-svh flex-col justify-center lg:h-svh lg:max-h-svh lg:overflow-hidden;
+  }
+  /** Horizontal snap carousel track with a hidden scrollbar. */
+  .hscroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hscroll::-webkit-scrollbar {
+    display: none;
+  }
   /** Discourage save-as / drag on gallery images (not foolproof). */
   .picture-protected {
     -webkit-touch-callout: none;
@@ -57,6 +73,23 @@
       90deg,
       rgb(var(--folio-primary)),
       rgb(var(--folio-primary-fixed))
+    );
+  }
+  /** Parallax backdrops fade out at the section seams so the dot-grid surface shows through. */
+  .parallax-fade {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      black 7rem,
+      black calc(100% - 7rem),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      black 7rem,
+      black calc(100% - 7rem),
+      transparent 100%
     );
   }
 }

@@ -46,7 +46,56 @@ const stacks: {
   },
 ]
 
-function CoreStackInner({ skills }: { skills: Skills }) {
+function CoreStackInner({
+  skills,
+  compact = false,
+}: {
+  skills: Skills
+  compact?: boolean
+}) {
+  if (compact) {
+    return (
+      <>
+        <div className="relative mb-5 flex flex-col items-stretch gap-3 md:flex-row md:items-end">
+          <div className="min-w-0">
+            <h2 className="kinetic-monolith mb-1.5 text-2xl font-black uppercase text-folio-on-surface sm:text-3xl">
+              Core Stack
+            </h2>
+            <p className="technical-label text-xs tracking-widest text-folio-on-surface-variant">
+              Multi-disciplinary engineering expertise
+            </p>
+          </div>
+          <div className="mb-2 hidden h-px flex-grow bg-folio-outline-variant/25 md:mx-8 md:block dark:bg-white/10" />
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+          {stacks.map(({ key, title, borderClass, iconClass, Icon }) => (
+            <div
+              key={key}
+              className={`rounded-xl border border-folio-on-surface/10 bg-folio-surface-highest/40 p-4 shadow-inner backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-folio-primary/50 hover:shadow-md hover:shadow-folio-primary/10 dark:border-white/10 dark:bg-zinc-950/30 dark:hover:border-folio-primary/50 dark:hover:shadow-folio-primary/20 border-l-4 ${borderClass}`}
+            >
+              <div className="mb-3 flex items-center gap-2.5">
+                <Icon className={`h-5 w-5 shrink-0 ${iconClass}`} strokeWidth={1.5} />
+                <h3 className="technical-label text-sm font-bold text-folio-on-surface">
+                  {title}
+                </h3>
+              </div>
+              <ul className="flex flex-wrap gap-1.5">
+                {skills[key].map((item, index) => (
+                  <li
+                    key={`${key}-${index}`}
+                    className="technical-label rounded-full border border-folio-outline-variant/30 bg-folio-surface-high/50 px-2 py-0.5 text-[10px] uppercase tracking-wider text-folio-on-surface-variant dark:border-white/10 dark:bg-zinc-900/50"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <div className="relative mb-10 flex flex-col items-stretch gap-6 md:mb-12 md:flex-row md:items-end">
@@ -115,8 +164,8 @@ export default function SkillsBentoSection({
 }) {
   if (variant === 'embedded') {
     return (
-      <GlassShell className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14">
-        <CoreStackInner skills={skills} />
+      <GlassShell className="p-4 sm:p-5 md:p-6">
+        <CoreStackInner skills={skills} compact />
       </GlassShell>
     )
   }

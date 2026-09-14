@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "sync-gallery": "node scripts/sync-gallery.mjs",
+    "generate-parallax": "node scripts/generate-parallax.mjs",
     "start": "next start",
     "lint": "eslint ."
   },
