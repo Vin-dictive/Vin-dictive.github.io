@@ -22,12 +22,12 @@ const outDir = path.join(root, 'public/parallax')
 
 /** Section → source photo (all from the Banff/Jasper gallery set). */
 const SOURCES = {
-  home: 'IMG_0988.JPG', // Banff valley panorama from Sulphur Mountain
+  home: 'IMG_0997.JPG', // Banff valley panorama from Sulphur Mountain
   about: 'IMG_1137.JPG', // Lake Louise
   experience: 'IMG_1160.JPG', // Bow Lake mirror reflection
-  projects: 'IMG_1051.JPG', // Mount Rundle over the meadow
+  projects: 'IMG_1040.JPG', // Mount Rundle over the meadow
   certifications: 'IMG_1228.JPG', // Athabasca Glacier
-  contact: 'IMG_0982.JPG', // Canmore main street at dusk
+  contact: 'IMG_0988.JPG', // Banff Avenue at dusk
 }
 
 const WIDTH = 1920
