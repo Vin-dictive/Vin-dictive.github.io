@@ -1,0 +1,13 @@
+# syntax=docker/dockerfile:1
+
+# Development image: runs `next dev` with the repo bind-mounted from the host.
+
+FROM node:24-alpine
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN command -v yarn >/dev/null 2>&1 || npm i -g yarn@1.22.22
+COPY package.json yarn.lock .yarnrc ./
+RUN yarn install --frozen-lockfile
+COPY . .
+EXPOSE 3000
+CMD ["./node_modules/.bin/next", "dev", "-H", "0.0.0.0", "-p", "3000"]

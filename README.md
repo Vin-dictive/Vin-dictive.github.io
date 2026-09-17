@@ -61,6 +61,54 @@ npm run build
 
 This creates an optimized static export in the `out` directory.
 
+## Running with Docker
+
+No local Node.js install needed — only [Docker Desktop](https://docs.docker.com/get-started/get-docker/) (or Docker Engine with the Compose plugin).
+
+### Production (static export served by nginx)
+
+```bash
+docker compose up --build -d site
+```
+
+Open [http://localhost:8080](http://localhost:8080). Then:
+
+```bash
+docker compose logs -f site   # follow logs
+docker compose down           # stop and remove the container
+```
+
+Because `next.config.js` uses `output: 'export'`, the site is fully static — the runtime image is just nginx serving `out/`, with no Node server. Content changes (e.g. `data/profile.json`) require a rebuild: rerun `docker compose up --build -d site`.
+
+### Development (hot reload)
+
+```bash
+docker compose --profile dev up --build dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Your working tree is bind-mounted into the container, so edits reload live. After changing `package.json`, reset the dependency volume as well:
+
+```bash
+docker compose --profile dev up --build -V dev
+```
+
+### Without Compose
+
+```bash
+docker build -f docker/Dockerfile -t vinay-portfolio .
+docker run --rm -p 8080:80 --name portfolio vinay-portfolio
+```
+
+### Docker files
+
+| File | Purpose |
+| --- | --- |
+| `docker/Dockerfile` | Multi-stage production build: install deps → `yarn build` → nginx serving `out/` |
+| `docker/Dockerfile.dev` | Development image running `next dev` on port 3000 |
+| `docker/nginx.conf` | Static-export routing (`trailingSlash: true`), `404.html`, long-lived caching for `/_next/static` |
+| `docker-compose.yml` | `site` (production, port 8080) and `dev` (hot reload, port 3000, `dev` profile) |
+| `.dockerignore` | Keeps `node_modules`, `.next`, `out`, and `.git` out of the build context |
+
 ## Deployment to GitHub Pages
 
 ### Automatic Deployment
