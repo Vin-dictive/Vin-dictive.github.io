@@ -50,12 +50,12 @@ export default function ProjectsSection({
             Projects
           </h2>
           <p className="technical-label mt-1 text-sm tracking-widest text-folio-on-surface-variant">
-            Builds I&apos;m especially proud of · scroll →
+            Builds I&apos;m especially proud of<span className="hidden sm:inline"> · scroll →</span>
           </p>
         </div>
 
         <div className={cn(sectionGlassShell, 'flex min-h-0 flex-1 flex-col !p-4 sm:!p-5 md:!p-6')}>
-          <ul className="hscroll grid min-h-0 flex-1 snap-x auto-cols-[minmax(16rem,18rem)] grid-flow-col grid-rows-2 gap-4 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] md:auto-cols-[minmax(17rem,20rem)]">
+          <ul className="flex min-h-0 flex-1 flex-col gap-4 pb-1 sm:hscroll sm:grid sm:snap-x sm:auto-cols-[minmax(16rem,18rem)] sm:grid-flow-col sm:grid-rows-2 sm:overflow-x-auto sm:[-webkit-overflow-scrolling:touch] md:auto-cols-[minmax(17rem,20rem)]">
             {shown.map((project, index) => {
               const n = String(index + 1).padStart(2, '0')
 

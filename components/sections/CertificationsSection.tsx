@@ -30,12 +30,12 @@ export default function CertificationsSection({
             Certifications
           </h2>
           <p className="technical-label mt-1 text-sm tracking-widest text-folio-on-surface-variant">
-            Credentials &amp; continuous learning · scroll →
+            Credentials &amp; continuous learning<span className="hidden sm:inline"> · scroll →</span>
           </p>
         </div>
 
         <div className={cn(sectionGlassShell, 'min-h-0 !p-4 sm:!p-5 md:!p-6')}>
-          <ul className="hscroll grid max-h-full snap-x auto-cols-[minmax(17rem,20rem)] grid-flow-col grid-rows-2 gap-4 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]">
+          <ul className="flex max-h-full flex-col gap-4 pb-1 sm:hscroll sm:grid sm:snap-x sm:auto-cols-[minmax(17rem,20rem)] sm:grid-flow-col sm:grid-rows-2 sm:overflow-x-auto sm:[-webkit-overflow-scrolling:touch]">
             {certifications.map((cert) => {
               const hasLink = Boolean(cert.link?.trim())
               const inner = (

@@ -48,7 +48,7 @@ export default function HomeSection({
             href="#experience"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-sm px-6 py-3 text-sm font-bold uppercase tracking-widest text-folio-on-primary pulse-gradient shadow-md shadow-folio-primary/25 transition-[opacity,box-shadow] hover:opacity-100 hover:shadow-lg hover:shadow-folio-primary/40 sm:min-h-0 sm:w-auto sm:px-8"
           >
-            Explore Work
+            My Work Experience
           </Link>
           <Link
             href="#contact"

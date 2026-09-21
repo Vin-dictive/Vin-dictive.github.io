@@ -44,19 +44,19 @@ export default function ExperienceEducationSection({
               Roles, impact, and stack
             </p>
           </div>
-          <p className="technical-label hidden text-[10px] uppercase tracking-[0.3em] text-folio-on-surface-variant/70 md:block">
+          <p className="technical-label hidden text-[10px] uppercase tracking-[0.3em] text-folio-on-surface-variant/70 sm:block">
             Scroll →
           </p>
         </div>
 
         <ul
           role="list"
-          className="hscroll flex min-h-0 flex-1 snap-x snap-mandatory gap-4 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] md:gap-6"
+          className="flex min-h-0 flex-1 flex-col gap-4 pb-1 sm:hscroll sm:flex-row sm:snap-x sm:snap-mandatory sm:overflow-x-auto sm:[-webkit-overflow-scrolling:touch] md:gap-6"
         >
           {experience.map((exp, index) => (
             <li
               key={`${exp.company}-${exp.duration}`}
-              className="flex w-[min(100%,24rem)] shrink-0 snap-start md:w-[28rem] xl:w-[30rem]"
+              className="flex w-full sm:w-[min(100%,24rem)] sm:shrink-0 sm:snap-start md:w-[28rem] xl:w-[30rem]"
             >
               <article
                 className={cn(

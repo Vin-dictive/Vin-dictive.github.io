@@ -75,13 +75,13 @@ export default function AboutSection({
                       <img
                         src="/headshot.jpeg"
                         alt={personal.name}
-                        className="absolute inset-0 h-full w-full object-cover grayscale opacity-55 transition-all duration-700 ease-out group-hover/about:grayscale-0 group-hover/about:opacity-100 group-hover/about:scale-[1.02]"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover/about:scale-[1.02]"
                         onError={() => setPhotoOk(false)}
                       />
                     ) : (
                       <div className="absolute inset-0 bg-gradient-to-br from-folio-primary/25 via-folio-surface-highest to-folio-tertiary/25 transition-opacity duration-500 group-hover/about:from-folio-primary/40" />
                     )}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-folio-surface-highest/90 via-transparent to-transparent opacity-90 transition-opacity duration-500 group-hover/about:opacity-40" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-folio-surface-highest/60 via-transparent to-transparent opacity-40" />
                     {personal.quote ? (
                       <p className="pointer-events-none absolute bottom-4 left-4 right-4 max-w-[90%] text-pretty text-xs font-medium italic leading-snug text-folio-on-surface-variant transition-colors duration-500 group-hover/about:text-folio-on-surface sm:text-sm">
                         &ldquo;{personal.quote}&rdquo;
@@ -107,12 +107,12 @@ export default function AboutSection({
 
             <ul
               role="list"
-              className="hscroll flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto [-webkit-overflow-scrolling:touch]"
+              className="flex flex-col gap-4 sm:hscroll sm:flex-row sm:snap-x sm:snap-mandatory sm:overflow-x-auto sm:[-webkit-overflow-scrolling:touch]"
             >
               {education.map((edu, index) => (
                 <li
                   key={`${edu.institution}-${edu.degree}`}
-                  className="min-w-[min(100%,18rem)] shrink-0 snap-start sm:min-w-[22rem] lg:flex-1"
+                  className="w-full sm:min-w-[22rem] sm:shrink-0 sm:snap-start lg:flex-1"
                 >
                   <a
                     href={edu.link}
