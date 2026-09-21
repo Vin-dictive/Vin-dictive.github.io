@@ -56,12 +56,12 @@ export default function ParallaxBackground({
         className={cn(
           'absolute inset-0',
           intensity === 'soft'
-            ? 'bg-folio-surface/55 dark:bg-zinc-950/45'
-            : 'bg-folio-surface/35 dark:bg-zinc-950/30',
+            ? 'bg-folio-surface/40 dark:bg-zinc-950/25'
+            : 'bg-folio-surface/25 dark:bg-zinc-950/10',
         )}
       />
       {/* Depth gradient: slightly stronger toward the edges where headings sit */}
-      <div className="absolute inset-0 bg-gradient-to-b from-folio-surface/45 via-transparent to-folio-surface/45 dark:from-zinc-950/50 dark:via-transparent dark:to-zinc-950/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-folio-surface/30 via-transparent to-folio-surface/30 dark:from-zinc-950/25 dark:via-transparent dark:to-zinc-950/25" />
     </div>
   )
 }
