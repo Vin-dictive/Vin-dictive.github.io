@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { usePathname } from "next/navigation"
 
 function parseRgbTriplet(s: string): readonly [number, number, number] {
   const p = s
@@ -15,8 +16,11 @@ function parseRgbTriplet(s: string): readonly [number, number, number] {
 
 export default function CursorDotBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  /** The room paints its own opaque ground; this layer would be hidden and wasted there. */
+  const onRoom = usePathname().startsWith("/room")
 
   useEffect(() => {
+    if (onRoom) return
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext("2d")
@@ -177,7 +181,9 @@ export default function CursorDotBackground() {
       window.removeEventListener("touchend", onTouchEnd)
       mq.removeEventListener("change", onMq)
     }
-  }, [])
+  }, [onRoom])
+
+  if (onRoom) return null
 
   return (
     <canvas

@@ -1,16 +1,19 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { LucideIcon } from "lucide-react"
 import {
   Award,
   Briefcase,
+  Cylinder,
   FileText,
   FolderKanban,
   Home,
   ImageIcon,
   Mail,
+  Rows3,
   User,
 } from "lucide-react"
 import { ThemeToggleButton } from "@/components/ThemeToggle"
@@ -66,6 +69,50 @@ const navLinkActive =
 
 const navActionPill =
   "inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg border border-folio-on-surface/15 bg-folio-surface-highest/40 px-2.5 text-[10px] font-bold uppercase tracking-wider text-folio-on-surface shadow-sm backdrop-blur-sm transition-colors hover:border-folio-primary hover:bg-folio-primary/20 dark:border-white/10 dark:bg-zinc-900/50 dark:text-zinc-100 dark:hover:border-folio-primary dark:hover:bg-folio-primary/25 sm:h-10 sm:px-3 sm:text-xs lg:px-4"
+
+const VIEWS = [
+  { href: "/", label: "Page", Icon: Rows3 },
+  { href: "/room/", label: "Room", Icon: Cylinder },
+] as const
+
+/** `[ Page | Room ]` segmented control; shared with the room's own bar. */
+export function ViewToggle({ className }: { className?: string }) {
+  const pathname = usePathname()
+  const onRoom = pathname.startsWith("/room")
+
+  return (
+    <div
+      role="group"
+      aria-label="View"
+      className={cn(
+        navActionPill,
+        "gap-0.5 p-0.5 hover:bg-folio-surface-highest/40 sm:px-0.5 lg:px-0.5 dark:hover:bg-zinc-900/50",
+        className,
+      )}
+    >
+      {VIEWS.map(({ href, label, Icon }) => {
+        const isActive = (href === "/room/") === onRoom
+        return (
+          <Link
+            key={href}
+            href={href}
+            aria-current={isActive ? "page" : undefined}
+            title={`${label} view`}
+            className={cn(
+              "inline-flex h-full items-center gap-1.5 rounded-md px-2 transition-colors focus-visible:outline-2 focus-visible:outline-folio-primary sm:px-2.5",
+              isActive
+                ? "bg-folio-primary/20 text-folio-primary"
+                : "text-folio-on-surface-variant hover:text-folio-primary dark:text-zinc-400",
+            )}
+          >
+            <Icon className="h-4 w-4 shrink-0" aria-hidden />
+            <span className="hidden sm:inline">{label}</span>
+          </Link>
+        )
+      })}
+    </div>
+  )
+}
 
 export default function Navigation({
   resumeUrl = DEFAULT_RESUME_URL,
@@ -228,6 +275,7 @@ export default function Navigation({
           </div>
 
           <div className="flex shrink-0 flex-nowrap items-center gap-1.5 sm:gap-2">
+            <ViewToggle />
             <ThemeToggleButton />
             <a
               href={resumeUrl}
